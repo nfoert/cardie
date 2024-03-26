@@ -1,0 +1,59 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Start server",
+        "type": "shell",
+        "command": "source .venv/bin/activate && python ./cardie/manage.py runserver",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "runOptions": {
+          "runOn": "folderOpen"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Start server (external)",
+        "type": "shell",
+        "command": "source .venv/bin/activate && python ./cardie/manage.py runserver 192.168.1.103:1111",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Migrate models",
+        "type": "shell",
+        "command": "source .venv/bin/activate && python ./cardie/manage.py makemigrations && python ./cardie/manage.py migrate",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Collect static files",
+        "type": "shell",
+        "command": "source .venv/bin/activate && python ./cardie/manage.py collectstatic --noinput",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      // Thanks to https://github.com/pypa/pip/issues/4318#issuecomment-284272355
+      {
+        "label": "Pip freeze",
+        "type": "shell",
+        "command": "source .venv/bin/activate && pip freeze | sed s/=.*// > requirements.txt",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }

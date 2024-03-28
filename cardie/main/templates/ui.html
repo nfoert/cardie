@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+    </head>
+
+    <body>
+        <button class="ui_button_large">Large Button <i class="ph-bold ph-arrow-circle-right"></i></button>
+        <button class="ui_button_grid">Grid Button <i class="ph-bold ph-arrow-fat-line-down"></i></button>
+        <button class="ui_button_icon"><i class="ph-bold ph-diamonds-four"></i></button>
+    </body>
+</html>

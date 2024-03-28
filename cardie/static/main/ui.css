@@ -1,0 +1,139 @@
+body {
+    background-color: var(--default-background-color) ;
+}
+
+
+/* Buttons */
+.ui_button_large {
+    background-color: rgba(52, 73, 85, 0.8);
+    color: var(--default-text-color);
+    border-radius: 100px;
+    border: rgba(80, 114, 123, 0.8) 1px solid;
+    transition: var(--default-transition);
+    font-size: 16px;
+    font-family: var(--default-font-family);
+
+    backdrop-filter: blur(20px);
+
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_button_large:hover {
+    scale: 1.05;
+}
+
+.ui_button_large:active {
+    scale: 0.95;
+}
+
+.ui_button_grid {
+    background-color: rgba(52, 73, 85, 0.8);
+    color: var(--default-text-color);
+    border-radius: 10px;
+    border: rgba(80, 114, 123, 0.8) 1px solid;
+    transition: var(--default-transition);
+    font-size: 16px;
+    font-family: var(--default-font-family);
+
+    backdrop-filter: blur(20px);
+
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_button_grid:hover {
+    scale: 1.05;
+}
+
+.ui_button_grid:active {
+    scale: 0.95;
+}
+
+.ui_button_icon {
+    background-color: rgba(52, 73, 85, 0.8);
+    color: var(--default-text-color);
+    border-radius: 100px;
+    border: rgba(80, 114, 123, 0.8) 1px solid;
+    transition: var(--default-transition);
+    font-size: 22px;
+    font-family: var(--default-font-family);
+
+    backdrop-filter: blur(20px);
+
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    aspect-ratio: 1;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_button_icon:hover {
+    scale: 1.1;
+}
+
+.ui_button_icon:active {
+    scale: 0.9;
+}
+
+
+/* Text */
+.ui_text_header {
+
+}
+
+.ui_text_subheader {
+
+}
+
+.ui_text_body {
+
+}
+
+.ui_text_description {
+
+}
+
+
+/* Image */
+.ui_image_generic {
+
+}
+
+
+/* Status Boxes */
+.ui_status_info {
+
+}
+
+.ui_status_warning {
+
+}
+
+.ui_status_critical {
+
+}
+
+
+/* Text areas */
+.ui_textarea_generic {
+
+}

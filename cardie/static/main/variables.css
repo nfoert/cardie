@@ -1,0 +1,11 @@
+:root {
+    --default-background-color: #35374B;
+    --default-font-family: "Nato Sans", sans-serif;
+    --default-transition: 0.3s ease;
+    --default-text-color: white;
+
+    --color-primary: #35374B;
+    --color-secondary: #344955;
+    --color-tertiary: #50727B;
+    --color-quaternary: #78A083;
+}

@@ -141,7 +141,16 @@ body {
 
 /* Image */
 .ui_image_generic {
+    border-radius: 10px;
+    border: rgba(141, 141, 141, 0.8) 2px solid;
+    transition: var(--default-transition);
+    backdrop-filter: blur(20px);
 
+    opacity: 0.8;
+}
+
+.ui_image_generic:hover {
+    opacity: 1;
 }
 
 

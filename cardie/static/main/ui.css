@@ -97,19 +97,45 @@ body {
 
 /* Text */
 .ui_text_header {
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 30px;
+    padding: 0px;
+    margin: 10px;
+    text-align: center;
 
+    font-weight: 700;
 }
 
 .ui_text_subheader {
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 24px;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
 
+    font-weight: 500;
 }
 
 .ui_text_body {
-
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 16px;
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
 }
 
 .ui_text_description {
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 12px;
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
 
+    opacity: 0.8;
 }
 
 

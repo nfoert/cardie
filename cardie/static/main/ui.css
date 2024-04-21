@@ -148,6 +148,10 @@ body {
     backdrop-filter: blur(20px);
 
     opacity: 0.8;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
 }
 
 .ui_image_generic:hover {
@@ -233,6 +237,30 @@ body {
 
 
 /* Text areas */
-.ui_textarea_generic {
+.ui_input_generic {
+    background-color: var(--default-glass-background);
+    color: var(--default-text-color);
+    border-radius: 10px;
+    border: var(--default-glass-border);
+    transition: var(--default-transition);
+    font-size: 16px;
+    font-family: var(--default-font-family);
 
+    backdrop-filter: var(--default-glass-blur);
+
+    padding: 5px;
+    margin: 5px;
+
+    opacity: 0.8;
+    scale: 0.9;
+    outline: none;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_input_generic:hover {
+    opacity: 1;
+    scale: 1;
 }

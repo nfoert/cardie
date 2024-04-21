@@ -1,19 +1,20 @@
 body {
-    background-color: var(--default-background-color) ;
+    background: rgb(102,102,102);
+    background: linear-gradient(157deg, rgba(102,102,102,1) 9%, rgba(55,78,117,1) 80%); 
 }
 
 
 /* Buttons */
 .ui_button_large {
-    background-color: rgba(52, 73, 85, 0.8);
+    background-color: var(--default-glass-background);
     color: var(--default-text-color);
     border-radius: 100px;
-    border: rgba(80, 114, 123, 0.8) 1px solid;
+    border: var(--default-glass-border);
     transition: var(--default-transition);
     font-size: 16px;
     font-family: var(--default-font-family);
 
-    backdrop-filter: blur(20px);
+    backdrop-filter: var(--default-glass-blur);
 
     padding: 10px;
     padding-left: 30px;
@@ -35,15 +36,15 @@ body {
 }
 
 .ui_button_grid {
-    background-color: rgba(52, 73, 85, 0.8);
+    background-color: var(--default-glass-background);
     color: var(--default-text-color);
     border-radius: 10px;
-    border: rgba(80, 114, 123, 0.8) 1px solid;
+    border: var(--default-glass-border);
     transition: var(--default-transition);
     font-size: 16px;
     font-family: var(--default-font-family);
 
-    backdrop-filter: blur(20px);
+    backdrop-filter: var(--default-glass-blur);
 
     padding: 10px;
     padding-left: 30px;
@@ -65,15 +66,15 @@ body {
 }
 
 .ui_button_icon {
-    background-color: rgba(52, 73, 85, 0.8);
+    background-color: var(--default-glass-background);
     color: var(--default-text-color);
     border-radius: 100px;
-    border: rgba(80, 114, 123, 0.8) 1px solid;
+    border: var(--default-glass-border);
     transition: var(--default-transition);
     font-size: 22px;
     font-family: var(--default-font-family);
 
-    backdrop-filter: blur(20px);
+    backdrop-filter: var(--default-glass-blur);
 
     padding: 10px;
     margin-left: 10px;
@@ -166,6 +167,10 @@ body {
 
     padding: 10px;
     margin: 10px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
 }
 
 .ui_status_warning {
@@ -179,6 +184,10 @@ body {
 
     padding: 10px;
     margin: 10px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
 }
 
 .ui_status_critical {
@@ -192,6 +201,10 @@ body {
 
     padding: 10px;
     margin: 10px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
 }
 
 .ui_status_text {

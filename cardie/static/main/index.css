@@ -1,3 +1,57 @@
+html {
+    background: rgb(37, 40, 49);
+}
+
 h1 {
     color: red;
+}
+
+#welcome-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 1;
+}
+
+#welcome-box-image {
+    width: 400px;
+    height: auto;
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#welcome-box-buttons {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+
+    align-items: center;
+}
+
+#blob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    width: 400px;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 200px;
+    filter: blur(70px);
+
+    z-index: 0;
+
+    background: rgb(61,132,148);
+    background: linear-gradient(120deg, rgba(61,132,148,1) 9%, rgba(34,73,139,1) 47%, rgba(37,210,108,1) 91%); 
 }

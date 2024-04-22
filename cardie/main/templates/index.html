@@ -2,10 +2,26 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+
         <link rel="stylesheet" type="text/css" href="{% static '/main/index.css' %}">
     </head>
 
     <body>
-        <h1>Cardie</h1>
+        <div id="welcome-box">
+            <p class="ui_text_header">Welcome to</p>
+            <img id="welcome-box-image" src="{% static '/main/images/logo_light.png' %}">
+            <p class="ui_text_subheader">An open source buisness card designer and sharing platform</p>
+        
+            <div id="welcome-box-buttons">
+                <button class="ui_button_large"><strong>Get Started <i class="ph-bold ph-arrow-circle-right"></i></strong></button>
+                <button class="ui_button_large">Source Code <i class="ph-bold ph-github-logo"></i></button>
+            </div>
+        </div>
+
+        <div id="blob"></div>
     </body>
 </html>

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/authentication.css' %}">
+
+        <title>Cardie | Authentication</title>
+    </head>
+
+    <body>
+        <div id="authentication-box">
+            <img id="authentication-box-image" src="{% static '/main/images/logo_light.png' %}">
+
+            <div id="signin-box">
+                <p class="ui_text_header"><i class="ph-bold ph-keyhole"></i> Sign In</p>
+                <div class="ui_separator_horizontal"></div>
+
+                <input type="text" class="ui_input_generic" placeholder="Username"></input>
+                <input type="password" class="ui_input_generic" placeholder="Password"></input>
+            
+                <button class="ui_button_grid"><strong>Sign In</strong> <i class="ph-bold ph-sign-in"></i></button>
+                <button class="ui_button_grid">or Create an Account instead <i class="ph-bold ph-user-plus"></i></button>
+            </div>
+
+            <div id="createaccount-box">
+                <p class="ui_text_header"><i class="ph-bold ph-key"></i> Create Account</p>
+                <div class="ui_separator_horizontal"></div>
+
+                <input type="text" class="ui_input_generic" placeholder="Username"></input>
+                <input type="text" class="ui_input_generic" placeholder="Display Name"></input>
+
+                <input type="password" class="ui_input_generic" placeholder="Password"></input>
+            
+                <button class="ui_button_grid"><strong>Create Account</strong> <i class="ph-bold ph-user-plus"></i></button>
+                <button class="ui_button_grid">or Sign In instead <i class="ph-bold ph-sign-in"></i></button>
+            </div>
+        </div>
+    </body>
+</html>

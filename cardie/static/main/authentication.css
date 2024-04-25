@@ -2,6 +2,26 @@ html {
     background: rgb(37, 40, 49);
 }
 
+@keyframes box-appear {
+    from {
+        opacity: 0;
+        scale: 0.7;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.box-appear {
+    animation: box-appear 0.2s forwards ease-in-out;
+}
+
+.box-disapear {
+    animation: box-appear 0.2s forwards ease-in-out reverse;
+}
+
 #authentication-box {
     position: absolute;
     top: 50%;
@@ -34,4 +54,7 @@ html {
     flex-direction: column;
 
     align-items: center;
+
+    /* Starting properties for animation */
+    display: none;
 }

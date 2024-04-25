@@ -23,8 +23,8 @@
                 <input type="text" class="ui_input_generic" placeholder="Username"></input>
                 <input type="password" class="ui_input_generic" placeholder="Password"></input>
             
-                <button class="ui_button_grid"><strong>Sign In</strong> <i class="ph-bold ph-sign-in"></i></button>
-                <button class="ui_button_grid">or Create an Account instead <i class="ph-bold ph-user-plus"></i></button>
+                <button id="signin-signin" class="ui_button_large"><strong>Sign In</strong> <i class="ph-bold ph-sign-in"></i></button>
+                <button id="signin-createaccount" class="ui_button_small">Create an Account <i class="ph-bold ph-arrow-right"></i></button>
             </div>
 
             <div id="createaccount-box">
@@ -36,9 +36,11 @@
 
                 <input type="password" class="ui_input_generic" placeholder="Password"></input>
             
-                <button class="ui_button_grid"><strong>Create Account</strong> <i class="ph-bold ph-user-plus"></i></button>
-                <button class="ui_button_grid">or Sign In instead <i class="ph-bold ph-sign-in"></i></button>
+                <button id="createaccount-createaccoutn" class="ui_button_large"><strong>Create Account</strong> <i class="ph-bold ph-user-plus"></i></button>
+                <button id="createaccount-signin" class="ui_button_small">Sign In <i class="ph-bold ph-arrow-right"></i></button>
             </div>
         </div>
+
+        <script src="{% static '/main/scripts/authentication.js' %}"></script>
     </body>
 </html>

@@ -97,6 +97,38 @@
     scale: 0.9;
 }
 
+.ui_button_small {
+    background-color: var(--default-glass-background);
+    color: var(--default-text-color);
+    border-radius: 100px;    
+    border: var(--default-glass-border);
+    transition: var(--default-transition);
+    font-size: 14px;
+    font-family: var(--default-font-family);
+
+    backdrop-filter: var(--default-glass-blur);
+
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_button_small:hover {
+    scale: 1.05;
+}
+
+.ui_button_small:active {
+    scale: 0.95;
+}
+
 
 /* Text */
 .ui_text_header {

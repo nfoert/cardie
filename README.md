@@ -3,7 +3,7 @@
 </p>
 
 # Welcome to Cardie!
-Design a unlimited number of buisness or information cards about yourself, share a link or QR code to them, print it out, and save other people's cards to your virtual wallet for later.
+Design a unlimited number of buisness or information cards about yourself, share a link or QR code to them, print it out, and save other people's cards to your virtual wallet for later. Once you've created a card you can get analytics data on how your cards are getting visited, you can edit your cards as things change, and you can keep cards private so only people with a link to your card can see it.
 
 <p align="center">
   <a href="https://skillicons.dev">
@@ -43,6 +43,26 @@ You should be done! Now just run the server using the following command, or run 
 ```
 python manage.py runserver
 ```
+
+## To Do
+There's lots of basic things that need done before this project can truly begin. Here's a rough todo list of the main things that still need completed.
+
+- [x] Logo design
+- [x] Basic django project up and running
+- [x] Design UI elements
+- [x] Basic home page
+- [ ] Authentication system
+  - [x] User model
+  - [ ] Sign in and create account views
+  - [ ] Functional authentication pages and browser persistence
+- [ ] Card design
+  - [ ] Card models
+  - [ ] Card UI element
+  - [ ] Basic card customization
+- [ ] Card sharing
+  - [ ] Link generation
+  - [ ] QR code generation
+  - [ ] Card printing
 
 ## Contributing
 I'd love to see contributions to this project! However, there's not enough development on it yet to warrant contributions. Once progress is made and beta releases start going out, I'll organize more to prepare for contributions.

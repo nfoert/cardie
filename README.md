@@ -12,7 +12,10 @@ Design a unlimited number of buisness or information cards about yourself, share
 </p>
 
 ## Installation
-These directions are for a develeopment server only right now. This project is not currently developed enough for production use.
+
+> [!IMPORTANT]
+> These directions are for a develeopment server only right now. This project is not currently developed enough for production use.
+
 
 First, clone this repository using the following command
 ```

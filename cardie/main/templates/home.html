@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/home.css' %}">
+
+        <link rel="shortcut icon" type="image/png" href="{% static '/main/images/favicon_light.ico' %}"/>
+        <title>Cardie | Home</title>
+    </head>
+
+    <body>
+        <div id="home-top">
+            <div id="home-top-logo">
+                <img id="home-top-image" src="{% static '/main/images/logo_light.png' %}">
+                <p id="home-top-text" class="ui_text_subheader_left">Hello, {{ username }}</p>
+            </div>
+
+            <div id="home-top-profile">
+                <button id="home-top-username" class="ui_button_small">{{ username }} <i class="ph ph-caret-down"></i></button>
+            </div>
+        </div>
+
+        <script src="{% static '/main/scripts/favicon.js' %}"></script>
+    </body>
+</html>

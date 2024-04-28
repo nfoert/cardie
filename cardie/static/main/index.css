@@ -2,10 +2,6 @@ html {
     background: rgb(37, 40, 49);
 }
 
-h1 {
-    color: red;
-}
-
 #welcome-box {
     position: absolute;
     top: 50%;

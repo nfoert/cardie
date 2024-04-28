@@ -1,0 +1,22 @@
+html {
+    background: rgb(37, 40, 49);
+}
+
+#home-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+}
+
+#home-top-image {
+    width: 300px;
+    height: auto;
+}
+
+#home-top-text {
+    margin-left: 60px;
+}

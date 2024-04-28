@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse
 from django.contrib.auth.hashers import make_password, check_password
 
 from authentication.models import User
+from main import views
 
 from django.utils import timezone
 
@@ -33,8 +34,13 @@ def sign_in(request):
             if password_check:
                 request.session["username"] = username
                 request.session["password"] = password
-                return HttpResponse("success")
-            
+
+                if request.headers["Internal"] == "true":
+                    return HttpResponse("success")
+
+                else:
+                    return views.home(request)
+
             else:
                 return HttpResponse("error_password_wrong")
             

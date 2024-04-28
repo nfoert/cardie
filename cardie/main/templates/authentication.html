@@ -15,14 +15,16 @@
 
     <body>
         <div id="authentication-box">
+            {% csrf_token %}
+            
             <img id="authentication-box-image" src="{% static '/main/images/logo_light.png' %}">
 
             <div id="signin-box">
                 <p class="ui_text_header"><i class="ph-bold ph-keyhole"></i> Sign In</p>
                 <div class="ui_separator_horizontal"></div>
 
-                <input type="text" class="ui_input_generic" placeholder="Username"></input>
-                <input type="password" class="ui_input_generic" placeholder="Password"></input>
+                <input id="signin-username" type="text" class="ui_input_generic" placeholder="Username"></input>
+                <input id="signin-password" type="password" class="ui_input_generic" placeholder="Password"></input>
             
                 <button id="signin-signin" class="ui_button_large"><strong>Sign In</strong> <i class="ph-bold ph-sign-in"></i></button>
                 <button id="signin-createaccount" class="ui_button_small">Create an Account <i class="ph-bold ph-arrow-right"></i></button>
@@ -32,15 +34,19 @@
                 <p class="ui_text_header"><i class="ph-bold ph-key"></i> Create Account</p>
                 <div class="ui_separator_horizontal"></div>
 
-                <input type="text" class="ui_input_generic" placeholder="Username"></input>
-                <input type="text" class="ui_input_generic" placeholder="Display Name"></input>
-
-                <input type="password" class="ui_input_generic" placeholder="Password"></input>
+                <input id="createaccount-username" type="text" class="ui_input_generic" placeholder="Username"></input>
+                <input id="createacount-email" type="text" class="ui_input_generic" placeholder="Email"></input>
+                <input id="createacount-password" type="password" class="ui_input_generic" placeholder="Password"></input>
             
-                <button id="createaccount-createaccoutn" class="ui_button_large"><strong>Create Account</strong> <i class="ph-bold ph-user-plus"></i></button>
+                <button id="createaccount-createaccount" class="ui_button_large"><strong>Create Account</strong> <i class="ph-bold ph-user-plus"></i></button>
                 <button id="createaccount-signin" class="ui_button_small">Sign In <i class="ph-bold ph-arrow-right"></i></button>
             </div>
         </div>
+
+        <script>
+            var server_ip = "{{ server_ip }}";
+            var production = "{{ production }}";
+        </script>
 
         <script src="{% static '/main/scripts/favicon.js' %}"></script>
         <script src="{% static '/main/scripts/authentication.js' %}"></script>

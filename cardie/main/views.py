@@ -1,5 +1,5 @@
 from django.shortcuts import HttpResponse, render
-from authentication import views
+from authentication.views import sign_in
 from main.models import Server
 
 def index(request):
@@ -17,7 +17,7 @@ def authentication(request):
         request.session["username"]
         request.session["password"]
 
-        return(authentication.views.sign_in)
+        return(sign_in(request))
 
     except KeyError:
         print("No session data on authentication page!")

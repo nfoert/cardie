@@ -3,6 +3,8 @@ from django.contrib.auth.hashers import make_password, check_password
 
 from authentication.models import User
 
+from django.utils import timezone
+
 def sign_in(request):
     if "Username" in request.headers and "Password" in request.headers:
         username = request.headers["Username"]
@@ -44,4 +46,28 @@ def sign_in(request):
 
 
 def create_account(request):
-    return HttpResponse("Create account")
+    if "Username" in request.headers and "Password" in request.headers and "Email" in request.headers:
+        username = request.headers["Username"]
+        password = request.headers["Email"]
+        email = request.headers["Password"]
+
+        users = User.objects.filter(username=username)
+
+        print(len(users))
+
+        if len(users) > 0:
+            return HttpResponse("error_account_already_exists")
+        
+        else:
+            hashed_password = make_password(password)
+
+            user = User(username=username, password=hashed_password, email=email, date_created=timezone.now())
+            user.save()
+
+            request.session["username"] = username
+            request.session["password"] = password
+
+            return sign_in(request)
+
+    else:
+        return HttpResponse("error_missing_headers")

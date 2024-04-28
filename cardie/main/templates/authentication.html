@@ -16,7 +16,7 @@
     <body>
         <div id="authentication-box">
             {% csrf_token %}
-            
+
             <img id="authentication-box-image" src="{% static '/main/images/logo_light.png' %}">
 
             <div id="signin-box">
@@ -35,8 +35,8 @@
                 <div class="ui_separator_horizontal"></div>
 
                 <input id="createaccount-username" type="text" class="ui_input_generic" placeholder="Username"></input>
-                <input id="createacount-email" type="text" class="ui_input_generic" placeholder="Email"></input>
-                <input id="createacount-password" type="password" class="ui_input_generic" placeholder="Password"></input>
+                <input id="createaccount-password" type="password" class="ui_input_generic" placeholder="Password"></input>
+                <input id="createaccount-email" type="text" class="ui_input_generic" placeholder="Email"></input>
             
                 <button id="createaccount-createaccount" class="ui_button_large"><strong>Create Account</strong> <i class="ph-bold ph-user-plus"></i></button>
                 <button id="createaccount-signin" class="ui_button_small">Sign In <i class="ph-bold ph-arrow-right"></i></button>

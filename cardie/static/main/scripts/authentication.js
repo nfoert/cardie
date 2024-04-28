@@ -28,6 +28,7 @@ async function sign_in() {
         }
     });
 
+    // TODO: Correct error handling
     response.text().then(function (text) {
         console.log("request done!")
         console.log(text)
@@ -38,6 +39,22 @@ async function create_account() {
     var username = document.querySelector("#createaccount-username").value;
     var password = document.querySelector("#createaccount-password").value;
     var email = document.querySelector("#createaccount-password").value;
+
+    const response = await fetch(server_ip + "/auth/createaccount", {
+        method: "GET",
+        headers: {
+            "X-CSRFToken": document.querySelector('input[name="csrfmiddlewaretoken"]').value,
+            "Username": username,
+            "Password": password,
+            "Email": email,
+        }
+    });
+
+    // TODO: Correct error handling
+    response.text().then(function (text) {
+        console.log("request done!")
+        console.log(text)
+    });
 }
 
 document.querySelector("#signin-createaccount").addEventListener("click", update_state);

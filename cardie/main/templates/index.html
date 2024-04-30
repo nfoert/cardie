@@ -20,13 +20,19 @@
             <p class="ui_text_subheader">An open source buisness card designer and sharing platform</p>
         
             <div id="welcome-box-buttons">
-                <button class="ui_button_large"><strong>Get Started <i class="ph-bold ph-arrow-circle-right"></i></strong></button>
-                <button class="ui_button_large">Source Code <i class="ph-bold ph-github-logo"></i></button>
+                <button id="welcome-box-buttons-getstarted" class="ui_button_large"><strong>Get Started <i class="ph-bold ph-arrow-circle-right"></i></strong></button>
+                <button id="welcome-box-buttons-sourcecode" class="ui_button_large">Source Code <i class="ph-bold ph-github-logo"></i></button>
             </div>
         </div>
 
         <div id="blob"></div>
 
+        <script>
+            var server_ip = "{{ server_ip }}";
+            var production = "{{ production }}";
+        </script>
+
+        <script src="{% static '/main/scripts/index.js' %}"></script>
         <script src="{% static '/main/scripts/favicon.js' %}"></script>
     </body>
 </html>

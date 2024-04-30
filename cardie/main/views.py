@@ -3,7 +3,14 @@ from authentication.views import sign_in
 from main.models import Server
 
 def index(request):
-    return render(request, "index.html")
+    server_info = Server.objects.all()[0]
+
+    context = {
+        "server_ip": server_info.ip,
+        "production": server_info.production
+    }
+
+    return render(request, "index.html", context)
 
 def authentication(request):
     server_info = Server.objects.all()[0]

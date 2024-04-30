@@ -68,6 +68,7 @@ There's lots of basic things that need done before this project can truly begin.
   - [ ] QR code generation
   - [ ] Card printing
   - [ ] Save to wallet
+- [ ] Ability to log out
 
 ## Contributing
 I'd love to see contributions to this project! However, there's not enough development on it yet to warrant contributions. Once progress is made and beta releases start going out, I'll organize more to prepare for contributions.

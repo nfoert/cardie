@@ -20,3 +20,17 @@ html {
 #home-top-text {
     margin-left: 60px;
 }
+
+#home-navigation {
+    margin-top: 10px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+#home-wallet {
+    margin-left: 120px;
+}
+
+#home-cards {
+    margin-left: 120px;
+}

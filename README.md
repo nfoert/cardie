@@ -54,11 +54,12 @@ There's lots of basic things that need done before this project can truly begin.
 - [x] Basic django project up and running
 - [x] Design UI elements
 - [x] Basic home page
-- [ ] Authentication system
+- [x] Authentication system
   - [x] User model
-  - [ ] Sign in and create account views
-  - [ ] Functional authentication pages and browser persistence
+  - [x] Sign in and create account views
+  - [x] Functional authentication pages and browser persistence
 - [ ] Card design
+  - [ ] Basic home page design
   - [ ] Card models
   - [ ] Card UI element
   - [ ] Basic card customization
@@ -66,6 +67,7 @@ There's lots of basic things that need done before this project can truly begin.
   - [ ] Link generation
   - [ ] QR code generation
   - [ ] Card printing
+  - [ ] Save to wallet
 
 ## Contributing
 I'd love to see contributions to this project! However, there's not enough development on it yet to warrant contributions. Once progress is made and beta releases start going out, I'll organize more to prepare for contributions.

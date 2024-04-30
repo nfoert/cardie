@@ -27,12 +27,17 @@
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
 }
 
-.ui_button_large:hover {
+.ui_button_large:hover:enabled {
     scale: 1.05;
 }
 
-.ui_button_large:active {
+.ui_button_large:active:enabled {
     scale: 0.95;
+}
+
+.ui_button_grid:disabled {
+    scale: 0.9;
+    opacity: 0.7;
 }
 
 .ui_button_grid {
@@ -59,13 +64,19 @@
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
 }
 
-.ui_button_grid:hover {
+.ui_button_grid:hover:enabled {
     scale: 1.05;
 }
 
-.ui_button_grid:active {
+.ui_button_grid:active:enabled {
     scale: 0.95;
 }
+
+.ui_button_grid:disabled {
+    scale: 0.9;
+    opacity: 0.7;
+}
+
 
 .ui_button_icon {
     background-color: var(--default-glass-background);
@@ -89,12 +100,17 @@
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
 }
 
-.ui_button_icon:hover {
+.ui_button_icon:hover:enabled {
     scale: 1.1;
 }
 
-.ui_button_icon:active {
+.ui_button_icon:active:enabled {
     scale: 0.9;
+}
+
+.ui_button_icon:disabled {
+    scale: 0.9;
+    opacity: 0.7;
 }
 
 .ui_button_small {
@@ -121,12 +137,17 @@
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
 }
 
-.ui_button_small:hover {
+.ui_button_small:hover:enabled {
     scale: 1.05;
 }
 
-.ui_button_small:active {
+.ui_button_small:active:enabled {
     scale: 0.95;
+}
+
+.ui_button_small:disabled {
+    scale: 0.9;
+    opacity: 0.7;
 }
 
 

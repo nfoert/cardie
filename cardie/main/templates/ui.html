@@ -10,6 +10,7 @@
 
         <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/card.css' %}">
     
         <title>You're not really supposed to be here...</title>
     </head>
@@ -46,5 +47,18 @@
         <div class="ui_separator_vertical"></div>
 
         <div class="ui_separator_horizontal"></div>
+
+        <div class="card_card">
+            <div class="card_card_front">
+                <p>Front of card</p>
+            </div>
+            
+            <div class="card_card_back">
+                <p>Back of card</p>
+            </div>
+        </div>
+
+        <script src="{% static '/main/scripts/card.js' %}"></script>
+        <script src="{% static '/main/scripts/favicon.js' %}"></script>
     </body>
 </html>

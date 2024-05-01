@@ -60,8 +60,8 @@ There's lots of basic things that need done before this project can truly begin.
   - [x] Functional authentication pages and browser persistence
 - [ ] Card design
   - [ ] Basic home page design
-  - [ ] Card models
-  - [ ] Card UI element
+  - [x] Card models
+  - [x] Card UI element
   - [ ] Basic card customization
 - [ ] Card sharing
   - [ ] Link generation

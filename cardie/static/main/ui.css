@@ -1,4 +1,42 @@
+/* 
+    ui.css
+    Handles styles for every common user interface element
+    Quick refrences for every element class name is below
 
+    Buttons
+        ui_button_large
+        ui_button_grid
+        ui_button_icon
+        ui_button_small
+
+    Text
+        ui_text_header
+        ui_text_subheader
+            ui_text_subheader_left
+        ui_text_body
+        ui_text_description
+
+    Image
+        ui_image_generic
+
+    Status Boxes
+        ui_status_Info
+        ui_status_warning
+        ui_status_critical
+
+        ui_status_text
+        ui_status_icon
+
+    Text Areas
+        ui_input_generic
+
+    Spacers
+        ui_spacer
+
+    Seperators
+        ui_seperator_vertical
+        ui_seperator_horizontal
+*/
 
 /* Buttons */
 .ui_button_large {
@@ -302,7 +340,7 @@
 }
 
 
-/* Text areas */
+/* Text Areas */
 .ui_input_generic {
     background-color: var(--default-glass-background);
     color: var(--default-text-color);
@@ -332,7 +370,7 @@
 }
 
 
-/* Spacer */
+/* Spacers */
 .ui_spacer {
     height: 20px;
 }

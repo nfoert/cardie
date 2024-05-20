@@ -52,3 +52,21 @@ def home(request):
         print("No session data on home page!")
         return authentication(request)
     
+def editor(request):
+    server_info = Server.objects.all()[0]
+
+    try:
+        request.session["username"]
+        request.session["password"]
+
+        context = {
+            "server_ip": server_info.ip,
+            "production": server_info.production,
+            "username": request.session["username"]
+        }
+
+        return render(request, "editor.html", context)
+
+    except KeyError:
+        print("No session data on home page!")
+        return authentication(request)

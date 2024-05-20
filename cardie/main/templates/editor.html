@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/card.css' %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/editor.css' %}">
+
+        <link rel="shortcut icon" type="image/png" href="{% static '/main/images/favicon_light.ico' %}"/>
+        <title>Cardie | Editor</title>
+    </head>
+
+    <body>
+        <div id="editor_header">
+            <div id="editor_header_title">
+                <img id="editor_header_title_image" src="{% static '/main/images/logo_light.png' %}">
+                <p id="editor_header_title_text"> Editor</p>
+            </div>
+
+            <div id="editor_header_name">
+                <button id="editor_header_name_button"><i class="ph-bold ph-pencil-simple"></i></button><p id="editor_header_name_text">Untitled Card by {{ username }}</p>
+            </div>
+        </div>
+
+        <div id="editor_main">
+            <div id="editor_main_settings">
+                <div id="editor_main_settings_layout">
+                    <p class="ui_text_subheader">Layout</p>
+                    <div class="ui_separator_horizontal"></div>
+                    <div id="editor_main_settings_layout_buttons">
+                        <button class="ui_button_icon"><i class="ph-bold ph-align-left"></i></button>
+                        <button class="ui_button_icon"><i class="ph-bold ph-align-center-horizontal"></i></button>
+                        <button class="ui_button_icon"><i class="ph-bold ph-align-right"></i></button>
+                    </div>
+                </div>
+                
+                <div id="editor_main_settings_details">
+                    <p class="ui_text_subheader">Details</p>
+                    <div class="ui_separator_horizontal"></div>
+                    <input type="text" class="ui_input_generic" placeholder="Username"></input>
+                    <input type="text" class="ui_input_generic" placeholder="Pronouns"></input>
+                </div>
+
+                <div id="editor_main_settings_information">
+                    <p class="ui_text_subheader">Information</p>
+                    <div class="ui_separator_horizontal"></div>
+
+                    <div id="editor_main_settings_information_text">
+
+                    </div>
+
+                    <p class="ui_text_smallersubheader">Text</p>
+                    <div id="editor_main_settings_information_text_items">
+                        <div class="text_item" uuid="1">
+                            <button class="ui_button_smallicon"><i class="ph-bold ph-star"></i></button>
+                            <input type="text" class="ui_input_generic" placeholder="Text"></input>
+                            <button class="ui_button_smallicon"><i class="ph-bold ph-x-circle"></i></button>
+                        </div>
+
+                        <button class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add text item</button>
+                    </div>
+
+                    <p class="ui_text_smallersubheader">Links</p>
+                        <div id="editor_main_settings_information_link_items">
+                            <div class="text_item" uuid="1">
+                                <button class="ui_button_smallicon"><i class="ph-bold ph-star"></i></button>
+                                <input type="text" class="ui_input_generic" placeholder="URL"></input>
+                                <input type="text" class="ui_input_generic" placeholder="Text"></input>
+                                <button class="ui_button_smallicon"><i class="ph-bold ph-x-circle"></i></button>
+                            </div>
+
+                            <button class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add link item</button>
+                        </div>
+                </div>
+
+                
+            </div>
+
+            <div id="editor_main_preview">
+                <div class="card_card">
+                    <div class="card_card_front">
+                        <p>Front of card</p>
+                    </div>
+                    
+                    <div class="card_card_back">
+                        <p>Back of card</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="{% static '/main/scripts/card.js' %}"></script>
+        <script src="{% static '/main/scripts/favicon.js' %}"></script>
+    </body>
+</html>

@@ -7,12 +7,14 @@
         ui_button_large
         ui_button_grid
         ui_button_icon
+        ui_button_smallicon
         ui_button_small
 
     Text
         ui_text_header
         ui_text_subheader
             ui_text_subheader_left
+        ui_text_smallersubheader
         ui_text_body
         ui_text_description
 
@@ -151,6 +153,46 @@
     opacity: 0.7;
 }
 
+.ui_button_smallicon {
+    background-color: var(--default-glass-background);
+    color: var(--default-text-color);
+    border-radius: 100px;
+    border: var(--default-glass-border);
+    transition: var(--default-transition);
+    font-size: 15px;
+    font-family: var(--default-font-family);
+
+    backdrop-filter: var(--default-glass-blur);
+
+    padding: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+
+    aspect-ratio: 1;
+    width: 35px;
+    height: 35px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_button_smallicon:hover:enabled {
+    scale: 1.05;
+}
+
+.ui_button_smallicon:active:enabled {
+    scale: 0.95;
+}
+
+.ui_button_smallicon:disabled {
+    scale: 0.95;
+    opacity: 0.7;
+}
+
 .ui_button_small {
     background-color: var(--default-glass-background);
     color: var(--default-text-color);
@@ -219,6 +261,17 @@
     padding: 0px;
     margin: 0px;
     text-align: left;
+
+    font-weight: 500;
+}
+
+.ui_text_smallersubheader {
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 18px;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
 
     font-weight: 500;
 }
@@ -356,8 +409,9 @@
     margin: 5px;
 
     opacity: 0.8;
-    scale: 0.9;
+    scale: 1;
     outline: none;
+    flex-grow: 2;
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
@@ -366,7 +420,7 @@
 
 .ui_input_generic:hover {
     opacity: 1;
-    scale: 1;
+    scale: 1.05;
 }
 
 
@@ -396,7 +450,6 @@
 }
 
 .ui_separator_horizontal {
-    width: 100%;
     height: 3px;
 
     margin-left: 10px;

@@ -1,0 +1,95 @@
+html {
+    background: rgb(37, 40, 49);
+}
+
+#editor_header {
+    display: flex;
+    flex-direction: column;
+}
+
+#editor_header_title {
+    display: flex;
+    flex-direction: row;
+}
+
+#editor_header_title_image {
+    height: 50px;
+}
+
+#editor_header_title_text {
+    font-family: var(--default-font-family);
+    font-size: 30px;
+    color: white;
+    margin: 0;
+    padding: 0;
+
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+#editor_header_name {
+    display: flex;
+    flex-direction: row;
+}
+
+#editor_header_name_button {
+    background-color: rgba(99, 99, 99, 0.4);
+    border: 2px solid rgba(145, 145, 145, 0.6);
+    border: none;
+    color: white;
+
+    aspect-ratio: 1;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    padding: 0;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    transition: var(--default-transition);
+}
+
+#editor_header_name_button:hover {
+    scale: 1.1;
+    background-color: rgba(99, 99, 99, 0.6);
+}
+
+#editor_header_name_button:active {
+    scale: 0.9;
+}
+
+#editor_header_name_text {
+    color: white;
+    padding-left: 10px;
+}
+
+#editor_main {
+    display: flex;
+    flex-direction: row;
+}
+
+#editor_main_settings {
+    margin-left: 20px;
+    margin-right: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#editor_main_settings_layout_buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text_item {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.link_item {
+    display: flex;
+    flex-direction: row-reverse;
+}

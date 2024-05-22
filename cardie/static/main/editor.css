@@ -93,3 +93,83 @@ html {
     display: flex;
     flex-direction: row-reverse;
 }
+
+#editor-iconselector {
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+
+    /* TODO: Make mobile friendly */
+    aspect-ratio: 1;
+    width: 40%;
+    height: auto;
+
+    z-index: 2;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#editor-iconselector-top {
+    display: flex;
+    flex-direction: row;
+}
+
+#editor-iconselector-top-search {
+    height: 20px;
+    max-height: 20px;
+    margin-bottom: 10px;
+}
+
+.editor-iconselector-icon {
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    transition: var(--default-transition);
+    border-radius: 10px;
+
+    width: 15%;
+    height: auto;
+    aspect-ratio: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.editor-iconselector-icon:hover {
+    scale: 1.05;
+}
+
+.editor-iconselector-icon:active {
+    scale: 0.95;
+}
+
+.editor-iconselector-icon-icon {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.editor-iconselector-icon-text {
+    color: white;
+    font-family: "Noto Sans Mono", "Courier New", monospace;
+    font-size: 10px;
+    text-align: center;
+    user-select: none;
+}

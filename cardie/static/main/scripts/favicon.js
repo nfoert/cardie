@@ -1,5 +1,6 @@
 // Thanks to https://stackoverflow.com/questions/260857/changing-website-favicon-dynamically
 
+// TODO: Support {{ server_url }}
 let favicon_light_url = "http://127.0.0.1:8000/static/main/images/favicon_light.ico";
 let favicon_dark_url = "http://127.0.0.1:8000/static/main/images/favicon_dark.ico"
 

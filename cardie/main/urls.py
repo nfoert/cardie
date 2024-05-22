@@ -7,5 +7,6 @@ urlpatterns = [
     path("authentication", views.authentication, name="authentication"),
     path("ui", views.userinterface, name="ui"),
     path("home", views.home, name="home"),
-    path("editor", views.editor, name="editor")
+    path("editor", views.editor, name="editor"),
+    path("iconlist", views.icon_list, name="iconlist")
 ]

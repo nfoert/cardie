@@ -1,4 +1,7 @@
+import os
+
 from django.shortcuts import HttpResponse, render
+from django.http import JsonResponse
 from authentication.views import sign_in
 from main.models import Server
 
@@ -70,3 +73,13 @@ def editor(request):
     except KeyError:
         print("No session data on home page!")
         return authentication(request)
+
+def icon_list(request):
+    # TODO: This should probably go somewhere else for organization's sake, but I don't know where
+    
+    icons = []
+    with open("./cardie/main/icons_list.txt", "r") as file:
+        for line in file.readlines():
+            icons.append(line.strip("\n"))
+
+    return JsonResponse(icons, safe=False)

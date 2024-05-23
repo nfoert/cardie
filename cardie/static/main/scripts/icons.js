@@ -65,3 +65,22 @@ document.querySelector("#editor-iconselector-top-search").addEventListener('inpu
     const sortedItems = sortItems(filteredItems);
     renderItems(sortedItems);
 });
+
+function show_iconselector() { 
+    document.querySelector("#editor-iconselector").style.display = "flex";
+    document.querySelector("#editor-iconselector").classList.remove("hide-iconselector");
+    document.querySelector("#editor-iconselector").classList.add("show-iconselector");
+}
+
+function hide_iconselector() {
+    document.querySelector("#editor-iconselector").classList.add("hide-iconselector");
+
+    setTimeout(function() {
+        document.querySelector("#editor-iconselector").classList.remove("show-iconselector");
+        document.querySelector("#editor-iconselector").style.display = "none";
+    }, 500);
+}
+
+document.querySelector("#editor-iconselector-top-close").addEventListener("click", (event) => {
+    hide_iconselector();
+});

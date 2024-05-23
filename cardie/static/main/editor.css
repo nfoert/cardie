@@ -94,6 +94,38 @@ html {
     flex-direction: row-reverse;
 }
 
+@keyframes show-iconselector {
+    from {
+        opacity: 0;
+        scale: 0.8;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes hide-iconselector {
+    from {
+        opacity: 1;
+        scale: 1;
+    }
+
+    to {
+        opacity: 0;
+        scale: 0.8;
+    }
+}
+
+.show-iconselector {
+    animation: show-iconselector 0.2s ease-in-out forwards;
+}
+
+.hide-iconselector {
+    animation: hide-iconselector 0.2s ease-in-out forwards;
+}
+
 #editor-iconselector {
     background-color: var(--default-glass-background);
     border: var(--default-glass-border);
@@ -111,13 +143,18 @@ html {
     position: fixed;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    translate: -50% -50%;
 
     padding: 15px;
 
     display: flex;
     flex-direction: column;
+
+    display: none; /* Keep hidden until needed */
+
+    /* Starting properties for animation */
+    opacity: 0;
+    scale: 0.8;
 }
 
 #editor-iconselector-top {

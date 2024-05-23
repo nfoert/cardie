@@ -1,5 +1,6 @@
 // TODO: Support {{ server_url }}
 let icons_url = "http://127.0.0.1:8000/iconlist";
+const itemsData = []; // Array to store item data
 
 function create_icon(icon) {
     let div_element = document.createElement("div");
@@ -18,11 +19,16 @@ function create_icon(icon) {
     div_element.appendChild(icon_element);
     div_element.appendChild(text_element);
 
+    itemsData.push(div_element);
+
     document.querySelector("#editor-iconselector-icons").appendChild(div_element)
 }
 
-function render_icons() {
-    
+function render_icons(icons) {
+    icons = JSON.parse(icons);
+    for (const icon in icons) {
+        create_icon(icons[icon]);
+    }
 }
 
 async function fetch_icon_list() {
@@ -31,4 +37,31 @@ async function fetch_icon_list() {
     render_icons(text);
 }
 
-fetch_icon_list();
+document.addEventListener("DOMContentLoaded", (event) => {
+    fetch_icon_list();
+});
+
+// Function to render items
+const renderItems = (filteredItems) => {
+    document.querySelector("#editor-iconselector-icons").innerHTML = '';
+    filteredItems.forEach(item => document.querySelector("#editor-iconselector-icons").appendChild(item));
+};
+
+// Function to sort items alphabetically by the icon attribute
+const sortItems = (items) => {
+    return items.sort((a, b) => a.getAttribute('icon').localeCompare(b.getAttribute('icon')));
+};
+
+// Function to filter items based on search query
+const filterItems = (query) => {
+    const lowerCaseQuery = query.toLowerCase();
+    return itemsData.filter(item => item.getAttribute('icon').toLowerCase().includes(lowerCaseQuery));
+};
+
+// Event listener for the search box
+document.querySelector("#editor-iconselector-top-search").addEventListener('input', (e) => {
+    const query = e.target.value;
+    const filteredItems = filterItems(query);
+    const sortedItems = sortItems(filteredItems);
+    renderItems(sortedItems);
+});

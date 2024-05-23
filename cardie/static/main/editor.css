@@ -102,8 +102,9 @@ html {
 
     /* TODO: Make mobile friendly */
     aspect-ratio: 1;
-    width: 40%;
-    height: auto;
+    width: auto;
+    height: 40%;
+    max-height: 40%;
 
     z-index: 2;
 
@@ -130,6 +131,14 @@ html {
     margin-bottom: 10px;
 }
 
+#editor-iconselector-icons {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+
+    margin-top: 5px;
+}
+
 .editor-iconselector-icon {
     background-color: var(--default-glass-background);
     border: var(--default-glass-border);
@@ -145,6 +154,7 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 8px;
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);

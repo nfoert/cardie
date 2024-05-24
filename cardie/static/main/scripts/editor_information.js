@@ -1,6 +1,7 @@
 // It starts at one... this feels wrong...
 var text_items = new Array();
 var link_items = new Array();
+var currently_editing_icon;
 
 function create_text_item(id, text, icon) {
     text_item = document.createElement("div");
@@ -10,6 +11,7 @@ function create_text_item(id, text, icon) {
     text_item_icon = document.createElement("button");
     text_item_icon.className = "ui_button_small text_item_icon";
     text_item_icon.innerHTML = `<i class="ph-bold ${icon}"></i> Icon`
+    text_item_icon.addEventListener("click", open_iconselector_foritem);
 
     text_item_text = document.createElement("input");
     text_item_text.type = "text";
@@ -41,6 +43,7 @@ function create_link_item(id, text, link, icon) {
     link_item_icon = document.createElement("button");
     link_item_icon.className = "ui_button_small link_item_icon";
     link_item_icon.innerHTML = `<i class="ph-bold ${icon}"></i> Icon`
+    link_item_icon.addEventListener("click", open_iconselector_foritem);
 
     link_item_text = document.createElement("input");
     link_item_text.type = "text";
@@ -72,7 +75,7 @@ function create_link_item(id, text, link, icon) {
 }
 
 function delete_item(event) {
-    item = event.target.closest(".link_item, .text_item");
+    let item = event.target.closest(".link_item, .text_item");
 
     if (item.className == "text_item") {
         const index = text_items.indexOf(item);
@@ -88,6 +91,12 @@ function delete_item(event) {
     }
 
     item.remove();
+}
+
+function open_iconselector_foritem(event) {
+    let item = event.target.closest(".link_item, .text_item");
+    currently_editing_icon = item;
+    show_iconselector();
 }
 
 document.querySelector("#editor_main_settings_information_text_add").addEventListener("click", (event) => {

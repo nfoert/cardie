@@ -17,6 +17,7 @@ function create_icon(icon) {
 
     div_element.appendChild(icon_element);
     div_element.appendChild(text_element);
+    div_element.addEventListener("click", icon_clicked);
 
     itemsData.push(div_element);
 
@@ -78,6 +79,12 @@ function hide_iconselector() {
         document.querySelector("#editor-iconselector").classList.remove("show-iconselector");
         document.querySelector("#editor-iconselector").style.display = "none";
     }, 500);
+}
+
+function icon_clicked(event) {
+    let icon = event.target.closest(".editor-iconselector-icon").getAttribute("icon");
+    currently_editing_icon.querySelector(".text_item_icon > i, .link_item_icon > i").className = `ph-bold ph-${icon}`;
+    hide_iconselector();
 }
 
 document.querySelector("#editor-iconselector-top-close").addEventListener("click", (event) => {

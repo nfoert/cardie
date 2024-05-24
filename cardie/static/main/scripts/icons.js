@@ -8,8 +8,7 @@ function create_icon(icon) {
     div_element.setAttribute("icon", icon);
 
     icon_element = document.createElement("i");
-    icon_element.classList.add("editor-iconselector-icon-icon");
-    icon_element.classList.add("ph-bold");
+    icon_element.className = "editor-iconselector-icon-icon ph-bold";
     icon_element.classList.add("ph-" + icon);
 
     text_element = document.createElement("p");

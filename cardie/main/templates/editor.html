@@ -50,31 +50,17 @@
                     <div class="ui_separator_horizontal"></div>
 
                     <div id="editor_main_settings_information_text">
-
+                        <p class="ui_text_smallersubheader">Text</p>
+                        <div id="editor_main_settings_information_text_items"></div>
+                        <button id="editor_main_settings_information_text_add" class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add text item</button>
                     </div>
 
-                    <p class="ui_text_smallersubheader">Text</p>
-                    <div id="editor_main_settings_information_text_items">
-                        <div class="text_item" uuid="1">
-                            <button class="ui_button_smallicon"><i class="ph-bold ph-star"></i></button>
-                            <input type="text" class="ui_input_generic" placeholder="Text"></input>
-                            <button class="ui_button_smallicon"><i class="ph-bold ph-x-circle"></i></button>
-                        </div>
-
-                        <button class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add text item</button>
+                    <div id="editor_main_settings_information_link">
+                        <p class="ui_text_smallersubheader">Links</p>
+                        <div id="editor_main_settings_information_link_items"></div>
+                        <button id="editor_main_settings_information_link_add" class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add link item</button>
                     </div>
-
-                    <p class="ui_text_smallersubheader">Links</p>
-                        <div id="editor_main_settings_information_link_items">
-                            <div class="text_item" uuid="1">
-                                <button class="ui_button_smallicon"><i class="ph-bold ph-star"></i></button>
-                                <input type="text" class="ui_input_generic" placeholder="URL"></input>
-                                <input type="text" class="ui_input_generic" placeholder="Text"></input>
-                                <button class="ui_button_smallicon"><i class="ph-bold ph-x-circle"></i></button>
-                            </div>
-
-                            <button class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add link item</button>
-                        </div>
+                    
                 </div>
 
                 
@@ -96,13 +82,14 @@
         <div id="editor-iconselector">
             <div id="editor-iconselector-top">
                 <input type="text" class="ui_input_generic" id="editor-iconselector-top-search" placeholder="Search for an icon"></input>
-                <button class="ui_button_icon"><i class="ph-bold ph-x-circle"></i></button>
+                <button class="ui_button_icon" id="editor-iconselector-top-close"><i class="ph-bold ph-trash"></i></button>
             </div>
 
             <div id="editor-iconselector-icons"></div>
         </div>
 
         <script src="{% static '/main/scripts/icons.js' %}"></script>
+        <script src="{% static '/main/scripts/editor_information.js' %}"></script>
 
         <script src="{% static '/main/scripts/card.js' %}"></script>
         <script src="{% static '/main/scripts/favicon.js' %}"></script>

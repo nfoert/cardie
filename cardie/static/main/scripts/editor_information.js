@@ -99,6 +99,32 @@ function open_iconselector_foritem(event) {
     show_iconselector();
 }
 
+function render_card() {
+    // TODO: What if there's more than one card on the page?
+
+    document.querySelector(".card_top_text_username").innerText = document.querySelector("#editor_main_settings_details_username").value;
+    document.querySelector(".card_top_text_pronouns").innerText = document.querySelector("#editor_main_settings_details_pronouns").value;
+
+    card_delete_items();
+
+    for (const item in text_items) {
+        let item_uuid = text_items[item].getAttribute("uuid");
+        let item_icon = text_items[item].querySelector(":scope > .text_item_icon > i").className.replace("ph-bold ", "");
+        let item_text = text_items[item].querySelector(":scope > .text_item_text").value;
+
+        card_create_text_item(item_uuid, item_icon, item_text);
+    }
+
+    for (const link in link_items) {
+        let item_uuid = link_items[link].getAttribute("uuid");
+        let item_icon = link_items[link].querySelector(":scope > .link_item_icon > i").className.replace("ph-bold ", "");
+        let item_text = link_items[link].querySelector(":scope > .link_item_text").value;
+        let item_url = link_items[link].querySelector(":scope > .link_item_url").value;
+
+        card_create_link_item(item_uuid, item_icon, item_text, item_url);
+    }
+}
+
 document.querySelector("#editor_main_settings_information_text_add").addEventListener("click", (event) => {
     if (text_items.length == 0) {
         create_text_item(0, "", "ph-star");

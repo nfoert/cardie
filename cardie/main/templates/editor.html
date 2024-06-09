@@ -41,8 +41,8 @@
                 <div id="editor_main_settings_details">
                     <p class="ui_text_subheader">Details</p>
                     <div class="ui_separator_horizontal"></div>
-                    <input type="text" class="ui_input_generic" placeholder="Username"></input>
-                    <input type="text" class="ui_input_generic" placeholder="Pronouns"></input>
+                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_username" placeholder="Username"></input>
+                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_pronouns" placeholder="Pronouns"></input>
                 </div>
 
                 <div id="editor_main_settings_information">
@@ -67,15 +67,8 @@
             </div>
 
             <div id="editor_main_preview">
-                <div class="card_card">
-                    <div class="card_card_front">
-                        <p>Front of card</p>
-                    </div>
-                    
-                    <div class="card_card_back">
-                        <p>Back of card</p>
-                    </div>
-                </div>
+                {% include "card.html" %}
+                
             </div>
         </div>
 

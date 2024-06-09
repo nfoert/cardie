@@ -41,3 +41,77 @@
 .card_flipped .card_card_front {
     transform: rotateY(180deg);
 }
+
+.card_top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+.card_top_text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.card_top_profilepicture {
+    aspect-ratio: 1;
+    width: 50px;
+    height: 50px;
+    border: 1px solid gray;
+    border-radius: 50px;
+
+    /* TODO: Hidden for now, will be fixed once the ability to add profile pictures is implemented */
+    display: none;
+}
+
+.card_top_text_username {
+    font-family: var(--default-font-family);
+
+    margin: 0px;
+    padding: 0px;
+
+    font-size: 30px;
+}
+
+.card_top_text_pronouns {
+    font-family: var(--default-font-family);
+
+    margin: 0px;
+    padding: 0px;
+    margin-left: 10px;
+
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.card_item_text {
+    display: flex;
+    flex-direction: row;
+}
+
+.card_item_link {
+    display: flex;
+    flex-direction: row;
+}
+
+.card_item_text > p {
+    font-family: var(--default-font-family);
+
+    margin: 0px;
+    padding: 0px;
+    margin-left: 4px;
+}
+
+.card_item_link > button {
+    all: unset;
+    font-family: var(--default-font-family);
+    cursor: pointer;
+
+    margin-left: 4px;
+    border: none;
+    background-color: none;
+    color: rgb(64, 163, 255);
+}

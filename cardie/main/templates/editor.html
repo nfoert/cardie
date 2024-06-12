@@ -62,8 +62,6 @@
                     </div>
                     
                 </div>
-
-                
             </div>
 
             <div id="editor_main_preview">
@@ -81,7 +79,20 @@
             <div id="editor-iconselector-icons"></div>
         </div>
 
+        <div id="editor_rename">
+            <div id="editor_rename_top">
+                <p class="ui_text_subheader_left">Name Card</p>
+                <button class="ui_button_icon" id="editor_rename_top_close"><i class="ph-bold ph-x"></i></button>
+            </div>
+
+            <input type="text" class="ui_input_generic" id="editor_rename_input" placeholder="New Name"></input>
+            <button id="editor_rename_submit" class="ui_button_small"><i class="ph-bold ph-check"></i> Set New Name</button>
+        </div>
+
+        <div class="background_blur"></div>
+
         <script src="{% static '/main/scripts/icons.js' %}"></script>
+        <script src="{% static '/main/scripts/rename.js' %}"></script>
         <script src="{% static '/main/scripts/editor_information.js' %}"></script>
 
         <script src="{% static '/main/scripts/card.js' %}"></script>

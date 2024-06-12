@@ -138,7 +138,7 @@ html {
     height: 40%;
     max-height: 40%;
 
-    z-index: 2;
+    z-index: 3;
 
     position: fixed;
     top: 50%;
@@ -219,4 +219,72 @@ html {
     font-size: 10px;
     text-align: center;
     user-select: none;
+}
+
+@keyframes show-rename {
+    from {
+        opacity: 0;
+        scale: 0.8;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes hide-rename {
+    from {
+        opacity: 1;
+        scale: 1;
+    }
+
+    to {
+        opacity: 0;
+        scale: 0.8;
+    }
+}
+
+.show-rename {
+    animation: show-rename 0.2s ease-in-out forwards;
+}
+
+.hide-rename {
+    animation: hide-rename 0.2s ease-in-out forwards;
+}
+
+#editor_rename {
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+
+    z-index: 3;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    display: none; /* Keep hidden until needed */
+
+    /* Starting properties for animation */
+    opacity: 0;
+    scale: 0.8;
+}
+
+#editor_rename_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#editor_rename_input {
+    width: 400px;
 }

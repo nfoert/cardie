@@ -58,9 +58,14 @@ html {
     scale: 0.9;
 }
 
-#editor_header_name_text {
+#editor_header_name_text_cardname {
     color: white;
     padding-left: 10px;
+}
+
+#editor_header_name_text_username {
+    color: white;
+    margin-left: 8px;
 }
 
 #editor_main {

@@ -143,7 +143,7 @@ function render_card_from_json(json) {
     }
 
     for (const item in json["information"]["items"]["links"]) {
-        create_text_item(
+        create_link_item(
             json["information"]["items"]["links"][item]["uuid"],
             json["information"]["items"]["links"][item]["text"],
             json["information"]["items"]["links"][item]["url"],

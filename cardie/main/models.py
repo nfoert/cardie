@@ -10,20 +10,11 @@ class Server(models.Model):
         return(self.ip)
 
 class Card(models.Model):
-    layout_choices = {
-        "LE": "Left",
-        "RI": "Right",
-        "CE": "Center"
-    }
-
+    uuid = models.CharField(max_length=36, default="")
     name = models.CharField(max_length=256)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    layout = models.CharField(choices=layout_choices, max_length=128)
-    user_name = models.CharField(max_length=128)
-    user_pronouns = models.CharField(max_length=128)
-    text_info = models.JSONField(default=dict, blank=True)
-    link_info = models.JSONField(default=dict, blank=True)
-    background_color = ColorField(default="#FF0000")
+    
+    data = models.JSONField(default=dict, blank=True)
 
     def __str__(self):
         return(f"{self.owner.username}'s Card, '{self.name}'")

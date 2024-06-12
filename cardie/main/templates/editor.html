@@ -93,6 +93,11 @@
 
         <div class="background_blur"></div>
 
+        <script>
+            var server_ip = "{{ server_ip }}";
+            var production = "{{ production }}";
+        </script>
+
         <script src="{% static '/main/scripts/icons.js' %}"></script>
         <script src="{% static '/main/scripts/rename.js' %}"></script>
         <script src="{% static '/main/scripts/editor_information.js' %}"></script>
@@ -100,5 +105,7 @@
         <script src="{% static '/main/scripts/card.js' %}"></script>
         <script src="{% static '/main/scripts/favicon.js' %}"></script>
         <script src="{% static '/main/scripts/background_blur.js' %}"></script>
+
+        <script src="{% static '/main/scripts/editor.js' %}"></script>
     </body>
 </html>

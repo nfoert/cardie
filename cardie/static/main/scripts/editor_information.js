@@ -125,6 +125,35 @@ function render_card() {
     }
 }
 
+function render_card_from_json(json) {
+    console.log("Render card from json");
+    json = JSON.parse(json);
+
+    document.querySelector("#editor_header_name_text_cardname").innerText = json["name"];
+
+    document.querySelector("#editor_main_settings_details_username").value = json["details"]["username"];
+    document.querySelector("#editor_main_settings_details_pronouns").value = json["details"]["pronouns"];
+
+    for (const item in json["information"]["items"]["text"]) {
+        create_text_item(
+            json["information"]["items"]["text"][item]["uuid"],
+            json["information"]["items"]["text"][item]["text"],
+            json["information"]["items"]["text"][item]["icon"]
+        )
+    }
+
+    for (const item in json["information"]["items"]["links"]) {
+        create_text_item(
+            json["information"]["items"]["links"][item]["uuid"],
+            json["information"]["items"]["links"][item]["text"],
+            json["information"]["items"]["links"][item]["url"],
+            json["information"]["items"]["links"][item]["icon"]
+        )
+    }
+
+    render_card();
+}
+
 document.querySelector("#editor_main_settings_information_text_add").addEventListener("click", (event) => {
     if (text_items.length == 0) {
         create_text_item(0, "", "ph-star");

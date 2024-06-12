@@ -1,9 +1,12 @@
 import os
+import json
 
 from django.shortcuts import HttpResponse, render
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from authentication.views import sign_in
-from main.models import Server
+from main.models import Server, Card
+from authentication.models import User
 
 def index(request):
     server_info = Server.objects.all()[0]
@@ -83,3 +86,52 @@ def icon_list(request):
             icons.append(line.strip("\n"))
 
     return JsonResponse(icons, safe=False)
+
+@csrf_exempt
+def create_card(request):
+    # Creates a new card on the server
+    if request.method == "POST":
+        # TODO: What if there are two accounts with that username?
+        me = User.objects.filter(username=request.session["username"])[0]
+
+        card = Card(uuid=request.headers["UUID"], owner=me)
+        card.save()
+
+        return HttpResponse("Done")
+
+    else:
+        return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def check_card(request):
+    # Checks if a card exists on the server
+    if request.method == "POST":
+        card = Card.objects.filter(uuid=request.headers["UUID"]);
+        # TODO: What if there are multiple cards with the UUID?
+        if card:
+            return JsonResponse(json.dumps(card[0].data), safe=False)
+
+        else:
+            return HttpResponse("Card does not exist!")
+
+    else:
+        return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def save_card(request):
+    # Saves data to a card on the server
+    if request.method == "POST":
+        card = Card.objects.filter(uuid=request.headers["UUID"])[0]
+
+        # TODO: What if there are multiple cards with the UUID?
+        if card:
+            card.name = json.loads(request.headers["Data"])["name"]
+            card.data = json.loads(request.headers["Data"])
+            card.save()
+            return HttpResponse("Done")
+
+        else:
+            return HttpResponse("Card does not exist!")
+
+    else:
+        return HttpResponse("Request is not a POST request")

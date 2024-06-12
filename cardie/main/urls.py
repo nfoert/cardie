@@ -11,5 +11,6 @@ urlpatterns = [
     path("iconlist", views.icon_list, name="iconlist"),
     path("createcard", views.create_card, name="createcard"),
     path("checkcard", views.check_card, name="checkcard"),
-    path("savecard", views.save_card, name="savecard")
+    path("savecard", views.save_card, name="savecard"),
+    path("listcards", views.list_cards, name="listcards")
 ]

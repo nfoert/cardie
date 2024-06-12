@@ -33,4 +33,46 @@ html {
 
 #home-cards {
     margin-left: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.home_card {
+    display: flex;
+    flex-direction: row;
+
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+
+    padding: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: fit-content;
+    margin: 5px;
+}
+
+.home_card_text {
+    display: flex;
+    flex-direction: column;
+}
+
+.home_card_text_name {
+    color: white;
+    font-family: var(--default-font-family);
+    font-size: 16px;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.home_card_text_uuid {
+    color: white;
+    font-family: "Noto Sans Mono", "Courier New", monospace;
+    font-size: 12px;
+    opacity: 0.7;
+
+    margin: 0px;
+    padding: 0px;
 }

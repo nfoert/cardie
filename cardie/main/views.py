@@ -135,3 +135,25 @@ def save_card(request):
 
     else:
         return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def list_cards(request):
+    # Lists all of the cards that the user owns
+    if request.method == "POST":
+        # TODO: What if there are two accounts with that username?
+        me = User.objects.filter(username=request.session["username"])[0]
+        cards = Card.objects.filter(owner=me)
+        cards_list = []
+
+        for card in range(len(cards)):
+            card_json = {
+                "uuid": cards[card].uuid,
+                "name": cards[card].name
+            }
+
+            cards_list.append(card_json)
+        
+        return JsonResponse(cards_list, safe=False)
+
+    else:
+        return HttpResponse("Request is not a POST request")

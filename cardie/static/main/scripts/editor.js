@@ -89,6 +89,10 @@ function save_loop() {
     }
 }
 
+document.querySelector("#editor_header_title_home").addEventListener("click", (event) => {
+    window.location.href = server_ip + "/home";
+})
+
 start_editor();
 
 setInterval(save_loop, 3000);

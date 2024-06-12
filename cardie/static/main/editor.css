@@ -27,9 +27,14 @@ html {
     margin-top: 5px;
 }
 
+#editor_header_title_home {
+    margin-left: 0px;
+}
+
 #editor_header_name {
     display: flex;
     flex-direction: row;
+    margin-left: 20px;
 }
 
 #editor_header_name_button {

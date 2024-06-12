@@ -62,7 +62,7 @@ There's lots of basic things that need done before this project can truly begin.
   - [ ] Basic home page design
   - [x] Card models
   - [x] Card UI element
-  - [ ] Basic card customization
+  - [x] Basic card customization
 - [ ] Card sharing
   - [ ] Link generation
   - [ ] QR code generation

@@ -80,11 +80,15 @@ async function list_cards() {
 
 document.querySelector("#home-navigation-wallet").addEventListener("click", function() {
     state_wallet();
-})
+});
 
 document.querySelector("#home-navigation-cards").addEventListener("click", function() {
     state_cards();
-})
+});
+
+document.querySelector("#home_cards_create").addEventListener("click", () => {
+    window.location.href = server_ip + "/editor";
+});
 
 state_wallet();
 list_cards();

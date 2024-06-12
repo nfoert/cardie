@@ -76,3 +76,7 @@ html {
     margin: 0px;
     padding: 0px;
 }
+
+#home_cards_create {
+    width: fit-content;
+}

@@ -19,8 +19,10 @@ async function start_editor() {
                 var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?uuid=' + new_uuid;    
                 window.history.pushState({ path: refresh }, '', refresh);
                 console.log("A new card has been created on the server with uuid " + new_uuid)
+                status_saved();
 
             } else {
+                status_error();
                 console.log("there was a problem")
             }
         });
@@ -35,20 +37,24 @@ async function start_editor() {
 
         response.text().then(function (text) {
             if (text == "Request is not a POST request") {
+                status_error();
                 console.log("there was a problem")
 
             } else if (text == "Card does not exist!") {
+                status_error();
                 window.location.href = server_ip;
 
             } else {
                 console.log("This card exists on the server!")
                 render_card_from_json(JSON.parse(text))
+                status_saved();
             }
         });
     }
 }
 
 async function save_card(card_json) {
+    status_saving();
     let uuid_param = new URL(window.location.href).searchParams.get("uuid");
 
     const response = await fetch(server_ip + "/savecard", {
@@ -62,10 +68,12 @@ async function save_card(card_json) {
     response.text().then(function (text) {
         if (text == "Done") {
             console.log("Data has been saved")
+            status_saved();
             return true;
 
         } else {
             console.log("there was a problem")
+            status_error();
             return false;
         }
     });

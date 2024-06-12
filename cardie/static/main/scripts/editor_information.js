@@ -154,6 +154,19 @@ function render_card_from_json(json) {
     render_card();
 }
 
+function status_saved() {
+    document.querySelector("#editor_status").innerHTML = '<i class="ph-bold ph-check-circle"></i> Saved';
+}
+
+function status_saving() {
+    document.querySelector("#editor_status").innerHTML = '<i class="ph-bold ph-spinner-gap"></i> Saving...';
+}
+
+function status_error() {
+    document.querySelector("#editor_status").innerHTML = '<i class="ph-bold ph-warning"></i> Error';
+
+}
+
 document.querySelector("#editor_main_settings_information_text_add").addEventListener("click", (event) => {
     if (text_items.length == 0) {
         create_text_item(0, "", "ph-star");

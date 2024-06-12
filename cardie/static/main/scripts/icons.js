@@ -66,7 +66,9 @@ document.querySelector("#editor-iconselector-top-search").addEventListener('inpu
     renderItems(sortedItems);
 });
 
-function show_iconselector() { 
+function show_iconselector() {
+    show_background_blur();
+
     document.querySelector("#editor-iconselector").style.display = "flex";
     document.querySelector("#editor-iconselector").classList.remove("hide-iconselector");
     document.querySelector("#editor-iconselector").classList.add("show-iconselector");
@@ -78,6 +80,7 @@ function hide_iconselector() {
     setTimeout(function() {
         document.querySelector("#editor-iconselector").classList.remove("show-iconselector");
         document.querySelector("#editor-iconselector").style.display = "none";
+        hide_background_blur();
     }, 500);
 }
 

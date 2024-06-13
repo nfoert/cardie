@@ -3,7 +3,7 @@
 .card_card {
     margin: 10px;
     
-    width: 500px;
+    width: 600px;
     transition: all 0.2s;
     perspective: 900px;
 
@@ -11,7 +11,6 @@
 }
 
 .card_card_front, .card_card_back {
-    padding: 2em;
     position: absolute;
     top: 0;
     width: 100%;
@@ -28,6 +27,10 @@
     box-shadow: 0px 10px 29px 0px rgba(0, 0, 0, 0.75);
 
     background-color: white;
+}
+
+.card_content {
+    padding: 30px;
 }
 
 .card_card_back {

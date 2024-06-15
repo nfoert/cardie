@@ -9,12 +9,11 @@ for (let i = 0; i < cards.length; i++) {
 }
 
 // Functions for adding elements to the card
-function card_delete_items() {
-    // TODO: What if there are multiple cards on the page?
-    document.querySelector(".card_items").replaceChildren();
+function card_delete_items(card_selector) {
+    document.querySelector(`${card_selector} .card_items`).replaceChildren();
 }
 
-function card_create_text_item(uuid, icon, text) {
+function card_create_text_item(card_selector, uuid, icon, text) {
     let div = document.createElement("div");
     div.classList.add("card_item_text");
     div.setAttribute("uuid", uuid)
@@ -28,11 +27,10 @@ function card_create_text_item(uuid, icon, text) {
     div.appendChild(icon_element);
     div.appendChild(text_element);
 
-    // TODO: What if there are multiple cards on the page?
-    document.querySelector(".card_items").appendChild(div);
+    document.querySelector(card_selector).appendChild(div);
 }
 
-function card_create_link_item(uuid, icon, text, url) {
+function card_create_link_item(card_selector, uuid, icon, text, url) {
     let div = document.createElement("div");
     div.classList.add("card_item_link");
     div.setAttribute("uuid", uuid)
@@ -50,63 +48,34 @@ function card_create_link_item(uuid, icon, text, url) {
     div.appendChild(icon_element);
     div.appendChild(button_element);
 
-    // TODO: What if there are multiple cards on the page?
-    document.querySelector(".card_items").appendChild(div);
+    document.querySelector(card_selector).appendChild(div);
 }
 
-function card_create_json() {
-    // TODO: What if there are multiple cards on the page?
-    // TODO: UUID support
+function card_render_from_json(card_selector, json) {
+    // Renders the contents of the card from the json
 
-    let card_json = {
-        "uuid": "unknown",
-        "name": "",
-        "layout": "",
-        "details": {
-            "username": "",
-            "pronouns": ""
-        },
-        "information": {
-            "items": {
-                "text": [],
-                "links": []
-            }
-        }
+    json = JSON.parse(json);
+    card_delete_items(card_selector);
+
+    document.querySelector(`${card_selector} .card_top_text_username`).innerText = json["details"]["username"];
+    document.querySelector(`${card_selector} .card_top_text_pronouns`).innerText = json["details"]["pronouns"];
+
+    for (const item in json["information"]["items"]["text"]) {
+        card_create_text_item(
+            `${card_selector} .card_items`,
+            json["information"]["items"]["text"][item]["uuid"],
+            json["information"]["items"]["text"][item]["icon"],
+            json["information"]["items"]["text"][item]["text"]
+        )
     }
 
-    card_json["name"] = document.querySelector("#editor_header_name_text_cardname").innerText;
-    card_json["details"]["username"] = document.querySelector("#editor_main_settings_details_username").value;
-    card_json["details"]["pronouns"] = document.querySelector("#editor_main_settings_details_pronouns").value
-
-    for (const item in text_items) {
-        let item_uuid = text_items[item].getAttribute("uuid");
-        let item_icon = text_items[item].querySelector(":scope > .text_item_icon > i").className.replace("ph-bold ", "");
-        let item_text = text_items[item].querySelector(":scope > .text_item_text").value;
-
-        let item_json = {
-            "uuid": item_uuid,
-            "icon": item_icon,
-            "text": item_text
-        }
-
-        card_json["information"]["items"]["text"].push(item_json);
+    for (const item in json["information"]["items"]["links"]) {
+        card_create_link_item(
+            `${card_selector} .card_items`,
+            json["information"]["items"]["links"][item]["uuid"],
+            json["information"]["items"]["links"][item]["icon"],
+            json["information"]["items"]["links"][item]["text"],
+            json["information"]["items"]["links"][item]["url"]
+        )
     }
-
-    for (const link in link_items) {
-        let item_uuid = link_items[link].getAttribute("uuid");
-        let item_icon = link_items[link].querySelector(":scope > .link_item_icon > i").className.replace("ph-bold ", "");
-        let item_text = link_items[link].querySelector(":scope > .link_item_text").value;
-        let item_url = link_items[link].querySelector(":scope > .link_item_url").value;
-
-        let item_json = {
-            "uuid": item_uuid,
-            "icon": item_icon,
-            "text": item_text,
-            "url": item_url
-        }
-
-        card_json["information"]["items"]["links"].push(item_json);
-    }
-
-    return card_json;
 }

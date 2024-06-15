@@ -1,4 +1,4 @@
-var old_card_data = JSON.stringify(card_create_json());
+var old_card_data = JSON.stringify(editor_create_json());
 var new_card_data;
 
 async function start_editor() {
@@ -46,7 +46,8 @@ async function start_editor() {
 
             } else {
                 console.log("This card exists on the server!")
-                render_card_from_json(JSON.parse(text))
+                card_render_from_json(".card_card", text);
+                editor_load_from_json(text);
                 status_saved();
             }
         });
@@ -80,12 +81,12 @@ async function save_card(card_json) {
 }
 
 function save_loop() {
-    new_card_data = JSON.stringify(card_create_json());
+    new_card_data = JSON.stringify(editor_create_json());
 
     if (new_card_data != old_card_data) {
         old_card_data = new_card_data;
         save_card(new_card_data);
-        render_card();
+        card_render_from_json(".card_card", new_card_data);
     }
 }
 

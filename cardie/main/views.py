@@ -109,7 +109,7 @@ def check_card(request):
         card = Card.objects.filter(uuid=request.headers["UUID"]);
         # TODO: What if there are multiple cards with the UUID?
         if card:
-            return JsonResponse(json.dumps(card[0].data), safe=False)
+            return JsonResponse(card[0].data, safe=False)
 
         else:
             return HttpResponse("Card does not exist!")
@@ -154,6 +154,28 @@ def list_cards(request):
             cards_list.append(card_json)
         
         return JsonResponse(cards_list, safe=False)
+
+    else:
+        return HttpResponse("Request is not a POST request")
+
+def card_view(request):
+    server_info = Server.objects.all()[0]
+
+    context = {
+        "server_ip": server_info.ip,
+        "production": server_info.production,
+    }
+
+    return render(request, "card_view.html", context)
+
+@csrf_exempt
+def get_card(request):
+    # Gets the json of a card by UUID
+    if request.method == "POST":
+        # TODO: What if there are multiple cards with that UUID?
+        card = Card.objects.filter(uuid=request.headers["UUID"])[0]
+        
+        return JsonResponse(card.data, safe=False);
 
     else:
         return HttpResponse("Request is not a POST request")

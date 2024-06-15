@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/card.css' %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/card_view.css' %}">
+
+        <link rel="shortcut icon" type="image/png" href="{% static '/main/images/favicon_light.ico' %}"/>
+        <title>Cardie</title>
+    </head>
+
+    <body>
+        <div id="cardview">
+            <div id="cardview-text">
+                <p class="ui_text_subheader_left" id="cardview-text-cardname">Card name</p>
+                <p class="ui_text_body" id="cardview-text-username">Created by username</p>
+            </div>
+
+            <div id="cardview_card">
+                {% include "card.html" %}
+            </div>
+        </div>
+        
+
+        <script>
+            var server_ip = "{{ server_ip }}";
+            var production = "{{ production }}";
+        </script>
+
+        <script src="{% static '/main/scripts/card_view.js' %}"></script>
+
+        <script src="{% static '/main/scripts/card.js' %}"></script>
+        <script src="{% static '/main/scripts/favicon.js' %}"></script>
+    </body>
+</html>

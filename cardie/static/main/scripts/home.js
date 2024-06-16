@@ -90,5 +90,5 @@ document.querySelector("#home_cards_create").addEventListener("click", () => {
     window.location.href = server_ip + "/editor";
 });
 
-state_wallet();
+state_cards();
 list_cards();

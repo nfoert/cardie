@@ -58,17 +58,17 @@ There's lots of basic things that need done before this project can truly begin.
   - [x] User model
   - [x] Sign in and create account views
   - [x] Functional authentication pages and browser persistence
-- [ ] Card design
-  - [ ] Basic home page design
+- [x] Card design
+  - [x] Basic home page design
   - [x] Card models
   - [x] Card UI element
   - [x] Basic card customization
 - [ ] Card sharing
   - [ ] Link generation
   - [ ] QR code generation
-  - [ ] Card printing
-  - [ ] Save to wallet
 - [ ] Ability to log out
+- [ ] Footer
+- [ ] Beta warning
 
 ## Contributing
 I'd love to see contributions to this project! However, there's not enough development on it yet to warrant contributions. Once progress is made and beta releases start going out, I'll organize more to prepare for contributions.

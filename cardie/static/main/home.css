@@ -29,6 +29,8 @@ html {
 
 #home-wallet {
     margin-left: 120px;
+    display: flex;
+    flex-direction: column;
 }
 
 #home-cards {

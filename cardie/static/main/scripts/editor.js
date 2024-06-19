@@ -92,7 +92,29 @@ function save_loop() {
 
 document.querySelector("#editor_header_title_home").addEventListener("click", (event) => {
     window.location.href = server_ip + "/home";
-})
+});
+
+document.querySelector("#editor_share_copylink").addEventListener("click", async (event) => {
+    let uuid_param = new URL(window.location.href).searchParams.get("uuid");
+
+    await navigator.clipboard.writeText(`${server_ip}/card?uuid=${uuid_param}&`).then(() => {
+        event.target.innerHTML = `<i class="ph-bold ph-check-circle"></i> Copied!`;
+
+        setInterval( () => {
+            event.target.innerHTML = `<i class="ph-bold ph-copy"></i> Copy Link`;
+        }, 3000);
+    });
+});
+
+// TODO: Implement
+document.querySelector("#editor_share_copyqr").addEventListener("click", async (event) => {
+
+});
+
+// TODO: Implement
+document.querySelector("#editor_share_downloadqr").addEventListener("click", (event) => {
+
+});
 
 start_editor();
 

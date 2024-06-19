@@ -63,9 +63,8 @@ There's lots of basic things that need done before this project can truly begin.
   - [x] Card models
   - [x] Card UI element
   - [x] Basic card customization
-- [ ] Card sharing
-  - [ ] Link generation
-  - [ ] QR code generation
+- [x] Card sharing
+  - [x] Link generation
 - [ ] Ability to log out
 - [ ] Footer
 - [ ] Beta warning

@@ -190,7 +190,6 @@ function editor_load_from_json(json) {
     document.querySelector("#editor_main_settings_details_pronouns").value = json["details"]["pronouns"];
 
     for (const item in json["information"]["items"]["text"]) {
-        console.log(item)
         create_text_item(
             json["information"]["items"]["text"][item]["uuid"],
             json["information"]["items"]["text"][item]["text"],
@@ -199,7 +198,6 @@ function editor_load_from_json(json) {
     }
 
     for (const item in json["information"]["items"]["links"]) {
-        console.log(item)
         create_link_item(
             json["information"]["items"]["links"][item]["uuid"],
             json["information"]["items"]["links"][item]["text"],

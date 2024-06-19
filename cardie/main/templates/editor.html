@@ -72,6 +72,17 @@
             <div id="editor_main_preview">
                 {% include "card.html" %}
                 
+                <div class="ui_separator_horizontal"></div>
+
+                <div id="editor_main_preview_share">
+                    <button id="editor_share_copylink" class="ui_button_grid"><i class="ph-bold ph-copy"></i> Copy Link</button>
+                    <button id="editor_share_copyqr" style="display: none;" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Copy QR Code</button>
+                    <button id="editor_share_downloadqr" style="display: none;" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Download QR Code</button>
+                </div>
+
+                <div id="qrcode"></div>
+
+                <div class="ui_separator_horizontal"></div>
             </div>
         </div>
 
@@ -110,5 +121,7 @@
         <script src="{% static '/main/scripts/background_blur.js' %}"></script>
 
         <script src="{% static '/main/scripts/editor.js' %}"></script>
+
+        <script src="{% static '/main/scripts/libraries/qrcode.min.js' %}"></script>
     </body>
 </html>

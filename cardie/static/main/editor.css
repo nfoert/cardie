@@ -317,3 +317,8 @@ html {
 #editor_rename_input {
     width: 400px;
 }
+
+#editor_main_preview_share {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

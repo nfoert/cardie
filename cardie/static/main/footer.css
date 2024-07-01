@@ -1,0 +1,135 @@
+.footer {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.footer_main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.footer_main_button {
+    width: 60px;
+    height: 60px;
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer_main_button_image {
+    width: 40px;
+    height: auto;
+}
+
+.footer_main_button_icon {
+    color: white;
+    font-size: 30px;
+}
+
+.footer_main_contents {
+    display: flex;
+    flex-direction: row;
+
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 10px;
+
+    padding: 5px;
+    margin-left: 10px;
+
+    height: fit-content;
+}
+
+.footer_main_contents_link {
+    font-family: var(--default-font-family);
+    font-size: 14px;
+    color: white;
+    opacity: 0.7;
+    text-decoration: none;
+    transition: var(--default-transition);
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.footer_main_contents_link:hover {
+    opacity: 1;
+    scale: 1.05;
+}
+
+.footer_main_contents_link:active {
+    opacity: 1;
+    scale: 0.95;
+    color: white;
+}
+
+.footer_main_contents_link:visited {
+    color: white;
+}
+
+.footer_warning {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.footer_warning_button {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(178, 145, 60, 0.4);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer_warning_contents {
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgba(178, 145, 60, 0.4);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 10px;
+
+    padding: 10px;
+    margin-left: 10px;
+
+    height: fit-content;
+}
+
+.footer_warning_contents_title {
+    color: white;
+    font-family: var(--default-font-family);
+    opacity: 0.7;
+    font-weight: 600;
+
+    margin: 0px;
+}
+
+.footer_warning_contents_text {
+    color: white;
+    font-family: var(--default-font-family);
+    opacity: 0.7;
+
+    margin: 0px;
+}
+
+.footer_warning_contents_text > a {
+    color: white;
+    font-weight: 500;
+}

@@ -66,8 +66,8 @@ There's lots of basic things that need done before this project can truly begin.
 - [x] Card sharing
   - [x] Link generation
 - [ ] Ability to log out
-- [ ] Footer
-- [ ] Beta warning
+- [x] Footer
+- [x] Beta warning
 
 ## Contributing
 I'd love to see contributions to this project! However, there's not enough development on it yet to warrant contributions. Once progress is made and beta releases start going out, I'll organize more to prepare for contributions.

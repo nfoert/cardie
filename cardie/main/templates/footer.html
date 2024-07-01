@@ -3,7 +3,7 @@
 
 <div class="footer">
     <div class="footer_warning" x-data="{ open: false }">
-        <div class="footer_warning_button" @click="open = ! open">
+        <div class="footer_warning_button" @click="open = !open">
             <i class="footer_main_button_icon ph-bold ph-warning" x-show="!open" x-transition></i>
             <i class="footer_main_button_icon ph-bold ph-x-circle" x-show="open" x-transition></i>
         </div>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="footer_main" x-data="{ open: false }">
-        <div class="footer_main_button" @click="open = ! open">
+        <div class="footer_main_button" @click="open = !open">
             <img class="footer_main_button_image" src="{% static '/main/images/icon_light.png' %}" x-show="!open" x-transition>
             <i class="footer_main_button_icon ph-bold ph-x-circle" x-show="open" x-transition></i>
         </div>

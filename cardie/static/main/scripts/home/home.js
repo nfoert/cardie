@@ -1,24 +1,3 @@
-var home_state = "wallet" // wallet, cards
-
-function state_wallet() {
-    home_state = "wallet";
-
-    document.querySelector("#home-navigation-wallet").disabled = true;
-    document.querySelector("#home-cards").style.display = "none";
-
-    document.querySelector("#home-navigation-cards").disabled = false;
-    document.querySelector("#home-wallet").style.display = "flex";
-}
-
-function state_cards() {
-    home_state = "cards";
-
-    document.querySelector("#home-navigation-cards").disabled = true;
-    document.querySelector("#home-wallet").style.display = "none";
-
-    document.querySelector("#home-navigation-wallet").disabled = false;
-    document.querySelector("#home-cards").style.display = "flex";
-}
 
 function home_card_edit(event) {
     let uuid = event.target.closest(".home_card").querySelector(":scope > .home_card_text > .home_card_text_uuid").innerText;
@@ -78,17 +57,4 @@ async function list_cards() {
     });
 }
 
-document.querySelector("#home-navigation-wallet").addEventListener("click", function() {
-    state_wallet();
-});
-
-document.querySelector("#home-navigation-cards").addEventListener("click", function() {
-    state_cards();
-});
-
-document.querySelector("#home_cards_create").addEventListener("click", () => {
-    window.location.href = server_ip + "/editor";
-});
-
-state_cards();
 list_cards();

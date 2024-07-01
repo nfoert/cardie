@@ -5,21 +5,6 @@ function show_warning(warning) {
     document.querySelector("#authentication-error").style.display = "flex";
 }
 
-function update_state() {
-    if (state == "signin") {
-        state = "createaccount";
-
-        document.querySelector("#signin-box").style.display = "none";
-        document.querySelector("#createaccount-box").style.display = "flex";
-
-    } else if (state == "createaccount") {
-        state = "signin";
-
-        document.querySelector("#createaccount-box").style.display = "none";
-        document.querySelector("#signin-box").style.display = "flex";
-    }
-}
-
 async function sign_in() {
     var username = document.querySelector("#signin-username").value;
     var password = document.querySelector("#signin-password").value;
@@ -99,9 +84,6 @@ async function create_account() {
         }
     });
 }
-
-document.querySelector("#signin-createaccount").addEventListener("click", update_state);
-document.querySelector("#createaccount-signin").addEventListener("click", update_state);
 
 document.querySelector("#signin-signin").addEventListener("click", sign_in);
 document.querySelector("#createaccount-createaccount").addEventListener("click", create_account);

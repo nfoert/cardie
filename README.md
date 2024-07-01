@@ -65,7 +65,7 @@ There's lots of basic things that need done before this project can truly begin.
   - [x] Basic card customization
 - [x] Card sharing
   - [x] Link generation
-- [ ] Ability to log out
+- [x] Ability to log out
 - [x] Footer
 - [x] Beta warning
 

@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <div id="authentication-box">
+        <div id="authentication-box" x-data="{ sign_in: true }">
             {% csrf_token %}
 
             <img id="authentication-box-image" src="{% static '/main/images/logo_light.png' %}">
@@ -25,7 +25,7 @@
                 <p class="ui_status_text">Critical status box</p>
             </div>
 
-            <div id="signin-box">
+            <div id="signin-box" x-show="sign_in">
                 <p class="ui_text_header"><i class="ph-bold ph-keyhole"></i> Sign In</p>
                 <div class="ui_separator_horizontal"></div>
 
@@ -33,10 +33,10 @@
                 <input id="signin-password" type="password" class="ui_input_generic" placeholder="Password"></input>
             
                 <button id="signin-signin" class="ui_button_large"><strong>Sign In</strong> <i class="ph-bold ph-sign-in"></i></button>
-                <button id="signin-createaccount" class="ui_button_small">Create an Account <i class="ph-bold ph-arrow-right"></i></button>
+                <button id="signin-createaccount" class="ui_button_small" @click="sign_in = !sign_in">Create an Account <i class="ph-bold ph-arrow-right"></i></button>
             </div>
 
-            <div id="createaccount-box">
+            <div id="createaccount-box" x-show="!sign_in">
                 <p class="ui_text_header"><i class="ph-bold ph-key"></i> Create Account</p>
                 <div class="ui_separator_horizontal"></div>
 
@@ -45,7 +45,7 @@
                 <input id="createaccount-email" type="text" class="ui_input_generic" placeholder="Email"></input>
             
                 <button id="createaccount-createaccount" class="ui_button_large"><strong>Create Account</strong> <i class="ph-bold ph-user-plus"></i></button>
-                <button id="createaccount-signin" class="ui_button_small">Sign In <i class="ph-bold ph-arrow-right"></i></button>
+                <button id="createaccount-signin" class="ui_button_small" @click="sign_in = !sign_in">Sign In <i class="ph-bold ph-arrow-right"></i></button>
             </div>
         </div>
 

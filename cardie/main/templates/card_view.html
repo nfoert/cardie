@@ -3,6 +3,7 @@
 <html>
     <head>
         <script src="https://unpkg.com/@phosphor-icons/web"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
@@ -26,6 +27,7 @@
             </div>
         </div>
         
+        {% include "footer.html" %}
 
         <script>
             var server_ip = "{{ server_ip }}";

@@ -3,6 +3,7 @@
 <html style="background: rgb(37, 40, 49);">
     <head>
         <script src="https://unpkg.com/@phosphor-icons/web"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,6 +58,8 @@
                 <p>Back of card</p>
             </div>
         </div>
+
+        {% include "footer.html" %}
 
         <script src="{% static '/main/scripts/global/card.js' %}"></script>
         <script src="{% static '/main/scripts/global/favicon.js' %}"></script>

@@ -14,5 +14,6 @@ urlpatterns = [
     path("savecard", views.save_card, name="savecard"),
     path("listcards", views.list_cards, name="listcards"),
     path("card", views.card_view, name="cardview"),
-    path("getcard", views.get_card, name="getcard")
+    path("getcard", views.get_card, name="getcard"),
+    path("logout", views.log_out, name="logout")
 ]

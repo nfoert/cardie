@@ -179,3 +179,16 @@ def get_card(request):
 
     else:
         return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def log_out(request):
+    # TODO: This should probably go somewhere else for organization's sake, but I don't know where
+
+    if request.method == "POST":
+        del request.session["username"]
+        del request.session["password"]
+
+        return HttpResponse("Success")
+
+    else:
+        return HttpResponse("Request is not a POST request")

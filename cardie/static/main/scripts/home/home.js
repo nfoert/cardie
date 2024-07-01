@@ -57,4 +57,18 @@ async function list_cards() {
     });
 }
 
+async function log_out() {
+    const response = await fetch(server_ip + "/logout", {
+        method: "POST",
+    });
+
+    response.text().then(function (text) {
+        if (text == "Request is not a POST request") {
+            return false;
+        } else {
+            window.location.href = server_ip + "/authentication";
+        }
+    });
+}
+
 list_cards();

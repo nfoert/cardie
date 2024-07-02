@@ -63,12 +63,10 @@ def create_account(request):
     if server.allow_create_accounts:
         if "Username" in request.headers and "Password" in request.headers and "Email" in request.headers:
             username = request.headers["Username"]
-            password = request.headers["Email"]
-            email = request.headers["Password"]
+            password = request.headers["Password"]
+            email = request.headers["Email"]
 
             users = User.objects.filter(username=username)
-
-            print(len(users))
 
             if len(users) > 0:
                 return HttpResponse("error_account_already_exists")

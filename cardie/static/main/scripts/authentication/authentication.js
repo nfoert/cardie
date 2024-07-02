@@ -47,7 +47,7 @@ async function sign_in() {
 async function create_account() {
     var username = document.querySelector("#createaccount-username").value;
     var password = document.querySelector("#createaccount-password").value;
-    var email = document.querySelector("#createaccount-password").value;
+    var email = document.querySelector("#createaccount-email").value;
 
     const response = await fetch(server_ip + "/auth/createaccount", {
         method: "GET",

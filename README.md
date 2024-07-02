@@ -7,7 +7,7 @@ Design a unlimited number of business or information cards about yourself, share
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=django,python,html,css,js,github,git"/>
+    <img src="https://skillicons.dev/icons?i=django,python,html,css,js,github,git,alpinejs"/>
   </a>
 </p>
 
@@ -48,26 +48,7 @@ python manage.py runserver
 ```
 
 ## To Do
-There's lots of basic things that need done before this project can truly begin. Here's a rough todo list of the main things that still need completed.
-
-- [x] Logo design
-- [x] Basic django project up and running
-- [x] Design UI elements
-- [x] Basic home page
-- [x] Authentication system
-  - [x] User model
-  - [x] Sign in and create account views
-  - [x] Functional authentication pages and browser persistence
-- [x] Card design
-  - [x] Basic home page design
-  - [x] Card models
-  - [x] Card UI element
-  - [x] Basic card customization
-- [x] Card sharing
-  - [x] Link generation
-- [x] Ability to log out
-- [x] Footer
-- [x] Beta warning
+There's lots of things that need implemented or changed in this project. Please see [TODO.md](TODO.md).
 
 ## Contributing
-I'd love to see contributions to this project! However, there's not enough development on it yet to warrant contributions. Once progress is made and beta releases start going out, I'll organize more to prepare for contributions.
+I'd love to see contributions to this project! Please check out the [issues](https://github.com/nfoert/issues) page to see what things currently need fixed or added.

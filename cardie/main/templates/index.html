@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/index.css' %}">
+
+        <link rel="shortcut icon" type="image/png" href="{% static '/main/images/favicon_light.ico' %}"/>
+        <title>Cardie</title>
+    </head>
+
+    <body>
+        <div id="welcome-box">
+            <p class="ui_text_header">Welcome to</p>
+            <img id="welcome-box-image" src="{% static '/main/images/logo_light.png' %}">
+            <p class="ui_text_subheader">An open source business card designer and sharing platform</p>
+        
+            <div id="welcome-box-buttons">
+                <button id="welcome-box-buttons-getstarted" class="ui_button_large"><strong>Get Started <i class="ph-bold ph-arrow-circle-right"></i></strong></button>
+                <button id="welcome-box-buttons-sourcecode" class="ui_button_large">Source Code <i class="ph-bold ph-github-logo"></i></button>
+            </div>
+        </div>
+
+        <div id="blob"></div>
+
+        {% include "footer.html" %}
+
+        <script>
+            var server_ip = "{{ server_ip }}";
+            var production = "{{ production }}";
+        </script>
+
+        <script src="{% static '/main/scripts/index/index.js' %}"></script>
+        <script src="{% static '/main/scripts/global/favicon.js' %}"></script>
+    </body>
+</html>

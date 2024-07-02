@@ -1,0 +1,324 @@
+html {
+    background: rgb(37, 40, 49);
+}
+
+#editor_header {
+    display: flex;
+    flex-direction: column;
+}
+
+#editor_header_title {
+    display: flex;
+    flex-direction: row;
+}
+
+#editor_header_title_image {
+    height: 50px;
+}
+
+#editor_header_title_text {
+    font-family: var(--default-font-family);
+    font-size: 30px;
+    color: white;
+    margin: 0;
+    padding: 0;
+
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+#editor_header_title_home {
+    margin-left: 0px;
+}
+
+#editor_header_name {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+
+#editor_header_name_button {
+    background-color: rgba(99, 99, 99, 0.4);
+    border: 2px solid rgba(145, 145, 145, 0.6);
+    border: none;
+    color: white;
+
+    aspect-ratio: 1;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    padding: 0;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    transition: var(--default-transition);
+}
+
+#editor_header_name_button:hover {
+    scale: 1.1;
+    background-color: rgba(99, 99, 99, 0.6);
+}
+
+#editor_header_name_button:active {
+    scale: 0.9;
+}
+
+#editor_header_name_text_cardname {
+    color: white;
+    padding-left: 10px;
+}
+
+#editor_header_name_text_username {
+    color: white;
+    margin-left: 8px;
+}
+
+#editor_status {
+    color: white;
+    font-family: var(--default-font-family);
+    font-size: 14px;
+
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0px;
+    margin-left: 20px;
+
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+
+    width: fit-content;
+}
+
+#editor_main {
+    display: flex;
+    flex-direction: row;
+}
+
+#editor_main_settings {
+    margin-left: 20px;
+    margin-right: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#editor_main_settings_layout_buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text_item {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.link_item {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+@keyframes show-iconselector {
+    from {
+        opacity: 0;
+        scale: 0.8;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes hide-iconselector {
+    from {
+        opacity: 1;
+        scale: 1;
+    }
+
+    to {
+        opacity: 0;
+        scale: 0.8;
+    }
+}
+
+.show-iconselector {
+    animation: show-iconselector 0.2s ease-in-out forwards;
+}
+
+.hide-iconselector {
+    animation: hide-iconselector 0.2s ease-in-out forwards;
+}
+
+#editor-iconselector {
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+
+    /* TODO: Make mobile friendly */
+    aspect-ratio: 1;
+    width: auto;
+    height: 40%;
+    max-height: 40%;
+
+    z-index: 3;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    display: none; /* Keep hidden until needed */
+
+    /* Starting properties for animation */
+    opacity: 0;
+    scale: 0.8;
+}
+
+#editor-iconselector-top {
+    display: flex;
+    flex-direction: row;
+}
+
+#editor-iconselector-top-search {
+    height: 20px;
+    max-height: 20px;
+    margin-bottom: 10px;
+}
+
+#editor-iconselector-icons {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+
+    margin-top: 5px;
+}
+
+.editor-iconselector-icon {
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    transition: var(--default-transition);
+    border-radius: 10px;
+
+    width: 15%;
+    height: auto;
+    aspect-ratio: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.editor-iconselector-icon:hover {
+    scale: 1.05;
+}
+
+.editor-iconselector-icon:active {
+    scale: 0.95;
+}
+
+.editor-iconselector-icon-icon {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.editor-iconselector-icon-text {
+    color: white;
+    font-family: "Noto Sans Mono", "Courier New", monospace;
+    font-size: 10px;
+    text-align: center;
+    user-select: none;
+}
+
+@keyframes show-rename {
+    from {
+        opacity: 0;
+        scale: 0.8;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes hide-rename {
+    from {
+        opacity: 1;
+        scale: 1;
+    }
+
+    to {
+        opacity: 0;
+        scale: 0.8;
+    }
+}
+
+.show-rename {
+    animation: show-rename 0.2s ease-in-out forwards;
+}
+
+.hide-rename {
+    animation: hide-rename 0.2s ease-in-out forwards;
+}
+
+#editor_rename {
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+
+    z-index: 3;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    display: none; /* Keep hidden until needed */
+
+    /* Starting properties for animation */
+    opacity: 0;
+    scale: 0.8;
+}
+
+#editor_rename_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#editor_rename_input {
+    width: 400px;
+}
+
+#editor_main_preview_share {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

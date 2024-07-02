@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/main/footer.css' %}">
+
+<div class="footer">
+    <div class="footer_warning" x-data="{ open: false }">
+        <div class="footer_warning_button" @click="open = !open">
+            <i class="footer_main_button_icon ph-bold ph-warning" x-show="!open" x-transition></i>
+            <i class="footer_main_button_icon ph-bold ph-x-circle" x-show="open" x-transition></i>
+        </div>
+
+        <div class="footer_warning_contents" x-show="open" x-transition>
+            <p class="footer_warning_contents_title">Cardie is in active development</p>
+            <p class="footer_warning_contents_text">Bugs are to be expected and lots of work is still to be done. Please report bugs <a href="https://github.com/nfoert/cardie/issues">here</a></p>
+        </div>
+    </div>
+
+    <div class="footer_main" x-data="{ open: false }">
+        <div class="footer_main_button" @click="open = !open">
+            <img class="footer_main_button_image" src="{% static '/main/images/icon_light.png' %}" x-show="!open" x-transition>
+            <i class="footer_main_button_icon ph-bold ph-x-circle" x-show="open" x-transition></i>
+        </div>
+
+        <div class="footer_main_contents" x-show="open" x-transition>
+            <a class="footer_main_contents_link" href="{{ server_ip }}"><i class="ph-bold ph-house"></i> Home</a>
+            <a class="footer_main_contents_link" href="https://github.com/nfoert/cardie"><i class="ph-bold ph-github-logo"></i> Source Code</a>
+            <a class="footer_main_contents_link" href="https://github.com/nfoert/cardie/issues"><i class="ph-bold ph-bug"></i> Report a Bug</a>
+        </div>
+    </div>
+</div>

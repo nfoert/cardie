@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/card.css' %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/editor.css' %}">
+
+        <link rel="shortcut icon" type="image/png" href="{% static '/main/images/favicon_light.ico' %}"/>
+        <title>Cardie | Editor</title>
+    </head>
+
+    <body>
+        <div id="editor_header">
+            <div id="editor_header_title">
+                <button class="ui_button_icon" id="editor_header_title_home"><i class="ph-bold ph-house"></i></button>
+                <img id="editor_header_title_image" src="{% static '/main/images/logo_light.png' %}">
+                <p id="editor_header_title_text"> Editor</p>
+            </div>
+
+            <div id="editor_header_name">
+                <button id="editor_header_name_button"><i class="ph-bold ph-pencil-simple"></i></button>
+                <p id="editor_header_name_text_cardname">Untitled Card</p>
+                <p id="editor_header_name_text_username">by {{ username }}</p>
+            </div>
+
+            <p id="editor_status"><i class="ph-bold ph-spinner-gap"></i> Loading...</p>
+        </div>
+
+        <div id="editor_main">
+            <div id="editor_main_settings">
+                <div id="editor_main_settings_layout">
+                    <p class="ui_text_subheader">Layout</p>
+                    <div class="ui_separator_horizontal"></div>
+                    <div id="editor_main_settings_layout_buttons">
+                        <button class="ui_button_icon"><i class="ph-bold ph-align-left"></i></button>
+                        <button class="ui_button_icon"><i class="ph-bold ph-align-center-horizontal"></i></button>
+                        <button class="ui_button_icon"><i class="ph-bold ph-align-right"></i></button>
+                    </div>
+                </div>
+                
+                <div id="editor_main_settings_details">
+                    <p class="ui_text_subheader">Details</p>
+                    <div class="ui_separator_horizontal"></div>
+                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_username" placeholder="Username"></input>
+                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_pronouns" placeholder="Pronouns"></input>
+                </div>
+
+                <div id="editor_main_settings_information">
+                    <p class="ui_text_subheader">Information</p>
+                    <div class="ui_separator_horizontal"></div>
+
+                    <div id="editor_main_settings_information_text">
+                        <p class="ui_text_smallersubheader">Text</p>
+                        <div id="editor_main_settings_information_text_items"></div>
+                        <button id="editor_main_settings_information_text_add" class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add text item</button>
+                    </div>
+
+                    <div id="editor_main_settings_information_link">
+                        <p class="ui_text_smallersubheader">Links</p>
+                        <div id="editor_main_settings_information_link_items"></div>
+                        <button id="editor_main_settings_information_link_add" class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add link item</button>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div id="editor_main_preview">
+                {% include "card.html" %}
+                
+                <div class="ui_separator_horizontal"></div>
+
+                <div id="editor_main_preview_share">
+                    <button id="editor_share_copylink" class="ui_button_grid"><i class="ph-bold ph-copy"></i> Copy Link</button>
+                    <button id="editor_share_copyqr" style="display: none;" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Copy QR Code</button>
+                    <button id="editor_share_downloadqr" style="display: none;" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Download QR Code</button>
+                </div>
+
+                <div id="qrcode"></div>
+
+                <div class="ui_separator_horizontal"></div>
+            </div>
+        </div>
+
+        <div id="editor-iconselector">
+            <div id="editor-iconselector-top">
+                <input type="text" class="ui_input_generic" id="editor-iconselector-top-search" placeholder="Search for an icon"></input>
+                <button class="ui_button_icon" id="editor-iconselector-top-close"><i class="ph-bold ph-x"></i></button>
+            </div>
+
+            <div id="editor-iconselector-icons"></div>
+        </div>
+
+        <div id="editor_rename">
+            <div id="editor_rename_top">
+                <p class="ui_text_subheader_left">Name Card</p>
+                <button class="ui_button_icon" id="editor_rename_top_close"><i class="ph-bold ph-x"></i></button>
+            </div>
+
+            <input type="text" class="ui_input_generic" id="editor_rename_input" placeholder="New Name"></input>
+            <button id="editor_rename_submit" class="ui_button_small"><i class="ph-bold ph-check"></i> Set New Name</button>
+        </div>
+
+        <div class="background_blur"></div>
+
+        {% include "footer.html" %}
+
+        <script>
+            var server_ip = "{{ server_ip }}";
+            var production = "{{ production }}";
+        </script>
+
+        <script src="{% static '/main/scripts/editor/icons.js' %}"></script>
+        <script src="{% static '/main/scripts/editor/rename.js' %}"></script>
+        <script src="{% static '/main/scripts/editor/editor_information.js' %}"></script>
+
+        <script src="{% static '/main/scripts/global/card.js' %}"></script>
+        <script src="{% static '/main/scripts/global/favicon.js' %}"></script>
+        <script src="{% static '/main/scripts/global/background_blur.js' %}"></script>
+
+        <script src="{% static '/main/scripts/editor/editor.js' %}"></script>
+    </body>
+</html>

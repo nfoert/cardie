@@ -3,18 +3,18 @@
 </p>
 
 # Welcome to Cardie!
-Design a unlimited number of buisness or information cards about yourself, share a link or QR code to them, print it out, and save other people's cards to your virtual wallet for later. Once you've created a card you can get analytics data on how your cards are getting visited, you can edit your cards as things change, and you can keep cards private so only people with a link to your card can see it.
+Design a unlimited number of business or information cards about yourself, share a link or QR code to them, print it out, and save other people's cards to your virtual wallet for later. Once you've created a card you can get analytics data on how your cards are getting visited, you can edit your cards as things change, and you can keep cards private so only people with a link to your card can see it.
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=django,python,html,css,js,github,git"/>
+    <img src="https://skillicons.dev/icons?i=django,python,html,css,js,github,git,alpinejs"/>
   </a>
 </p>
 
 ## Installation
 
 > [!IMPORTANT]
-> These directions are for a develeopment server only right now. This project is not currently developed enough for production use.
+> These directions are for a development server only right now. This project is not currently developed enough for production use.
 
 
 First, clone this repository using the following command
@@ -22,13 +22,13 @@ First, clone this repository using the following command
 git clone https://github.com/nfoert/cardie
 ```
 
-Then, navigate to that directory and create a new python virtual enviroment
+Then, navigate to that directory and create a new python virtual environment
 ```
 cd cardie
 python3 -m venv .venv
 ```
 
-Activate the virtual enviroment using the command for your system (Linux is used here) and install the required dependencies
+Activate the virtual environment using the command for your system (Linux is used here) and install the required dependencies
 ```
 source ./.venv/bin/activate
 pip install -r requirements.txt
@@ -48,27 +48,7 @@ python manage.py runserver
 ```
 
 ## To Do
-There's lots of basic things that need done before this project can truly begin. Here's a rough todo list of the main things that still need completed.
-
-- [ ] Logo design
-- [ ] Basic django project up and running
-- [ ] Design UI elements
-- [ ] Basic home page
-- [ ] Authentication system
-  - [ ] User model
-  - [ ] Sign in and create account views
-  - [ ] Functional authentication pages and browser persistence
-- [ ] Card design
-  - [ ] Basic home page design
-  - [ ] Card models
-  - [ ] Card UI element
-  - [ ] Basic card customization
-- [ ] Card sharing
-  - [ ] Link generation
-  - [ ] QR code generation
-  - [ ] Card printing
-  - [ ] Save to wallet
-- [ ] Ability to log out
+There's lots of things that need implemented or changed in this project. Please see [TODO.md](TODO.md).
 
 ## Contributing
-I'd love to see contributions to this project! However, there's not enough development on it yet to warrant contributions. Once progress is made and beta releases start going out, I'll organize more to prepare for contributions.
+I'd love to see contributions to this project! Please check out the [issues](https://github.com/nfoert/issues) page to see what things currently need fixed or added.

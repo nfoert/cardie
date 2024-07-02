@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="background: rgb(37, 40, 49);">
+    <head>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/card.css' %}">
+    
+        <title>You're not really supposed to be here...</title>
+    </head>
+
+    <body>
+        <button class="ui_button_large">Large Button <i class="ph-bold ph-arrow-circle-right"></i></button>
+        <button class="ui_button_grid">Grid Button <i class="ph-bold ph-arrow-fat-line-down"></i></button>
+        <button class="ui_button_icon"><i class="ph-bold ph-diamonds-four"></i></button>
+
+        <p class="ui_text_header">Header Text</p>
+        <p class="ui_text_subheader">Subheader Text</p>
+        <p class="ui_text_body">Body Text</p>
+        <p class="ui_text_description">Description Text</p>
+
+        <img class="ui_image_generic" style="width: 500px;" src="https://raw.githubusercontent.com/nfoert/cardie/development/repo/images/cardie.png">
+    
+        <div class="ui_status_info">
+            <i class="ph-bold ph-info ui_status_icon"></i>
+            <p class="ui_status_text">Information status box</p>
+        </div>
+
+        <div class="ui_status_warning">
+            <i class="ph-bold ph-warning ui_status_icon"></i>
+            <p class="ui_status_text">Warning status box</p>
+        </div>
+
+        <div class="ui_status_critical">
+            <i class="ph-bold ph-warning-octagon ui_status_icon"></i>
+            <p class="ui_status_text">Critical status box</p>
+        </div>
+
+        <input type="text" class="ui_input_generic"></input>
+
+        <div class="ui_separator_vertical"></div>
+
+        <div class="ui_separator_horizontal"></div>
+
+        <div class="card_card">
+            <div class="card_card_front">
+                <p>Front of card</p>
+            </div>
+            
+            <div class="card_card_back">
+                <p>Back of card</p>
+            </div>
+        </div>
+
+        {% include "footer.html" %}
+
+        <script src="{% static '/main/scripts/global/card.js' %}"></script>
+        <script src="{% static '/main/scripts/global/favicon.js' %}"></script>
+    </body>
+</html>

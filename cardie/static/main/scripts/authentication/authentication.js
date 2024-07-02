@@ -35,6 +35,9 @@ async function sign_in() {
         } else if (text == "error_multiple_accounts_exist") {
             show_warning("Multiple accounts exist with that username... that's really not supposed to happen...");
 
+        } else if (text == "error_sign_in_disabled") {
+            show_warning("Signing in is disabled on this server");
+
         } else {
             show_warning("There was a problem signing you in!");
         }
@@ -78,6 +81,9 @@ async function create_account() {
 
         } else if (text == "error_multiple_accounts_exist") {
             show_warning("Multiple accounts exist with that username... that's really not supposed to happen...");
+
+        } else if (text == "error_create_account_disabled") {
+            show_warning("Creating accounts is disabled on this server")
         
         } else {
             show_warning("There was a problem creating your account!");

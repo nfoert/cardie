@@ -6,6 +6,9 @@ class Server(models.Model):
     ip = models.CharField(max_length=256)
     production = models.BooleanField(default=0) # Default is False
 
+    allow_create_accounts = models.BooleanField(default=1)
+    allow_sign_in = models.BooleanField(default=1)
+
     def __str__(self):
         return(self.ip)
 

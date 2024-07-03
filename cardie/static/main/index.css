@@ -15,12 +15,11 @@ html {
 }
 
 #welcome-box-image {
-    width: 400px;
+    width: clamp(40vh, 400px, 40vw);
     height: auto;
 
     margin-left: auto;
     margin-right: auto;
-
 }
 
 #welcome-box-buttons {
@@ -29,7 +28,7 @@ html {
 
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: clamp(2vh, 20px, 2vw);
 
     align-items: center;
 }
@@ -40,7 +39,7 @@ html {
     left: 50%;
     translate: -50% -50%;
 
-    width: 400px;
+    width: clamp(40vh, 400px, 40vw);
     height: auto;
     aspect-ratio: 1;
     border-radius: 200px;

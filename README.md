@@ -13,10 +13,6 @@ Design a unlimited number of business or information cards about yourself, share
 
 ## Installation
 
-> [!IMPORTANT]
-> These directions are for a development server only right now. This project is not currently developed enough for production use.
-
-
 First, clone this repository using the following command
 ```
 git clone https://github.com/nfoert/cardie
@@ -48,6 +44,18 @@ python manage.py runserver
 ```
 
 Finally, navigate to `http://127.0.0.1:8000/admin` and log in using your new administrator account. Create a new `Server` object and be sure to configure the `ip` to be `http://127.0.0.1:8000`.
+
+### Additional steps for Production installation
+This depends on what server hosting provider you're using. However, there's a couple environment variables you need to set and there's a run command.
+
+Set the following global environment variables:
+- `DJANGO_ALLOWED_HOSTS` -> `${APP_DOMAIN}` (This works on DigitalOcean, this may not work on every hosting provider)
+- `DJANGO_SETTINGS_MODULE` -> `cardie.settings_production`
+- `STATIC_URL` -> `/static/main`
+
+- `SECRET_KEY` -> `<your new secret key>` (Generate this using `django.core.management.utils.get_random_secret_key()`. If possible you should encrypt this value in your hosting provider.)
+- `DEBUG` -> `False`
+- `DATABASE_URL` -> `${db.DATABASE_URL}` (This works on DigitalOcean, this may not work on every hosting provider)
 
 ## To Do
 There's lots of things that need implemented or changed in this project. Please see [TODO.md](TODO.md).

@@ -15,7 +15,7 @@ html {
 }
 
 #authentication-box-image {
-    width: 300px;
+    width: clamp(30vh, 300px, 30vw);
     height: auto;
 
     margin-left: auto;

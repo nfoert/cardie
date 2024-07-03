@@ -71,4 +71,8 @@ async function log_out() {
     });
 }
 
+function create_new_card() {
+    window.location.href = server_ip + "/editor";
+}
+
 list_cards();

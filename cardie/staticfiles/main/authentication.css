@@ -1,0 +1,37 @@
+html {
+    background: rgb(37, 40, 49);
+}
+
+#authentication-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 1;
+}
+
+#authentication-box-image {
+    width: 300px;
+    height: auto;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#signin-box {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+#createaccount-box {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}

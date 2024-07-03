@@ -1,0 +1,23 @@
+html {
+    background: rgb(37, 40, 49);
+}
+
+#cardview {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    width: fit-content;
+    height: fit-content;
+}
+
+#cardview-text {
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+#cardview-text-username {
+    opacity: 0.7;
+    margin-left: 20px;
+}

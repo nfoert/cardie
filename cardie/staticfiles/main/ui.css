@@ -1,0 +1,514 @@
+/* 
+    ui.css
+    Handles styles for every common user interface element
+    Quick refrences for every element class name is below
+
+    Buttons
+        ui_button_large
+        ui_button_grid
+        ui_button_icon
+        ui_button_smallicon
+        ui_button_small
+
+    Text
+        ui_text_header
+        ui_text_subheader
+            ui_text_subheader_left
+        ui_text_smallersubheader
+        ui_text_body
+        ui_text_description
+
+    Image
+        ui_image_generic
+
+    Status Boxes
+        ui_status_Info
+        ui_status_warning
+        ui_status_critical
+
+        ui_status_text
+        ui_status_icon
+
+    Text Areas
+        ui_input_generic
+
+    Spacers
+        ui_spacer
+
+    Seperators
+        ui_seperator_vertical
+        ui_seperator_horizontal
+*/
+
+/* Buttons */
+.ui_button_large {
+    background-color: var(--default-glass-background);
+    color: var(--default-text-color);
+    border-radius: 100px;
+    border: var(--default-glass-border);
+    transition: var(--default-transition);
+    font-size: 16px;
+    font-family: var(--default-font-family);
+
+    backdrop-filter: var(--default-glass-blur);
+
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    width: fit-content;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_button_large:hover:enabled {
+    scale: 1.05;
+}
+
+.ui_button_large:active:enabled {
+    scale: 0.95;
+}
+
+.ui_button_grid:disabled {
+    scale: 0.9;
+    opacity: 0.7;
+}
+
+.ui_button_grid {
+    background-color: var(--default-glass-background);
+    color: var(--default-text-color);
+    border-radius: 10px;
+    border: var(--default-glass-border);
+    transition: var(--default-transition);
+    font-size: 16px;
+    font-family: var(--default-font-family);
+
+    backdrop-filter: var(--default-glass-blur);
+
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_button_grid:hover:enabled {
+    scale: 1.05;
+}
+
+.ui_button_grid:active:enabled {
+    scale: 0.95;
+}
+
+.ui_button_grid:disabled {
+    scale: 0.9;
+    opacity: 0.7;
+}
+
+
+.ui_button_icon {
+    background-color: var(--default-glass-background);
+    color: var(--default-text-color);
+    border-radius: 100px;
+    border: var(--default-glass-border);
+    transition: var(--default-transition);
+    font-size: 22px;
+    font-family: var(--default-font-family);
+
+    backdrop-filter: var(--default-glass-blur);
+
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    aspect-ratio: 1;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_button_icon:hover:enabled {
+    scale: 1.1;
+}
+
+.ui_button_icon:active:enabled {
+    scale: 0.9;
+}
+
+.ui_button_icon:disabled {
+    scale: 0.9;
+    opacity: 0.7;
+}
+
+.ui_button_smallicon {
+    background-color: var(--default-glass-background);
+    color: var(--default-text-color);
+    border-radius: 100px;
+    border: var(--default-glass-border);
+    transition: var(--default-transition);
+    font-size: 15px;
+    font-family: var(--default-font-family);
+
+    backdrop-filter: var(--default-glass-blur);
+
+    padding: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+
+    aspect-ratio: 1;
+    width: 35px;
+    height: 35px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_button_smallicon:hover:enabled {
+    scale: 1.05;
+}
+
+.ui_button_smallicon:active:enabled {
+    scale: 0.95;
+}
+
+.ui_button_smallicon:disabled {
+    scale: 0.95;
+    opacity: 0.7;
+}
+
+.ui_button_small {
+    background-color: var(--default-glass-background);
+    color: var(--default-text-color);
+    border-radius: 100px;    
+    border: var(--default-glass-border);
+    transition: var(--default-transition);
+    font-size: 14px;
+    font-family: var(--default-font-family);
+
+    backdrop-filter: var(--default-glass-blur);
+
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_button_small:hover:enabled {
+    scale: 1.05;
+}
+
+.ui_button_small:active:enabled {
+    scale: 0.95;
+}
+
+.ui_button_small:disabled {
+    scale: 0.9;
+    opacity: 0.7;
+}
+
+
+/* Text */
+.ui_text_header {
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 30px;
+    padding: 0px;
+    margin: 10px;
+    text-align: center;
+
+    font-weight: 700;
+}
+
+.ui_text_subheader {
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 24px;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+
+    font-weight: 500;
+}
+
+.ui_text_subheader_left {
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 24px;
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+
+    font-weight: 500;
+}
+
+.ui_text_smallersubheader {
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 18px;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+
+    font-weight: 500;
+}
+
+.ui_text_body {
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 16px;
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+}
+
+.ui_text_description {
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 12px;
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+
+    opacity: 0.8;
+}
+
+
+/* Image */
+.ui_image_generic {
+    border-radius: 10px;
+    border: rgba(141, 141, 141, 0.8) 2px solid;
+    transition: var(--default-transition);
+    backdrop-filter: blur(20px);
+
+    opacity: 0.8;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_image_generic:hover {
+    opacity: 1;
+}
+
+
+/* Status Boxes */
+.ui_status_info {
+    background-color: rgba(57, 72, 112, 0.5);
+    border: rgb(57, 72, 112) 2px solid;
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+
+    display: flex;
+    flex-direction: row;
+
+    padding: 10px;
+    margin: 10px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_status_warning {
+    background-color: rgba(112, 93, 57, 0.5);
+    border: rgb(112, 93, 57) 2px solid;
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+
+    display: flex;
+    flex-direction: row;
+
+    padding: 10px;
+    margin: 10px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_status_critical {
+    background-color: rgba(112, 57, 57, 0.5);
+    border: rgb(112, 57, 57) 2px solid;
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+
+    display: flex;
+    flex-direction: row;
+
+    padding: 10px;
+    margin: 10px;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_status_text {
+    transition: var(--default-transition);
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: 16px;
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+
+    opacity: 0.8;
+    margin-left: 10px;
+}
+
+.ui_status_text:hover {
+    opacity: 1;
+    scale: 1.05;
+}
+
+.ui_status_icon {
+    color: white;
+
+    opacity: 0.8;
+}
+
+
+/* Text Areas */
+.ui_input_generic {
+    background-color: var(--default-glass-background);
+    color: var(--default-text-color);
+    border-radius: 10px;
+    border: var(--default-glass-border);
+    transition: var(--default-transition);
+    font-size: 16px;
+    font-family: var(--default-font-family);
+
+    backdrop-filter: var(--default-glass-blur);
+
+    padding: 5px;
+    margin: 5px;
+
+    opacity: 0.8;
+    scale: 1;
+    outline: none;
+    flex-grow: 2;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_input_generic:hover {
+    opacity: 1;
+    scale: 1.05;
+}
+
+
+/* Spacers */
+.ui_spacer {
+    height: 20px;
+}
+
+
+/* Seperators */
+.ui_separator_vertical {
+    width: 3px;
+    height: 100%;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    background-color: var(--default-glass-background);
+    border-radius: 10px;
+    border: var(--default-glass-border);
+
+    backdrop-filter: var(--default-glass-blur);
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_separator_horizontal {
+    height: 3px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+
+    background-color: var(--default-glass-background);
+    border-radius: 10px;
+    border: var(--default-glass-border);
+
+    backdrop-filter: var(--default-glass-blur);
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+/* Background Blur */
+@keyframes show_background_blur {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hide_background_blur {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.show_background_blur {
+    animation: show_background_blur 0.3s ease-in-out forwards;
+}
+
+.hide_background_blur {
+    animation: hide-background_blur 0.3s ease-in-out forwards;
+}
+
+.background_blur {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+    background-color: rgba(47, 47, 47, 0.524);
+    backdrop-filter: blur(20px);
+
+    display: none; /* Keep hidden until needed */
+
+    /* Starting properties for animation */
+    opacity: 0;
+}

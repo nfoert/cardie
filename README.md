@@ -42,10 +42,12 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-You should be done! Now just run the server using the following command, or run the `Start server` task in your Visual Studio Code
+Now just run the server using the following command, or run the `Start server` task in your Visual Studio Code
 ```
 python manage.py runserver
 ```
+
+Finally, navigate to `http://127.0.0.1:8000/admin` and log in using your new administrator account. Create a new `Server` object and be sure to configure the `ip` to be `http://127.0.0.1:8000`.
 
 ## To Do
 There's lots of things that need implemented or changed in this project. Please see [TODO.md](TODO.md).

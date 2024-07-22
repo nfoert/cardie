@@ -168,35 +168,71 @@ html {
     animation: hide-iconselector 0.2s ease-in-out forwards;
 }
 
-#editor-iconselector {
-    background-color: var(--default-glass-background);
-    border: var(--default-glass-border);
-    backdrop-filter: var(--default-glass-blur);
-    border-radius: 20px;
+@media (min-width: 1000px) {
+    /* Large screens */
 
-    /* TODO: Make mobile friendly */
-    aspect-ratio: 1;
-    width: auto;
-    height: 40%;
-    max-height: 40%;
+    #editor-iconselector {
+        background-color: var(--default-glass-background);
+        border: var(--default-glass-border);
+        backdrop-filter: var(--default-glass-blur);
+        border-radius: 20px;
+    
+        /* TODO: Make mobile friendly */
+        aspect-ratio: 1;
+        width: auto;
+        height: 40%;
+        max-height: 40%;
+    
+        z-index: 3;
+    
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+    
+        padding: clamp(1.5vh, 15px, 1.5vw);
+    
+        display: flex;
+        flex-direction: column;
+    
+        display: none; /* Keep hidden until needed */
+    
+        /* Starting properties for animation */
+        opacity: 0;
+        scale: 0.8;
+    }
+}
 
-    z-index: 3;
+@media (max-width: 1000px) {
+    /* Small Screens */
 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-
-    padding: clamp(1.5vh, 15px, 1.5vw);
-
-    display: flex;
-    flex-direction: column;
-
-    display: none; /* Keep hidden until needed */
-
-    /* Starting properties for animation */
-    opacity: 0;
-    scale: 0.8;
+    #editor-iconselector {
+        background-color: var(--default-glass-background);
+        backdrop-filter: var(--default-glass-blur);
+    
+        /* TODO: Make mobile friendly */
+        aspect-ratio: 1;
+        width: calc(100vw - 1.5vh);
+        height: 100vh;
+        max-height: 100vh;
+    
+        z-index: 3;
+    
+        position: fixed;
+        top: 0px;
+        left: 0px;
+    
+        padding: clamp(1.5vh, 15px, 1.5vw);
+    
+        display: flex;
+        flex-direction: column;
+    
+        display: none; /* Keep hidden until needed */
+    
+        /* Starting properties for animation */
+        opacity: 0;
+        scale: 0.8;
+    }
 }
 
 #editor-iconselector-top {
@@ -295,29 +331,70 @@ html {
     animation: hide-rename 0.2s ease-in-out forwards;
 }
 
-#editor_rename {
-    background-color: var(--default-glass-background);
-    border: var(--default-glass-border);
-    backdrop-filter: var(--default-glass-blur);
-    border-radius: 20px;
+@media (min-width: 1000px) {
+    /* Large screens */
 
-    z-index: 3;
+    #editor_rename {
+        background-color: var(--default-glass-background);
+        border: var(--default-glass-border);
+        backdrop-filter: var(--default-glass-blur);
+        border-radius: 20px;
+    
+        z-index: 3;
+    
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+    
+        padding: clamp(2vh, 20px, 2vw);
+    
+        display: flex;
+        flex-direction: column;
+    
+        display: none; /* Keep hidden until needed */
+    
+        /* Starting properties for animation */
+        opacity: 0;
+        scale: 0.8;
+    }
 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
+    #editor_rename_input {
+        width: clamp(40vh, 400px, 40vw);
+    }
+}
 
-    padding: clamp(2vh, 20px, 2vw);
+@media (max-width: 1000px) {
+    /* Small Screens */
 
-    display: flex;
-    flex-direction: column;
+    #editor_rename {
+        background-color: var(--default-glass-background);
+        border: var(--default-glass-border);
+        backdrop-filter: var(--default-glass-blur);
+        border-radius: 20px;
+    
+        z-index: 3;
+    
+        position: fixed;
+        top: 50vh;
+        left: 50vw;
+        translate: -50% -50%;
+    
+        padding: clamp(2vh, 20px, 2vw);
+    
+        display: flex;
+        flex-direction: column;
+    
+        display: none; /* Keep hidden until needed */
+    
+        /* Starting properties for animation */
+        opacity: 0;
+        scale: 0.8;
+    }
 
-    display: none; /* Keep hidden until needed */
-
-    /* Starting properties for animation */
-    opacity: 0;
-    scale: 0.8;
+    #editor_rename_input {
+        width: clamp(30vh, 300px, 30vw);
+    }
 }
 
 #editor_rename_top {
@@ -325,10 +402,6 @@ html {
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 10px;
-}
-
-#editor_rename_input {
-    width: clamp(40vh, 400px, 40vw);
 }
 
 #editor_main_preview_share {

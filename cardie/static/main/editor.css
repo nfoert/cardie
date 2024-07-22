@@ -13,18 +13,18 @@ html {
 }
 
 #editor_header_title_image {
-    height: 50px;
+    height: clamp(5vh, 50px, 5vw);
 }
 
 #editor_header_title_text {
     font-family: var(--default-font-family);
-    font-size: 30px;
+    font-size: clamp(3vh, 30px, 3vw);
     color: white;
     margin: 0;
     padding: 0;
 
-    margin-left: 10px;
-    margin-top: 5px;
+    margin-left: clamp(1vh, 10px, 1vw);
+    margin-top: clamp(0.5vh, 5px, 0.5vw);
 }
 
 #editor_header_title_home {
@@ -34,7 +34,7 @@ html {
 #editor_header_name {
     display: flex;
     flex-direction: row;
-    margin-left: 20px;
+    margin-left: clamp(2vh, 20px, 2vw);
 }
 
 #editor_header_name_button {
@@ -44,8 +44,8 @@ html {
     color: white;
 
     aspect-ratio: 1;
-    width: 30px;
-    height: 30px;
+    width: clamp(3vh, 30px, 3vw);
+    height: clamp(3vh, 30px, 3vw);
     border-radius: 100px;
     padding: 0;
 
@@ -65,24 +65,24 @@ html {
 
 #editor_header_name_text_cardname {
     color: white;
-    padding-left: 10px;
+    padding-left: clamp(1vh, 10px, 1vw);
 }
 
 #editor_header_name_text_username {
     color: white;
-    margin-left: 8px;
+    margin-left: clamp(0.8vh, 8px, 0.8vw);
 }
 
 #editor_status {
     color: white;
     font-family: var(--default-font-family);
-    font-size: 14px;
+    font-size: clamp(1.4vh, 14px, 1.4vw);
 
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: clamp(0.5vh, 5px, 0.5vw);
+    padding-left: clamp(1vh, 10px, 1vw);
+    padding-right: clamp(1vh, 10px, 1vw);
     margin: 0px;
-    margin-left: 20px;
+    margin-left: clamp(2vh, 20px, 2vw);
 
     background-color: var(--default-glass-background);
     border: var(--default-glass-border);
@@ -92,14 +92,27 @@ html {
     width: fit-content;
 }
 
-#editor_main {
-    display: flex;
-    flex-direction: row;
+@media (min-width: 1000px) {
+    /* Large screens */
+
+    #editor_main {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 1000px) {
+    /* Small Screens */
+
+    #editor_main {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 #editor_main_settings {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: clamp(2vh, 20px, 2vw);
+    margin-right: clamp(2vh, 20px, 2vw);
 
     display: flex;
     flex-direction: column;
@@ -108,7 +121,7 @@ html {
 #editor_main_settings_layout_buttons {
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
+    margin-top: clamp(1vh, 10px, 1vw);
     margin-left: auto;
     margin-right: auto;
 }
@@ -174,7 +187,7 @@ html {
     left: 50%;
     translate: -50% -50%;
 
-    padding: 15px;
+    padding: clamp(1.5vh, 15px, 1.5vw);
 
     display: flex;
     flex-direction: column;
@@ -192,9 +205,9 @@ html {
 }
 
 #editor-iconselector-top-search {
-    height: 20px;
-    max-height: 20px;
-    margin-bottom: 10px;
+    height: clamp(2vh, 20px, 2vw);
+    max-height: clamp(2vh, 20px, 2vw);
+    margin-bottom: clamp(1vh, 10px, 1vw);
 }
 
 #editor-iconselector-icons {
@@ -202,7 +215,7 @@ html {
     flex-wrap: wrap;
     overflow-y: auto;
 
-    margin-top: 5px;
+    margin-top: clamp(0.5vh, 5px, 0.5vw);
 }
 
 .editor-iconselector-icon {
@@ -220,7 +233,7 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 8px;
+    margin: clamp(0.8vh, 8px, 0.8vw);
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
@@ -237,15 +250,15 @@ html {
 
 .editor-iconselector-icon-icon {
     color: white;
-    font-size: 30px;
+    font-size: clamp(3vh, 30px, 3vw);
     text-align: center;
-    margin-top: 3px;
+    margin-top: clamp(0.3vh, 3px, 0.3vw);
 }
 
 .editor-iconselector-icon-text {
     color: white;
     font-family: "Noto Sans Mono", "Courier New", monospace;
-    font-size: 10px;
+    font-size: clamp(1vh, 10px, 1vw);
     text-align: center;
     user-select: none;
 }
@@ -295,7 +308,7 @@ html {
     left: 50%;
     translate: -50% -50%;
 
-    padding: 20px;
+    padding: clamp(2vh, 20px, 2vw);
 
     display: flex;
     flex-direction: column;
@@ -315,10 +328,10 @@ html {
 }
 
 #editor_rename_input {
-    width: 400px;
+    width: clamp(40vh, 400px, 40vw);
 }
 
 #editor_main_preview_share {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: clamp(2vh, 20px, 2vw);
+    margin-bottom: clamp(2vh, 20px, 2vw);
 }

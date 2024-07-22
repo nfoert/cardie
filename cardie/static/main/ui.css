@@ -212,6 +212,8 @@
     margin-top: clamp(0.5vh, 5px, 0.5vw);
     margin-bottom: clamp(0.5vh, 5px, 0.5vw);
 
+    white-space: nowrap;
+
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
@@ -412,6 +414,8 @@
     scale: 1;
     outline: none;
     flex-grow: 2;
+
+    width: 100%;
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);

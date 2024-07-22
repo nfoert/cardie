@@ -54,6 +54,16 @@
           "panel": "new"
         },
         "problemMatcher": []
+      },
+      {
+        "label": "Preview README.md with grip",
+        "type": "shell",
+        "command": "source .venv/bin/activate && grip",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
       }
     ]
   }

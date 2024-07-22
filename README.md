@@ -1,15 +1,25 @@
-<p align="center">
-    <img src="repo/images/logo_light.png" style="border-radius:20px; width:30vw;">
-</p>
+<div align="center">
+  <img src="repo/images/icon_rounded.png" style="width:15vw;">
+</div>
 
-# Welcome to Cardie!
+<div align="center">
+  <h1>Cardie</h1>
+</div>
+
 Design a unlimited number of business or information cards about yourself, share a link or QR code to them, print it out, and save other people's cards to your virtual wallet for later. Once you've created a card you can get analytics data on how your cards are getting visited, you can edit your cards as things change, and you can keep cards private so only people with a link to your card can see it.
 
-<p align="center">
+<div align="center">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=django,python,html,css,js,github,git,alpinejs"/>
   </a>
-</p>
+</div>
+
+<div align="center">
+    <img src="repo/images/screenshot1.png" style="border-radius: 10px; margin-top: 20px;">
+</div>
+
+> [!IMPORTANT]
+> Cardie is currently in an open alpha. Things will be rapidly changing and bugs are to be expected.
 
 ## Installation
 

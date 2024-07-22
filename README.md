@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="repo/images/icon_rounded.png" style="width:15vw;">
+  <img src="repo/images/logo_light.png" style="width:15vw;">
 </div>
 
 <div align="center">
@@ -15,7 +15,7 @@ Design a unlimited number of business or information cards about yourself, share
 </div>
 
 <div align="center">
-    <img src="repo/images/screenshot1.png" style="border-radius: 10px; margin-top: 20px;">
+  <img src="repo/images/screenshot1.png" style="border-radius: 10px; margin-top: 20px;">
 </div>
 
 > [!IMPORTANT]

@@ -44,6 +44,9 @@ async function start_editor() {
                 status_error();
                 window.location.href = server_ip;
 
+            } else if (text == "No Permission") {
+                window.location.href = server_ip;
+
             } else {
                 console.log("This card exists on the server!")
                 card_render_from_json(".card_card", text);

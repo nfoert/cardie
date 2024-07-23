@@ -1,0 +1,85 @@
+.notifications {
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+@media (min-width: 1000px) {
+    /* Large screens */
+
+    .notifications {
+        display: flex;
+        flex-direction: column;
+    
+        position: fixed;
+        bottom: clamp(1vh, 10px, 1vw);
+        right: clamp(1vh, 10px, 1vw);
+    }
+
+}
+
+@media (max-width: 1000px) {
+    /* Small Screens */
+
+    .notifications {
+        display: flex;
+        flex-direction: column;
+    
+        position: fixed;
+        top: clamp(1vh, 10px, 1vw);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.notification {
+    display: flex;
+    flex-direction: row;
+
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+    padding: clamp(1vh, 10px, 1vw);
+    min-width: clamp(30vh, 300px, 30vw);
+    transition: var(--default-transition);
+    margin-bottom: clamp(1vh, 10px, 1vw);
+
+    opacity: 0;
+    scale: 0.8;
+}
+
+.notification.show {
+    opacity: 1;
+    scale: 1;
+}
+
+.notification_text {
+    display: flex;
+    flex-direction: column;
+}
+
+.notification_header {
+    font-family: var(--default-font-family);
+    font-weight: 600;
+    color: white;
+    font-size: clamp(2vh, 20px, 2vq);
+    margin: 0;
+}
+
+.notification_body {
+    font-family: var(--default-font-family);
+    font-weight: 400;
+    color: white;
+    font-size: clamp(1.6vh, 16px, 1.6vw);
+    margin: 0;
+}
+
+.notification_icon {
+    color: white;
+    font-size: clamp(3vh, 30px, 3vw);
+    margin-right: 10px;
+}

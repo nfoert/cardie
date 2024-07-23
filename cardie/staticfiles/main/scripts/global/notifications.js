@@ -1,6 +1,6 @@
-// let notification_box = document.createElement("div");
-// notification_box.classList.add = "notifications";
-// document.body.appendChild(notification_box);
+let notification_box = document.createElement("div");
+notification_box.classList.add("notifications");
+document.body.appendChild(notification_box);
 
 function create_notification(header, body, icon) {
     let notification = document.createElement("div");

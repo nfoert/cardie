@@ -18,12 +18,14 @@ async function start_editor() {
             if (text == "Done") {
                 var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?uuid=' + new_uuid;    
                 window.history.pushState({ path: refresh }, '', refresh);
-                console.log("A new card has been created on the server with uuid " + new_uuid)
+                console.log("A new card has been created on the server with uuid " + new_uuid);
+                create_notification("New card created", "A new card has been successfully created", "check-circle");
                 status_saved();
 
             } else {
                 status_error();
                 console.log("there was a problem")
+                create_notification("There was a problem", "There was an unknown issue", "warning");
             }
         });
 
@@ -38,7 +40,8 @@ async function start_editor() {
         response.text().then(function (text) {
             if (text == "Request is not a POST request") {
                 status_error();
-                console.log("there was a problem")
+                console.log("there was a problem");
+                create_notification("There was a problem checking the card", "There was an unknown issue", "warning");
 
             } else if (text == "Card does not exist!") {
                 status_error();
@@ -78,6 +81,7 @@ async function save_card(card_json) {
         } else {
             console.log("there was a problem")
             status_error();
+            create_notification("There was a problem saving your card", "There was an unknown issue", "warning");
             return false;
         }
     });

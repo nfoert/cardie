@@ -47,7 +47,9 @@ async function list_cards() {
 
     response.text().then(function (text) {
         if (text == "Request is not a POST request") {
+            create_notification("There was a problem listing your cards", text, "warning");
             return false;
+            
         } else {
             text = JSON.parse(text);
             for (const card in text) {
@@ -64,7 +66,9 @@ async function log_out() {
 
     response.text().then(function (text) {
         if (text == "Request is not a POST request") {
+            create_notification("There was a problem logging out", text, "warning");
             return false;
+
         } else {
             window.location.href = server_ip + "/authentication";
         }

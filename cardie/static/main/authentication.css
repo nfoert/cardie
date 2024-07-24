@@ -35,3 +35,14 @@ html {
 
     align-items: center;
 }
+
+#authentication-error {
+    opacity: 0;
+    scale: 0.8;
+    transition: var(--default-transition);
+}
+
+#authentication-error.show {
+    opacity: 1;
+    scale: 1;
+}

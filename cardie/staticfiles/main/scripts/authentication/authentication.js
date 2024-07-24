@@ -1,8 +1,11 @@
-var state = "signin";
 
 function show_warning(warning) {
     document.querySelector("#authentication-error > p").innerText = warning;
     document.querySelector("#authentication-error").style.display = "flex";
+
+    setTimeout(function() {
+        document.querySelector("#authentication-error").classList.add("show");
+    }, 100);
 }
 
 async function sign_in() {
@@ -93,3 +96,14 @@ async function create_account() {
 
 document.querySelector("#signin-signin").addEventListener("click", sign_in);
 document.querySelector("#createaccount-createaccount").addEventListener("click", create_account);
+
+document.addEventListener("keyup", (event) => {
+    if (event.code === "Enter") {
+        if (document.querySelector("#signin-box").style.display != "none") {
+            console.log("fhakjdf")
+            sign_in();
+        } else {
+            create_account();
+        }
+    }
+}, false);

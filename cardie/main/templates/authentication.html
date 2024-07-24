@@ -24,12 +24,12 @@
 
             <img id="authentication-box-image" @click="window.location.href = server_ip" src="{% static '/main/images/logo_light.png' %}">
 
-            <div class="ui_status_critical" id="authentication-error" style="display: none;" x-transition>
+            <div class="ui_status_critical" id="authentication-error" style="display: none;">
                 <i class="ph-bold ph-warning-octagon ui_status_icon"></i>
                 <p class="ui_status_text">Critical status box</p>
             </div>
 
-            <div id="signin-box" x-show="sign_in">
+            <div id="signin-box" x-show="sign_in" x-transition:enter.delay.200ms>
                 <p class="ui_text_header"><i class="ph-bold ph-keyhole"></i> Sign In</p>
                 <div class="ui_separator_horizontal"></div>
 
@@ -40,7 +40,7 @@
                 <button id="signin-createaccount" class="ui_button_small" @click="sign_in = !sign_in">Create an Account <i class="ph-bold ph-arrow-right"></i></button>
             </div>
 
-            <div id="createaccount-box" x-show="!sign_in">
+            <div id="createaccount-box" x-show="!sign_in" x-transition:enter.delay.200ms>
                 <p class="ui_text_header"><i class="ph-bold ph-key"></i> Create Account</p>
                 <div class="ui_separator_horizontal"></div>
 

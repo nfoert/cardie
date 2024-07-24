@@ -22,6 +22,11 @@ html {
     margin-right: auto;
 
     cursor: pointer;
+    transition: var(--default-transition);
+}
+
+#authentication-box-image:hover {
+    scale: 1.05;
 }
 
 #signin-box {

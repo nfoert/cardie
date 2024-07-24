@@ -1,0 +1,57 @@
+
+
+@media (min-width: 1000px) {
+    /* Large screens */
+
+    #privacy {
+        margin-left: clamp(4vh, 40px, 4vw);
+        margin-top: clamp(4vh, 40px, 4vw);
+        width: fit-content;
+    }
+    
+    #privacy_lastupdated {
+        margin-left: clamp(2vh, 20px, 2vw);
+    }
+    
+    #privacy_content {
+        margin-left: clamp(2vh, 20px, 2vw);
+        margin-top: clamp(2vh, 20px, 2vw);
+    }
+    
+    .privacy_content_section {
+        margin-left: clamp(2vh, 20px, 2vw);
+        margin-top: clamp(2vh, 20px, 2vw);
+    }
+    
+    .privacy_header {
+        margin-top: clamp(2vh, 20px, 2vw);
+    }
+}
+
+@media (max-width: 1000px) {
+    /* Small Screens */
+
+    #privacy {
+        margin-left: clamp(2vh, 20px, 2vw);
+        margin-top: clamp(2vh, 20px, 2vw);
+        width: fit-content;
+    }
+    
+    #privacy_lastupdated {
+        margin-left: clamp(1vh, 10px, 1vw);
+    }
+    
+    #privacy_content {
+        margin-left: clamp(1vh, 10px, 1vw);
+        margin-top: clamp(2vh, 20px, 2vw);
+    }
+    
+    .privacy_content_section {
+        margin-left: clamp(1vh, 10px, 1vw);
+        margin-top: clamp(2vh, 20px, 2vw);
+    }
+    
+    .privacy_header {
+        margin-top: clamp(2vh, 20px, 2vw);
+    }
+}

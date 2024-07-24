@@ -71,3 +71,17 @@ html {
     background: rgb(61,132,148);
     background: linear-gradient(120deg, rgb(61, 84, 148) 9%, rgb(62, 34, 139) 47%, rgb(37, 210, 187) 91%); 
 }
+
+#authentication_privacypolicy {
+    color: var(--default-text-color);
+    font-family: var(--default-font-family);
+    transition: var(--default-transition);
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#authentication_privacypolicy:hover {
+    scale: 1.1;
+    opacity: 1;
+}

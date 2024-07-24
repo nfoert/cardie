@@ -77,6 +77,17 @@ def editor(request):
         print("No session data on home page!")
         return authentication(request)
 
+def privacy_policy(request):
+    server_info = Server.objects.all()[0]
+
+    context = {
+        "server_ip": server_info.ip,
+        "production": server_info.production,
+        "username": request.session["username"]
+    }
+
+    return render(request, "privacy.html", context)
+
 def icon_list(request):
     # TODO: This should probably go somewhere else for organization's sake, but I don't know where
     

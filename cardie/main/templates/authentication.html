@@ -51,6 +51,8 @@
                 <button id="createaccount-createaccount" class="ui_button_large"><strong>Create Account</strong> <i class="ph-bold ph-user-plus"></i></button>
                 <button id="createaccount-signin" class="ui_button_small" @click="sign_in = !sign_in">Sign In <i class="ph-bold ph-arrow-right"></i></button>
             </div>
+
+            <div id="authentication_privacypolicy" @click="window.location.href = server_ip + '/privacy'"><i class="ph-bold ph-lock"></i> Privacy Policy</div>
         </div>
 
         <div id="blob"></div>

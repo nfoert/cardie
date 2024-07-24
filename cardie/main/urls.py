@@ -8,6 +8,7 @@ urlpatterns = [
     path("ui", views.userinterface, name="ui"),
     path("home", views.home, name="home"),
     path("editor", views.editor, name="editor"),
+    path("privacy", views.privacy_policy, name="privacy"),
     path("iconlist", views.icon_list, name="iconlist"),
     path("createcard", views.create_card, name="createcard"),
     path("checkcard", views.check_card, name="checkcard"),

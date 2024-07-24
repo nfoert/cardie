@@ -22,7 +22,7 @@
         <div id="authentication-box" x-data="{ sign_in: true }">
             {% csrf_token %}
 
-            <img id="authentication-box-image" src="{% static '/main/images/logo_light.png' %}">
+            <img id="authentication-box-image" @click="window.location.href = server_ip" src="{% static '/main/images/logo_light.png' %}">
 
             <div class="ui_status_critical" id="authentication-error" style="display: none;" x-transition>
                 <i class="ph-bold ph-warning-octagon ui_status_icon"></i>
@@ -52,6 +52,8 @@
                 <button id="createaccount-signin" class="ui_button_small" @click="sign_in = !sign_in">Sign In <i class="ph-bold ph-arrow-right"></i></button>
             </div>
         </div>
+
+        <div id="blob"></div>
 
         {% include "footer.html" %}
 

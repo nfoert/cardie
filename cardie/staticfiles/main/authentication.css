@@ -20,6 +20,8 @@ html {
 
     margin-left: auto;
     margin-right: auto;
+
+    cursor: pointer;
 }
 
 #signin-box {
@@ -45,4 +47,22 @@ html {
 #authentication-error.show {
     opacity: 1;
     scale: 1;
+}
+
+#blob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    width: clamp(40vh, 400px, 40vw);
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 200px;
+    filter: blur(70px);
+
+    z-index: 0;
+
+    background: rgb(61,132,148);
+    background: linear-gradient(120deg, rgb(61, 84, 148) 9%, rgb(62, 34, 139) 47%, rgb(37, 210, 187) 91%); 
 }

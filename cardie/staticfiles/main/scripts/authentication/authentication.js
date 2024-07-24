@@ -100,8 +100,8 @@ document.querySelector("#createaccount-createaccount").addEventListener("click",
 document.addEventListener("keyup", (event) => {
     if (event.code === "Enter") {
         if (document.querySelector("#signin-box").style.display != "none") {
-            console.log("fhakjdf")
             sign_in();
+            
         } else {
             create_account();
         }

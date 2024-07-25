@@ -7,6 +7,8 @@
 
   [![](https://dcbadge.limes.pink/api/server/G24Ag9FqB8)](https://discord.gg/G24Ag9FqB8)
 
+  **[Live Server](https://cardie-uwtwy.ondigitalocean.app/)**
+
   [![](https://img.shields.io/github/issues/nfoert/cardie?style=for-the-badge)](https://github.com/nfoert/cardie/issues)
   [![](https://img.shields.io/github/license/nfoert/cardie?style=for-the-badge)](https://github/nfoert/cardie/blob/main/LICENSE)
 

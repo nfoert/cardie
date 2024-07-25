@@ -16,9 +16,11 @@ async function render_card_view() {
         response.text().then(function (text) {
             if (text == "Request is not a POST request") {
                 console.log("there was a problem")
+                create_notification("There was an issue fetching the card", text, "warning");
 
             } else if (text == "Card does not exist!") {
                 // TODO: Show that the card cannot be found
+                create_notification("That card could not be found", text, "warning");
 
             } else {
                 console.log("This card exists on the server!");

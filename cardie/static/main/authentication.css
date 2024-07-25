@@ -15,11 +15,18 @@ html {
 }
 
 #authentication-box-image {
-    width: 300px;
+    width: clamp(30vh, 300px, 30vw);
     height: auto;
 
     margin-left: auto;
     margin-right: auto;
+
+    cursor: pointer;
+    transition: var(--default-transition);
+}
+
+#authentication-box-image:hover {
+    scale: 1.05;
 }
 
 #signin-box {
@@ -34,4 +41,47 @@ html {
     flex-direction: column;
 
     align-items: center;
+}
+
+#authentication-error {
+    opacity: 0;
+    scale: 0.8;
+    transition: var(--default-transition);
+}
+
+#authentication-error.show {
+    opacity: 1;
+    scale: 1;
+}
+
+#blob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    width: clamp(40vh, 400px, 40vw);
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 200px;
+    filter: blur(70px);
+
+    z-index: 0;
+
+    background: rgb(61,132,148);
+    background: linear-gradient(120deg, rgb(61, 84, 148) 9%, rgb(62, 34, 139) 47%, rgb(37, 210, 187) 91%); 
+}
+
+#authentication_privacypolicy {
+    color: var(--default-text-color);
+    font-family: var(--default-font-family);
+    transition: var(--default-transition);
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#authentication_privacypolicy:hover {
+    scale: 1.1;
+    opacity: 1;
 }

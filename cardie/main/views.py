@@ -77,6 +77,17 @@ def editor(request):
         print("No session data on home page!")
         return authentication(request)
 
+def privacy_policy(request):
+    server_info = Server.objects.all()[0]
+
+    context = {
+        "server_ip": server_info.ip,
+        "production": server_info.production,
+        "username": request.session["username"]
+    }
+
+    return render(request, "privacy.html", context)
+
 def icon_list(request):
     # TODO: This should probably go somewhere else for organization's sake, but I don't know where
     
@@ -106,10 +117,18 @@ def create_card(request):
 def check_card(request):
     # Checks if a card exists on the server
     if request.method == "POST":
-        card = Card.objects.filter(uuid=request.headers["UUID"]);
+        card = Card.objects.filter(uuid=request.headers["UUID"])
+        me = User.objects.filter(username=request.session["username"])[0]
         # TODO: What if there are multiple cards with the UUID?
         if card:
-            return JsonResponse(card[0].data, safe=False)
+            # Card exists on the server
+            if card[0].owner == me:
+                # You own this card
+                return JsonResponse(card[0].data, safe=False)
+
+            else:
+                # You don't have permission to access this card
+                return HttpResponse("No Permission")
 
         else:
             return HttpResponse("Card does not exist!")

@@ -12,6 +12,7 @@
 
     Text
         ui_text_header
+            ui_text_header_left
         ui_text_subheader
             ui_text_subheader_left
         ui_text_smallersubheader
@@ -47,18 +48,18 @@
     border-radius: 100px;
     border: var(--default-glass-border);
     transition: var(--default-transition);
-    font-size: 16px;
+    font-size: clamp(1.6vh, 16px, 1.6vw);
     font-family: var(--default-font-family);
 
     backdrop-filter: var(--default-glass-blur);
 
-    padding: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding: clamp(1vh, 10px, 1vw);
+    padding-left: clamp(3vh, 30px, 3vw);
+    padding-right: clamp(3vh, 30px, 3vw);
+    margin-left: clamp(1vh, 10px, 1vw);
+    margin-right: clamp(1vh, 10px, 1vw);
+    margin-top: clamp(0.5vh, 5px, 0.5vw);
+    margin-bottom: clamp(0.5vh, 5px, 0.5vw);
 
     width: fit-content;
 
@@ -86,18 +87,18 @@
     border-radius: 10px;
     border: var(--default-glass-border);
     transition: var(--default-transition);
-    font-size: 16px;
+    font-size: clamp(1.6vh, 16px, 1.6vw);
     font-family: var(--default-font-family);
 
     backdrop-filter: var(--default-glass-blur);
 
-    padding: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding: clamp(1vh, 10px, 1vw);
+    padding-left: clamp(3vh, 30px, 3vw);
+    padding-right: clamp(3vh, 30px, 3vw);
+    margin-left: clamp(1vh, 10px, 1vw);
+    margin-right: clamp(1vh, 10px, 1vw);
+    margin-top: clamp(0.5vh, 5px, 0.5vw);
+    margin-bottom: clamp(0.5vh, 5px, 0.5vw);
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
@@ -124,14 +125,14 @@
     border-radius: 100px;
     border: var(--default-glass-border);
     transition: var(--default-transition);
-    font-size: 22px;
+    font-size: clamp(2.2vh, 22px, 2.2vw);
     font-family: var(--default-font-family);
 
     backdrop-filter: var(--default-glass-blur);
 
-    padding: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    padding: clamp(1vh, 10px, 1vw);
+    margin-left: clamp(1vh, 10px, 1vw);
+    margin-right: clamp(1vh, 10px, 1vw);
 
     aspect-ratio: 1;
 
@@ -159,21 +160,21 @@
     border-radius: 100px;
     border: var(--default-glass-border);
     transition: var(--default-transition);
-    font-size: 15px;
+    font-size: clamp(1.5vh, 15px, 1.5vw);
     font-family: var(--default-font-family);
 
     backdrop-filter: var(--default-glass-blur);
 
-    padding: 2px;
-    margin-left: 5px;
-    margin-right: 5px;
+    padding: clamp(0.2vh, 2px, 0.2vw);
+    margin-left: clamp(0.5vh, 5px, 0.5vw);
+    margin-right: clamp(0.5vh, 5px, 0.5vw);
 
     margin-top: auto;
     margin-bottom: auto;
 
     aspect-ratio: 1;
-    width: 35px;
-    height: 35px;
+    width: clamp(3.5vh, 35px, 3.5vw);
+    height: clamp(3.5vh, 35px, 3.5vw);
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
@@ -199,18 +200,20 @@
     border-radius: 100px;    
     border: var(--default-glass-border);
     transition: var(--default-transition);
-    font-size: 14px;
+    font-size: clamp(1.4vh, 14px, 1.4vw);
     font-family: var(--default-font-family);
 
     backdrop-filter: var(--default-glass-blur);
 
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding: clamp(0.5vh, 5px, 0.5vw);
+    padding-left: clamp(1.5vh, 15px, 1.5vw);
+    padding-right: clamp(1.5vh, 15px, 1.5vw);
+    margin-left: clamp(1vh, 10px, 1vw);
+    margin-right: clamp(1vh, 10px, 1vw);
+    margin-top: clamp(0.5vh, 5px, 0.5vw);
+    margin-bottom: clamp(0.5vh, 5px, 0.5vw);
+
+    white-space: nowrap;
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
@@ -235,10 +238,21 @@
 .ui_text_header {
     font-family: var(--default-font-family);
     color: var(--default-text-color);
-    font-size: 30px;
+    font-size: clamp(3vh, 30px, 3vw);
     padding: 0px;
-    margin: 10px;
+    margin: clamp(1vh, 10px, 1vw);
     text-align: center;
+
+    font-weight: 700;
+}
+
+.ui_text_header_left {
+    font-family: var(--default-font-family);
+    color: var(--default-text-color);
+    font-size: clamp(3vh, 30px, 3vw);
+    padding: 0px;
+    margin: clamp(1vh, 10px, 1vw);
+    text-align: left;
 
     font-weight: 700;
 }
@@ -246,7 +260,7 @@
 .ui_text_subheader {
     font-family: var(--default-font-family);
     color: var(--default-text-color);
-    font-size: 24px;
+    font-size: clamp(2.4vh, 24px, 2.4vw);
     padding: 0px;
     margin: 0px;
     text-align: center;
@@ -257,7 +271,7 @@
 .ui_text_subheader_left {
     font-family: var(--default-font-family);
     color: var(--default-text-color);
-    font-size: 24px;
+    font-size: clamp(2.4vh, 24px, 2.4vw);
     padding: 0px;
     margin: 0px;
     text-align: left;
@@ -268,7 +282,7 @@
 .ui_text_smallersubheader {
     font-family: var(--default-font-family);
     color: var(--default-text-color);
-    font-size: 18px;
+    font-size: clamp(1.8vh, 18px, 1.8vw);
     padding: 0px;
     margin: 0px;
     text-align: center;
@@ -279,7 +293,7 @@
 .ui_text_body {
     font-family: var(--default-font-family);
     color: var(--default-text-color);
-    font-size: 16px;
+    font-size: clamp(1.6vh, 16px, 1.6vw);
     padding: 0px;
     margin: 0px;
     text-align: left;
@@ -288,7 +302,7 @@
 .ui_text_description {
     font-family: var(--default-font-family);
     color: var(--default-text-color);
-    font-size: 12px;
+    font-size: clamp(1.2vh, 12px, 1.2vw);
     padding: 0px;
     margin: 0px;
     text-align: left;
@@ -326,8 +340,8 @@
     display: flex;
     flex-direction: row;
 
-    padding: 10px;
-    margin: 10px;
+    padding: clamp(1vh, 10px, 1vw);
+    margin: clamp(1vh, 10px, 1vw);
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
@@ -343,8 +357,8 @@
     display: flex;
     flex-direction: row;
 
-    padding: 10px;
-    margin: 10px;
+    padding: clamp(1vh, 10px, 1vw);
+    margin: clamp(1vh, 10px, 1vw);
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
@@ -360,8 +374,8 @@
     display: flex;
     flex-direction: row;
 
-    padding: 10px;
-    margin: 10px;
+    padding: clamp(1vh, 10px, 1vw);
+    margin: clamp(1vh, 10px, 1vw);
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
@@ -372,13 +386,13 @@
     transition: var(--default-transition);
     font-family: var(--default-font-family);
     color: var(--default-text-color);
-    font-size: 16px;
+    font-size: clamp(1.6vh, 16px, 1.6vw);
     padding: 0px;
     margin: 0px;
     text-align: left;
 
     opacity: 0.8;
-    margin-left: 10px;
+    margin-left: clamp(1vh, 10px, 1vw);
 }
 
 .ui_status_text:hover {
@@ -400,18 +414,20 @@
     border-radius: 10px;
     border: var(--default-glass-border);
     transition: var(--default-transition);
-    font-size: 16px;
+    font-size: clamp(1.6vh, 16px, 1.6vw);
     font-family: var(--default-font-family);
 
     backdrop-filter: var(--default-glass-blur);
 
-    padding: 5px;
-    margin: 5px;
+    padding: clamp(0.5vh, 5px, 0.5vw);
+    margin: clamp(0.5vh, 5px, 0.5vw);
 
     opacity: 0.8;
     scale: 1;
     outline: none;
     flex-grow: 2;
+
+    width: 100%;
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
@@ -426,17 +442,17 @@
 
 /* Spacers */
 .ui_spacer {
-    height: 20px;
+    height: clamp(2vh, 20px, 2vw);
 }
 
 
 /* Seperators */
 .ui_separator_vertical {
-    width: 3px;
+    width: clamp(0.3vh, 3px, 0.3vw);
     height: 100%;
 
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: clamp(1vh, 10px, 1vw);
+    margin-bottom: clamp(1vh, 10px, 1vw);
 
     background-color: var(--default-glass-background);
     border-radius: 10px;
@@ -450,10 +466,11 @@
 }
 
 .ui_separator_horizontal {
-    height: 3px;
+    height: clamp(0.3vh, 3px, 0.3vw);
+    width: 100%;
 
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: clamp(1vh, 10px, 1vw);
+    margin-right: clamp(1vh, 10px, 1vw);
 
     background-color: var(--default-glass-background);
     border-radius: 10px;

@@ -59,9 +59,7 @@ representative at an online or offline event.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders responsible for enforcement in the following ways.
-- `@nfoert` on Discord
-(Community moderation reports will improve soon!)
+reported to the community leaders responsible for enforcement by joining the Cardie discord [here](https://discord.gg/G24Ag9FqB8). Then you can DM an administrator or moderator and any necessary action will be taken.
 
 All complaints will be reviewed and investigated promptly and fairly.
 

@@ -72,6 +72,7 @@ This depends on what server hosting provider you're using. However, there's a co
 Set the following global environment variables:
 - `DJANGO_ALLOWED_HOSTS` -> `${APP_DOMAIN}` (This works on DigitalOcean, this may not work on every hosting provider)
 - `DJANGO_SETTINGS_MODULE` -> `cardie.settings_production`
+- `DJANGO_LOG_LEVEL` -> `WARNING`
 - `STATIC_URL` -> `/static/main`
 
 - `SECRET_KEY` -> `<your new secret key>` (Generate this using `django.core.management.utils.get_random_secret_key()`. If possible you should encrypt this value in your hosting provider.)

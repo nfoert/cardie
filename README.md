@@ -9,6 +9,9 @@
 
   **[Live Server](https://cardie-uwtwy.ondigitalocean.app/)**
 
+  **[Wiki](https://github.com/nfoert/cardie/wiki)** | 
+  **[Releases](https://github.com/nfoert/cardie/releases)**
+
   [![](https://img.shields.io/github/issues/nfoert/cardie?style=for-the-badge)](https://github.com/nfoert/cardie/issues)
   [![](https://img.shields.io/github/license/nfoert/cardie?style=for-the-badge)](https://github/nfoert/cardie/blob/main/LICENSE)
 
@@ -79,4 +82,6 @@ Set the following global environment variables:
 There's lots of things that need implemented or changed in this project. Please see [TODO.md](TODO.md).
 
 ## Contributing
-I'd love to see contributions to this project! Please check out the [issues](https://github.com/nfoert/issues) page to see what things currently need fixed or added.
+I'd love to see contributions to this project! Please check out the [issues](https://github.com/nfoert/cardie/issues) page to see what things currently need fixed or added.
+
+Additionally, check [TODO.md](TODO.md) for a rough todo list of things that need implemented, and the [wiki](https://github.com/nfoert/cardie/wiki) for some information on how to work with some of the existing systems.

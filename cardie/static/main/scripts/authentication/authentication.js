@@ -1,5 +1,6 @@
 
 function show_warning(warning) {
+    log("WARNING", warning)
     document.querySelector("#authentication-error > p").innerText = warning;
     document.querySelector("#authentication-error").style.display = "flex";
 
@@ -9,6 +10,7 @@ function show_warning(warning) {
 }
 
 async function sign_in() {
+    log("INFO", "Signing the user in...");
     var username = document.querySelector("#signin-username").value;
     var password = document.querySelector("#signin-password").value;
 
@@ -24,6 +26,7 @@ async function sign_in() {
 
     response.text().then(function (text) {
         if (text == "success") {
+            log("INFO", "Success!");
             window.location.href = server_ip + "/home";
 
         } else if (text == "error_missing_headers_and_session") {
@@ -48,6 +51,7 @@ async function sign_in() {
 }
 
 async function create_account() {
+    log("INFO", "Creating an account for the user...");
     var username = document.querySelector("#createaccount-username").value;
     var password = document.querySelector("#createaccount-password").value;
     var email = document.querySelector("#createaccount-email").value;
@@ -65,6 +69,7 @@ async function create_account() {
 
     response.text().then(function (text) {
         if (text == "success") {
+            log("INFO", "Success!");
             window.location.href = server_ip + "/home";
 
         } else if (text == "no_username") {

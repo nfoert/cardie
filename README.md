@@ -3,7 +3,6 @@
 </div>
 
 <div align="center">
-  <h1>Cardie</h1>
 
   [![](https://dcbadge.limes.pink/api/server/G24Ag9FqB8)](https://discord.gg/G24Ag9FqB8)
 

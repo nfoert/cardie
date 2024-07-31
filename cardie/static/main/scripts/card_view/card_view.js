@@ -2,7 +2,7 @@ async function render_card_view() {
     let uuid_param = new URL(window.location.href).searchParams.get("uuid");
 
     if (uuid_param == null) {
-        console.log("no uuid");
+        log("WARNING", "No UUID");
        // TODO: Show that the card cannot be found
 
     } else {
@@ -15,15 +15,16 @@ async function render_card_view() {
 
         response.text().then(function (text) {
             if (text == "Request is not a POST request") {
-                console.log("there was a problem")
+                log("WARNING", text);
                 create_notification("There was an issue fetching the card", text, "warning");
 
             } else if (text == "Card does not exist!") {
                 // TODO: Show that the card cannot be found
+                log("WARNING", "Card does not exist");
                 create_notification("That card could not be found", text, "warning");
 
             } else {
-                console.log("This card exists on the server!");
+                log("INFO", "This card exists on the server!");
                 card_render_from_json(".card_card", text);
 
                 document.querySelector("#cardview-text-cardname").innerText = JSON.parse(text)["name"];

@@ -67,6 +67,15 @@ async function create_account() {
         if (text == "success") {
             window.location.href = server_ip + "/home";
 
+        } else if (text == "no_username") {
+            show_warning("Your account needs an username!")
+
+        } else if (text == "no_password") {
+            show_warning("Your account needs an password!")
+
+        } else if (text == "no_email") {
+            show_warning("Your account needs an email!")
+
         } else if (text == "error_account_already_exists") {
             show_warning("An account with that username already exists!");
 
@@ -94,8 +103,32 @@ async function create_account() {
     });
 }
 
+function check_sign_in() {
+    document.querySelector("#signin-signin").disabled = !(
+        document.querySelector("#signin-username").value != "" && 
+        document.querySelector("#signin-password").value != ""
+    );
+}
+
+function check_create_account() {
+    document.querySelector("#createaccount-createaccount").disabled = !(
+        document.querySelector("#createaccount-username").value != "" && 
+        document.querySelector("#createaccount-password").value != "" && 
+        document.querySelector("#createaccount-email").value != ""
+    );
+}
+
 document.querySelector("#signin-signin").addEventListener("click", sign_in);
 document.querySelector("#createaccount-createaccount").addEventListener("click", create_account);
+
+document.querySelector("#signin-username").addEventListener("input", check_sign_in);
+document.querySelector("#signin-password").addEventListener("input", check_sign_in);
+document.querySelector("#createaccount-username").addEventListener("input", check_create_account);
+document.querySelector("#createaccount-password").addEventListener("input", check_create_account);
+document.querySelector("#createaccount-email").addEventListener("input", check_create_account);
+
+document.querySelector("#signin-signin").disabled = true;
+document.querySelector("#createaccount-createaccount").disabled = true;
 
 document.addEventListener("keyup", (event) => {
     if (event.code === "Enter") {

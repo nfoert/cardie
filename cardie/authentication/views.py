@@ -66,6 +66,16 @@ def create_account(request):
             password = request.headers["Password"]
             email = request.headers["Email"]
 
+            if username == "":
+                return HttpResponse("no_username")
+
+            if password == "":
+                return HttpResponse("no_password")
+
+            if email == "":
+                return HttpResponse("no_email")
+
+
             users = User.objects.filter(username=username)
 
             if len(users) > 0:

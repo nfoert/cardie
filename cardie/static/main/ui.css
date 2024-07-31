@@ -76,7 +76,7 @@
     scale: 0.95;
 }
 
-.ui_button_grid:disabled {
+.ui_button_large:disabled {
     scale: 0.9;
     opacity: 0.7;
 }
@@ -117,7 +117,6 @@
     scale: 0.9;
     opacity: 0.7;
 }
-
 
 .ui_button_icon {
     background-color: var(--default-glass-background);

@@ -1,7 +1,7 @@
 /* 
     ui.css
     Handles styles for every common user interface element
-    Quick refrences for every element class name is below
+    Quick references for every element class name is below
 
     Buttons
         ui_button_large
@@ -15,7 +15,7 @@
             ui_text_header_left
         ui_text_subheader
             ui_text_subheader_left
-        ui_text_smallersubheader
+        v
         ui_text_body
         ui_text_description
 
@@ -23,7 +23,7 @@
         ui_image_generic
 
     Status Boxes
-        ui_status_Info
+        ui_status_info
         ui_status_warning
         ui_status_critical
 
@@ -36,9 +36,9 @@
     Spacers
         ui_spacer
 
-    Seperators
-        ui_seperator_vertical
-        ui_seperator_horizontal
+    Separators
+        ui_separator_vertical
+        ui_separator_horizontal
 */
 
 /* Buttons */
@@ -446,7 +446,7 @@
 }
 
 
-/* Seperators */
+/* Separators */
 .ui_separator_vertical {
     width: clamp(0.3vh, 3px, 0.3vw);
     height: 100%;

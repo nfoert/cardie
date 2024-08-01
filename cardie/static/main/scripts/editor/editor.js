@@ -18,13 +18,13 @@ async function start_editor() {
             if (text == "Done") {
                 var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?uuid=' + new_uuid;    
                 window.history.pushState({ path: refresh }, '', refresh);
-                console.log("A new card has been created on the server with uuid " + new_uuid);
+                log("INFO", "A new card has been created on the server with uuid " + new_uuid);
                 create_notification("New card created", "A new card has been successfully created", "check-circle");
                 status_saved();
 
             } else {
                 status_error();
-                console.log("there was a problem")
+                log("WARNING", "There was a problem")
                 create_notification("There was a problem", "There was an unknown issue", "warning");
             }
         });
@@ -40,18 +40,20 @@ async function start_editor() {
         response.text().then(function (text) {
             if (text == "Request is not a POST request") {
                 status_error();
-                console.log("there was a problem");
+                log("WARNING", "There was a problem");
                 create_notification("There was a problem checking the card", "There was an unknown issue", "warning");
 
             } else if (text == "Card does not exist!") {
+                log("WARNING", "Card does not exist!");
                 status_error();
                 window.location.href = server_ip;
 
             } else if (text == "No Permission") {
+                log("WARNING", "No Permission")
                 window.location.href = server_ip;
 
             } else {
-                console.log("This card exists on the server!")
+                log("INFO", "This card exists on the server!")
                 card_render_from_json(".card_card", text);
                 editor_load_from_json(text);
                 status_saved();
@@ -74,12 +76,12 @@ async function save_card(card_json) {
 
     response.text().then(function (text) {
         if (text == "Done") {
-            console.log("Data has been saved")
+            log("INFO", "Data has been saved")
             status_saved();
             return true;
 
         } else {
-            console.log("there was a problem")
+            log("WARNING", "There was a problem saving the card")
             status_error();
             create_notification("There was a problem saving your card", "There was an unknown issue", "warning");
             return false;

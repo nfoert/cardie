@@ -82,8 +82,7 @@ def privacy_policy(request):
 
     context = {
         "server_ip": server_info.ip,
-        "production": server_info.production,
-        "username": request.session["username"]
+        "production": server_info.production
     }
 
     return render(request, "privacy.html", context)

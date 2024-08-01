@@ -1,11 +1,18 @@
-<div align="center">
-  <img src="repo/images/logo_light.png" style="width:25vw;">
-</div>
+<p align="center">
+
+  ![Cardie Logo](repo/images/logo_light.png#gh-dark-mode-only)
+  ![Cardie Logo](repo/images/logo_dark.png#gh-light-mode-only)
+
+</p>
 
 <div align="center">
-  <h1>Cardie</h1>
 
   [![](https://dcbadge.limes.pink/api/server/G24Ag9FqB8)](https://discord.gg/G24Ag9FqB8)
+
+  **[Live Server](https://cardie-uwtwy.ondigitalocean.app/)**
+
+  **[Wiki](https://github.com/nfoert/cardie/wiki)** | 
+  **[Releases](https://github.com/nfoert/cardie/releases)**
 
   [![](https://img.shields.io/github/issues/nfoert/cardie?style=for-the-badge)](https://github.com/nfoert/cardie/issues)
   [![](https://img.shields.io/github/license/nfoert/cardie?style=for-the-badge)](https://github/nfoert/cardie/blob/main/LICENSE)
@@ -67,6 +74,7 @@ This depends on what server hosting provider you're using. However, there's a co
 Set the following global environment variables:
 - `DJANGO_ALLOWED_HOSTS` -> `${APP_DOMAIN}` (This works on DigitalOcean, this may not work on every hosting provider)
 - `DJANGO_SETTINGS_MODULE` -> `cardie.settings_production`
+- `DJANGO_LOG_LEVEL` -> `WARNING`
 - `STATIC_URL` -> `/static/main`
 
 - `SECRET_KEY` -> `<your new secret key>` (Generate this using `django.core.management.utils.get_random_secret_key()`. If possible you should encrypt this value in your hosting provider.)
@@ -77,4 +85,6 @@ Set the following global environment variables:
 There's lots of things that need implemented or changed in this project. Please see [TODO.md](TODO.md).
 
 ## Contributing
-I'd love to see contributions to this project! Please check out the [issues](https://github.com/nfoert/issues) page to see what things currently need fixed or added.
+I'd love to see contributions to this project! Please check out the [issues](https://github.com/nfoert/cardie/issues) page to see what things currently need fixed or added.
+
+Additionally, check [TODO.md](TODO.md) for a rough todo list of things that need implemented, and the [wiki](https://github.com/nfoert/cardie/wiki) for some information on how to work with some of the existing systems.

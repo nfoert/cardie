@@ -1,6 +1,9 @@
-<div align="center">
-  <img src="repo/images/logo_light.png" style="width:25vw;">
-</div>
+<p align="center">
+
+  ![Cardie Logo](repo/images/logo_light.png#gh-dark-mode-only)
+  ![Cardie Logo](repo/images/logo_dark.png#gh-light-mode-only)
+
+</p>
 
 <div align="center">
 

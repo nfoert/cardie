@@ -1,6 +1,8 @@
 var old_card_data = JSON.stringify(editor_create_json());
 var new_card_data;
 
+let demo_param = JSON.parse(new URL(window.location.href).searchParams.get("demo").toLowerCase());
+
 async function start_editor() {
     let uuid_param = new URL(window.location.href).searchParams.get("uuid");
 

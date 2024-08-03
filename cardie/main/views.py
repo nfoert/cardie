@@ -61,21 +61,31 @@ def home(request):
 def editor(request):
     server_info = Server.objects.all()[0]
 
-    try:
-        request.session["username"]
-        request.session["password"]
-
+    if bool(request.GET.get("demo", False)):
+        # Open the editor without authenticating
         context = {
             "server_ip": server_info.ip,
             "production": server_info.production,
-            "username": request.session["username"]
         }
 
         return render(request, "editor.html", context)
 
-    except KeyError:
-        print("No session data on home page!")
-        return authentication(request)
+    else:
+        try:
+            request.session["username"]
+            request.session["password"]
+
+            context = {
+                "server_ip": server_info.ip,
+                "production": server_info.production,
+                "username": request.session["username"]
+            }
+
+            return render(request, "editor.html", context)
+
+        except KeyError:
+            print("No session data on editor page!")
+            return authentication(request)
 
 def privacy_policy(request):
     server_info = Server.objects.all()[0]

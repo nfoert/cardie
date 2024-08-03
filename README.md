@@ -88,3 +88,5 @@ There's lots of things that need implemented or changed in this project. Please 
 I'd love to see contributions to this project! Please check out the [issues](https://github.com/nfoert/cardie/issues) page to see what things currently need fixed or added.
 
 Additionally, check [TODO.md](TODO.md) for a rough todo list of things that need implemented, and the [wiki](https://github.com/nfoert/cardie/wiki) for some information on how to work with some of the existing systems.
+
+When contributing, first fork this repository. If you want the latest changes uncheck the `Copy the main branch only` option. Then, create a new branch with your change in it, either from the `main` branch or the `development` branch. Finally, open a pull request which merges into the `development` branch. Your changes will be reviewed and merged when ready.

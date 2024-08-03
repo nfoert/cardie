@@ -1,11 +1,18 @@
 var old_card_data = JSON.stringify(editor_create_json());
 var new_card_data;
 
-let demo_param = JSON.parse(new URL(window.location.href).searchParams.get("demo").toLowerCase());
+try {
+    var demo_param = JSON.parse(new URL(window.location.href).searchParams.get("demo").toLowerCase());
+
+} catch {
+    var demo_param = false;
+}
 
 async function start_editor() {
     if (demo_param == false) {
         let uuid_param = new URL(window.location.href).searchParams.get("uuid");
+
+        document.querySelector("#editor_main_preview_demo").style.display = "none";
 
         if (uuid_param == null) {
             let new_uuid = crypto.randomUUID();
@@ -107,6 +114,15 @@ function save_loop() {
     }
 }
 
+function demo_loop() {
+    new_card_data = JSON.stringify(editor_create_json());
+
+    if (new_card_data != old_card_data) {
+        old_card_data = new_card_data;
+        card_render_from_json(".card_card", new_card_data);
+    }
+}
+
 async function editor_demo_auth(sign_in) {
     const response = await fetch(server_ip + "/createtempcard", {
         method: "POST",
@@ -175,4 +191,8 @@ document.querySelector("#editor_demo_createaccount").addEventListener("click", (
 
 start_editor();
 
-setInterval(save_loop, 3000);
+if (demo_param == false) {
+    setInterval(save_loop, 3000);
+} else {
+    setInterval(demo_loop, 1000);
+}

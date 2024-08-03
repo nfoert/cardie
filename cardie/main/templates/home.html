@@ -67,6 +67,16 @@
             </div>
         <div>
 
+        <div id="home_card_menu">
+            <button class="ui_button_small"><i class="ph-bold ph-pencil-simple-line"></i> Edit</button>
+            <button class="ui_button_small"><i class="ph-bold ph-cursor-text"></i> Rename</button>
+            <button class="ui_button_small"><i class="ph-bold ph-link"></i> Copy Link</button>
+            <div class="ui_separator_horizontal"></div>
+            <button class="ui_button_small"><i class="ph-bold ph-trash"></i> Delete</button>
+        </div>
+
+        <div class="background_blur"></div>
+
         {% include "footer.html" %}
 
         <script>
@@ -79,5 +89,6 @@
         <script src="{% static '/main/scripts/global/favicon.js' %}"></script>
         <script src="{% static '/main/scripts/global/notifications.js' %}"></script>
         <script src="{% static '/main/scripts/global/logging.js' %}"></script>
+        <script src="{% static '/main/scripts/global/background_blur.js' %}"></script>
     </body>
 </html>

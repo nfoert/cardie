@@ -465,7 +465,8 @@
 
 .ui_separator_horizontal {
     height: clamp(0.3vh, 3px, 0.3vw);
-    width: 100%;
+    /* TODO: Technically this works for now but it should be fixed properly later */
+    width: 85%; 
 
     margin-left: clamp(1vh, 10px, 1vw);
     margin-right: clamp(1vh, 10px, 1vw);

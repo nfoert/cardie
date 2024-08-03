@@ -4,18 +4,69 @@ function home_card_edit(event) {
     window.location.href = server_ip + "/editor" + `?uuid=${uuid}&`;
 }
 
+var open_home_card_uuid;
+
+function home_card_menu(event) {
+    let home_card = event.target.closest(".home_card");
+
+    if (home_card.getAttribute("open") == "false") {
+        home_card.style.position = "relative";
+        home_card.style.zIndex = "3";
+        home_card.style.scale = "1.05";
+        show_background_blur();
+        home_card.querySelector(".home_card_menu_button > i").className = "ph-bold ph-x-circle";
+        home_card.setAttribute("open", true);
+
+        document.querySelector("#home_card_menu").style.display = "flex";
+
+        const rect = home_card.getBoundingClientRect();
+        document.querySelector("#home_card_menu").style.top = `${rect.bottom + 10}px`;
+        document.querySelector("#home_card_menu").style.left = `${rect.right - document.querySelector("#home_card_menu").offsetWidth}px`;
+
+        setTimeout(function() {
+            document.querySelector("#home_card_menu").classList.add("show");
+        }, 50);
+
+        open_home_card_uuid = home_card.querySelector(".home_card_text_uuid").innerText;
+
+    } else {
+        home_card.querySelector(".home_card_menu_button > i").className = "ph-bold ph-dots-three";
+        home_card.style.scale = "1";
+        document.querySelector("#home_card_menu").classList.remove("show");
+        hide_background_blur();
+
+        setTimeout(function() {
+            home_card.style.zIndex = "1";
+            home_card.setAttribute("open", "false");
+            document.querySelector("#home_card_menu").style.display = "none";
+        }, 500);
+    }
+    
+}
+
 function create_home_card(uuid, name) {
     let div = document.createElement("div");
     div.classList.add("home_card");
 
     let edit_button = document.createElement("button");
     edit_button.classList.add("ui_button_icon");
+    edit_button.classList.add("home_card_edit_button")
 
     let edit_button_icon = document.createElement("i");
-    edit_button_icon.className = "ph ph-pencil-simple-line"
+    edit_button_icon.className = "ph-bold ph-pencil-simple-line";
 
     edit_button.appendChild(edit_button_icon);
-    edit_button.addEventListener("click", (event) => home_card_edit(event))
+    edit_button.addEventListener("click", (event) => home_card_edit(event));
+
+    let menu_button = document.createElement("button");
+    menu_button.classList.add("ui_button_icon");
+    menu_button.classList.add("home_card_menu_button")
+
+    let menu_button_icon = document.createElement("i");
+    menu_button_icon.className = "ph-bold ph-dots-three";
+
+    menu_button.appendChild(menu_button_icon);
+    menu_button.addEventListener("click", (event) => home_card_menu(event));
 
     let text_div = document.createElement("div");
     text_div.classList.add("home_card_text");
@@ -33,6 +84,9 @@ function create_home_card(uuid, name) {
 
     div.appendChild(text_div);
     div.appendChild(edit_button);
+    div.appendChild(menu_button);
+
+    div.setAttribute("open", false);
 
     document.querySelector("#home-cards").appendChild(div);
 }

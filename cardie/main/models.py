@@ -27,4 +27,7 @@ class TempCard(models.Model):
     # A temporary card used when the user tries the editor and then goes to create an account
     uuid = models.UUIDField(default=uuid.uuid4)
     data = models.JSONField(default=dict, blank=True)
-    created = models.DateTimeField()
+    created = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return(f"Temporary card created on '{self.created}'")

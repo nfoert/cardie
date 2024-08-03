@@ -16,5 +16,6 @@ urlpatterns = [
     path("listcards", views.list_cards, name="listcards"),
     path("card", views.card_view, name="cardview"),
     path("getcard", views.get_card, name="getcard"),
-    path("logout", views.log_out, name="logout")
+    path("logout", views.log_out, name="logout"),
+    path("createtempcard", views.create_temp_card, name="createtempcard")
 ]

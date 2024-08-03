@@ -408,3 +408,8 @@ html {
     margin-top: clamp(2vh, 20px, 2vw);
     margin-bottom: clamp(2vh, 20px, 2vw);
 }
+
+#editor_main_preview_demo {
+    margin-top: clamp(2vh, 20px, 2vw);
+    margin-bottom: clamp(2vh, 20px, 2vw);
+}

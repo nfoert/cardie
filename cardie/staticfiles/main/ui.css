@@ -15,7 +15,6 @@
             ui_text_header_left
         ui_text_subheader
             ui_text_subheader_left
-        v
         ui_text_body
         ui_text_description
 
@@ -76,7 +75,7 @@
     scale: 0.95;
 }
 
-.ui_button_grid:disabled {
+.ui_button_large:disabled {
     scale: 0.9;
     opacity: 0.7;
 }
@@ -117,7 +116,6 @@
     scale: 0.9;
     opacity: 0.7;
 }
-
 
 .ui_button_icon {
     background-color: var(--default-glass-background);
@@ -484,34 +482,6 @@
 }
 
 /* Background Blur */
-@keyframes show_background_blur {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes hide_background_blur {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
-.show_background_blur {
-    animation: show_background_blur 0.3s ease-in-out forwards;
-}
-
-.hide_background_blur {
-    animation: hide-background_blur 0.3s ease-in-out forwards;
-}
-
 .background_blur {
     position: fixed;
     top: 0px;
@@ -525,7 +495,12 @@
     backdrop-filter: blur(20px);
 
     display: none; /* Keep hidden until needed */
+    transition: var(--default-transition);
 
     /* Starting properties for animation */
     opacity: 0;
+}
+
+.background_blur.show {
+    opacity: 1;
 }

@@ -40,6 +40,8 @@ html {
     #home-top-image {
         width: clamp(30vh, 300px, 30vw);
         height: auto;
+        transition: var(--default-transition);
+        cursor: pointer;
     }
 }
 
@@ -81,7 +83,13 @@ html {
     #home-top-image {
         width: clamp(20vh, 200px, 20vw);
         height: auto;
+        transition: var(--default-transition);
+        cursor: pointer;
     }
+}
+
+#home-top-image:hover {
+    scale: 1.05;
 }
 
 .home_card {

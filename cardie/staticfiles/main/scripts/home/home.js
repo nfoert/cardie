@@ -79,4 +79,8 @@ function create_new_card() {
     window.location.href = server_ip + "/editor";
 }
 
+document.querySelector("#home-top-image").addEventListener("click", (event) => {
+    window.location.href = server_ip;
+});
+
 list_cards();

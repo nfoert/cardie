@@ -1,3 +1,9 @@
+try {
+    var temp_uuid = new URL(window.location.href).searchParams.get("temp_uuid");
+
+} catch {
+    var temp_uuid = false;
+}
 
 function show_warning(warning) {
     log("WARNING", warning)
@@ -14,20 +20,36 @@ async function sign_in() {
     var username = document.querySelector("#signin-username").value;
     var password = document.querySelector("#signin-password").value;
 
-    const response = await fetch(server_ip + "/auth/signin", {
-        method: "GET",
-        headers: {
-            "X-CSRFToken": document.querySelector('input[name="csrfmiddlewaretoken"]').value,
-            "Internal": true,
-            "Username": username,
-            "Password": password,
-        }
-    });
+    if (temp_uuid) {
+        var response = await fetch(server_ip + "/auth/signin", {
+            method: "GET",
+            headers: {
+                "X-CSRFToken": document.querySelector('input[name="csrfmiddlewaretoken"]').value,
+                "Internal": true,
+                "Username": username,
+                "Password": password,
+                "TempUUID": temp_uuid
+            }
+        });
+        
+    } else {
+        var response = await fetch(server_ip + "/auth/signin", {
+            method: "GET",
+            headers: {
+                "X-CSRFToken": document.querySelector('input[name="csrfmiddlewaretoken"]').value,
+                "Internal": true,
+                "Username": username,
+                "Password": password
+            }
+        });
+    }
+
+    log("DEBUG", temp_uuid)
 
     response.text().then(function (text) {
         if (text == "success") {
             log("INFO", "Success!");
-            window.location.href = server_ip + "/home";
+            window.location.href = `${server_ip}/home`;
 
         } else if (text == "error_missing_headers_and_session") {
             show_warning("Missing headers and no session data!");
@@ -44,6 +66,9 @@ async function sign_in() {
         } else if (text == "error_sign_in_disabled") {
             show_warning("Signing in is disabled on this server");
 
+        } else if (text.includes("card_added_to_account")) {
+            window.location.href = `${server_ip}/editor?uuid=${text.replace("card_added_to_account ", "")}`;
+        
         } else {
             show_warning("There was a problem signing you in!");
         }
@@ -56,30 +81,44 @@ async function create_account() {
     var password = document.querySelector("#createaccount-password").value;
     var email = document.querySelector("#createaccount-email").value;
 
-    const response = await fetch(server_ip + "/auth/createaccount", {
-        method: "GET",
-        headers: {
-            "X-CSRFToken": document.querySelector('input[name="csrfmiddlewaretoken"]').value,
-            "Internal": true,
-            "Username": username,
-            "Password": password,
-            "Email": email,
-        }
-    });
+    if (temp_uuid) {
+        var response = await fetch(server_ip + "/auth/createaccount", {
+            method: "GET",
+            headers: {
+                "X-CSRFToken": document.querySelector('input[name="csrfmiddlewaretoken"]').value,
+                "Internal": true,
+                "Username": username,
+                "Password": password,
+                "Email": email,
+                "TempUUID": temp_uuid
+            }
+        });
+    } else {
+        var response = await fetch(server_ip + "/auth/createaccount", {
+            method: "GET",
+            headers: {
+                "X-CSRFToken": document.querySelector('input[name="csrfmiddlewaretoken"]').value,
+                "Internal": true,
+                "Username": username,
+                "Password": password,
+                "Email": email
+            }
+        });
+    }
 
     response.text().then(function (text) {
         if (text == "success") {
             log("INFO", "Success!");
-            window.location.href = server_ip + "/home";
+            window.location.href = `${server_ip}/home`;
 
         } else if (text == "no_username") {
-            show_warning("Your account needs an username!")
+            show_warning("Your account needs an username!");
 
         } else if (text == "no_password") {
-            show_warning("Your account needs an password!")
+            show_warning("Your account needs an password!");
 
         } else if (text == "no_email") {
-            show_warning("Your account needs an email!")
+            show_warning("Your account needs an email!");
 
         } else if (text == "error_account_already_exists") {
             show_warning("An account with that username already exists!");
@@ -100,11 +139,16 @@ async function create_account() {
             show_warning("Multiple accounts exist with that username... that's really not supposed to happen...");
 
         } else if (text == "error_create_account_disabled") {
-            show_warning("Creating accounts is disabled on this server")
+            show_warning("Creating accounts is disabled on this server");
+
+        } else if (text.includes("card_added_to_account")) {
+            window.location.href = `${server_ip}/editor?uuid=${text.replace("card_added_to_account ", "")}`;
         
         } else {
             show_warning("There was a problem creating your account!");
         }
+
+        console.log(text);
     });
 }
 

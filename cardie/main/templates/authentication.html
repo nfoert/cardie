@@ -65,8 +65,13 @@
                     sign_in: true,
                 
                     init() {
-                        let sign_in_param = JSON.parse(new URL(window.location.href).searchParams.get("sign_in").toLowerCase());
-                        this.sign_in = sign_in_param;
+                        try {
+                            let sign_in_param = JSON.parse(new URL(window.location.href).searchParams.get("sign_in").toLowerCase());
+                            this.sign_in = sign_in_param;
+                        } catch {
+                            this.sign_in = true;
+                        }
+                        
                     }
                 };
             }

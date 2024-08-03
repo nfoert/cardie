@@ -226,7 +226,6 @@ def log_out(request):
 def create_temp_card(request):
     if request.method == "POST":
         if request.headers["data"]:
-            print(json.dumps(request.headers["data"]))
             temp_card = TempCard(data=json.loads(request.headers["data"]), created=timezone.now())
             temp_card.save()
             

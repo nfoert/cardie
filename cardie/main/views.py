@@ -115,7 +115,7 @@ def create_card(request):
         # TODO: What if there are two accounts with that username?
         me = User.objects.filter(username=request.session["username"])[0]
 
-        card = Card(uuid=request.headers["UUID"], owner=me)
+        card = Card(uuid=request.headers["UUID"], owner=me,card_last_edited_on = timezone.now(),card_created_on = timezone.now())
         card.save()
 
         return HttpResponse("Done")
@@ -156,6 +156,7 @@ def save_card(request):
         if card:
             card.name = json.loads(request.headers["Data"])["name"]
             card.data = json.loads(request.headers["Data"])
+            card.card_last_edited_on = timezone.now()
             card.save()
             return HttpResponse("Done")
 

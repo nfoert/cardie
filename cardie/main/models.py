@@ -17,7 +17,8 @@ class Card(models.Model):
     uuid = models.UUIDField()
     name = models.CharField(max_length=256)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    
+    card_last_edited_on= models.DateTimeField(blank=False); 
+    card_created_on=models.DateTimeField(blank=False);
     data = models.JSONField(default=dict, blank=True)
 
     def __str__(self):

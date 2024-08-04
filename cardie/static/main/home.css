@@ -195,3 +195,7 @@ html {
     color: rgb(255, 117, 117);
     background-color: rgb(75, 61, 61);
 }
+#dialog_home_delete {
+    display: flex;
+    flex-direction: column;
+}

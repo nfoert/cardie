@@ -236,3 +236,25 @@ def create_temp_card(request):
         
     else:
         return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def delete_card(request):
+    if request.method == "POST":
+        if request.headers["uuid"]:
+            # TODO: What if there are two accounts with that username?
+            me = User.objects.filter(username=request.session["username"])[0]
+
+            card = Card.objects.filter(uuid=request.headers["uuid"], owner=me)
+            
+            if card:
+                card.delete()
+                return HttpResponse("Success")
+
+            else:
+                return HttpResponse("Card not found")
+            
+        else:
+            return HttpResponse("Missing headers")
+        
+    else:
+        return HttpResponse("Request is not a POST request")

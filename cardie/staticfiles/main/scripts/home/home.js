@@ -156,7 +156,48 @@ document.querySelector("#home_menu_copylink").addEventListener("click", async (e
 });
 
 document.querySelector("#home_menu_delete").addEventListener("click", (event) => {
+    document.querySelector("#dialog_home_delete").showModal();
+});
 
+document.querySelector("#dialog_home_delete > .ui_dialog_generic_top > .ui_dialog_generic_top_close").addEventListener("click", (event) => {
+    document.querySelector("#dialog_home_delete").close();
+});
+
+document.querySelector("#dialog_home_delete_cancel").addEventListener("click", (event) => {
+    document.querySelector("#dialog_home_delete").close();
+});
+
+document.querySelector("#dialog_home_delete_delete").addEventListener("click", async (event) => {
+    const response = await fetch(server_ip + "/deletecard", {
+        method: "POST",
+        headers: {
+            "uuid": open_home_card_uuid
+        }
+    });
+
+    response.text().then(function (text) {
+        if (text == "Request is not a POST request") {
+            create_notification("There was a problem deleting your card", text, "warning");
+            log("WARNING", text)
+
+        } else if (text == "Missing headers") {
+            create_notification("There was a problem deleting your card", text, "warning");
+            log("WARNING", text);
+
+        } else if (text == "Card not found") {
+            create_notification("There was a problem deleting your card", text, "warning");
+            log("WARNING", text);
+
+        } else if (text == "Success") {
+            create_notification("Card deleted", "Your card has been deleted", "check-circle");
+            log("INFO", "Card deleted");
+            window.location.reload();
+
+        } else {
+            create_notification("There was a problem", "There was an unknown problem deleting your card", "warning");
+            log("WARNING", "There was an unknown problem deleting the card");
+        }
+    });
 });
 
 list_cards();

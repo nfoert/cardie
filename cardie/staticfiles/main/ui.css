@@ -138,6 +138,9 @@
     margin-left: clamp(1vh, 10px, 1vw);
     margin-right: clamp(1vh, 10px, 1vw);
 
+    width: clamp(4.5vh, 45px, 4.5vw);
+    height: clamp(4.5vh, 45px, 4.5vw);
+
     aspect-ratio: 1;
 
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
@@ -437,6 +440,10 @@
     -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ui_input_generic::placeholder {
+    color: var(--default-text-color);
 }
 
 .ui_input_generic:hover {

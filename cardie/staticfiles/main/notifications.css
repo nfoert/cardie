@@ -32,6 +32,7 @@
         top: clamp(1vh, 10px, 1vw);
         left: 50%;
         transform: translateX(-50%);
+        height: min-content;
     }
 }
 

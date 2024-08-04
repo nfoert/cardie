@@ -40,6 +40,8 @@ html {
     #home-top-image {
         width: clamp(30vh, 300px, 30vw);
         height: auto;
+        transition: var(--default-transition);
+        cursor: pointer;
     }
 }
 
@@ -81,7 +83,13 @@ html {
     #home-top-image {
         width: clamp(20vh, 200px, 20vw);
         height: auto;
+        transition: var(--default-transition);
+        cursor: pointer;
     }
+}
+
+#home-top-image:hover {
+    scale: 1.05;
 }
 
 .home_card {
@@ -91,6 +99,7 @@ html {
     background-color: var(--default-glass-background);
     border: var(--default-glass-border);
     backdrop-filter: var(--default-glass-blur);
+    transition: var(--default-transition);
     border-radius: 20px;
 
     padding: clamp(0.8vh, 8px, 0.8vw);
@@ -151,4 +160,48 @@ html {
 
 #home-top-profile-dropdown > button {
     white-space: nowrap;
+}
+
+#home_card_menu {
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 15px;
+    transition: opacity 0.3s ease,
+        scale 0.3s ease;
+    z-index: 3;
+
+    /* Starting properties for animation */
+    opacity: 0;
+    scale: 0.9;
+}
+
+#home_card_menu.show {
+    opacity: 1;
+    scale: 1;
+}
+
+#home_card_menu > button {
+    text-align: left;
+}
+
+#home_menu_delete:hover {
+    color: rgb(255, 117, 117);
+    background-color: rgb(75, 61, 61);
+}
+
+#dialog_home_rename {
+    display: flex;
+    flex-direction: column;
+}
+
+#dialog_home_delete {
+    display: flex;
+    flex-direction: column;
 }

@@ -67,6 +67,37 @@
             </div>
         <div>
 
+        <div id="home_card_menu">
+            <button id="home_menu_edit" class="ui_button_small"><i class="ph-bold ph-pencil-simple-line"></i> Edit</button>
+            <button id="home_menu_rename" class="ui_button_small"><i class="ph-bold ph-cursor-text"></i> Rename</button>
+            <button id="home_menu_copylink" class="ui_button_small"><i class="ph-bold ph-link"></i> Copy Link</button>
+            <div class="ui_separator_horizontal"></div>
+            <button id="home_menu_delete" class="ui_button_small"><i class="ph-bold ph-trash"></i> Delete</button>
+        </div>
+
+        <dialog id="dialog_home_rename" class="ui_dialog_generic">
+            <div class="ui_dialog_generic_top">
+                <p class="ui_text_subheader_left ui_dialog_generic_top_text">Rename Card</p>
+                <button class="ui_button_icon ui_dialog_generic_top_close"><i class="ph-bold ph-x-circle"></i></button>
+            </div>
+
+            <input id="dialog_home_rename_input" class="ui_input_generic" placeholder="New Name"></input>
+            <button id="dialog_home_rename_submit" class="ui_button_small"><i class="ph-bold ph-check"></i> Set new name</button>
+        </dialog>
+
+        <dialog id="dialog_home_delete" class="ui_dialog_generic">
+            <div class="ui_dialog_generic_top">
+                <p class="ui_text_subheader_left ui_dialog_generic_top_text">Delete Card</p>
+                <button class="ui_button_icon ui_dialog_generic_top_close"><i class="ph-bold ph-x-circle"></i></button>
+            </div>
+
+            <p class="ui_text_body">Are you sure you want to delete this Card? This action is irreversible.</p>
+            <button id="dialog_home_delete_cancel" class="ui_button_small"><i class="ph-bold ph-x-circle"></i> Cancel</button>
+            <button id="dialog_home_delete_delete" class="ui_button_small"><i class="ph-bold ph-trash"></i> Delete Card</button>
+        </dialog>
+
+        <div class="background_blur"></div>
+
         {% include "footer.html" %}
 
         <script>
@@ -79,5 +110,6 @@
         <script src="{% static '/main/scripts/global/favicon.js' %}"></script>
         <script src="{% static '/main/scripts/global/notifications.js' %}"></script>
         <script src="{% static '/main/scripts/global/logging.js' %}"></script>
+        <script src="{% static '/main/scripts/global/background_blur.js' %}"></script>
     </body>
 </html>

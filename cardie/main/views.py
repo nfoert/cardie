@@ -5,8 +5,9 @@ from django.shortcuts import HttpResponse, render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from authentication.views import sign_in
-from main.models import Server, Card
+from main.models import Server, Card, TempCard
 from authentication.models import User
+from django.utils import timezone
 
 def index(request):
     server_info = Server.objects.all()[0]
@@ -61,21 +62,31 @@ def home(request):
 def editor(request):
     server_info = Server.objects.all()[0]
 
-    try:
-        request.session["username"]
-        request.session["password"]
-
+    if bool(request.GET.get("demo", False)):
+        # Open the editor without authenticating
         context = {
             "server_ip": server_info.ip,
             "production": server_info.production,
-            "username": request.session["username"]
         }
 
         return render(request, "editor.html", context)
 
-    except KeyError:
-        print("No session data on home page!")
-        return authentication(request)
+    else:
+        try:
+            request.session["username"]
+            request.session["password"]
+
+            context = {
+                "server_ip": server_info.ip,
+                "production": server_info.production,
+                "username": request.session["username"]
+            }
+
+            return render(request, "editor.html", context)
+
+        except KeyError:
+            print("No session data on editor page!")
+            return authentication(request)
 
 def privacy_policy(request):
     server_info = Server.objects.all()[0]
@@ -209,5 +220,66 @@ def log_out(request):
 
         return HttpResponse("Success")
 
+    else:
+        return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def create_temp_card(request):
+    if request.method == "POST":
+        if request.headers["data"]:
+            temp_card = TempCard(data=json.loads(request.headers["data"]), created=timezone.now())
+            temp_card.save()
+            
+            return HttpResponse(temp_card.uuid)
+            
+        else:
+            return HttpResponse("Missing headers")
+        
+    else:
+        return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def delete_card(request):
+    if request.method == "POST":
+        if request.headers["uuid"]:
+            # TODO: What if there are two accounts with that username?
+            me = User.objects.filter(username=request.session["username"])[0]
+
+            card = Card.objects.filter(uuid=request.headers["uuid"], owner=me)[0]
+            
+            if card:
+                card.delete()
+                return HttpResponse("Success")
+
+            else:
+                return HttpResponse("Card not found")
+            
+        else:
+            return HttpResponse("Missing headers")
+        
+    else:
+        return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def rename_card(request):
+    if request.method == "POST":
+        if request.headers["uuid"] and request.headers["name"]:
+            # TODO: What if there are two accounts with that username?
+            me = User.objects.filter(username=request.session["username"])[0]
+
+            card = Card.objects.filter(uuid=request.headers["uuid"], owner=me)[0]
+            
+            if card:
+                card.name = request.headers["name"]
+                card.data["name"] = request.headers["name"]
+                card.save()
+                return HttpResponse("Success")
+
+            else:
+                return HttpResponse("Card not found")
+            
+        else:
+            return HttpResponse("Missing headers")
+        
     else:
         return HttpResponse("Request is not a POST request")

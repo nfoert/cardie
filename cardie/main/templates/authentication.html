@@ -19,7 +19,7 @@
     </head>
 
     <body>
-        <div id="authentication-box" x-data="{ sign_in: true }">
+        <div id="authentication-box" x-data="box_param_check()">
             {% csrf_token %}
 
             <img id="authentication-box-image" @click="window.location.href = server_ip" src="{% static '/main/images/logo_light.png' %}">
@@ -58,6 +58,24 @@
         <div id="blob"></div>
 
         {% include "footer.html" %}
+
+        <script>
+            function box_param_check() {
+                return {
+                    sign_in: true,
+                
+                    init() {
+                        try {
+                            let sign_in_param = JSON.parse(new URL(window.location.href).searchParams.get("sign_in").toLowerCase());
+                            this.sign_in = sign_in_param;
+                        } catch {
+                            this.sign_in = true;
+                        }
+                        
+                    }
+                };
+            }
+        </script>
 
         <script>
             var server_ip = "{{ server_ip }}";

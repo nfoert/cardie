@@ -2,10 +2,11 @@ from django.shortcuts import render, HttpResponse
 from django.contrib.auth.hashers import make_password, check_password
 
 from authentication.models import User
-from main.models import Server
+from main.models import Server, Card, TempCard
 from main import views
 
 from django.utils import timezone
+import uuid
 
 def sign_in(request):
     server = Server.objects.all()[0] # TODO: What if there is multiple server objects?
@@ -38,6 +39,20 @@ def sign_in(request):
                 if password_check:
                     request.session["username"] = username
                     request.session["password"] = password
+
+                    try:
+                        temp_uuid = request.headers["TempUUID"]
+                        temp_card = TempCard.objects.filter(uuid=temp_uuid)[0]
+                        
+                        card = Card(uuid=uuid.uuid4(), owner=users[0], name=temp_card.data["name"], data=temp_card.data)
+                        card.save()
+
+                        temp_card.delete()
+
+                        return HttpResponse(f"card_added_to_account {card.uuid}")
+
+                    except KeyError:
+                        pass
 
                     if request.headers["Internal"] == "true":
                         return HttpResponse("success")

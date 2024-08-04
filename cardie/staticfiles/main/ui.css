@@ -38,6 +38,12 @@
     Separators
         ui_separator_vertical
         ui_separator_horizontal
+
+    Dialog
+        ui_dialog_generic
+            ui_dialog_generic_top
+                ui_dialog_generic_top_text
+                ui_dialog_generic_top_close
 */
 
 /* Buttons */
@@ -414,6 +420,7 @@
     transition: var(--default-transition);
     font-size: clamp(1.6vh, 16px, 1.6vw);
     font-family: var(--default-font-family);
+    box-sizing: border-box;
 
     backdrop-filter: var(--default-glass-blur);
 
@@ -504,4 +511,86 @@
 
 .background_blur.show {
     opacity: 1;
+}
+
+/* Dialog */
+@media (min-width: 1000px) {
+    /* Large screens */
+
+    .ui_dialog_generic {
+        opacity: 0;
+        scale: 0.9;
+        transition: var(--default-transition);
+        background-color: var(--default-glass-background);
+        border: var(--default-glass-border);
+        backdrop-filter: var(--default-glass-blur);
+        border-radius: 20px;
+        padding: clamp(2vh, 20px, 2vw);
+
+        width: max-content;
+        overflow-x: hidden;
+    }
+}
+
+@media (max-width: 1000px) {
+    /* Small Screens */
+
+    .ui_dialog_generic {
+        opacity: 0;
+        scale: 0.9;
+        transition: var(--default-transition);
+        background-color: var(--default-glass-background);
+        border: var(--default-glass-border);
+        backdrop-filter: var(--default-glass-blur);
+        padding: clamp(2vh, 20px, 2vw);
+        border-radius: 20px;
+
+        width: 100%;
+        overflow-x: hidden;
+        height: max-content;
+        max-height: 80%;
+    }
+}
+
+.ui_dialog_generic[open] {
+    opacity: 1;
+    scale: 1;
+}
+
+@starting-style {
+    .ui_dialog_generic[open] {
+        opacity: 0;
+        scale: 0.9;
+    }
+}
+
+.ui_dialog_generic::backdrop {
+    background-color: rgba(47, 47, 47, 0);
+    backdrop-filter: blur(0px);
+    transition: all 0.7s allow-discrete;
+}
+
+.ui_dialog_generic[open]::backdrop {
+    background-color: rgba(47, 47, 47, 0.2);
+    backdrop-filter: blur(20px);
+}
+
+@starting-style {
+    .ui_dialog_generic[open]::backdrop {
+        background-color: rgba(47, 47, 47, 0);
+        backdrop-filter: blur(0px);
+    }
+}
+
+.ui_dialog_generic_top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    margin-bottom: clamp(1vh, 10px, 1vw);
+    justify-content: space-between;
+}
+
+.ui_dialog_generic_top_text {
+    margin-right: clamp(2vh, 20px, 2vw);
 }

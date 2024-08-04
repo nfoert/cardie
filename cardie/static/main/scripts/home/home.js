@@ -137,4 +137,26 @@ document.querySelector("#home-top-image").addEventListener("click", (event) => {
     window.location.href = server_ip;
 });
 
+document.querySelector("#home_menu_edit").addEventListener("click", (event) => {
+    window.location.href = `${server_ip}/editor?uuid=${open_home_card_uuid}&`;
+});
+
+document.querySelector("#home_menu_rename").addEventListener("click", (event) => {
+
+});
+
+document.querySelector("#home_menu_copylink").addEventListener("click", async (event) => {
+    await navigator.clipboard.writeText(`${server_ip}/card?uuid=${open_home_card_uuid}&`).then(() => {
+        event.target.closest(".ui_button_small").style.color = "#5dca63";
+
+        setInterval( () => {
+            event.target.closest(".ui_button_small").style.color = "#ffffff";
+        }, 1000);
+    });
+});
+
+document.querySelector("#home_menu_delete").addEventListener("click", (event) => {
+
+});
+
 list_cards();

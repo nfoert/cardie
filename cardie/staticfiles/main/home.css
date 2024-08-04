@@ -190,3 +190,8 @@ html {
 #home_card_menu > button {
     text-align: left;
 }
+
+#home_menu_delete:hover {
+    color: rgb(255, 117, 117);
+    background-color: rgb(75, 61, 61);
+}

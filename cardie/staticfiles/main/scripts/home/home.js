@@ -5,6 +5,7 @@ function home_card_edit(event) {
 }
 
 var open_home_card_uuid;
+var open_home_card_target;
 
 function home_card_menu(event) {
     let home_card = event.target.closest(".home_card");
@@ -28,6 +29,7 @@ function home_card_menu(event) {
         }, 50);
 
         open_home_card_uuid = home_card.querySelector(".home_card_text_uuid").innerText;
+        open_home_card_target = home_card;
 
     } else {
         home_card.querySelector(".home_card_menu_button > i").className = "ph-bold ph-dots-three";
@@ -142,7 +144,46 @@ document.querySelector("#home_menu_edit").addEventListener("click", (event) => {
 });
 
 document.querySelector("#home_menu_rename").addEventListener("click", (event) => {
+    document.querySelector("#dialog_home_rename_input").value = open_home_card_target.querySelector(".home_card_text > .home_card_text_name").innerText;
+    document.querySelector("#dialog_home_rename").showModal();
+});
 
+document.querySelector("#dialog_home_rename > .ui_dialog_generic_top > .ui_dialog_generic_top_close").addEventListener("click", (event) => {
+    document.querySelector("#dialog_home_rename").close();
+});
+
+document.querySelector("#dialog_home_rename_submit").addEventListener("click", async (event) => {
+    const response = await fetch(server_ip + "/renamecard", {
+        method: "POST",
+        headers: {
+            "uuid": open_home_card_uuid,
+            "name": document.querySelector("#dialog_home_rename_input").value
+        }
+    });
+
+    response.text().then(function (text) {
+        if (text == "Request is not a POST request") {
+            create_notification("There was a problem renaming your card", text, "warning");
+            log("WARNING", text)
+
+        } else if (text == "Missing headers") {
+            create_notification("There was a problem renaming your card", text, "warning");
+            log("WARNING", text);
+
+        } else if (text == "Card not found") {
+            create_notification("There was a problem renaming your card", text, "warning");
+            log("WARNING", text);
+
+        } else if (text == "Success") {
+            create_notification("Card deleted", "Your card has been renaming", "check-circle");
+            log("INFO", "Card renamed");
+            window.location.reload();
+
+        } else {
+            create_notification("There was a problem", "There was an unknown problem renaming your card", "warning");
+            log("WARNING", "There was an unknown problem renaming the card");
+        }
+    });
 });
 
 document.querySelector("#home_menu_copylink").addEventListener("click", async (event) => {

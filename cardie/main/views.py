@@ -244,10 +244,34 @@ def delete_card(request):
             # TODO: What if there are two accounts with that username?
             me = User.objects.filter(username=request.session["username"])[0]
 
-            card = Card.objects.filter(uuid=request.headers["uuid"], owner=me)
+            card = Card.objects.filter(uuid=request.headers["uuid"], owner=me)[0]
             
             if card:
                 card.delete()
+                return HttpResponse("Success")
+
+            else:
+                return HttpResponse("Card not found")
+            
+        else:
+            return HttpResponse("Missing headers")
+        
+    else:
+        return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def rename_card(request):
+    if request.method == "POST":
+        if request.headers["uuid"] and request.headers["name"]:
+            # TODO: What if there are two accounts with that username?
+            me = User.objects.filter(username=request.session["username"])[0]
+
+            card = Card.objects.filter(uuid=request.headers["uuid"], owner=me)[0]
+            
+            if card:
+                card.name = request.headers["name"]
+                card.data["name"] = request.headers["name"]
+                card.save()
                 return HttpResponse("Success")
 
             else:

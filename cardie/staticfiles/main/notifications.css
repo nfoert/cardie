@@ -50,6 +50,8 @@
 
     opacity: 0;
     scale: 0.8;
+
+    z-index: 10;
 }
 
 .notification.show {

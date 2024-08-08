@@ -2,19 +2,23 @@ html {
     background: rgb(37, 40, 49);
 }
 
-#welcome-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
+body {
+    margin: 0px;
+}
+
+#welcome_box {
+    height: 100vh;
+    position: relative;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     z-index: 1;
 }
 
-#welcome-box-image {
+#welcome_box_image {
     width: clamp(40vh, 400px, 40vw);
     height: auto;
 
@@ -22,7 +26,7 @@ html {
     margin-right: auto;
 }
 
-#welcome-box-buttons {
+#welcome_box_buttons {
     display: flex;
     flex-direction: column;
 
@@ -45,8 +49,89 @@ html {
     border-radius: 200px;
     filter: blur(70px);
 
-    z-index: 0;
+    z-index: -10;
 
     background: rgb(61,132,148);
     background: linear-gradient(120deg, rgba(61,132,148,1) 9%, rgba(34,73,139,1) 47%, rgba(37,210,108,1) 91%); 
 }
+
+@media (min-width: 1000px) {
+    /* Large screens */
+
+    #index_top {
+        margin-top: clamp(1vh, 10px, 1vw);
+        position: absolute;
+        top: 0px;
+    
+        display: flex;
+        flex-direction: row;
+    
+        justify-content: space-between;
+        align-items: center;
+        z-index: 5;
+    
+        width: 100%;
+    }
+    
+    #index_top_image {
+        width: clamp(6vh, 60px, 6vw);
+        margin-left: clamp(1vh, 10px, 1vw);
+        height: auto;
+    }
+    
+    #index_top_links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    #index_top_account {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: clamp(2vh, 20px, 2vw);
+    }
+
+    #index_top_toggle {
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    /* Small Screens */
+
+    #index_top {
+        position: absolute;
+        top: 0px;
+        display: flex;
+        flex-direction: column-reverse;
+
+        z-index: 5;
+    
+        width: 100%;
+    }
+    
+    #index_top_image {
+        display: none;
+    }
+    
+    #index_top_links {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        margin-left: clamp(3vh, 30px, 3vw);
+        margin-top: clamp(1vh, 10px, 1vw);
+    }
+    
+    #index_top_account {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+    }
+
+    #index_top_toggle {
+        margin-top: clamp(1vh, 10px, 1vw);
+        margin-bottom: clamp(1vh, 10px, 1vw);
+    }
+}
+

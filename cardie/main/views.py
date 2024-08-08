@@ -12,12 +12,24 @@ from django.utils import timezone
 def index(request):
     server_info = Server.objects.all()[0]
 
-    context = {
-        "server_ip": server_info.ip,
-        "production": server_info.production
-    }
+    try:
+        username = request.session["username"]
 
-    return render(request, "index.html", context)
+        context = {
+            "server_ip": server_info.ip,
+            "production": server_info.production,
+            "username": username
+        }    
+
+        return render(request, "index.html", context)
+
+    except KeyError:
+        context = {
+            "server_ip": server_info.ip,
+            "production": server_info.production
+        }
+
+        return render(request, "index.html", context)
 
 def authentication(request):
     server_info = Server.objects.all()[0]

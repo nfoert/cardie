@@ -2,8 +2,10 @@ html {
     background: rgb(37, 40, 49);
 }
 
-body {
+body, html {
     margin: 0px;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
 }
 
 #welcome_box {
@@ -16,6 +18,7 @@ body {
     justify-content: center;
 
     z-index: 1;
+    scroll-snap-align: center;
 }
 
 #welcome_box_image {
@@ -135,3 +138,76 @@ body {
     }
 }
 
+
+
+@media (min-width: 1000px) {
+    /* Large screens */
+
+    #home_card {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row-reverse;
+        padding-left: clamp(4vh, 40px, 4vw);
+        scroll-snap-align: center;
+    }
+    
+    #home_card_image {
+        width: 60vw;
+        height: auto;
+    }
+    
+    #home_editor {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        padding-left: clamp(4vh, 40px, 4vw);
+        scroll-snap-align: center;
+    }
+    
+    #home_editor_image {
+        width: 60vw;
+        height: auto;
+    }
+
+}
+
+@media (max-width: 1000px) {
+    /* Small Screens */
+
+    #home_card {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        scroll-snap-align: center;
+    }
+    
+    #home_card_image {
+        width: 90vw;
+        height: auto;
+    }
+    
+    #home_editor {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        scroll-snap-align: center;
+    }
+    
+    #home_editor_image {
+        width: 90vw;
+        height: auto;
+    }
+
+    #home_card_text, #home_editor_text {
+        margin-left: clamp(2vh, 20px, 2vw);
+    }
+
+}

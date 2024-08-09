@@ -52,6 +52,32 @@
             <div id="blob"></div>
         </div>
 
+        <div id="home_card">
+            <img id="home_card_image" src="{% static '/main/images/home_cards.png' %}"></img>
+
+            <div id="home_card_text">
+                <p class="ui_text_header_left">Create a Card</p>
+                <ul>
+                    <li class="ui_text_body">Add your name, title or pronouns to the top section</li>
+                    <li class="ui_text_body">Add text information like your phone number, email, and more</li>
+                    <li class="ui_text_body">You can also add links to any of your other online presences, like social accounts or links to your other work.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="home_editor">
+            <img id="home_editor_image" src="{% static '/main/images/home_editor.png' %}"></img>
+
+            <div id="home_editor_text">
+                <p class="ui_text_header_left">Editor</p>
+                <ul>
+                    <li class="ui_text_body">Add information and link items to your card</li>
+                    <li class="ui_text_body">You can customize those items with a icon selector</li>
+                    <li class="ui_text_body">Once you're finished, copy a link to your card so you can share it with anyone</li>
+                </ul>
+            </div>
+        </div>
+
         {% include "footer.html" %}
 
         <script>

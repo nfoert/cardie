@@ -130,6 +130,7 @@ function editor_create_json() {
     let card_json = {
         "uuid": "unknown",
         "name": "",
+        "author": "unknown",
         "layout": "",
         "details": {
             "username": "",
@@ -144,8 +145,9 @@ function editor_create_json() {
     }
 
     card_json["name"] = document.querySelector("#editor_header_name_text_cardname").innerText;
+    card_json["author"] = username;
     card_json["details"]["username"] = document.querySelector("#editor_main_settings_details_username").value;
-    card_json["details"]["pronouns"] = document.querySelector("#editor_main_settings_details_pronouns").value
+    card_json["details"]["pronouns"] = document.querySelector("#editor_main_settings_details_pronouns").value;
 
     for (const item in text_items) {
         let item_uuid = text_items[item].getAttribute("uuid");

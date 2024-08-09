@@ -177,7 +177,6 @@ html {
         backdrop-filter: var(--default-glass-blur);
         border-radius: 20px;
     
-        /* TODO: Make mobile friendly */
         aspect-ratio: 1;
         width: auto;
         height: 40%;
@@ -210,7 +209,6 @@ html {
         background-color: var(--default-glass-background);
         backdrop-filter: var(--default-glass-blur);
     
-        /* TODO: Make mobile friendly */
         aspect-ratio: 1;
         width: calc(100vw - 1.5vh);
         height: 100vh;

@@ -1,5 +1,6 @@
 var old_card_data = JSON.stringify(editor_create_json());
 var new_card_data;
+var qrcode;
 
 try {
     var demo_param = JSON.parse(new URL(window.location.href).searchParams.get("demo").toLowerCase());
@@ -155,6 +156,48 @@ async function editor_demo_auth(sign_in) {
     });
 }
 
+function setup_qrcode() {
+    let uuid_param = new URL(window.location.href).searchParams.get("uuid");
+    let url = `${server_ip}/card?uuid=${uuid_param}&`
+
+    qrcode = new QRCode("qrcode", {
+        url: url,
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+    qrcode.makeCode(url)
+}
+
+// Thanks to this answer https://stackoverflow.com/a/12300351
+function dataURItoBlob(dataURI) {
+    // convert base64 to raw binary data held in a string
+    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+    var byteString = atob(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+    // write the bytes of the string to an ArrayBuffer
+    var ab = new ArrayBuffer(byteString.length);
+
+    // create a view into the buffer
+    var ia = new Uint8Array(ab);
+
+    // set the bytes of the buffer to the correct values
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    // write the ArrayBuffer to a blob, and you're done
+    var blob = new Blob([ab], { type: mimeString });
+    return blob;
+
+}
+
 document.querySelector("#editor_header_title_home").addEventListener("click", (event) => {
     window.location.href = server_ip + "/home";
 });
@@ -171,14 +214,36 @@ document.querySelector("#editor_share_copylink").addEventListener("click", async
     });
 });
 
-// TODO: Implement
 document.querySelector("#editor_share_copyqr").addEventListener("click", async (event) => {
+    let uuid_param = new URL(window.location.href).searchParams.get("uuid");
+    let url = `${server_ip}/card?uuid=${uuid_param}&`
 
+    qrcode.makeCode(url);
+    
+    const data = [new ClipboardItem({ ["image/png"]: dataURItoBlob(document.querySelector("#qrcode > img").getAttribute("src")) })];
+
+    await navigator.clipboard.write(data).then(() => {
+        event.target.innerHTML = `<i class="ph-bold ph-check-circle"></i> Copied!`;
+
+        setInterval( () => {
+            event.target.innerHTML = `<i class="ph-bold ph-qr-code"></i> Copy QR Code`;
+        }, 3000);
+    });
 });
 
-// TODO: Implement
 document.querySelector("#editor_share_downloadqr").addEventListener("click", (event) => {
+    let uuid_param = new URL(window.location.href).searchParams.get("uuid");
+    let url = `${server_ip}/card?uuid=${uuid_param}&`
 
+    qrcode.makeCode(url);
+
+    var link = document.createElement("a");
+    link.download = `${uuid_param}.png`;
+    link.href = document.querySelector("#qrcode > img").getAttribute("src");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    delete link;
 });
 
 document.querySelector("#editor_demo_signin").addEventListener("click", (event) => {
@@ -187,6 +252,10 @@ document.querySelector("#editor_demo_signin").addEventListener("click", (event) 
 
 document.querySelector("#editor_demo_createaccount").addEventListener("click", (event) => {
     editor_demo_auth(false);
+});
+
+addEventListener("DOMContentLoaded", (event) => {
+    setup_qrcode();
 });
 
 start_editor();

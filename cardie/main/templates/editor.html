@@ -81,8 +81,8 @@
 
                 <div id="editor_main_preview_share">
                     <button id="editor_share_copylink" class="ui_button_grid"><i class="ph-bold ph-copy"></i> Copy Link</button>
-                    <button id="editor_share_copyqr" style="display: none;" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Copy QR Code</button>
-                    <button id="editor_share_downloadqr" style="display: none;" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Download QR Code</button>
+                    <button id="editor_share_copyqr" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Copy QR Code</button>
+                    <button id="editor_share_downloadqr" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Download QR Code</button>
                 </div>
 
                 <div id="editor_main_preview_demo">
@@ -135,5 +135,7 @@
         <script src="{% static '/main/scripts/global/logging.js' %}"></script>
 
         <script src="{% static '/main/scripts/editor/editor.js' %}"></script>
+
+        <script src="{% static '/main/scripts/external/qrcode.min.js' %}"></script>
     </body>
 </html>

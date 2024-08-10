@@ -83,6 +83,7 @@
                     <button id="editor_share_copylink" class="ui_button_grid"><i class="ph-bold ph-copy"></i> Copy Link</button>
                     <button id="editor_share_copyqr" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Copy QR Code</button>
                     <button id="editor_share_downloadqr" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Download QR Code</button>
+                    <button id="editor_share_print" class="ui_button_grid"><i class="ph-bold ph-printer"></i> Print</button>
                 </div>
 
                 <div id="editor_main_preview_demo">
@@ -113,6 +114,8 @@
             <input type="text" class="ui_input_generic" id="editor_rename_input" placeholder="New Name"></input>
             <button id="editor_rename_submit" class="ui_button_small"><i class="ph-bold ph-check"></i> Set New Name</button>
         </div>
+
+        {% include "dialogs/print.html" %}
 
         <div class="background_blur"></div>
 

@@ -536,6 +536,7 @@
 
         width: max-content;
         overflow-x: hidden;
+        max-width: 80vw;
     }
 }
 

@@ -4,16 +4,22 @@
         <button class="ui_button_icon ui_dialog_generic_top_close"><i class="ph-bold ph-x-circle"></i></button>
     </div>
 
-    <button class="ui_button_small" @click="single = true" x-bind:disabled="single">Print one sided</button>
-    <button class="ui_button_small" @click="single = false" x-bind:disabled="!single">Print two sided</button>
+    <button id="dialog_print_single" 
+        class="ui_button_small" 
+        @click="single = true" 
+        x-bind:disabled="single">Print one sided</button>
+    <button id="dialog_print_double" 
+        class="ui_button_small" 
+        @click="single = false" 
+        x-bind:disabled="!single">Print two sided</button>
 
-    <div x-show="single" x-transition>
+    <div x-show="single" x-transition:enter.delay.200ms>
         <p class="ui_text_body">Puts a total of 4 cards on one page, fronts and backs. After you print the page you can cut and glue the two halves together.</p>
     </div>
 
-    <div x-show="!single" x-transition>
-        <p class="ui_text_body">A layout of 8 cards per two pages. Print them both and select double sided or print the first page, put the paper back in the printer and print the second page again.</p>
+    <div x-show="!single" x-transition:enter.delay.200ms>
+        <p class="ui_text_body">A layout of 8 cards per two pages. Print them both and select double sided (and flip on the long edge) or print the first page, put the paper back in the printer and print the second page again.</p>
     </div>
 
-    <button class="ui_button_large">Print</button>
+    <button id="dialog_print_print" class="ui_button_large"><i class="ph-bold ph-printer"></i> Print</button>
 </dialog>

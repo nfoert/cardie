@@ -1,0 +1,134 @@
+@media print {
+    /* For when the page is printed */
+
+    * {
+        visibility: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        max-height: 11.5in;
+    }
+
+    #editor_main_preview {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+
+        display: grid;
+        grid-template-columns: repeat(2, 3.5in);
+        grid-template-rows: repeat(2, 4in);
+        grid-column-gap: 0.25in;
+        grid-row-gap: 0.25in;
+    }
+
+    #editor_main_preview.twosided {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0%);
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card_card * {
+        visibility: visible;
+    }
+
+    .card_card {
+        display: flex;
+        flex-direction: column;
+        perspective: unset;
+
+        width: 3.5in;
+        height: 2in;
+        min-width: 3.5in;
+        min-height: 2in;
+        max-width: 3.5in;
+        max-height: 2in;
+
+    }
+
+    .card_card_front, .card_card_back {
+        position: unset;
+        top: unset;
+        border: 2px solid rgb(0, 0, 0);
+        -webkit-box-shadow: unset;
+        -moz-box-shadow: unset;
+        box-shadow: unset;
+
+        backface-visibility: unset;
+        transform-style: unset;
+
+        width: 3.5in;
+        height: 2in;
+        overflow: hidden;
+    }
+
+    .card_card_back, .card_card_front {
+        transform: rotateY(0);
+    }
+
+    .card_card > .card_card_back {
+        margin-top: 0.1in;
+    }
+
+    #editor_main_settings {
+        display: none;
+    }
+
+    #editor_header {
+        display: none;
+    }
+
+    #editor_main_preview_share {
+        display: none;
+    }
+
+    #editor_main_preview > .ui_separator_horizontal {
+        display: none;
+    }
+
+    .footer {
+        display: none !important;
+    }
+
+    .notifications {
+        display: none;
+    }
+
+    #dialog_print {
+        display: none;
+    }
+
+    #print_front_div {
+        visibility: visible;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0.1in;
+        grid-row-gap: 0.1in; 
+    }
+
+    #print_back_div {
+        visibility: visible;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0.1in;
+        grid-row-gap: 0.1in; 
+
+    }
+
+    #print_front_div * {
+        visibility: visible;
+    }
+
+    #print_back_div * {
+        visibility: visible;
+    }
+}

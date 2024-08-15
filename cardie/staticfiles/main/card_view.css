@@ -12,12 +12,46 @@ html {
     height: fit-content;
 }
 
-#cardview-text {
-    margin-left: 20px;
-    margin-bottom: 40px;
+#cardview_text {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: clamp(1vh, 10px, 1vw);
+    margin-bottom: clamp(2vh, 20px, 2vw);
 }
 
-#cardview-text-username {
+#cardview_text_username {
     opacity: 0.7;
     margin-left: 20px;
+}
+
+#cardview_top {
+    display: flex;
+    flex-direction: row;
+}
+
+#cardview_logo {
+    height: clamp(5vh, 50px, 5vw);
+    transition: var(--default-transition);
+}
+
+#cardview_logo:hover {
+    scale: 1.1;
+}
+
+#cardview_bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: clamp(1vh, 10px, 1vw);
+}
+
+#cardview_card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#cardview_bottom_owned {
+    opacity: 0.8;
 }

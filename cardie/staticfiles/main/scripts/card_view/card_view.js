@@ -1,3 +1,5 @@
+var cardview_json;
+
 async function render_card_view() {
     let uuid_param = new URL(window.location.href).searchParams.get("uuid");
 
@@ -26,11 +28,31 @@ async function render_card_view() {
             } else {
                 log("INFO", "This card exists on the server!");
                 card_render_from_json(".card_card", text);
+                cardview_json = text;
 
-                document.querySelector("#cardview-text-cardname").innerText = JSON.parse(text)["name"];
-                document.querySelector("#cardview-text-username").innerText = `Created by ${JSON.parse(text)["author"]}`; // TODO: an author value is needed in the JSON
+                document.querySelector("#cardview_text_cardname").innerText = JSON.parse(text)["name"];
+                document.querySelector("#cardview_text_username").innerText = `Created by ${JSON.parse(text)["author"]}`;
+                show_cardview_status();
             }
         });
+    }
+}
+
+function show_cardview_status() {
+    if (username == JSON.parse(cardview_json)["author"]) {
+        document.querySelector("#cardview_bottom_createaccount").style.display = "none";
+        document.querySelector("#cardview_bottom_save").style.display = "none";
+        document.querySelector("#cardview_bottom_owned").style.display = "block";
+    
+    } else if (username) {
+        document.querySelector("#cardview_bottom_createaccount").style.display = "none";
+        document.querySelector("#cardview_bottom_save").style.display = "block";
+        document.querySelector("#cardview_bottom_owned").style.display = "none";
+    
+    } else {
+        document.querySelector("#cardview_bottom_createaccount").style.display = "block";
+        document.querySelector("#cardview_bottom_save").style.display = "none";
+        document.querySelector("#cardview_bottom_owned").style.display = "none";
     }
 }
 

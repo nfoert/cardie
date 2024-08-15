@@ -203,12 +203,24 @@ def list_cards(request):
 def card_view(request):
     server_info = Server.objects.all()[0]
 
-    context = {
-        "server_ip": server_info.ip,
-        "production": server_info.production,
-    }
+    try:
+        username = request.session["username"]
 
-    return render(request, "card_view.html", context)
+        context = {
+            "server_ip": server_info.ip,
+            "production": server_info.production,
+            "username": username
+        }
+
+        return render(request, "card_view.html", context)
+
+    except KeyError:
+        context = {
+            "server_ip": server_info.ip,
+            "production": server_info.production
+        }
+
+        return render(request, "card_view.html", context)
 
 @csrf_exempt
 def get_card(request):

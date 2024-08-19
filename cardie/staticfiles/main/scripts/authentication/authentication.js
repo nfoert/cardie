@@ -5,6 +5,13 @@ try {
     var temp_uuid = false;
 }
 
+try {
+    var ref = new URL(window.location.href).searchParams.get("ref");
+
+} catch {
+    var ref = false;
+}
+
 function show_warning(warning) {
     log("WARNING", warning)
     document.querySelector("#authentication-error > p").innerText = warning;
@@ -49,7 +56,13 @@ async function sign_in() {
     response.text().then(function (text) {
         if (text == "success") {
             log("INFO", "Success!");
-            window.location.href = `${server_ip}/home`;
+
+            if (ref) {
+                window.location.href = ref;
+            } else {
+                window.location.href = `${server_ip}/home`;
+            }
+            
 
         } else if (text == "error_missing_headers_and_session") {
             show_warning("Missing headers and no session data!");
@@ -109,7 +122,12 @@ async function create_account() {
     response.text().then(function (text) {
         if (text == "success") {
             log("INFO", "Success!");
-            window.location.href = `${server_ip}/home`;
+
+            if (ref) {
+                window.location.href = ref;
+            } else {
+                window.location.href = `${server_ip}/home`;
+            }
 
         } else if (text == "no_username") {
             show_warning("Your account needs an username!");

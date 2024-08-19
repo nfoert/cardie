@@ -307,3 +307,29 @@ def rename_card(request):
         
     else:
         return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def save_to_wallet(request):
+    if request.method == "POST":
+        if request.headers["uuid"]:
+            try:
+                me = User.objects.filter(username=request.session["username"])[0]
+
+                card = Card.objects.filter(uuid=request.headers["uuid"])[0]
+                
+                if card:
+                    me.wallet.add(card)
+                    me.save()
+                    return HttpResponse("Success")
+
+                else:
+                    return HttpResponse("Card not found")
+                    
+            except KeyError:
+                return HttpResponse("Not signed in")
+            
+        else:
+            return HttpResponse("Missing headers")
+        
+    else:
+        return HttpResponse("Request is not a POST request")

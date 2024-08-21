@@ -93,6 +93,62 @@ function create_home_card(uuid, name) {
     document.querySelector("#home-cards").appendChild(div);
 }
 
+function create_wallet_card(uuid, name) {
+    let div = document.createElement("div");
+    div.classList.add("home_card");
+
+    let view_button = document.createElement("button");
+    view_button.classList.add("ui_button_icon");
+    view_button.classList.add("home_wallet_view_button")
+
+    let view_button_icon = document.createElement("i");
+    view_button_icon.className = "ph-bold ph-arrow-circle-right";
+
+    view_button.appendChild(view_button_icon);
+    view_button.addEventListener("click", (event) => home_wallet_view(event));
+
+    let remove_button = document.createElement("button");
+    remove_button.classList.add("ui_button_icon");
+    remove_button.classList.add("home_wallet_remove_button")
+
+    let remove_button_icon = document.createElement("i");
+    remove_button_icon.className = "ph-bold ph-trash";
+
+    remove_button.appendChild(remove_button_icon);
+    remove_button.addEventListener("click", (event) => home_wallet_remove(event));
+
+    let text_div = document.createElement("div");
+    text_div.classList.add("home_card_text");
+
+    let text_name = document.createElement("p");
+    text_name.classList.add("home_card_text_name");
+    text_name.innerText = name;
+
+    let text_uuid = document.createElement("p");
+    text_uuid.classList.add("home_card_text_uuid");
+    text_uuid.innerText = uuid;
+
+    text_div.appendChild(text_name);
+    text_div.appendChild(text_uuid);
+
+    div.appendChild(text_div);
+    div.appendChild(view_button);
+    div.appendChild(remove_button);
+
+    div.setAttribute("open", false);
+
+    document.querySelector("#home-wallet").appendChild(div);
+}
+
+function home_wallet_view(event) {
+    let uuid = event.target.closest(".home_card").querySelector(":scope > .home_card_text > .home_card_text_uuid").innerText;
+    window.location.href = server_ip + "/card" + `?uuid=${uuid}&from_wallet=true`;
+}
+
+async function home_wallet_remove(event) {
+
+}
+
 async function list_cards() {
     const response = await fetch(server_ip + "/listcards", {
         method: "POST",
@@ -133,6 +189,31 @@ async function log_out() {
 
 function create_new_card() {
     window.location.href = server_ip + "/editor";
+}
+
+async function get_wallet() {
+    const response = await fetch(server_ip + "/getwallet", {
+        method: "POST",
+    });
+
+    response.text().then(function (text) {
+        if (text == "Request is not a POST request") {
+            log("WARNING", text);
+            create_notification("There was a problem getting your wallet", text, "warning");
+            return false;
+
+        } else if (text == "Not signed in") {
+            log("WARNING", "You're not signed in!");
+            window.location.href = `${server_ip}/authentication`;
+            
+        } else {
+            text = JSON.parse(text);
+
+            for (const card in text) {
+                create_wallet_card(text[card]["uuid"], text[card]["name"]);
+            }
+        }
+    });
 }
 
 document.querySelector("#home-top-image").addEventListener("click", (event) => {
@@ -242,3 +323,4 @@ document.querySelector("#dialog_home_delete_delete").addEventListener("click", a
 });
 
 list_cards();
+get_wallet();

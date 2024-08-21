@@ -39,21 +39,36 @@ async function render_card_view() {
 }
 
 function show_cardview_status() {
-    if (username == JSON.parse(cardview_json)["author"]) {
-        document.querySelector("#cardview_bottom_createaccount").style.display = "none";
-        document.querySelector("#cardview_bottom_save").style.display = "none";
-        document.querySelector("#cardview_bottom_owned").style.display = "block";
-    
-    } else if (username) {
-        document.querySelector("#cardview_bottom_createaccount").style.display = "none";
-        document.querySelector("#cardview_bottom_save").style.display = "block";
-        document.querySelector("#cardview_bottom_owned").style.display = "none";
-    
-    } else {
-        document.querySelector("#cardview_bottom_createaccount").style.display = "block";
-        document.querySelector("#cardview_bottom_save").style.display = "none";
-        document.querySelector("#cardview_bottom_owned").style.display = "none";
+    try {
+        var from_wallet_param = new URL(window.location.href).searchParams.get("from_wallet");
+    } catch {
+        var from_wallet_param = false;
     }
+
+    if (from_wallet_param) {
+        document.querySelector("#cardview_bottom_createaccount").style.display = "none";
+        document.querySelector("#cardview_bottom_save").style.display = "none";
+        document.querySelector("#cardview_bottom_owned").style.display = "none";
+
+    } else {
+        if (username == JSON.parse(cardview_json)["author"]) {
+            document.querySelector("#cardview_bottom_createaccount").style.display = "none";
+            document.querySelector("#cardview_bottom_save").style.display = "none";
+            document.querySelector("#cardview_bottom_owned").style.display = "block";
+        
+        } else if (username) {
+            document.querySelector("#cardview_bottom_createaccount").style.display = "none";
+            document.querySelector("#cardview_bottom_save").style.display = "block";
+            document.querySelector("#cardview_bottom_owned").style.display = "none";
+        
+        } else {
+            document.querySelector("#cardview_bottom_createaccount").style.display = "block";
+            document.querySelector("#cardview_bottom_save").style.display = "none";
+            document.querySelector("#cardview_bottom_owned").style.display = "none";
+        }
+    }
+
+    
 }
 
 async function save_to_wallet() {

@@ -20,5 +20,6 @@ urlpatterns = [
     path("createtempcard", views.create_temp_card, name="createtempcard"),
     path("deletecard", views.delete_card, name="deletecard"),
     path("renamecard", views.rename_card, name="renamecard"),
-    path("savetowallet", views.save_to_wallet, name="savetowallet")
+    path("savetowallet", views.save_to_wallet, name="savetowallet"),
+    path("getwallet", views.get_wallet, name="getwallet")
 ]

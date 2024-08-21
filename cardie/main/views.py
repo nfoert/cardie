@@ -333,3 +333,26 @@ def save_to_wallet(request):
         
     else:
         return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def get_wallet(request):
+    if request.method == "POST":
+        try:
+            me = User.objects.filter(username=request.session["username"])[0]
+
+            wallet = []
+            for card in range(len(me.wallet.all())):
+                wallet_item = {
+                    "name": me.wallet.all()[card].name,
+                    "uuid": me.wallet.all()[card].uuid
+                }
+
+                wallet.append(wallet_item)
+
+                return JsonResponse(wallet, safe=False)
+                
+        except KeyError:
+            return HttpResponse("Not signed in")
+        
+    else:
+        return HttpResponse("Request is not a POST request")

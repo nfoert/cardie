@@ -135,6 +135,29 @@ function create_new_card() {
     window.location.href = server_ip + "/editor";
 }
 
+async function get_wallet() {
+    const response = await fetch(server_ip + "/getwallet", {
+        method: "POST",
+    });
+
+    response.text().then(function (text) {
+        console.log(text)
+        if (text == "Request is not a POST request") {
+            log("WARNING", text);
+            create_notification("There was a problem getting your wallet", text, "warning");
+            return false;
+
+        } else if (text == "Not signed in") {
+            log("WARNING", "You're not signed in!");
+            window.location.href = `${server_ip}/authentication`;
+            
+        } else {
+            text = JSON.parse(text);
+            console.log(text)
+        }
+    });
+}
+
 document.querySelector("#home-top-image").addEventListener("click", (event) => {
     window.location.href = server_ip;
 });

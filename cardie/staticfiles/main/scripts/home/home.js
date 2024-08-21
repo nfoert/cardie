@@ -146,7 +146,31 @@ function home_wallet_view(event) {
 }
 
 async function home_wallet_remove(event) {
+    const response = await fetch(server_ip + "/removefromwallet", {
+        method: "POST",
+        headers: {
+            "uuid": event.target.closest(".home_card").querySelector(":scope > .home_card_text > .home_card_text_uuid").innerText
+        }
+    });
 
+    response.text().then(function (text) {
+        if (text == "Request is not a POST request") {
+            create_notification("There was a problem removing that card from your wallet", text, "warning");
+            log("WARNING", text);
+
+        } else if (text == "Not signed in") {
+            create_notification("There was a problem removing that card from your wallet", text, "warning");
+            log("WARNING", text);
+
+        } else if (text == "Success") {
+            create_notification("Card removed from wallet", "The card has been removed from your wallet", "check-circle");
+            window.location.reload();
+            
+        } else {
+            create_notification("There was a problem removing that card from your wallet", "There was an unknown issue", "warning");
+            log("WARNING", "There was an unknown issue: " + text);
+        }
+    });
 }
 
 async function list_cards() {

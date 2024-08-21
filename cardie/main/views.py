@@ -349,8 +349,26 @@ def get_wallet(request):
 
                 wallet.append(wallet_item)
 
-                return JsonResponse(wallet, safe=False)
+            return JsonResponse(wallet, safe=False)
                 
+        except KeyError:
+            return HttpResponse("Not signed in")
+        
+    else:
+        return HttpResponse("Request is not a POST request")
+
+@csrf_exempt
+def remove_from_wallet(request):
+    if request.method == "POST":
+        try:
+            me = User.objects.filter(username=request.session["username"])[0]
+
+            card_to_remove = me.wallet.filter(uuid=request.headers["uuid"])
+            print(card_to_remove)
+            me.wallet.remove(card_to_remove[0])
+
+            return HttpResponse("Success")
+            
         except KeyError:
             return HttpResponse("Not signed in")
         

@@ -233,6 +233,10 @@ async function get_wallet() {
         } else {
             text = JSON.parse(text);
 
+            if (!text.length == 0) {
+                document.querySelector("#home_wallet_nocards").style.display = "none";
+            }
+
             for (const card in text) {
                 create_wallet_card(text[card]["uuid"], text[card]["name"]);
             }

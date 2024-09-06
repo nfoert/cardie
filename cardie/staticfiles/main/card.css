@@ -119,3 +119,11 @@
     background-color: none;
     color: rgb(64, 163, 255);
 }
+
+.card_wrap {
+    max-width: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: start;
+}

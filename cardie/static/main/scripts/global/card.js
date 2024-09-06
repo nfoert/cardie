@@ -79,3 +79,23 @@ function card_render_from_json(card_selector, json) {
         )
     }
 }
+
+for (let i = 0; i < cards.length; i++) {
+    let outer = cards[i],
+    maxWidth = outer.clientWidth,
+    maxHeight = outer.clientHeight;
+
+    window.addEventListener("resize", resize);
+
+    resize();
+
+    function resize() {
+        let scale,
+        width = window.innerWidth,
+        height = window.innerHeight,
+        isMax = width >= maxWidth && height >= maxHeight;
+
+        scale = Math.min(width / maxWidth, height / maxHeight);
+        outer.style.transform = isMax ? '' : 'scale(' + scale + ')';
+    }
+}

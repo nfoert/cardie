@@ -59,7 +59,7 @@
                     <input type="text" class="ui_input_generic" id="editor_main_settings_details_pronouns" placeholder="Pronouns"></input>
                 </div>
 
-                <div id="editor_main_settings_items" x-data="textItemsComponent()">
+                <div id="editor_main_settings_items" x-data="textItemsComponent()" x-init="init()">
                     <p class="ui_text_subheader">Items</p>
                     <div class="ui_separator_horizontal"></div>
 
@@ -75,7 +75,6 @@
                                 </div>
 
                                 <div class="item_menu" x-show="menuOpen" x-collapse>
-                                    <p x-text="item.id"></p>
                                     <button class="ui_button_small text_item_icon" @click="item.urlEnabled = true" x-show="!item.urlEnabled"><i class="ph-bold ph-link"></i> Add URL</button>
                                     <button class="ui_button_small text_item_icon" @click="openIconSelector(item)"><i :class="`ph-bold ${item.icon}`"></i> Change icon</button>
                                     <button class="ui_button_small text_item_delete" @click="deleteItem(index)"><i class="ph-bold ph-trash"></i> Delete item</button>
@@ -110,8 +109,19 @@
                             },
                             
                             openIconSelector(item) {
-                                // Your logic to open the icon selector goes here.
-                                console.log("Icon selector opened for", item);
+                                show_iconselector(item.id);
+                            },
+                            
+                            init() {
+                                // Listen for the custom event and update the item's icon
+                                window.addEventListener('iconSelected', (event) => {
+                                    const { icon_selected_item, icon } = event.detail;
+                                    const item = this.items.find(i => i.id === icon_selected_item);
+                                    if (item) {
+                                        item.icon = `ph-${icon}`;
+                                    }
+                                    console.log(event.detail)
+                                });
                             },
                         };
                     }

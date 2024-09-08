@@ -415,3 +415,29 @@ html {
 #qrcode {
     display: none;
 }
+
+.item {
+    display: flex;
+    flex-direction: column;
+}
+
+.item_item {
+    display: flex;
+    flex-direction: row;
+}
+
+.item_menu {
+    display: flex;
+    flex-direction: column;
+    margin-left: clamp(5vh, 50px, 5vw);
+
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.item_menu > button {
+    text-align: left;
+}

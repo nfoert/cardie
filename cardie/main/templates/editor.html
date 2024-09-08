@@ -3,6 +3,9 @@
 <html>
     <head>
         <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/sort@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
@@ -56,23 +59,70 @@
                     <input type="text" class="ui_input_generic" id="editor_main_settings_details_pronouns" placeholder="Pronouns"></input>
                 </div>
 
-                <div id="editor_main_settings_information">
-                    <p class="ui_text_subheader">Information</p>
+                <div id="editor_main_settings_items" x-data="textItemsComponent()">
+                    <p class="ui_text_subheader">Items</p>
                     <div class="ui_separator_horizontal"></div>
 
-                    <div id="editor_main_settings_information_text">
-                        <p class="ui_text_smallersubheader">Text</p>
-                        <div id="editor_main_settings_information_text_items"></div>
-                        <button id="editor_main_settings_information_text_add" class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add text item</button>
+                    <div x-sort.ghost>
+                        <template x-for="(item, index) in items" :key="item.id">
+                            <div class="item" :uuid="item.id" x-sort:item x-data="{ menuOpen: false }">
+
+                                <div class="item_item">
+                                    <p class="ui_button_small" x-sort:handle><i class="ph-bold ph-dots-six-vertical"></i></p>
+                                    <input type="text" placeholder="Text" class="ui_input_generic text_item_text" x-model="item.text">
+                                    <input type="text" placeholder="URL" class="ui_input_generic text_item_text" x-model="item.url" x-show="item.urlEnabled" x-transition>
+                                    <button class="ui_button_smallicon" @click="menuOpen = !menuOpen"><i class="ph-bold ph-list"></i></button>
+                                </div>
+
+                                <div class="item_menu" x-show="menuOpen" x-collapse>
+                                    <p x-text="item.id"></p>
+                                    <button class="ui_button_small text_item_icon" @click="item.urlEnabled = true" x-show="!item.urlEnabled"><i class="ph-bold ph-link"></i> Add URL</button>
+                                    <button class="ui_button_small text_item_icon" @click="openIconSelector(item)"><i :class="`ph-bold ${item.icon}`"></i> Change icon</button>
+                                    <button class="ui_button_small text_item_delete" @click="deleteItem(index)"><i class="ph-bold ph-trash"></i> Delete item</button>
+                                </div>
+                            </div>
+                        </template>
                     </div>
 
-                    <div id="editor_main_settings_information_link">
-                        <p class="ui_text_smallersubheader">Links</p>
-                        <div id="editor_main_settings_information_link_items"></div>
-                        <button id="editor_main_settings_information_link_add" class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add link item</button>
-                    </div>
+                    <button @click="addItem()" id="editor_main_settings_information_text_add" class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add item</button>
                     
                 </div>
+
+                <script>
+                    function textItemsComponent() {
+                        return {
+                            items: [],
+                            nextId: 0,
+                            
+                            addItem() {
+                                this.items.push({
+                                    id: this.nextId,
+                                    text: "",
+                                    icon: 'ph-star',
+                                    url: "",
+                                    urlEnabled: false,
+                                });
+                                this.nextId++;
+                            },
+                            
+                            deleteItem(index) {
+                                this.items.splice(index, 1);
+                            },
+                            
+                            openIconSelector(item) {
+                                // Your logic to open the icon selector goes here.
+                                console.log("Icon selector opened for", item);
+                            },
+                        };
+                    }
+                </script>
+
+                <style>
+                    .sortable-ghost {
+                        opacity: .5 !important;
+                    }
+                </style>
+
             </div>
 
             <div id="editor_main_preview">

@@ -27,7 +27,7 @@ function card_create_text_item(card_selector, uuid, icon, text) {
     div.appendChild(icon_element);
     div.appendChild(text_element);
 
-    document.querySelector(card_selector).appendChild(div);
+    document.querySelector(`${card_selector} .card_items`).appendChild(div);
 }
 
 function card_create_link_item(card_selector, uuid, icon, text, url) {
@@ -48,7 +48,7 @@ function card_create_link_item(card_selector, uuid, icon, text, url) {
     div.appendChild(icon_element);
     div.appendChild(button_element);
 
-    document.querySelector(card_selector).appendChild(div);
+    document.querySelector(`${card_selector} .card_items`).appendChild(div);
 }
 
 function card_render_from_json(card_selector, json) {
@@ -60,23 +60,13 @@ function card_render_from_json(card_selector, json) {
     document.querySelector(`${card_selector} .card_top_text_username`).innerText = json["details"]["username"];
     document.querySelector(`${card_selector} .card_top_text_pronouns`).innerText = json["details"]["pronouns"];
 
-    for (const item in json["information"]["items"]["text"]) {
-        card_create_text_item(
-            `${card_selector} .card_items`,
-            json["information"]["items"]["text"][item]["uuid"],
-            json["information"]["items"]["text"][item]["icon"],
-            json["information"]["items"]["text"][item]["text"]
-        )
-    }
-
-    for (const item in json["information"]["items"]["links"]) {
-        card_create_link_item(
-            `${card_selector} .card_items`,
-            json["information"]["items"]["links"][item]["uuid"],
-            json["information"]["items"]["links"][item]["icon"],
-            json["information"]["items"]["links"][item]["text"],
-            json["information"]["items"]["links"][item]["url"]
-        )
+    for (const item in items_list) {
+        if (items_list[item].url_enabled) {
+            card_create_link_item(card_selector, items_list[item].uuid, items_list[item].icon, items_list[item].text, items_list[item].url);
+        
+        } else {
+            card_create_text_item(card_selector, items_list[item].uuid, items_list[item].icon, items_list[item].text);
+        }
     }
 }
 

@@ -106,6 +106,7 @@ async function save_card(card_json) {
 }
 
 function save_loop() {
+    window.dispatchEvent(new CustomEvent('getItemData'));
     new_card_data = JSON.stringify(editor_create_json());
 
     if (new_card_data != old_card_data) {
@@ -116,6 +117,7 @@ function save_loop() {
 }
 
 function demo_loop() {
+    window.dispatchEvent(new CustomEvent('getItemData'));
     new_card_data = JSON.stringify(editor_create_json());
 
     if (new_card_data != old_card_data) {

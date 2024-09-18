@@ -37,16 +37,20 @@ function editor_create_json() {
         let item_text = items_list[item].text;
         let item_url = items_list[item].url;
         let item_url_enabled = items_list[item].url_enabled;
+        let item_position = items_list[item].position;
 
         let item_json = {
             "uuid": item_uuid,
             "icon": item_icon,
             "text": item_text,
             "url": item_url,
-            "url_enabled": item_url_enabled
+            "url_enabled": item_url_enabled,
+            "position": item_position
         }
 
         card_json["information"]["items"].push(item_json);
+
+        card_json["information"]["items"].sort((a, b) => a.position - b.position)
     }
 
     return card_json;
@@ -61,15 +65,18 @@ function editor_load_from_json(json) {
     document.querySelector("#editor_main_settings_details_username").value = json["details"]["username"];
     document.querySelector("#editor_main_settings_details_pronouns").value = json["details"]["pronouns"];
 
+    json["information"]["items"].sort((a, b) => a.position - b.position)
+
     for (const item in json["information"]["items"]) {
         let uuid = json["information"]["items"][item]["uuid"];
         let text = json["information"]["items"][item]["text"];
         let icon = json["information"]["items"][item]["icon"];
         let url = json["information"]["items"][item]["url"];
         let url_enabled = json["information"]["items"][item]["url_enabled"];
+        let position = json["information"]["items"][item]["position"];
 
         window.dispatchEvent(new CustomEvent('createItem', {
-            detail: { uuid, text, icon, url, url_enabled }
+            detail: { uuid, text, icon, url, url_enabled, position }
         }));
     }
 }

@@ -60,12 +60,12 @@ function card_render_from_json(card_selector, json) {
     document.querySelector(`${card_selector} .card_top_text_username`).innerText = json["details"]["username"];
     document.querySelector(`${card_selector} .card_top_text_pronouns`).innerText = json["details"]["pronouns"];
 
-    for (const item in items_list) {
-        if (items_list[item].url_enabled) {
-            card_create_link_item(card_selector, items_list[item].uuid, items_list[item].icon, items_list[item].text, items_list[item].url);
+    for (const item in json["information"]["items"]) {
+        if (json["information"]["items"][item]["url_enabled"]) {
+            card_create_link_item(card_selector, json["information"]["items"][item]["uuid"], json["information"]["items"][item]["icon"], json["information"]["items"][item]["text"], json["information"]["items"][item]["url"]);
         
         } else {
-            card_create_text_item(card_selector, items_list[item].uuid, items_list[item].icon, items_list[item].text);
+            card_create_text_item(card_selector, json["information"]["items"][item]["uuid"], json["information"]["items"][item]["icon"], json["information"]["items"][item]["text"]);
         }
     }
 }

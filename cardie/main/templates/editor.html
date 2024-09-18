@@ -63,7 +63,7 @@
                     <p class="ui_text_subheader">Items</p>
                     <div class="ui_separator_horizontal"></div>
 
-                    <div x-sort.ghost>
+                    <div id="editor_main_settings_items_items" x-sort.ghost>
                         <template x-for="(item, index) in items" :key="item.id">
                             <div class="item" :uuid="item.id" x-sort:item x-data="{ menuOpen: false }">
 
@@ -93,13 +93,14 @@
                             items: [],
                             nextId: 0,
                             
-                            addItem(id=this.nextId, text="", icon="ph-star", url="", url_enabled=false) {
+                            addItem(id=this.nextId, text="", icon="ph-star", url="", url_enabled=false, position=null) {
                                 this.items.push({
                                     id: id,
                                     text: text,
                                     icon: icon,
                                     url: url,
                                     url_enabled: url_enabled,
+                                    position: position
                                 });
                                 this.nextId++;
                             },
@@ -113,15 +114,17 @@
                             },
 
                             updatePositions(event) {
-                                dragged_item = event.item;
-
-                                const oldIndex = event.oldIndex;
-                                const newIndex = event.newIndex;
-
-                                this.items.find(item => item.id == event.clone.getAttribute("uuid")).position = newIndex;
-                    
-                                console.log(`Item moved from position ${oldIndex + 1} to ${newIndex + 1}`);
-                                console.log("Updated items array:", this.items);
+                                let item_elements = document.querySelector("#editor_main_settings_items_items").children
+                                try {
+                                    for (const item_element in item_elements) {
+                                        if (item_elements[item_element].tagName.toLowerCase() == "div") {
+                                            this.items.find(item => item.id == item_elements[item_element].getAttribute("uuid")).position = item_element - 1;
+                                        }
+                                    }
+                                } catch {
+                                    null;
+                                }
+                                
                             },
 
                             returnItems() {
@@ -142,8 +145,8 @@
 
                                 window.addEventListener('createItem', (event) => {
                                     event.stopImmediatePropagation();
-                                    const { id, text, icon, url, url_enabled } = event.detail;
-                                    this.addItem(id, text, icon, url, url_enabled);
+                                    const { id, text, icon, url, url_enabled, position } = event.detail;
+                                    this.addItem(id, text, icon, url, url_enabled, position);
                                 });
 
                                 window.addEventListener('getItemData', (event) => {

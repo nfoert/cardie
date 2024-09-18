@@ -8,6 +8,14 @@ for (let i = 0; i < cards.length; i++) {
     });
 }
 
+var card_i_style = document.createElement('style');
+card_i_style.type = 'text/css';
+document.getElementsByTagName('head')[0].appendChild(card_i_style);
+
+var card_p_style = document.createElement('style');
+card_p_style.type = 'text/css';
+document.getElementsByTagName('head')[0].appendChild(card_p_style);
+
 // Functions for adding elements to the card
 function card_delete_items(card_selector) {
     document.querySelector(`${card_selector} .card_items`).replaceChildren();
@@ -51,14 +59,24 @@ function card_create_link_item(card_selector, uuid, icon, text, url) {
     document.querySelector(`${card_selector} .card_items`).appendChild(div);
 }
 
+function card_set_colors(card_selector, background, accent, text) {
+    document.querySelector(`${card_selector} .card_card_front`).style.backgroundColor = background;
+    document.querySelector(`${card_selector} .card_card_back`).style.backgroundColor = background;
+
+    card_i_style.innerHTML = `${card_selector} i { color: ${accent} }`;
+    card_p_style.innerHTML = `${card_selector} p { color: ${text} }`;
+}
+
 function card_render_from_json(card_selector, json) {
     // Renders the contents of the card from the json
 
     json = JSON.parse(json);
     card_delete_items(card_selector);
 
-    document.querySelector(`${card_selector} .card_top_text_username`).innerText = json["details"]["username"];
-    document.querySelector(`${card_selector} .card_top_text_pronouns`).innerText = json["details"]["pronouns"];
+    document.querySelector(`${card_selector} .card_top_text_username`).innerText = json["details"]["primary"];
+    document.querySelector(`${card_selector} .card_top_text_pronouns`).innerText = json["details"]["secondary"];
+
+    card_set_colors(card_selector, json["colors"]["background"], json["colors"]["accent"], json["colors"]["text"])
 
     for (const item in json["information"]["items"]) {
         if (json["information"]["items"][item]["url_enabled"]) {

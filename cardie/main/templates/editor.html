@@ -42,8 +42,8 @@
 
         <div id="editor_main">
             <div id="editor_main_settings">
-                <div id="editor_main_settings_layout">
-                    <p class="ui_text_subheader">Layout</p>
+                <div class="editor_main_setting" id="editor_main_settings_layout">
+                    <p class="ui_text_subheader_left"><i class="ph-bold ph-layout"></i> Layout</p>
                     <div class="ui_separator_horizontal"></div>
                     <div id="editor_main_settings_layout_buttons">
                         <button class="ui_button_icon"><i class="ph-bold ph-align-left"></i></button>
@@ -52,15 +52,27 @@
                     </div>
                 </div>
                 
-                <div id="editor_main_settings_details">
-                    <p class="ui_text_subheader">Details</p>
+                <div class="editor_main_setting" id="editor_main_settings_details">
+                    <p class="ui_text_subheader_left"><i class="ph-bold ph-text-aa"></i> Details</p>
                     <div class="ui_separator_horizontal"></div>
-                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_username" placeholder="Username"></input>
-                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_pronouns" placeholder="Pronouns"></input>
+                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_primary" placeholder="Primary text"></input>
+                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_secondary" placeholder="Secondary text"></input>
                 </div>
 
-                <div id="editor_main_settings_items" x-data="textItemsComponent()" x-init="init()" @end="updatePositions">
-                    <p class="ui_text_subheader">Items</p>
+                <div class="editor_main_setting" id="editor_main_settings_colors">
+                    <p class="ui_text_subheader_left"><i class="ph-bold ph-palette"></i> Colors</p>
+                    <div class="ui_separator_horizontal"></div>
+
+                    <p class="ui_text_description">Background color</p>
+                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_background"></input>
+                    <p class="ui_text_description">Accent color</p>
+                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_accent"></input>
+                    <p class="ui_text_description">Text color</p>
+                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_text"></input>
+                </div>
+
+                <div class="editor_main_setting" id="editor_main_settings_items" x-data="textItemsComponent()" x-init="init()" @end="updatePositions">
+                    <p class="ui_text_subheader_left"><i class="ph-bold ph-list-bullets"></i> Items</p>
                     <div class="ui_separator_horizontal"></div>
 
                     <div id="editor_main_settings_items_items" x-sort.ghost>

@@ -113,6 +113,7 @@ html {
 #editor_main_settings {
     margin-left: clamp(2vh, 20px, 2vw);
     margin-right: clamp(2vh, 20px, 2vw);
+    padding-top: clamp(2vh, 20px, 2vw);
 
     display: flex;
     flex-direction: column;
@@ -440,4 +441,8 @@ html {
 
 .item_menu > button {
     text-align: left;
+}
+
+.editor_main_setting {
+    margin-bottom: clamp(2vh, 20px, 2vw);
 }

@@ -127,3 +127,11 @@
     justify-content: left;
     align-items: start;
 }
+
+.card_card p {
+    transition: var(--default-transition);
+}
+
+.card_card i {
+    transition: var(--default-transition);
+}

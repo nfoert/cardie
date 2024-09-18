@@ -17,19 +17,28 @@ function editor_create_json() {
         "author": "unknown",
         "layout": "",
         "details": {
-            "username": "",
-            "pronouns": ""
+            "primary": "",
+            "secondary": ""
         },
         "information": {
             "items": []
         },
-        "version": 1
+        "colors": {
+            "background": "#ffffff", 
+            "accent": "#000000", 
+            "text": "#000000"
+        },
+        "version": 3
     }
 
     card_json["name"] = document.querySelector("#editor_header_name_text_cardname").innerText;
     card_json["author"] = username;
-    card_json["details"]["username"] = document.querySelector("#editor_main_settings_details_username").value;
-    card_json["details"]["pronouns"] = document.querySelector("#editor_main_settings_details_pronouns").value;
+    card_json["details"]["primary"] = document.querySelector("#editor_main_settings_details_primary").value;
+    card_json["details"]["secondary"] = document.querySelector("#editor_main_settings_details_secondary").value;
+
+    card_json["colors"]["background"] = document.querySelector("#editor_main_settings_colors_background").value;
+    card_json["colors"]["accent"] = document.querySelector("#editor_main_settings_colors_accent").value;
+    card_json["colors"]["text"] = document.querySelector("#editor_main_settings_colors_text").value;
 
     for (const item in items_list) {
         let item_uuid = items_list[item].id;
@@ -62,8 +71,12 @@ function editor_load_from_json(json) {
     json = JSON.parse(json);
 
     document.querySelector("#editor_header_name_text_cardname").innerText = json["name"];
-    document.querySelector("#editor_main_settings_details_username").value = json["details"]["username"];
-    document.querySelector("#editor_main_settings_details_pronouns").value = json["details"]["pronouns"];
+    document.querySelector("#editor_main_settings_details_primary").value = json["details"]["primary"];
+    document.querySelector("#editor_main_settings_details_secondary").value = json["details"]["secondary"];
+
+    document.querySelector("#editor_main_settings_colors_background").value = json["colors"]["background"];
+    document.querySelector("#editor_main_settings_colors_accent").value = json["colors"]["accent"];
+    document.querySelector("#editor_main_settings_colors_text").value = json["colors"]["text"];
 
     json["information"]["items"].sort((a, b) => a.position - b.position)
 

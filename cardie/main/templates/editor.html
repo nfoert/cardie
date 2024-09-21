@@ -8,6 +8,8 @@
         <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css"/>
+
         <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static '/main/card.css' %}">
@@ -26,13 +28,13 @@
     <body>
         <div id="editor_header">
             <div id="editor_header_title">
-                <button class="ui_button_icon" id="editor_header_title_home"><i class="ph-bold ph-house"></i></button>
+                <button class="ui_button_icon" id="editor_header_title_home" data-tippy-content="Go back to the home page"><i class="ph-bold ph-house"></i></button>
                 <img id="editor_header_title_image" src="{% static '/main/images/logo_light.png' %}">
                 <p id="editor_header_title_text"> Editor</p>
             </div>
 
             <div id="editor_header_name">
-                <button id="editor_header_name_button"><i class="ph-bold ph-pencil-simple"></i></button>
+                <button id="editor_header_name_button" data-tippy-content="Edit the name of this Card"><i class="ph-bold ph-pencil-simple"></i></button>
                 <p id="editor_header_name_text_cardname">Untitled Card</p>
                 <p id="editor_header_name_text_username">by {{ username }}</p>
             </div>
@@ -55,8 +57,8 @@
                 <div class="editor_main_setting" id="editor_main_settings_details">
                     <p class="ui_text_subheader_left"><i class="ph-bold ph-text-aa"></i> Details</p>
                     <div class="ui_separator_horizontal"></div>
-                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_primary" placeholder="Primary text"></input>
-                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_secondary" placeholder="Secondary text"></input>
+                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_primary" placeholder="Primary text" data-tippy-content="Perfect for your name or username"></input>
+                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_secondary" placeholder="Secondary text" data-tippy-content="Perfect for your job title or pronouns"></input>
                 </div>
 
                 <div class="editor_main_setting" id="editor_main_settings_colors">
@@ -64,11 +66,11 @@
                     <div class="ui_separator_horizontal"></div>
 
                     <p class="ui_text_description">Background color</p>
-                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_background"></input>
+                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_background" data-tippy-content="Change the background color on your card"></input>
                     <p class="ui_text_description">Accent color</p>
-                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_accent"></input>
+                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_accent" data-tippy-content="Change the accent color on your card, this is used for the colors of the icons"></input>
                     <p class="ui_text_description">Text color</p>
-                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_text"></input>
+                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_text" data-tippy-content="Change the text color on your card"></input>
                 </div>
 
                 <div class="editor_main_setting" id="editor_main_settings_items" x-data="textItemsComponent()" x-init="init()" @end="updatePositions">
@@ -229,6 +231,15 @@
             var server_ip = "{{ server_ip }}";
             var production = "{{ production }}";
             var username = "{{ username }}";
+        </script>
+
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://unpkg.com/tippy.js@6"></script>
+
+        <script>
+            tippy("[data-tippy-content]", {
+                animation: "shift-away",
+            });
         </script>
 
         <script src="{% static '/main/scripts/editor/icons.js' %}"></script>

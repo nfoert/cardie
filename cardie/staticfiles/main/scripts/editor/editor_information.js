@@ -15,7 +15,7 @@ function editor_create_json() {
         "uuid": "unknown",
         "name": "",
         "author": "unknown",
-        "layout": "",
+        "layout": "left",
         "details": {
             "primary": "",
             "secondary": ""
@@ -33,6 +33,7 @@ function editor_create_json() {
 
     card_json["name"] = document.querySelector("#editor_header_name_text_cardname").innerText;
     card_json["author"] = username;
+    card_json["layout"] = layout;
     card_json["details"]["primary"] = document.querySelector("#editor_main_settings_details_primary").value;
     card_json["details"]["secondary"] = document.querySelector("#editor_main_settings_details_secondary").value;
 
@@ -77,6 +78,9 @@ function editor_load_from_json(json) {
     document.querySelector("#editor_main_settings_colors_background").value = json["colors"]["background"];
     document.querySelector("#editor_main_settings_colors_accent").value = json["colors"]["accent"];
     document.querySelector("#editor_main_settings_colors_text").value = json["colors"]["text"];
+
+    card_set_layout(".card_card", json["layout"]);
+    layout = json["layout"];
 
     json["information"]["items"].sort((a, b) => a.position - b.position)
 

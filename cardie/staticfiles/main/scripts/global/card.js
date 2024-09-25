@@ -77,6 +77,7 @@ function card_render_from_json(card_selector, json) {
     document.querySelector(`${card_selector} .card_top_text_pronouns`).innerText = json["details"]["secondary"];
 
     card_set_colors(card_selector, json["colors"]["background"], json["colors"]["accent"], json["colors"]["text"])
+    card_set_layout(card_selector, json["layout"]);
 
     for (const item in json["information"]["items"]) {
         if (json["information"]["items"][item]["url_enabled"]) {
@@ -85,6 +86,27 @@ function card_render_from_json(card_selector, json) {
         } else {
             card_create_text_item(card_selector, json["information"]["items"][item]["uuid"], json["information"]["items"][item]["icon"], json["information"]["items"][item]["text"]);
         }
+    }
+}
+
+function card_set_layout(card_selector, layout) {
+    // layout can be "left", "right", "center"
+    let card = document.querySelector(`${card_selector} .card_card_front`)
+
+    if (layout == "left") {
+        card.setAttribute("card-align", "left");
+
+    } else if (layout == "right") {
+        card.setAttribute("card-align", "right");
+
+    } else if (layout == "center") {
+        card.setAttribute("card-align", "center")
+
+    } else if (layout == "") { // Default value in databases
+        card.setAttribute("card-align", "left");
+
+    } else {
+        log("WARNING", "The card layout parameter is not an accepted value")
     }
 }
 

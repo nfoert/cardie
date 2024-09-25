@@ -1,0 +1,104 @@
+<div class="editor_main_setting" id="editor_main_settings_items" x-data="textItemsComponent()" x-init="init()" @end="updatePositions">
+    <p class="ui_text_subheader_left"><i class="ph-bold ph-list-bullets"></i> Items</p>
+    <div class="ui_separator_horizontal"></div>
+
+    <div id="editor_main_settings_items_items" x-sort.ghost>
+        <template x-for="(item, index) in items" :key="item.id">
+            <div class="item" :uuid="item.id" x-sort:item x-data="{ menuOpen: false }">
+
+                <div class="item_item">
+                    <p class="ui_button_small" x-sort:handle><i class="ph-bold ph-dots-six-vertical"></i></p>
+                    <input type="text" placeholder="Text" class="ui_input_generic text_item_text" x-model="item.text">
+                    <input type="text" placeholder="URL" class="ui_input_generic text_item_text" x-model="item.url" x-show="item.url_enabled" x-transition>
+                    <button class="ui_button_smallicon" @click="menuOpen = !menuOpen"><i class="ph-bold ph-list"></i></button>
+                </div>
+
+                <div class="item_menu" x-show="menuOpen" x-collapse>
+                    <button class="ui_button_small text_item_icon" @click="item.url_enabled = true" x-show="!item.url_enabled"><i class="ph-bold ph-link"></i> Add URL</button>
+                    <button class="ui_button_small text_item_icon" @click="openIconSelector(item)"><i :class="`ph-bold ${item.icon}`"></i> Change icon</button>
+                    <button class="ui_button_small text_item_delete" @click="deleteItem(index)"><i class="ph-bold ph-trash"></i> Delete item</button>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <button @click="addItem()" id="editor_main_settings_information_text_add" class="ui_button_small"><i class="ph-bold ph-plus-circle"></i> Add item</button>
+    
+</div>
+
+<script>
+    function textItemsComponent() {
+        return {
+            items: [],
+            nextId: 0,
+            
+            addItem(id=this.nextId, text="", icon="ph-star", url="", url_enabled=false, position=null) {
+                this.items.push({
+                    id: id,
+                    text: text,
+                    icon: icon,
+                    url: url,
+                    url_enabled: url_enabled,
+                    position: position
+                });
+                this.nextId++;
+            },
+            
+            deleteItem(index) {
+                this.items.splice(index, 1);
+            },
+            
+            openIconSelector(item) {
+                show_iconselector(item.id);
+            },
+
+            updatePositions(event) {
+                let item_elements = document.querySelector("#editor_main_settings_items_items").children
+                try {
+                    for (const item_element in item_elements) {
+                        if (item_elements[item_element].tagName.toLowerCase() == "div") {
+                            this.items.find(item => item.id == item_elements[item_element].getAttribute("uuid")).position = item_element - 1;
+                        }
+                    }
+                } catch {
+                    null;
+                }
+                
+            },
+
+            returnItems() {
+                window.dispatchEvent(new CustomEvent('itemData', {
+                    detail: { items: this.items }
+                }));
+            },
+            
+            init() {
+                // Listen for the custom event and update the item's icon
+                window.addEventListener('iconSelected', (event) => {
+                    const { icon_selected_item, icon } = event.detail;
+                    const item = this.items.find(i => i.id === icon_selected_item);
+                    if (item) {
+                        item.icon = `ph-${icon}`;
+                    }
+                });
+
+                window.addEventListener('createItem', (event) => {
+                    event.stopImmediatePropagation();
+                    const { id, text, icon, url, url_enabled, position } = event.detail;
+                    this.addItem(id, text, icon, url, url_enabled, position);
+                });
+
+                window.addEventListener('getItemData', (event) => {
+                    event.stopImmediatePropagation();
+                    this.returnItems();
+                });
+            },
+        };
+    }
+</script>
+
+<style>
+    .sortable-ghost {
+        opacity: .5 !important;
+    }
+</style>

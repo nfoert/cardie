@@ -82,7 +82,7 @@ function editor_load_from_json(json) {
     document.querySelector("#editor_main_settings_colors_text").value = json["colors"]["text"];
     font_style = json["font_style"];
 
-    load_font_style(font_style);
+    card_set_font(".card_card", font_style);
     window.dispatchEvent(new CustomEvent('sendLoadedFontFromJson', {
         detail: { font_style }
     }));

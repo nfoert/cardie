@@ -78,6 +78,7 @@ function card_render_from_json(card_selector, json) {
 
     card_set_colors(card_selector, json["colors"]["background"], json["colors"]["accent"], json["colors"]["text"])
     card_set_layout(card_selector, json["layout"]);
+    card_set_font(card_selector, json["font_style"]);
 
     for (const item in json["information"]["items"]) {
         if (json["information"]["items"][item]["url_enabled"]) {
@@ -110,14 +111,20 @@ function card_set_layout(card_selector, layout) {
     }
 }
 
-function card_set_font(card_selector, header, text) {
+function card_set_font(card_selector, name) {
+    let font_style = get_font_style(name);
+    load_font(font_style["header"]["name"], font_style["header"]["url"]);
+    load_font(font_style["text"]["name"], font_style["text"]["url"]);
+
     let primary_top = document.querySelector(`${card_selector} .card_top_text_username`);
     let secondary_top = document.querySelector(`${card_selector} .card_top_text_pronouns`);
     let items = document.querySelector(`${card_selector} .card_items`);
 
-    primary_top.style.fontFamily = header;
-    secondary_top.style.fontFamily = text;
-    items.style.fontFamily = text;
+    primary_top.style.fontFamily = font_style["header"]["name"];
+    secondary_top.style.fontFamily = font_style["text"]["name"];
+    items.style.fontFamily = font_style["text"]["name"];
+
+    font_style = name;
 }
 
 for (let i = 0; i < cards.length; i++) {

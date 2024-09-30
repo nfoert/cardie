@@ -44,15 +44,6 @@ async function load_font_css(url) {
     }
 }
 
-async function load_font_style(name) {
-    let font_style = get_font_style(name);
-    load_font(font_style["header"]["name"], font_style["header"]["url"]);
-    load_font(font_style["text"]["name"], font_style["text"]["url"]);
-
-    card_set_font(".card_card", font_style["header"]["name"], font_style["text"]["name"]);
-    font_style = name;
-}
-
 document.addEventListener("DOMContentLoaded", (event) => {
     window.dispatchEvent(new CustomEvent('sendFontStyles', {
         detail: { font_styles }

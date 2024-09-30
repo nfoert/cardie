@@ -28,7 +28,8 @@ function editor_create_json() {
             "accent": "#000000", 
             "text": "#000000"
         },
-        "version": 3
+        "font_style": "Simple",
+        "version": 4
     }
 
     card_json["name"] = document.querySelector("#editor_header_name_text_cardname").innerText;
@@ -40,6 +41,7 @@ function editor_create_json() {
     card_json["colors"]["background"] = document.querySelector("#editor_main_settings_colors_background").value;
     card_json["colors"]["accent"] = document.querySelector("#editor_main_settings_colors_accent").value;
     card_json["colors"]["text"] = document.querySelector("#editor_main_settings_colors_text").value;
+    card_json["font_style"] = font_style;
 
     for (const item in items_list) {
         let item_uuid = items_list[item].id;
@@ -78,6 +80,12 @@ function editor_load_from_json(json) {
     document.querySelector("#editor_main_settings_colors_background").value = json["colors"]["background"];
     document.querySelector("#editor_main_settings_colors_accent").value = json["colors"]["accent"];
     document.querySelector("#editor_main_settings_colors_text").value = json["colors"]["text"];
+    font_style = json["font_style"];
+
+    load_font_style(font_style);
+    window.dispatchEvent(new CustomEvent('sendLoadedFontFromJson', {
+        detail: { font_style }
+    }));
 
     card_set_layout(".card_card", json["layout"]);
     layout = json["layout"];

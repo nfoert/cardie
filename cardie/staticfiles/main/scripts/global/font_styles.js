@@ -11,46 +11,46 @@ var font_styles =  [
         "text": {"name": "Noto Sans", "url": "Noto Sans"}
     },
     {"name": "Fancy", 
-        "header": {"name": "EB Garamond", "url": "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"}, 
+        "header": {"name": "Roboto Slab", "url": "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"}, 
         "text": {"name": "EB Garamond", "url": "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"}
     },
 ];
 
 function get_font_style(name) {
-    return(font_styles.find(font => font.name == name))
+    return(font_styles.find(font => font.name == name));
 }
 
 async function load_font(name, url) {
     if (url.includes("https://") || url.includes("http://")) {
-        get_font_url_from_css(url).then(async (font_url) => {
-            const font = new FontFace(name, `url(${font_url})`);
-            await font.load();
-            document.fonts.add(font);
-            log("INFO", `Loaded font ${name}`);
-        });
-        
+        load_font_css(url);
+        log("INFO", `Loaded font ${name}`);
+
     } else {
         log("INFO", `Not loading font ${name} because it doesn't have a web url.`);
     }
     
 }
 
-async function get_font_url_from_css(css_url) {
-    try {
-        const response = await fetch(css_url);
-        const cssText = await response.text();
-
-        const fontUrlMatch = cssText.match(/url\((https:\/\/[^)]+\.woff2?)\)/);
-
-        if (fontUrlMatch[1]) {
-            return(fontUrlMatch[1]);
-
-        } else {
-            log("WARN", "Font URL not found in the CSS file");
-        }
-    } catch (error) {
-        log("WARN", "There was a problem finding the font url from the CSS")
+async function load_font_css(url) {
+    let cssId = url;
+    if (!document.getElementById(cssId)) {
+        let link  = document.createElement('link');
+        link.id   = cssId;
+        link.rel  = 'stylesheet';
+        link.type = 'text/css';
+        link.href = url;
+        link.media = 'all';
+        document.getElementsByTagName('head')[0].appendChild(link);
     }
+}
+
+async function load_font_style(name) {
+    let font_style = get_font_style(name);
+    load_font(font_style["header"]["name"], font_style["header"]["url"]);
+    load_font(font_style["text"]["name"], font_style["text"]["url"]);
+
+    card_set_font(".card_card", font_style["header"]["name"], font_style["text"]["name"]);
+    font_style = name;
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -62,5 +62,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
 window.addEventListener('loadFont', (event) => {
     event.stopImmediatePropagation();
     const { font_name, font_url } = event.detail;
-    load_font(font_name, font_url)
+    load_font(font_name, font_url);
 });

@@ -2,6 +2,7 @@ var old_card_data = JSON.stringify(editor_create_json());
 var new_card_data;
 var qrcode;
 var layout = "left";
+var font_style = "Simple";
 
 try {
     var demo_param = JSON.parse(new URL(window.location.href).searchParams.get("demo").toLowerCase());

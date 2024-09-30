@@ -142,6 +142,7 @@ for (let i = 0; i < cards.length; i++) {
 
 window.addEventListener('setFontOnCard', (event) => { // Called when a font item is clicked in the editor
     event.stopImmediatePropagation();
-    const { header, text } = event.detail;
+    const { header, text, style_name } = event.detail;
     card_set_font(".card_card", header, text);
+    font_style = style_name;
 });

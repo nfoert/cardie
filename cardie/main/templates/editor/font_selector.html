@@ -4,7 +4,7 @@
 
     <div id="editor_main_setting_font_selector">
         <div id="editor_main_setting_font_selector_top">
-            <p class="ui_text_body">Selected font</p>
+            <p class="ui_text_body" x-text="selected_font"></p>
             <button class="ui_button_small" @click="selector_open = !selector_open">Change</button>
         </div>
         
@@ -12,7 +12,7 @@
         <div id="editor_main_setting_font_selector_items" x-show="selector_open" x-collapse>
             <template x-for="(font, index) in fonts" :key="index">
                 <div class="editor_font_item">
-                    <button class="ui_button_small" x-text="font.name" @click="set_font_on_card(font.header.name, font.text.name)"></button>
+                    <button class="ui_button_small" x-text="font.name" @click="set_font_on_card(font.header.name, font.text.name, font.name)"></button>
                     <p class="ui_text_body" x-text="font.header.name" :style='`font-family: "${font.header.name}"`'></p>
                     <p class="ui_text_description" x-text="font.text.name" :style='`font-family: "${font.text.name}"`'></p>
                 </div>
@@ -27,6 +27,7 @@
         return {
             selector_open: false,
             fonts: [],
+            selected_font: "",
 
             load_all_fonts() {
                 for (const font_style in this.fonts) {
@@ -36,14 +37,14 @@
                     window.dispatchEvent(new CustomEvent('loadFont', {
                         detail: { font_name, font_url }
                     }));
-
                 }
             },
 
-            set_font_on_card(header, text) {
+            set_font_on_card(header, text, style_name) {
                 window.dispatchEvent(new CustomEvent('setFontOnCard', {
-                    detail: { header, text }
+                    detail: { header, text, style_name }
                 }));
+                this.selected_font = style_name;
             },
             
             init() {
@@ -55,6 +56,11 @@
                     this.load_all_fonts();
                 });
 
+                window.addEventListener('sendLoadedFontFromJson', (event) => {
+                    event.stopImmediatePropagation();
+                    const { font_style } = event.detail;
+                    this.selected_font = font_style;
+                });
             },
         };
     }

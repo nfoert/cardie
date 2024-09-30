@@ -5,16 +5,27 @@
     <div id="editor_main_setting_font_selector">
         <div id="editor_main_setting_font_selector_top">
             <p class="ui_text_body" x-text="selected_font"></p>
-            <button class="ui_button_small" @click="selector_open = !selector_open">Change</button>
+            <button class="ui_button_small" @click="selector_open = !selector_open" x-html="selector_open === false ? 'Edit' : 'Close'"></button>
         </div>
         
 
         <div id="editor_main_setting_font_selector_items" x-show="selector_open" x-collapse>
             <template x-for="(font, index) in fonts" :key="index">
                 <div class="editor_font_item">
-                    <button class="ui_button_small" x-text="font.name" @click="set_font_on_card(font.header.name, font.text.name, font.name)"></button>
-                    <p class="ui_text_body" x-text="font.header.name" :style='`font-family: "${font.header.name}"`'></p>
-                    <p class="ui_text_description" x-text="font.text.name" :style='`font-family: "${font.text.name}"`'></p>
+                    <button class="ui_button_small" @click="set_font_on_card(font.header.name, font.text.name, font.name); selector_open = false;">
+                        <p class="ui_text_body" x-text="font.name" style="font-weight: 600;"></p>
+
+                        <div class="editor_main_setting_font_selector_items_labels">
+                            <p class="ui_text_body">Header</p>
+                            <p class="ui_text_description">Text</p>
+                        </div>
+
+                        <div>
+                            <p class="ui_text_body" x-text="font.header.name" :style='`font-family: "${font.header.name}"`'></p>
+                            <p class="ui_text_description" x-text="font.text.name" :style='`font-family: "${font.text.name}"`'></p>
+                        </div>
+                        
+                    </button>
                 </div>
             </template>
         </div>

@@ -460,6 +460,8 @@ html {
     flex-direction: row;
     justify-content: space-between;
     vertical-align: middle;
+    align-items: baseline;
+    padding-left: clamp(1.5vh, 15px, 1.5vw);
 }
 
 .editor_font_item {
@@ -470,4 +472,21 @@ html {
 #editor_main_setting_font_selector_items {
     display: flex;
     flex-direction: column;
+}
+
+.editor_font_item > button {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.editor_main_setting_font_selector_items_labels {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    align-items: end;
+
+    margin-left: clamp(1.5vh, 15px, 1.5vw);
+    margin-right: clamp(1vh, 10px, 1vw);
+    
 }

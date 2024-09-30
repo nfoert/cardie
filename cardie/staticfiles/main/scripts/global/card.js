@@ -91,7 +91,7 @@ function card_render_from_json(card_selector, json) {
 
 function card_set_layout(card_selector, layout) {
     // layout can be "left", "right", "center"
-    let card = document.querySelector(`${card_selector} .card_card_front`)
+    let card = document.querySelector(`${card_selector} .card_card_front`);
 
     if (layout == "left") {
         card.setAttribute("card-align", "left");
@@ -106,8 +106,18 @@ function card_set_layout(card_selector, layout) {
         card.setAttribute("card-align", "left");
 
     } else {
-        log("WARNING", "The card layout parameter is not an accepted value")
+        log("WARNING", "The card layout parameter is not an accepted value");
     }
+}
+
+function card_set_font(card_selector, header, text) {
+    let primary_top = document.querySelector(`${card_selector} .card_top_text_username`);
+    let secondary_top = document.querySelector(`${card_selector} .card_top_text_pronouns`);
+    let items = document.querySelector(`${card_selector} .card_items`);
+
+    primary_top.style.fontFamily = header;
+    secondary_top.style.fontFamily = text;
+    items.style.fontFamily = text;
 }
 
 for (let i = 0; i < cards.length; i++) {
@@ -129,3 +139,9 @@ for (let i = 0; i < cards.length; i++) {
         outer.style.transform = isMax ? '' : 'scale(' + scale + ')';
     }
 }
+
+window.addEventListener('setFontOnCard', (event) => { // Called when a font item is clicked in the editor
+    event.stopImmediatePropagation();
+    const { header, text } = event.detail;
+    card_set_font(".card_card", header, text);
+});

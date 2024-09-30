@@ -12,9 +12,9 @@
         <div id="editor_main_setting_font_selector_items" x-show="selector_open" x-collapse>
             <template x-for="(font, index) in fonts" :key="index">
                 <div class="editor_font_item">
-                    <button class="ui_button_small" x-text="font.name"></button>
+                    <button class="ui_button_small" x-text="font.name" @click="set_font_on_card(font.header.name, font.text.name)"></button>
                     <p class="ui_text_body" x-text="font.header.name" :style='`font-family: "${font.header.name}"`'></p>
-                    <p class="ui_text_body" x-text="font.text.name" :style='`font-family: "${font.text.name}"`'></p>
+                    <p class="ui_text_description" x-text="font.text.name" :style='`font-family: "${font.text.name}"`'></p>
                 </div>
             </template>
         </div>
@@ -38,6 +38,12 @@
                     }));
 
                 }
+            },
+
+            set_font_on_card(header, text) {
+                window.dispatchEvent(new CustomEvent('setFontOnCard', {
+                    detail: { header, text }
+                }));
             },
             
             init() {

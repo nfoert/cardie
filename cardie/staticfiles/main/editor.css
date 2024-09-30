@@ -446,3 +446,28 @@ html {
 .editor_main_setting {
     margin-bottom: clamp(2vh, 20px, 2vw);
 }
+
+#editor_main_setting_font_selector {
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+    margin-top: clamp(1vh, 10px, 1vw);
+}
+
+#editor_main_setting_font_selector_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+
+.editor_font_item {
+    display: flex;
+    flex-direction: row;
+}
+
+#editor_main_setting_font_selector_items {
+    display: flex;
+    flex-direction: column;
+}

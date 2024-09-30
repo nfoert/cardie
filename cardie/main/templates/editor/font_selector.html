@@ -1,0 +1,55 @@
+<div class="editor_main_setting" id="editor_main_settings_font" x-data="fontSelectorComponent()" x-init="init()">
+    <p class="ui_text_subheader_left"><i class="ph-bold ph-text-a-underline"></i> Font Style</p>
+    <div class="ui_separator_horizontal"></div>
+
+    <div id="editor_main_setting_font_selector">
+        <div id="editor_main_setting_font_selector_top">
+            <p class="ui_text_body">Selected font</p>
+            <button class="ui_button_small" @click="selector_open = !selector_open">Change</button>
+        </div>
+        
+
+        <div id="editor_main_setting_font_selector_items" x-show="selector_open" x-collapse>
+            <template x-for="(font, index) in fonts" :key="index">
+                <div class="editor_font_item">
+                    <button class="ui_button_small" x-text="font.name"></button>
+                    <p class="ui_text_body" x-text="font.header.name" :style='`font-family: "${font.header.name}"`'></p>
+                    <p class="ui_text_body" x-text="font.text.name" :style='`font-family: "${font.text.name}"`'></p>
+                </div>
+            </template>
+        </div>
+    </div>
+    
+</div>
+
+<script>
+    function fontSelectorComponent() {
+        return {
+            selector_open: false,
+            fonts: [],
+
+            load_all_fonts() {
+                for (const font_style in this.fonts) {
+                    const font_name = this.fonts[font_style].header.name;
+                    const font_url = this.fonts[font_style].header.url;
+
+                    window.dispatchEvent(new CustomEvent('loadFont', {
+                        detail: { font_name, font_url }
+                    }));
+
+                }
+            },
+            
+            init() {
+                window.addEventListener('sendFontStyles', (event) => {
+                    event.stopImmediatePropagation();
+                    const { font_styles } = event.detail;
+                    this.fonts = font_styles;
+
+                    this.load_all_fonts();
+                });
+
+            },
+        };
+    }
+</script>

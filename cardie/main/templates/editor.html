@@ -61,6 +61,8 @@
                     <input type="text" class="ui_input_generic" id="editor_main_settings_details_secondary" placeholder="Secondary text" data-tippy-content="Perfect for your job title or pronouns"></input>
                 </div>
 
+                {% include "editor/font_selector.html" %}
+
                 <div class="editor_main_setting" id="editor_main_settings_colors">
                     <p class="ui_text_subheader_left"><i class="ph-bold ph-palette"></i> Colors</p>
                     <div class="ui_separator_horizontal"></div>
@@ -149,6 +151,7 @@
         <script src="{% static '/main/scripts/global/background_blur.js' %}"></script>
         <script src="{% static '/main/scripts/global/notifications.js' %}"></script>
         <script src="{% static '/main/scripts/global/logging.js' %}"></script>
+        <script src="{% static '/main/scripts/global/font_styles.js' %}"></script>
 
         <script src="{% static '/main/scripts/editor/editor.js' %}"></script>
 

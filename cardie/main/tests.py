@@ -1,3 +1,6 @@
 from django.test import TestCase
 
-# Create your tests here.
+class CardieTestCase(TestCase):
+    def test_something(self):
+        # Add some test cases here
+        pass

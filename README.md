@@ -1,23 +1,31 @@
 <p align="center">
 
-  ![Cardie Logo](repo/images/logo_light.png#gh-dark-mode-only)
-  ![Cardie Logo](repo/images/logo_dark.png#gh-light-mode-only)
+  <!-- ![Cardie Logo](repo/images/logo_light.png#gh-dark-mode-only)
+  ![Cardie Logo](repo/images/logo_dark.png#gh-light-mode-only) -->
+
+  ![Hacktoberfest Banner](repo/images/hacktoberfest24.png)
 
 </p>
+
+---
 
 <div align="center">
 
   [![](https://dcbadge.limes.pink/api/server/G24Ag9FqB8)](https://discord.gg/G24Ag9FqB8)
+  [![](https://img.shields.io/github/issues/nfoert/cardie?style=for-the-badge)](https://github.com/nfoert/cardie/issues)
+  [![](https://img.shields.io/github/license/nfoert/cardie?style=for-the-badge)](https://github/nfoert/cardie/blob/main/LICENSE)
 
   **[Live Server](https://cardie-uwtwy.ondigitalocean.app/)**
 
   **[Wiki](https://github.com/nfoert/cardie/wiki)** | 
   **[Releases](https://github.com/nfoert/cardie/releases)**
 
-  [![](https://img.shields.io/github/issues/nfoert/cardie?style=for-the-badge)](https://github.com/nfoert/cardie/issues)
-  [![](https://img.shields.io/github/license/nfoert/cardie?style=for-the-badge)](https://github/nfoert/cardie/blob/main/LICENSE)
+
+  **The latest changes are available in the [development](https://github.com/nfoert/cardie/tree/development) branch! Please check there for the most up to date changes.**
 
 </div>
+
+---
 
 Design a unlimited number of business or information cards about yourself, share a link or QR code to them, print it out, and save other people's cards to your virtual wallet for later. Once you've created a card you can get analytics data on how your cards are getting visited, you can edit your cards as things change, and you can keep cards private so only people with a link to your card can see it.
 
@@ -33,6 +41,12 @@ Design a unlimited number of business or information cards about yourself, share
 
 > [!IMPORTANT]
 > Cardie is currently in an open alpha. Things will be rapidly changing and bugs are to be expected.
+
+## Hacktoberfest
+Happy Hacktoberfest! I hope that you find this project interesting and that some issues offer a good learning experience! Help of any kind would be greatly appreciated.
+
+- You can check out the [issues page](https://github.com/nfoert/issues) for anything that piques your interest, or you can check the [hacktoberfest tag](https://github.com/nfoert/cardie/issues?q=sort%3Aupdated-desc+is%3Aopen+label%3Ahacktoberfest) for specific issues I've selected for this Hacktoberfest.
+- Additionally, please check out [contributing](#contributing) for some information on how you can contribute to this project.
 
 ## Installation
 
@@ -89,4 +103,4 @@ I'd love to see contributions to this project! Please check out the [issues](htt
 
 Additionally, check [TODO.md](TODO.md) for a rough todo list of things that need implemented, and the [wiki](https://github.com/nfoert/cardie/wiki) for some information on how to work with some of the existing systems.
 
-When contributing, first fork this repository. If you want the latest changes uncheck the `Copy the main branch only` option. Then, create a new branch with your change in it, either from the `main` branch or the `development` branch. Finally, open a pull request which merges into the `development` branch. Your changes will be reviewed and merged when ready.
+When contributing, first fork this repository. To ensure you're getting the latest development changes uncheck the `Copy the main branch only` option. Then, create a new branch with your change in it, either from the `main` branch or the `development` branch. Finally, open a pull request which merges into the `development` branch. Your changes will be reviewed and merged soon. Thanks for contributing to Cardie!

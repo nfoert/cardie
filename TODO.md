@@ -2,9 +2,9 @@
 This list shows some of the next things that need implemented for Cardie. I want to figure out a better solution for a todo list in future but this works for now.
 
 - [x] Make UIs mobile friendly [issue](https://github.com/nfoert/cardie/issues/4)
- - [ ] **Customization**
-	- [ ] Background Color
-	- [ ] Secondary Color
+ - [x] **Customization**
+	- [x] Background Color
+	- [x] Secondary Color
 	- [ ] Collapse Links
 	- [ ] If no text, make link button only
 - [x] **Authentication UI improvements** [issue](https://github.com/nfoert/cardie/issues/2)

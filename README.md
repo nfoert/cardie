@@ -17,7 +17,7 @@
 
   **[Live Server](https://cardie-uwtwy.ondigitalocean.app/)**
 
-  **[Wiki](https://github.com/nfoert/cardie/wiki)** | 
+  **[Wiki](https://github.com/nfoert/cardie/wiki)** |
   **[Releases](https://github.com/nfoert/cardie/releases)**
 
 
@@ -51,24 +51,29 @@ Happy Hacktoberfest! I hope that you find this project interesting and that some
 ## Installation
 
 First, clone this repository using the following command
-```
+```bash
 git clone https://github.com/nfoert/cardie
 ```
 
 Then, navigate to that directory and create a new python virtual environment
-```
+```bash
 cd cardie
 python3 -m venv .venv
 ```
 
 Activate the virtual environment using the command for your system (Linux is used here) and install the required dependencies
-```
+```bash
 source ./.venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Next, create a django superuser and make and migrate the models
+Copy the `.env.example` file to a new file called `.env`.
+```bash
+cp .env-template .env
 ```
+
+Next, create a django superuser and make and migrate the models
+```bash
 cd cardie
 python manage.py createsuperuser
 python manage.py makemigrations
@@ -76,7 +81,7 @@ python manage.py migrate
 ```
 
 Now just run the server using the following command, or run the `Start server` task in your Visual Studio Code
-```
+```bash
 python manage.py runserver
 ```
 
@@ -87,9 +92,7 @@ This depends on what server hosting provider you're using. However, there's a co
 
 Set the following global environment variables:
 - `DJANGO_ALLOWED_HOSTS` -> `${APP_DOMAIN}` (This works on DigitalOcean, this may not work on every hosting provider)
-- `DJANGO_SETTINGS_MODULE` -> `cardie.settings_production`
 - `DJANGO_LOG_LEVEL` -> `WARNING`
-- `STATIC_URL` -> `/static/main`
 
 - `SECRET_KEY` -> `<your new secret key>` (Generate this using `django.core.management.utils.get_random_secret_key()`. If possible you should encrypt this value in your hosting provider.)
 - `DEBUG` -> `False`

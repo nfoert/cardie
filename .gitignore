@@ -2,3 +2,4 @@
 cardie/db.sqlite3
 __pycache__
 django.log
+.env

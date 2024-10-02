@@ -19,29 +19,29 @@ async function start_editor() {
 
         if (uuid_param == null) {
             let new_uuid = crypto.randomUUID();
-    
+
             const response = await fetch(server_ip + "/createcard", {
                 method: "POST",
                 headers: {
                     "UUID": new_uuid,
                 }
             });
-    
+
             response.text().then(function (text) {
                 if (text == "Done") {
-                    var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?uuid=' + new_uuid;    
+                    var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?uuid=' + new_uuid;
                     window.history.pushState({ path: refresh }, '', refresh);
                     log("INFO", "A new card has been created on the server with uuid " + new_uuid);
                     create_notification("New card created", "A new card has been successfully created", "check-circle");
                     status_saved();
-    
+
                 } else {
                     status_error();
                     log("WARNING", "There was a problem")
                     create_notification("There was a problem", "There was an unknown issue", "warning");
                 }
             });
-    
+
         } else {
             const response = await fetch(server_ip + "/checkcard", {
                 method: "POST",
@@ -49,22 +49,22 @@ async function start_editor() {
                     "UUID": uuid_param,
                 }
             });
-    
+
             response.text().then(function (text) {
                 if (text == "Request is not a POST request") {
                     status_error();
                     log("WARNING", "There was a problem");
                     create_notification("There was a problem checking the card", "There was an unknown issue", "warning");
-    
+
                 } else if (text == "Card does not exist!") {
                     log("WARNING", "Card does not exist!");
                     status_error();
                     window.location.href = server_ip;
-    
+
                 } else if (text == "No Permission") {
                     log("WARNING", "No Permission")
                     window.location.href = server_ip;
-    
+
                 } else {
                     log("INFO", "This card exists on the server!")
                     card_render_from_json(".card_card", text);
@@ -203,7 +203,7 @@ function dataURItoBlob(dataURI) {
 }
 
 document.querySelector("#editor_header_title_home").addEventListener("click", (event) => {
-    window.location.href = server_ip + "/home";
+    window.location.replace("/home");
 });
 
 document.querySelector("#editor_share_copylink").addEventListener("click", async (event) => {
@@ -223,7 +223,7 @@ document.querySelector("#editor_share_copyqr").addEventListener("click", async (
     let url = `${server_ip}/card?uuid=${uuid_param}&`
 
     qrcode.makeCode(url);
-    
+
     const data = [new ClipboardItem({ ["image/png"]: dataURItoBlob(document.querySelector("#qrcode > img").getAttribute("src")) })];
 
     await navigator.clipboard.write(data).then(() => {

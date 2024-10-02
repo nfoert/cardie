@@ -24,8 +24,8 @@
         {% include "footer.html" %}
 
         <script>
-            var server_ip = "{{ server_ip }}";
-            var production = "{{ production }}";
+            var server_ip = "{{ server.ip }}";
+            var production = {% server.production %}true{% else %}false{% endif %};
             var username = "{{ username }}"
         </script>
 

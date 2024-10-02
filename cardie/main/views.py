@@ -12,30 +12,19 @@ from main.models import Card, Server, TempCard
 
 
 def index(request):
-    server_info = Server.objects.all()[0]
-
     try:
         username = request.session["username"]
-
         context = {
-            "server_ip": server_info.ip,
-            "production": server_info.production,
             "username": username,
         }
-
         return render(request, "index.html", context)
 
     except KeyError:
-        context = {"server_ip": server_info.ip, "production": server_info.production}
 
-        return render(request, "index.html", context)
+        return render(request, "index.html")
 
 
 def authentication(request):
-    server_info = Server.objects.all()[0]
-
-    context = {"server_ip": server_info.ip, "production": server_info.production}
-
     try:
         request.session["username"]
         request.session["password"]
@@ -44,7 +33,7 @@ def authentication(request):
 
     except KeyError:
         print("No session data on authentication page!")
-        return render(request, "authentication.html", context)
+        return render(request, "authentication.html")
 
 
 def userinterface(request):
@@ -52,15 +41,11 @@ def userinterface(request):
 
 
 def home(request):
-    server_info = Server.objects.all()[0]
-
     try:
         request.session["username"]
         request.session["password"]
 
         context = {
-            "server_ip": server_info.ip,
-            "production": server_info.production,
             "username": request.session["username"],
         }
 
@@ -72,16 +57,9 @@ def home(request):
 
 
 def editor(request):
-    server_info = Server.objects.all()[0]
-
     if bool(request.GET.get("demo", False)):
         # Open the editor without authenticating
-        context = {
-            "server_ip": server_info.ip,
-            "production": server_info.production,
-        }
-
-        return render(request, "editor.html", context)
+        return render(request, "editor.html")
 
     else:
         try:
@@ -89,8 +67,6 @@ def editor(request):
             request.session["password"]
 
             context = {
-                "server_ip": server_info.ip,
-                "production": server_info.production,
                 "username": request.session["username"],
             }
 
@@ -102,11 +78,7 @@ def editor(request):
 
 
 def privacy_policy(request):
-    server_info = Server.objects.all()[0]
-
-    context = {"server_ip": server_info.ip, "production": server_info.production}
-
-    return render(request, "privacy.html", context)
+    return render(request, "privacy.html")
 
 
 def icon_list(request):
@@ -201,22 +173,16 @@ def list_cards(request):
 
 
 def card_view(request):
-    server_info = Server.objects.all()[0]
 
     try:
         username = request.session["username"]
 
         context = {
-            "server_ip": server_info.ip,
-            "production": server_info.production,
             "username": username,
         }
-
         return render(request, "card_view.html", context)
 
     except KeyError:
-        context = {"server_ip": server_info.ip, "production": server_info.production}
-
         return render(request, "card_view.html", context)
 
 

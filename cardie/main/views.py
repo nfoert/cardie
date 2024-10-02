@@ -10,6 +10,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 from main.models import Card, Server, TempCard
 
+from main.icons import icons
+
 
 def index(request):
     server_info = Server.objects.all()[0]

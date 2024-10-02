@@ -22,5 +22,6 @@ urlpatterns = [
     path("renamecard", views.rename_card, name="renamecard"),
     path("savetowallet", views.save_to_wallet, name="savetowallet"),
     path("getwallet", views.get_wallet, name="getwallet"),
-    path("removefromwallet", views.remove_from_wallet, name="removefromwallet")
+    path("removefromwallet", views.remove_from_wallet, name="removefromwallet"),
+    path("config.js", views.config_js, name="config_js"),
 ]

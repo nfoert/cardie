@@ -1,48 +1,51 @@
 // Thanks to https://stackoverflow.com/questions/260857/changing-website-favicon-dynamically
 
-// TODO: Support {{ server_url }}
-let favicon_light_url = "http://127.0.0.1:8000/static/main/images/favicon_light.ico";
-let favicon_dark_url = "http://127.0.0.1:8000/static/main/images/favicon_dark.ico"
+const favicon_light_url = window.__CONFIG__.favicon.light;
+const favicon_dark_url = window.__CONFIG__.favicon.dark;
 
-function favicon_light() {
-    var link = document.querySelector("link[rel~='icon']");
+function createFavIconElement() {
+	const link = document.createElement("link");
+	link.rel = "icon";
+	document.head.appendChild(link);
+	return link;
+}
+/**
+ *
+ * @param {string} light
+ * @param {string} dark
+ */
+function handle_favicon(light, dark) {
+	/**
+	 * @type {HTMLLinkElement}
+	 */
+	const iconElement =
+		document.querySelector("link[rel~='icon']") ?? createFavIconElement();
 
-    if (!link) {
-        link = document.createElement('link');
-        link.rel = 'icon';
-        document.head.appendChild(link);
-    }
+	/**
+	 * @param {boolean} isDark
+	 * @returns {void}
+	 * @description This function changes the favicon based on the color scheme
+	 */
+	function handleColorScheme(isDark) {
+		iconElement.href = isDark ? dark : light;
+	}
 
-    link.href = favicon_light_url;
+	/**
+	 * @param {MediaQueryListEvent} event
+	 * @returns {void}
+	 * @description This function is called when the color scheme changes and passes the new color scheme in the event.matches property
+	 */
+	function colorSchemeListener(event) {
+		handleColorScheme(event.matches);
+	}
+
+	const colorSchemaMediaQuery = window.matchMedia(
+		"(prefers-color-scheme: dark)",
+	);
+
+	colorSchemaMediaQuery.addEventListener("change", colorSchemeListener);
+
+	handleColorScheme(colorSchemaMediaQuery.matches);
 }
 
-function favicon_dark() {
-    var link = document.querySelector("link[rel~='icon']");
-
-    if (!link) {
-        link = document.createElement('link');
-        link.rel = 'icon';
-        document.head.appendChild(link);
-    }
-
-    link.href = favicon_dark_url;
-}
-
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    favicon_light();
-    
-} else {
-    favicon_dark();
-}
-
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-    const newColorScheme = event.matches ? "dark" : "light";
-    
-    if (newColorScheme == "dark") {
-        favicon_light();
-
-    } else {
-        favicon_dark();
-    }
-});
-
+handle_favicon(favicon_light_url, favicon_dark_url);

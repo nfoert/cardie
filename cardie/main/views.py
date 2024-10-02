@@ -7,10 +7,8 @@ from django.http import JsonResponse
 from django.shortcuts import HttpResponse, render
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
-
-from main.models import Card, Server, TempCard
-
 from main.icons import icons
+from main.models import Card, Server, TempCard
 
 
 def index(request):
@@ -383,3 +381,7 @@ def remove_from_wallet(request):
 
     else:
         return HttpResponse("Request is not a POST request")
+
+
+def config_js(request):
+    return render(request, "config.js", {}, content_type="text/javascript")

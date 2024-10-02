@@ -75,6 +75,7 @@
 
 .ui_button_large:hover:enabled {
     scale: 1.05;
+    cursor: pointer;
 }
 
 .ui_button_large:active:enabled {
@@ -150,6 +151,7 @@
 
 .ui_button_icon:hover:enabled {
     scale: 1.1;
+    cursor: pointer;
 }
 
 .ui_button_icon:active:enabled {
@@ -190,6 +192,7 @@
 
 .ui_button_smallicon:hover:enabled {
     scale: 1.05;
+    cursor: pointer;
 }
 
 .ui_button_smallicon:active:enabled {
@@ -229,6 +232,7 @@
 
 .ui_button_small:hover:enabled {
     scale: 1.05;
+    cursor: pointer;
 }
 
 .ui_button_small:active:enabled {

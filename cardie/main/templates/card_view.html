@@ -1,68 +1,51 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="https://unpkg.com/@phosphor-icons/web"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+{% extends "base.html" %}
 
-        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+{% load static %}
+
+{% block head_title %}Card{% endblock %}
+
+{% block stylesheets %}
         <link rel="stylesheet" type="text/css" href="{% static '/main/card.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static '/main/notifications.css' %}">
 
         <link rel="stylesheet" type="text/css" href="{% static '/main/card_view.css' %}">
+{% endblock %}
 
-        <link rel="shortcut icon" type="image/png" href="{% static '/main/images/favicon_light.ico' %}"/>
+{% block body %}
+  <div id="cardview">
+      <div id="cardview_top">
+          <img src="{% static '/main/images/icon_light.png' %}" id="cardview_logo">
+          <div id="cardview_text">
+              <p class="ui_text_subheader_left" id="cardview_text_cardname">Card name</p>
+              <p class="ui_text_body" id="cardview_text_username">Created by username</p>
+          </div>
+      </div>
 
-        <meta name="darkreader-lock">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cardie</title>
-    </head>
 
-    <body>
-        <div id="cardview">
-            <div id="cardview_top">
-                <img src="{% static '/main/images/icon_light.png' %}" id="cardview_logo">
-                <div id="cardview_text">
-                    <p class="ui_text_subheader_left" id="cardview_text_cardname">Card name</p>
-                    <p class="ui_text_body" id="cardview_text_username">Created by username</p>
-                </div>
-            </div>
-            
+      <div id="cardview_card">
+          {% include "card.html" %}
+      </div>
 
-            <div id="cardview_card">
-                {% include "card.html" %}
-            </div>
+      <div id="cardview_bottom">
+          <div id="cardview_bottom_createaccount">
+              <p class="ui_text_body">Created with Cardie. You can <button id="cardview_signin" class="ui_button_small">Sign in</button> to save this card for later and to make your own.</p>
+          </div>
 
-            <div id="cardview_bottom">
-                <div id="cardview_bottom_createaccount">
-                    <p class="ui_text_body">Created with Cardie. You can <button id="cardview_signin" class="ui_button_small">Sign in</button> to save this card for later and to make your own.</p>
-                </div>
+          <div id="cardview_bottom_save">
+              <p class="ui_text_body"><strong>Hello {{ username }}</strong> <button id="cardview_save" class="ui_button_small">Save this card to your Wallet</button></p>
+          </div>
 
-                <div id="cardview_bottom_save">
-                    <p class="ui_text_body"><strong>Hello {{ username }}</strong> <button id="cardview_save" class="ui_button_small">Save this card to your Wallet</button></p>
-                </div>
+          <div id="cardview_bottom_owned">
+              <p class="ui_text_body"><i>This card is owned by you</i></p>
+          </div>
+      </div>
+  </div>
+{% endblock %}
 
-                <div id="cardview_bottom_owned">
-                    <p class="ui_text_body"><i>This card is owned by you</i></p>
-                </div>
-            </div>
-        </div>
-        
-        {% include "footer.html" %}
-
-        <script>
-            var server_ip = "{{ server_ip }}";
-            var production = "{{ production }}";
-            var username = "{{ username }}"
-        </script>
-
+{% block scripts %}
         <script src="{% static '/main/scripts/card_view/card_view.js' %}"></script>
-
         <script src="{% static '/main/scripts/global/card.js' %}"></script>
         <script src="{% static '/main/scripts/global/favicon.js' %}"></script>
         <script src="{% static '/main/scripts/global/notifications.js' %}"></script>
-        <script src="{% static '/main/scripts/global/logging.js' %}"></script>
         <script src="{% static '/main/scripts/global/font_styles.js' %}"></script>
-    </body>
-</html>
+{% endblock %}

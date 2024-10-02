@@ -46,7 +46,7 @@ Design a unlimited number of business or information cards about yourself, share
 Happy Hacktoberfest! I hope that you find this project interesting and that some issues offer a good learning experience! Help of any kind would be greatly appreciated.
 
 - You can check out the [issues page](https://github.com/nfoert/issues) for anything that piques your interest, or you can check the [hacktoberfest tag](https://github.com/nfoert/cardie/issues?q=sort%3Aupdated-desc+is%3Aopen+label%3Ahacktoberfest) for specific issues I've selected for this Hacktoberfest.
-- Additionally, please check out [contributing](#contributing) for some information on how you can contribute to this project.
+- Additionally, please check out [Contributing](#contributing) for some information on how you can contribute to this project.
 
 ## Installation
 
@@ -98,12 +98,6 @@ Set the following global environment variables:
 - `DEBUG` -> `False`
 - `DATABASE_URL` -> `${db.DATABASE_URL}` (This works on DigitalOcean, this may not work on every hosting provider)
 
-## To Do
-There's lots of things that need implemented or changed in this project. Please see [TODO.md](TODO.md).
 
 ## Contributing
-I'd love to see contributions to this project! Please check out the [issues](https://github.com/nfoert/cardie/issues) page to see what things currently need fixed or added.
-
-Additionally, check [TODO.md](TODO.md) for a rough todo list of things that need implemented, and the [wiki](https://github.com/nfoert/cardie/wiki) for some information on how to work with some of the existing systems.
-
-When contributing, first fork this repository. To ensure you're getting the latest development changes uncheck the `Copy the main branch only` option. Then, create a new branch with your change in it, either from the `main` branch or the `development` branch. Finally, open a pull request which merges into the `development` branch. Your changes will be reviewed and merged soon. Thanks for contributing to Cardie!
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for instructions on how you can contribute to Cardie

@@ -27,7 +27,7 @@ function handle_favicon(light, dark) {
 	 * @description This function changes the favicon based on the color scheme
 	 */
 	function handleColorScheme(isDark) {
-		iconElement.href = isDark ? dark : light;
+		iconElement.href = isDark ? light : dark;
 	}
 
 	/**

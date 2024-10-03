@@ -1,72 +1,51 @@
+{% extends "base.html" %}
+
 {% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="https://unpkg.com/@phosphor-icons/web"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+{% block head_title %}Privacy Policy{% endblock %}
 
-        <link rel="stylesheet" type="text/css" href="{% static '/main/privacy.css' %}">
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static '/main/privacy.css' %}">
+{% endblock %}
 
-        <link rel="shortcut icon" type="image/png" href="{% static '/main/images/favicon_light.ico' %}"/>
+{% block body %}
+    <div id="privacy">
+        <p class="ui_text_header_left"><i class="ph-bold ph-lock"></i> Privacy Policy</p>
+        <p id="privacy_lastupdated" class="ui_text_description">Last updated 7/24/24</p>
 
-        <meta name="darkreader-lock">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cardie | Privacy Policy</title>
-    </head>
+        <div class="ui_separator_horizontal"></div>
 
-    <body>
-        <div id="privacy">
-            <p class="ui_text_header_left"><i class="ph-bold ph-lock"></i> Privacy Policy</p>
-            <p id="privacy_lastupdated" class="ui_text_description">Last updated 7/24/24</p>
+        <div id="privacy_content">
+            <p class="ui_text_subheader_left privacy_header"><i class="ph-bold ph-hard-drives"></i> What data is collected?</p>
 
-            <div class="ui_separator_horizontal"></div>
+            <div class="privacy_content_section">
+                <p class="ui_text_subheader_left"><i class="ph-bold ph-user"></i> User</p>
 
-            <div id="privacy_content">
-                <p class="ui_text_subheader_left privacy_header"><i class="ph-bold ph-hard-drives"></i> What data is collected?</p>
-
-                <div class="privacy_content_section">
-                    <p class="ui_text_subheader_left"><i class="ph-bold ph-user"></i> User</p>
-
-                    <p class="ui_text_body">Username</p>
-                    <p class="ui_text_body">Password</p>
-                    <p class="ui_text_description"><i class="ph-bold ph-lock"></i> This value is encrypted on the server</p>
-                    <p class="ui_text_body">Email</p>
-                    <p class="ui_text_body">The date and time the Account was created</p>
-                </div>
-
-                <div class="privacy_content_section">
-                    <p class="ui_text_subheader_left"><i class="ph-bold ph-cards"></i> Card</p>
-
-                    <p class="ui_text_body">UUID</p>
-                    <p class="ui_text_body">Card name</p>
-                    <p class="ui_text_body">Card owner</p>
-                    <p class="ui_text_body">Card data</p>
-                    <p class="ui_text_description">This is a piece of JSON data which contains everything the card needs to be rendered.</p>
-                </div>
-
-                <div class="privacy_content_section">
-                    <p class="ui_text_body">You can check the most up to date model files in the <a href="https://github.com/nfoert/cardie">source code</a>. 
-                        The files are <a href="https://github.com/nfoert/cardie/blob/main/cardie/authentication/models.py">here</a> 
-                        and <a href="https://github.com/nfoert/cardie/blob/main/cardie/main/models.py">here</a>.</p>
-                </div>
-
-                <p class="ui_text_subheader_left privacy_header"><i class="ph-bold ph-globe"></i> What data is shared?</p>
-                <p class="ui_text_body">Nothing. Ever. Your data will never be sold or shared to any third party. It's only used inside Cardie and will remain on this server.</p>
-
+                <p class="ui_text_body">Username</p>
+                <p class="ui_text_body">Password</p>
+                <p class="ui_text_description"><i class="ph-bold ph-lock"></i> This value is encrypted on the server</p>
+                <p class="ui_text_body">Email</p>
+                <p class="ui_text_body">The date and time the Account was created</p>
             </div>
 
+            <div class="privacy_content_section">
+                <p class="ui_text_subheader_left"><i class="ph-bold ph-cards"></i> Card</p>
+
+                <p class="ui_text_body">UUID</p>
+                <p class="ui_text_body">Card name</p>
+                <p class="ui_text_body">Card owner</p>
+                <p class="ui_text_body">Card data</p>
+                <p class="ui_text_description">This is a piece of JSON data which contains everything the card needs to be rendered.</p>
+            </div>
+
+            <div class="privacy_content_section">
+                <p class="ui_text_body">You can check the most up to date model files in the <a href="https://github.com/nfoert/cardie">source code</a>.
+                    The files are <a href="https://github.com/nfoert/cardie/blob/main/cardie/authentication/models.py">here</a>
+                    and <a href="https://github.com/nfoert/cardie/blob/main/cardie/main/models.py">here</a>.</p>
+            </div>
+
+            <p class="ui_text_subheader_left privacy_header"><i class="ph-bold ph-globe"></i> What data is shared?</p>
+            <p class="ui_text_body">Nothing. Ever. Your data will never be sold or shared to any third party. It's only used inside Cardie and will remain on this server.</p>
         </div>
-
-        {% include "footer.html" %}
-
-        <script>
-            var server_ip = "{{ server_ip }}";
-            var production = "{{ production }}";
-        </script>
-
-        <script src="{% static '/main/scripts/global/favicon.js' %}"></script>
-    </body>
-</html>
+    </div>
+{% endblock %}

@@ -1,160 +1,144 @@
+{% extends "base.html" %}
+
 {% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/sort@3.x.x/dist/cdn.min.js"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+{% block head_title %}Editor{% endblock %}
 
-        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css"/>
+{% block head_scripts %}
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+{% endblock %}
 
-        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static '/main/card.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static '/main/notifications.css' %}">
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css"/>
 
-        <link rel="stylesheet" type="text/css" href="{% static '/main/editor.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static '/main/editor_print.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/main/card.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/main/notifications.css' %}">
 
-        <link rel="shortcut icon" type="image/png" href="{% static '/main/images/favicon_light.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/main/editor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/main/editor_print.css' %}">
+{%endblock %}
 
-        <meta name="darkreader-lock">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cardie | Editor</title>
-    </head>
-
-    <body>
-        <div id="editor_header">
-            <div id="editor_header_title">
-                <button class="ui_button_icon" id="editor_header_title_home" data-tippy-content="Go back to the home page"><i class="ph-bold ph-house"></i></button>
-                <img id="editor_header_title_image" src="{% static '/main/images/logo_light.png' %}">
-                <p id="editor_header_title_text"> Editor</p>
-            </div>
-
-            <div id="editor_header_name">
-                <button id="editor_header_name_button" data-tippy-content="Edit the name of this Card"><i class="ph-bold ph-pencil-simple"></i></button>
-                <p id="editor_header_name_text_cardname">Untitled Card</p>
-                <p id="editor_header_name_text_username">by {{ username }}</p>
-            </div>
-
-            <p id="editor_status"><i class="ph-bold ph-spinner-gap"></i> Loading...</p>
+{% block body %}
+    <div id="editor_header">
+        <div id="editor_header_title">
+            <button class="ui_button_icon" id="editor_header_title_home" data-tippy-content="Go back to the home page"><i class="ph-bold ph-house"></i></button>
+            <img id="editor_header_title_image" src="{% static '/main/images/logo_light.png' %}">
+            <p id="editor_header_title_text"> Editor</p>
         </div>
 
-        <div id="editor_main">
-            <div id="editor_main_settings">
-                <div class="editor_main_setting" id="editor_main_settings_layout">
-                    <p class="ui_text_subheader_left"><i class="ph-bold ph-layout"></i> Layout</p>
-                    <div class="ui_separator_horizontal"></div>
-                    <div id="editor_main_settings_layout_buttons">
-                        <button id="editor_main_settings_layout_buttons_left" class="ui_button_icon" data-tippy-content="Left align"><i class="ph-bold ph-align-left"></i></button>
-                        <button id="editor_main_settings_layout_buttons_center" class="ui_button_icon" data-tippy-content="Center align"><i class="ph-bold ph-align-center-horizontal"></i></button>
-                        <button id="editor_main_settings_layout_buttons_right" class="ui_button_icon" data-tippy-content="Right align"><i class="ph-bold ph-align-right"></i></button>
-                    </div>
+        <div id="editor_header_name">
+            <button id="editor_header_name_button" data-tippy-content="Edit the name of this Card"><i class="ph-bold ph-pencil-simple"></i></button>
+            <p id="editor_header_name_text_cardname">Untitled Card</p>
+            <p id="editor_header_name_text_username">by {{ username }}</p>
+        </div>
+
+        <p id="editor_status"><i class="ph-bold ph-spinner-gap"></i> Loading...</p>
+    </div>
+
+    <div id="editor_main">
+        <div id="editor_main_settings">
+            <div class="editor_main_setting" id="editor_main_settings_layout">
+                <p class="ui_text_subheader_left"><i class="ph-bold ph-layout"></i> Layout</p>
+                <div class="ui_separator_horizontal"></div>
+                <div id="editor_main_settings_layout_buttons">
+                    <button id="editor_main_settings_layout_buttons_left" class="ui_button_icon" data-tippy-content="Left align"><i class="ph-bold ph-align-left"></i></button>
+                    <button id="editor_main_settings_layout_buttons_center" class="ui_button_icon" data-tippy-content="Center align"><i class="ph-bold ph-align-center-horizontal"></i></button>
+                    <button id="editor_main_settings_layout_buttons_right" class="ui_button_icon" data-tippy-content="Right align"><i class="ph-bold ph-align-right"></i></button>
                 </div>
-                
-                <div class="editor_main_setting" id="editor_main_settings_details">
-                    <p class="ui_text_subheader_left"><i class="ph-bold ph-text-aa"></i> Details</p>
-                    <div class="ui_separator_horizontal"></div>
-                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_primary" placeholder="Primary text" data-tippy-content="Perfect for your name or username"></input>
-                    <input type="text" class="ui_input_generic" id="editor_main_settings_details_secondary" placeholder="Secondary text" data-tippy-content="Perfect for your job title or pronouns"></input>
-                </div>
-
-                {% include "editor/font_selector.html" %}
-
-                <div class="editor_main_setting" id="editor_main_settings_colors">
-                    <p class="ui_text_subheader_left"><i class="ph-bold ph-palette"></i> Colors</p>
-                    <div class="ui_separator_horizontal"></div>
-
-                    <p class="ui_text_description">Background color</p>
-                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_background" data-tippy-content="Change the background color on your card"></input>
-                    <p class="ui_text_description">Accent color</p>
-                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_accent" data-tippy-content="Change the accent color on your card, this is used for the colors of the icons"></input>
-                    <p class="ui_text_description">Text color</p>
-                    <input type="color" class="ui_input_generic" id="editor_main_settings_colors_text" data-tippy-content="Change the text color on your card"></input>
-                </div>
-
-                {% include "editor/items_editor.html" %}
-
             </div>
 
-            <div id="editor_main_preview">
-                {% include "card.html" %}
-                
+            <div class="editor_main_setting" id="editor_main_settings_details">
+                <p class="ui_text_subheader_left"><i class="ph-bold ph-text-aa"></i> Details</p>
+                <div class="ui_separator_horizontal"></div>
+                <input type="text" class="ui_input_generic" id="editor_main_settings_details_primary" placeholder="Primary text" data-tippy-content="Perfect for your name or username"></input>
+                <input type="text" class="ui_input_generic" id="editor_main_settings_details_secondary" placeholder="Secondary text" data-tippy-content="Perfect for your job title or pronouns"></input>
+            </div>
+
+            {% include "editor/font_selector.html" %}
+
+            <div class="editor_main_setting" id="editor_main_settings_colors">
+                <p class="ui_text_subheader_left"><i class="ph-bold ph-palette"></i> Colors</p>
                 <div class="ui_separator_horizontal"></div>
 
-                <div id="editor_main_preview_share">
-                    <button id="editor_share_copylink" class="ui_button_grid"><i class="ph-bold ph-copy"></i> Copy Link</button>
-                    <button id="editor_share_copyqr" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Copy QR Code</button>
-                    <button id="editor_share_downloadqr" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Download QR Code</button>
-                    <button id="editor_share_print" class="ui_button_grid"><i class="ph-bold ph-printer"></i> Print</button>
-                </div>
-
-                <div id="editor_main_preview_demo">
-                    <p class="ui_text_body"><button id="editor_demo_signin" class="ui_button_small">Sign In</button> or <button id="editor_demo_createaccount" class="ui_button_small">Create an Account</button> to save and share this card.</p>
-                </div>
-
-                <div id="qrcode"></div>
-
-                <div class="ui_separator_horizontal"></div>
-            </div>
-        </div>
-
-        <div id="editor-iconselector">
-            <div id="editor-iconselector-top">
-                <input type="text" class="ui_input_generic" id="editor-iconselector-top-search" placeholder="Search for an icon"></input>
-                <button class="ui_button_icon" id="editor-iconselector-top-close"><i class="ph-bold ph-x"></i></button>
+                <p class="ui_text_description">Background color</p>
+                <input type="color" class="ui_input_generic" id="editor_main_settings_colors_background" data-tippy-content="Change the background color on your card"></input>
+                <p class="ui_text_description">Accent color</p>
+                <input type="color" class="ui_input_generic" id="editor_main_settings_colors_accent" data-tippy-content="Change the accent color on your card, this is used for the colors of the icons"></input>
+                <p class="ui_text_description">Text color</p>
+                <input type="color" class="ui_input_generic" id="editor_main_settings_colors_text" data-tippy-content="Change the text color on your card"></input>
             </div>
 
-            <div id="editor-iconselector-icons"></div>
+            {% include "editor/items_editor.html" %}
+
         </div>
 
-        <div id="editor_rename">
-            <div id="editor_rename_top">
-                <p class="ui_text_subheader_left">Name Card</p>
-                <button class="ui_button_icon" id="editor_rename_top_close"><i class="ph-bold ph-x"></i></button>
+        <div id="editor_main_preview">
+            {% include "card.html" %}
+
+            <div class="ui_separator_horizontal"></div>
+
+            <div id="editor_main_preview_share">
+                <button id="editor_share_copylink" class="ui_button_grid"><i class="ph-bold ph-copy"></i> Copy Link</button>
+                <button id="editor_share_copyqr" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Copy QR Code</button>
+                <button id="editor_share_downloadqr" class="ui_button_grid"><i class="ph-bold ph-qr-code"></i> Download QR Code</button>
+                <button id="editor_share_print" class="ui_button_grid"><i class="ph-bold ph-printer"></i> Print</button>
             </div>
 
-            <input type="text" class="ui_input_generic" id="editor_rename_input" placeholder="New Name"></input>
-            <button id="editor_rename_submit" class="ui_button_small"><i class="ph-bold ph-check"></i> Set New Name</button>
+            <div id="editor_main_preview_demo">
+                <p class="ui_text_body"><button id="editor_demo_signin" class="ui_button_small">Sign In</button> or <button id="editor_demo_createaccount" class="ui_button_small">Create an Account</button> to save and share this card.</p>
+            </div>
+
+            <div id="qrcode"></div>
+
+            <div class="ui_separator_horizontal"></div>
+        </div>
+    </div>
+
+    <div id="editor-iconselector">
+        <div id="editor-iconselector-top">
+            <input type="text" class="ui_input_generic" id="editor-iconselector-top-search" placeholder="Search for an icon"></input>
+            <button class="ui_button_icon" id="editor-iconselector-top-close"><i class="ph-bold ph-x"></i></button>
         </div>
 
-        {% include "dialogs/print.html" %}
+        <div id="editor-iconselector-icons"></div>
+    </div>
 
-        <div class="background_blur"></div>
+    <div id="editor_rename">
+        <div id="editor_rename_top">
+            <p class="ui_text_subheader_left">Name Card</p>
+            <button class="ui_button_icon" id="editor_rename_top_close"><i class="ph-bold ph-x"></i></button>
+        </div>
 
-        {% include "footer.html" %}
+        <input type="text" class="ui_input_generic" id="editor_rename_input" placeholder="New Name"></input>
+        <button id="editor_rename_submit" class="ui_button_small"><i class="ph-bold ph-check"></i> Set New Name</button>
+    </div>
 
-        <script>
-            var server_ip = "{{ server_ip }}";
-            var production = "{{ production }}";
-            var username = "{{ username }}";
-        </script>
+    {% include "dialogs/print.html" %}
 
-        <script src="https://unpkg.com/@popperjs/core@2"></script>
-        <script src="https://unpkg.com/tippy.js@6"></script>
+    <div class="background_blur"></div>
+{% endblock %}
 
-        <script>
-            tippy("[data-tippy-content]", {
-                animation: "shift-away",
-            });
-        </script>
+{% block scripts %}
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
 
-        <script src="{% static '/main/scripts/editor/icons.js' %}"></script>
-        <script src="{% static '/main/scripts/editor/rename.js' %}"></script>
-        <script src="{% static '/main/scripts/editor/editor_information.js' %}"></script>
-        <script src="{% static '/main/scripts/editor/print.js' %}"></script>
+    <script>
+        tippy("[data-tippy-content]", {
+            animation: "shift-away",
+        });
+    </script>
 
-        <script src="{% static '/main/scripts/global/card.js' %}"></script>
-        <script src="{% static '/main/scripts/global/favicon.js' %}"></script>
-        <script src="{% static '/main/scripts/global/background_blur.js' %}"></script>
-        <script src="{% static '/main/scripts/global/notifications.js' %}"></script>
-        <script src="{% static '/main/scripts/global/logging.js' %}"></script>
-        <script src="{% static '/main/scripts/global/font_styles.js' %}"></script>
+    <script src="{% static '/main/scripts/editor/icons.js' %}"></script>
+    <script src="{% static '/main/scripts/editor/rename.js' %}"></script>
+    <script src="{% static '/main/scripts/editor/editor_information.js' %}"></script>
+    <script src="{% static '/main/scripts/editor/print.js' %}"></script>
 
-        <script src="{% static '/main/scripts/editor/editor.js' %}"></script>
+    <script src="{% static '/main/scripts/global/card.js' %}"></script>
+    <script src="{% static '/main/scripts/global/background_blur.js' %}"></script>
+    <script src="{% static '/main/scripts/global/notifications.js' %}"></script>
+    <script src="{% static '/main/scripts/global/font_styles.js' %}"></script>
 
-        <script src="{% static '/main/scripts/external/qrcode.min.js' %}"></script>
-    </body>
-</html>
+    <script src="{% static '/main/scripts/editor/editor.js' %}"></script>
+
+    <script src="{% static '/main/scripts/external/qrcode.min.js' %}"></script>
+{% endblock %}

@@ -26,7 +26,6 @@ function card_delete_items(card_selector) {
 
 function card_create_text_item(card_selector, uuid, icon, text) {
     let existing_selector = card_items.find(entry => entry.selector === card_selector);
-    console.log(card_selector, existing_selector, card_items)
     if (existing_selector) {
         existing_selector.items.push({"uuid": uuid, "text": text});
     } else {
@@ -169,6 +168,7 @@ function card_set_layout(card_selector, layout) {
 }
 
 function card_set_font(card_selector, name) {
+    console.log(name)
     let font_style = get_font_style(name);
     load_font(font_style["header"]["name"], font_style["header"]["url"]);
     load_font(font_style["text"]["name"], font_style["text"]["url"]);
@@ -207,7 +207,7 @@ for (let i = 0; i < cards.length; i++) {
 window.addEventListener('setFontOnCard', (event) => { // Called when a font item is clicked in the editor
     event.stopImmediatePropagation();
     const { header, text, style_name } = event.detail;
-    card_set_font(".card_card", header, text);
+    card_set_font(".card_card", style_name);
     font_style = style_name;
 });
 

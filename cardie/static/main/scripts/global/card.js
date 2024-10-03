@@ -47,17 +47,16 @@ function card_create_text_item(card_selector, uuid, icon, text) {
     div.appendChild(icon_element);
     div.appendChild(text_element);
 
-    if (existing_selector.items.length <= 8) {
+    if (existing_selector.items.length <= 7) {
         document.querySelector(`${card_selector} .card_items`).appendChild(div);
 
     } else {
         if (!(document.querySelector("#dialog_card_menu_button"))) {
             let menu_button = document.createElement("button")
-            menu_button.classList.add("ui_button_small");
             menu_button.id = "dialog_card_menu_button";
             menu_button.innerHTML = `<i class="ph-bold ph-list"></i> View more items...`;
 
-            menu_button.addEventListener("click", function() {
+            menu_button.addEventListener("click", (event) => {
                 event.stopPropagation();
                 document.querySelector("#dialog_card_menu").showModal();
             });
@@ -95,17 +94,16 @@ function card_create_link_item(card_selector, uuid, icon, text, url) {
     div.appendChild(icon_element);
     div.appendChild(button_element);
 
-    if (existing_selector.items.length <= 8) {
+    if (existing_selector.items.length <= 7) {
         document.querySelector(`${card_selector} .card_items`).appendChild(div);
 
     } else {
         if (!(document.querySelector("#dialog_card_menu_button"))) {
             let menu_button = document.createElement("button")
-            menu_button.classList.add("ui_button_small");
             menu_button.id = "dialog_card_menu_button";
             menu_button.innerHTML = `<i class="ph-bold ph-list"></i> View more items...`;
 
-            menu_button.addEventListener("click", function() {
+            menu_button.addEventListener("click", (event) => {
                 event.stopPropagation();
                 document.querySelector("#dialog_card_menu").showModal();
             });

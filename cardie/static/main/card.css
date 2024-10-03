@@ -189,3 +189,13 @@
     color: white;
 }
 
+#dialog_card_menu_button {
+    all: unset;
+    font-family: var(--default-font-family);
+    cursor: pointer;
+
+    margin-left: clamp(0.4vh, 4px, 0.4vw);
+    border: none;
+    background-color: none;
+    color: rgb(64, 163, 255);
+}

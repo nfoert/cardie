@@ -1,6 +1,7 @@
 // Makes every .card_card element flip on click
 
 var cards = document.getElementsByClassName("card_card");
+var card_items = [];
 
 for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", function() {
@@ -18,10 +19,21 @@ document.getElementsByTagName('head')[0].appendChild(card_p_style);
 
 // Functions for adding elements to the card
 function card_delete_items(card_selector) {
+    card_items = []
     document.querySelector(`${card_selector} .card_items`).replaceChildren();
+    document.querySelector(`#dialog_card_menu_items`).replaceChildren();
 }
 
 function card_create_text_item(card_selector, uuid, icon, text) {
+    let existing_selector = card_items.find(entry => entry.selector === card_selector);
+    console.log(card_selector, existing_selector, card_items)
+    if (existing_selector) {
+        existing_selector.items.push({"uuid": uuid, "text": text});
+    } else {
+        card_items.push({selector: card_selector, items: [{"uuid": uuid, "text": text}]});
+        existing_selector = {items: []};
+    }
+
     let div = document.createElement("div");
     div.classList.add("card_item_text");
     div.setAttribute("uuid", uuid)
@@ -35,10 +47,37 @@ function card_create_text_item(card_selector, uuid, icon, text) {
     div.appendChild(icon_element);
     div.appendChild(text_element);
 
-    document.querySelector(`${card_selector} .card_items`).appendChild(div);
+    if (existing_selector.items.length <= 8) {
+        document.querySelector(`${card_selector} .card_items`).appendChild(div);
+
+    } else {
+        if (!(document.querySelector("#dialog_card_menu_button"))) {
+            let menu_button = document.createElement("button")
+            menu_button.classList.add("ui_button_small");
+            menu_button.id = "dialog_card_menu_button";
+            menu_button.innerHTML = `<i class="ph-bold ph-list"></i> View more items...`;
+
+            menu_button.addEventListener("click", function() {
+                event.stopPropagation();
+                document.querySelector("#dialog_card_menu").showModal();
+            });
+
+            document.querySelector(`${card_selector} .card_items`).appendChild(menu_button);
+        }
+        
+        document.querySelector(`#dialog_card_menu_items`).appendChild(div);
+    }
 }
 
 function card_create_link_item(card_selector, uuid, icon, text, url) {
+    let existing_selector = card_items.find(entry => entry.selector === card_selector);
+    if (existing_selector) {
+        existing_selector.items.push({"uuid": uuid, "text": text});
+    } else {
+        card_items.push({selector: card_selector, items: [{"uuid": uuid, "text": text}]});
+        existing_selector = {items: []};
+    }
+
     let div = document.createElement("div");
     div.classList.add("card_item_link");
     div.setAttribute("uuid", uuid)
@@ -56,7 +95,26 @@ function card_create_link_item(card_selector, uuid, icon, text, url) {
     div.appendChild(icon_element);
     div.appendChild(button_element);
 
-    document.querySelector(`${card_selector} .card_items`).appendChild(div);
+    if (existing_selector.items.length <= 8) {
+        document.querySelector(`${card_selector} .card_items`).appendChild(div);
+
+    } else {
+        if (!(document.querySelector("#dialog_card_menu_button"))) {
+            let menu_button = document.createElement("button")
+            menu_button.classList.add("ui_button_small");
+            menu_button.id = "dialog_card_menu_button";
+            menu_button.innerHTML = `<i class="ph-bold ph-list"></i> View more items...`;
+
+            menu_button.addEventListener("click", function() {
+                event.stopPropagation();
+                document.querySelector("#dialog_card_menu").showModal();
+            });
+
+            document.querySelector(`${card_selector} .card_items`).appendChild(menu_button);
+        }
+        
+        document.querySelector(`#dialog_card_menu_items`).appendChild(div);
+    }
 }
 
 function card_set_colors(card_selector, background, accent, text) {
@@ -152,4 +210,8 @@ window.addEventListener('setFontOnCard', (event) => { // Called when a font item
     const { header, text, style_name } = event.detail;
     card_set_font(".card_card", header, text);
     font_style = style_name;
+});
+
+document.querySelector("#dialog_card_menu > .ui_dialog_generic_top > .ui_dialog_generic_top_close").addEventListener("click", (event) => {
+    document.querySelector("#dialog_card_menu").close();
 });

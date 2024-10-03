@@ -175,3 +175,17 @@
 .card_top_text {
     width: 100%;
 }
+
+#dialog_card_menu_items {
+    padding-left: clamp(1.5vh, 15px, 1.5vw);
+    padding-right: clamp(1.5vh, 15px, 1.5vw);
+}
+
+#dialog_card_menu_items > .card_item_text {
+    color: white;
+}
+
+#dialog_card_menu_items > .card_item_link {
+    color: white;
+}
+

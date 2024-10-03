@@ -1,5 +1,4 @@
 import json
-import os
 
 from authentication.models import User
 from authentication.views import sign_in

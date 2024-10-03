@@ -88,6 +88,7 @@ function card_create_link_item(card_selector, uuid, icon, text, url) {
     button_element.innerText = text;
 
     button_element.addEventListener("click", (event) => {
+        event.stopPropagation();
         window.location.href = url;
     })
 

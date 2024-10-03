@@ -2,7 +2,6 @@ from django.core.exceptions import ImproperlyConfigured
 
 from .models import Server
 
-
 def server_context(request):
     server_context = Server.objects.first()
     if server_context is None:

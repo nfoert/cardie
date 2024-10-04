@@ -3,3 +3,4 @@ cardie/db.sqlite3
 __pycache__
 django.log
 .env
+.ruff_cache

@@ -1,98 +1,114 @@
 {% extends "base.html" %}
-
 {% load static %}
-
 {% block head_title %}Home{% endblock %}
-
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{% static '/main/notifications.css' %}">
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static '/main/notifications.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/main/home.css' %}">
 {% endblock %}
-
 {% block body %}
     <div id="home-top">
         <div id="home-top-logo">
             <img id="home-top-image" src="{% static '/main/images/logo_light.png' %}">
             <p id="home-top-text" class="ui_text_subheader_left">Hello, {{ username }}</p>
         </div>
-
         <div id="home-top-profile" x-data="{ open: false }" @click="open = !open">
-            <button id="home-top-username" class="ui_button_small">{{ username }} <i class="ph-bold ph-caret-down"></i></button>
-
+            <button id="home-top-username" class="ui_button_small">
+                {{ username }} <i class="ph-bold ph-caret-down"></i>
+            </button>
             <div id="home-top-profile-dropdown" x-show="open" x-transition>
-                <button class="ui_button_small" @click="log_out()"><i class="ph-bold ph-sign-out"></i> Log Out</button>
+                <button class="ui_button_small" @click="log_out()">
+                    <i class="ph-bold ph-sign-out"></i> Log Out
+                </button>
             </div>
         </div>
-
     </div>
-
-    <div x-data="{
-        cards: true,
-        cards_disabled: true,
-        wallet_disabled: false
-    }">
+    <div x-data="{ cards: true, cards_disabled: true, wallet_disabled: false }">
         <div id="home-navigation">
-            <button id="home-navigation-wallet" class="ui_button_grid"
-                @click="cards = false; cards_disabled = false; wallet_disabled = true;"
-                x-bind:disabled="wallet_disabled"
-            >Wallet <i class="ph-bold ph-wallet"></i></button>
-
-            <button id="home-navigation-cards" class="ui_button_grid"
-                @click="cards = true; wallet_disabled = false; cards_disabled = true;"
-                x-bind:disabled="cards_disabled"
-            >My Cards <i class="ph-bold ph-cards"></i></button>
+            <button id="home-navigation-wallet"
+                    class="ui_button_grid"
+                    @click="cards = false; cards_disabled = false; wallet_disabled = true;"
+                    x-bind:disabled="wallet_disabled">
+                Wallet <i class="ph-bold ph-wallet"></i>
+            </button>
+            <button id="home-navigation-cards"
+                    class="ui_button_grid"
+                    @click="cards = true; wallet_disabled = false; cards_disabled = true;"
+                    x-bind:disabled="cards_disabled">
+                My Cards <i class="ph-bold ph-cards"></i>
+            </button>
         </div>
-
         <div id="home-wallet" x-show="!cards" x-transition>
-            <p class="ui_text_subheader_left"><i class="ph-bold ph-wallet"></i> My Wallet</p>
+            <p class="ui_text_subheader_left">
+                <i class="ph-bold ph-wallet"></i> My Wallet
+            </p>
             <p class="ui_text_body">Your wallet is where all of the cards you saved appear. You can save cards by going to the link for a card and pressing "Save this card"</p>
-
             <div id="home_wallet_nocards" class="ui_status_info">
                 <i class="ph-bold ph-info ui_status_icon"></i>
                 <p class="ui_status_text">You don't have any cards saved yet! Once you do, they will appear here for you to find later.</p>
             </div>
         </div>
-
         <div id="home-cards" x-show="cards" x-transition>
-            <p class="ui_text_subheader_left"><i class="ph-bold ph-cards"></i> My Cards</p>
+            <p class="ui_text_subheader_left">
+                <i class="ph-bold ph-cards"></i> My Cards
+            </p>
             <p class="ui_text_body">This is where all of the cards you've designed appear</p>
-            <button class="ui_button_small" id="home_cards_create" @click="create_new_card()"><i class="ph-bold ph-plus-circle"></i> Create new Card</button>
+            <button class="ui_button_small"
+                    id="home_cards_create"
+                    @click="create_new_card()">
+                <i class="ph-bold ph-plus-circle"></i> Create new Card
+            </button>
         </div>
-    <div>
-
-    <div id="home_card_menu">
-        <button id="home_menu_edit" class="ui_button_small"><i class="ph-bold ph-pencil-simple-line"></i> Edit</button>
-        <button id="home_menu_rename" class="ui_button_small"><i class="ph-bold ph-cursor-text"></i> Rename</button>
-        <button id="home_menu_copylink" class="ui_button_small"><i class="ph-bold ph-link"></i> Copy Link</button>
-        <div class="ui_separator_horizontal"></div>
-        <button id="home_menu_delete" class="ui_button_small"><i class="ph-bold ph-trash"></i> Delete</button>
-    </div>
-
-    <dialog id="dialog_home_rename" class="ui_dialog_generic">
-        <div class="ui_dialog_generic_top">
-            <p class="ui_text_subheader_left ui_dialog_generic_top_text">Rename Card</p>
-            <button class="ui_button_icon ui_dialog_generic_top_close"><i class="ph-bold ph-x-circle"></i></button>
-        </div>
-
-        <input id="dialog_home_rename_input" class="ui_input_generic" placeholder="New Name"></input>
-        <button id="dialog_home_rename_submit" class="ui_button_small"><i class="ph-bold ph-check"></i> Set new name</button>
-    </dialog>
-
-    <dialog id="dialog_home_delete" class="ui_dialog_generic">
-        <div class="ui_dialog_generic_top">
-            <p class="ui_text_subheader_left ui_dialog_generic_top_text">Delete Card</p>
-            <button class="ui_button_icon ui_dialog_generic_top_close"><i class="ph-bold ph-x-circle"></i></button>
-        </div>
-
-        <p class="ui_text_body">Are you sure you want to delete this Card? This action is irreversible.</p>
-        <button id="dialog_home_delete_cancel" class="ui_button_small"><i class="ph-bold ph-x-circle"></i> Cancel</button>
-        <button id="dialog_home_delete_delete" class="ui_button_small"><i class="ph-bold ph-trash"></i> Delete Card</button>
-    </dialog>
-
-    <div class="background_blur"></div>
-{% endblock %}
-
-{% block scripts %}
-    <script src="{% static '/main/scripts/home/home.js' %}"></script>
-    <script src="{% static '/main/scripts/global/background_blur.js' %}"></script>
-{% endblock %}
+        <div>
+            <div id="home_card_menu">
+                <button id="home_menu_edit" class="ui_button_small">
+                    <i class="ph-bold ph-pencil-simple-line"></i> Edit
+                </button>
+                <button id="home_menu_rename" class="ui_button_small">
+                    <i class="ph-bold ph-cursor-text"></i> Rename
+                </button>
+                <button id="home_menu_copylink" class="ui_button_small">
+                    <i class="ph-bold ph-link"></i> Copy Link
+                </button>
+                <div class="ui_separator_horizontal"></div>
+                <button id="home_menu_delete" class="ui_button_small">
+                    <i class="ph-bold ph-trash"></i> Delete
+                </button>
+            </div>
+            <dialog id="dialog_home_rename" class="ui_dialog_generic">
+                <div class="ui_dialog_generic_top">
+                    <p class="ui_text_subheader_left ui_dialog_generic_top_text">Rename Card</p>
+                    <button class="ui_button_icon ui_dialog_generic_top_close">
+                        <i class="ph-bold ph-x-circle"></i>
+                    </button>
+                </div>
+                <input id="dialog_home_rename_input"
+                       class="ui_input_generic"
+                       placeholder="New Name">
+            </input>
+            <button id="dialog_home_rename_submit" class="ui_button_small">
+                <i class="ph-bold ph-check"></i> Set new name
+            </button>
+        </dialog>
+        <dialog id="dialog_home_delete" class="ui_dialog_generic">
+            <div class="ui_dialog_generic_top">
+                <p class="ui_text_subheader_left ui_dialog_generic_top_text">Delete Card</p>
+                <button class="ui_button_icon ui_dialog_generic_top_close">
+                    <i class="ph-bold ph-x-circle"></i>
+                </button>
+            </div>
+            <p class="ui_text_body">Are you sure you want to delete this Card? This action is irreversible.</p>
+            <button id="dialog_home_delete_cancel" class="ui_button_small">
+                <i class="ph-bold ph-x-circle"></i> Cancel
+            </button>
+            <button id="dialog_home_delete_delete" class="ui_button_small">
+                <i class="ph-bold ph-trash"></i> Delete Card
+            </button>
+        </dialog>
+        <div class="background_blur"></div>
+    {% endblock %}
+    {% block scripts %}
+        <script src="{% static '/main/scripts/home/home.js' %}"></script>
+        <script src="{% static '/main/scripts/global/background_blur.js' %}"></script>
+    {% endblock %}

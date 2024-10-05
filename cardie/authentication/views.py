@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import HttpResponse
 from django.contrib.auth.hashers import make_password, check_password
 
 from authentication.models import User

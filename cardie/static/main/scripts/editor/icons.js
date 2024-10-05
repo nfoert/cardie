@@ -1,18 +1,18 @@
 // TODO: Support {{ server_url }}
 const icons_url = "http://127.0.0.1:8000/iconlist";
 const itemsData = []; // Array to store item data
-var icon_selected_item;
+let icon_selected_item;
 
 function create_icon(icon) {
     const div_element = document.createElement("div");
     div_element.classList.add("editor-iconselector-icon");
     div_element.setAttribute("icon", icon);
 
-    icon_element = document.createElement("i");
+    const icon_element = document.createElement("i");
     icon_element.className = "editor-iconselector-icon-icon ph-bold";
-    icon_element.classList.add("ph-" + icon);
+    icon_element.classList.add(`ph-${icon}`);
 
-    text_element = document.createElement("p");
+    const text_element = document.createElement("p");
     text_element.classList.add("editor-iconselector-icon-text");
     text_element.innerText = icon;
 
@@ -22,9 +22,7 @@ function create_icon(icon) {
 
     itemsData.push(div_element);
 
-    document
-        .querySelector("#editor-iconselector-icons")
-        .appendChild(div_element);
+    get_or_throw("#editor-iconselector-icons").appendChild(div_element);
 }
 
 function render_icons(icons) {
@@ -35,7 +33,7 @@ function render_icons(icons) {
 }
 
 async function fetch_icon_list() {
-    response = await fetch(icons_url);
+    const response = await fetch(icons_url);
     const text = await response.text();
     render_icons(text);
 }
@@ -46,9 +44,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 // Function to render items
 const renderItems = (filteredItems) => {
-    document.querySelector("#editor-iconselector-icons").innerHTML = "";
+    get_or_throw("#editor-iconselector-icons").innerHTML = "";
+    // biome-ignore lint/complexity/noForEach: <explanation>
     filteredItems.forEach((item) =>
-        document.querySelector("#editor-iconselector-icons").appendChild(item),
+        get_or_throw("#editor-iconselector-icons").appendChild(item),
     );
 };
 
@@ -68,38 +67,33 @@ const filterItems = (query) => {
 };
 
 // Event listener for the search box
-document
-    .querySelector("#editor-iconselector-top-search")
-    .addEventListener("input", (e) => {
+get_or_throw("#editor-iconselector-top-search").addEventListener(
+    "input",
+    (e) => {
         const query = e.target.value;
         const filteredItems = filterItems(query);
         const sortedItems = sortItems(filteredItems);
         renderItems(sortedItems);
-    });
+    },
+);
 
 function show_iconselector(item) {
     icon_selected_item = item;
     show_background_blur();
 
-    document.querySelector("#editor-iconselector").style.display = "flex";
-    document
-        .querySelector("#editor-iconselector")
-        .classList.remove("hide-iconselector");
-    document
-        .querySelector("#editor-iconselector")
-        .classList.add("show-iconselector");
+    get_or_throw("#editor-iconselector").style.display = "flex";
+    get_or_throw("#editor-iconselector").classList.remove("hide-iconselector");
+    get_or_throw("#editor-iconselector").classList.add("show-iconselector");
 }
 
 function hide_iconselector() {
-    document
-        .querySelector("#editor-iconselector")
-        .classList.add("hide-iconselector");
+    get_or_throw("#editor-iconselector").classList.add("hide-iconselector");
 
     setTimeout(() => {
-        document
-            .querySelector("#editor-iconselector")
-            .classList.remove("show-iconselector");
-        document.querySelector("#editor-iconselector").style.display = "none";
+        get_or_throw("#editor-iconselector").classList.remove(
+            "show-iconselector",
+        );
+        get_or_throw("#editor-iconselector").style.display = "none";
         hide_background_blur();
     }, 500);
 }
@@ -119,8 +113,9 @@ function icon_clicked(event) {
     hide_iconselector();
 }
 
-document
-    .querySelector("#editor-iconselector-top-close")
-    .addEventListener("click", (event) => {
+get_or_throw("#editor-iconselector-top-close").addEventListener(
+    "click",
+    (event) => {
         hide_iconselector();
-    });
+    },
+);

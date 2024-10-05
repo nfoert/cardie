@@ -1,0 +1,22 @@
+name: Lint and Format checks
+on: [ push, pull_request ]
+jobs:
+  ruff:
+    name: Python
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: chartboost/ruff-action@v1
+        with:
+          path: './cardie'
+
+  biome:
+    name: CSS and JS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Biome CLI
+        uses: biomejs/setup-biome@v2
+
+      - name: Run Biome
+        run: biome ci

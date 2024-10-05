@@ -26,7 +26,12 @@ function create_notification(header, body, icon) {
     notification.appendChild(notification_icon);
     notification.appendChild(notification_text);
 
-    document.querySelector(".notifications").appendChild(notification);
+    const notifications = document.querySelector(".notifications");
+
+    if (notifications === null) {
+        throw new Error("Could not find notifications box");
+    }
+    notifications.appendChild(notification);
 
     setTimeout(() => {
         notification.classList.add("show");

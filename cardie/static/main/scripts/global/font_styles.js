@@ -1,7 +1,7 @@
 // This file lists the available font styles to be used for cards
 // It will primarily contain the array of font style objects which can then be imported by the editor preview or cardview to allow the font to be changed
 
-var font_styles = [
+const font_styles = [
     {
         name: "Simple",
         header: { name: "Noto Sans", url: "Noto Sans" },
@@ -29,7 +29,7 @@ var font_styles = [
 ];
 
 function get_font_style(name) {
-    return font_styles.find((font) => font.name == name);
+    return font_styles.find((font) => font.name === name);
 }
 
 async function load_font(name, url) {
@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 window.addEventListener("loadFont", (event) => {
     event.stopImmediatePropagation();
+    // @ts-ignore
     const { font_name, font_url } = event.detail;
     load_font(font_name, font_url);
 });

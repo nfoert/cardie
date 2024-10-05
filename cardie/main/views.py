@@ -1,68 +1,51 @@
-import os
 import json
 
-from django.shortcuts import HttpResponse, render
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from authentication.views import sign_in
-from main.models import Server, Card, TempCard
 from authentication.models import User
+from authentication.views import sign_in
+from django.http import JsonResponse
+from django.shortcuts import HttpResponse, render
 from django.utils import timezone
+from django.views.decorators.csrf import csrf_exempt
+from main.icons import icons
+from main.models import Card, Server, TempCard
+
 
 def index(request):
-    server_info = Server.objects.all()[0]
-
     try:
         username = request.session["username"]
-
         context = {
-            "server_ip": server_info.ip,
-            "production": server_info.production,
-            "username": username
-        }    
-
+            "username": username,
+        }
         return render(request, "index.html", context)
 
     except KeyError:
-        context = {
-            "server_ip": server_info.ip,
-            "production": server_info.production
-        }
 
-        return render(request, "index.html", context)
+        return render(request, "index.html")
+
 
 def authentication(request):
-    server_info = Server.objects.all()[0]
-
-    context = {
-        "server_ip": server_info.ip,
-        "production": server_info.production
-    }
-
     try:
         request.session["username"]
         request.session["password"]
 
-        return(sign_in(request))
+        return sign_in(request)
 
     except KeyError:
         print("No session data on authentication page!")
-        return render(request, "authentication.html", context)
+        return render(request, "authentication.html")
+
 
 def userinterface(request):
     return render(request, "ui.html")
 
-def home(request):
-    server_info = Server.objects.all()[0]
 
+def home(request):
     try:
         request.session["username"]
         request.session["password"]
 
         context = {
-            "server_ip": server_info.ip,
-            "production": server_info.production,
-            "username": request.session["username"]
+            "username": request.session["username"],
         }
 
         return render(request, "home.html", context)
@@ -70,18 +53,12 @@ def home(request):
     except KeyError:
         print("No session data on home page!")
         return authentication(request)
-    
-def editor(request):
-    server_info = Server.objects.all()[0]
 
+
+def editor(request):
     if bool(request.GET.get("demo", False)):
         # Open the editor without authenticating
-        context = {
-            "server_ip": server_info.ip,
-            "production": server_info.production,
-        }
-
-        return render(request, "editor.html", context)
+        return render(request, "editor.html")
 
     else:
         try:
@@ -89,9 +66,7 @@ def editor(request):
             request.session["password"]
 
             context = {
-                "server_ip": server_info.ip,
-                "production": server_info.production,
-                "username": request.session["username"]
+                "username": request.session["username"],
             }
 
             return render(request, "editor.html", context)
@@ -100,25 +75,15 @@ def editor(request):
             print("No session data on editor page!")
             return authentication(request)
 
+
 def privacy_policy(request):
-    server_info = Server.objects.all()[0]
+    return render(request, "privacy.html")
 
-    context = {
-        "server_ip": server_info.ip,
-        "production": server_info.production
-    }
-
-    return render(request, "privacy.html", context)
 
 def icon_list(request):
     # TODO: This should probably go somewhere else for organization's sake, but I don't know where
-    
-    icons = []
-    with open("./cardie/main/icons_list.txt", "r") as file:
-        for line in file.readlines():
-            icons.append(line.strip("\n"))
-
     return JsonResponse(icons, safe=False)
+
 
 @csrf_exempt
 def create_card(request):
@@ -127,13 +92,19 @@ def create_card(request):
         # TODO: What if there are two accounts with that username?
         me = User.objects.filter(username=request.session["username"])[0]
 
-        card = Card(uuid=request.headers["UUID"], owner=me,card_last_edited_on = timezone.now(),card_created_on = timezone.now())
+        card = Card(
+            uuid=request.headers["UUID"],
+            owner=me,
+            card_last_edited_on=timezone.now(),
+            card_created_on=timezone.now(),
+        )
         card.save()
 
         return HttpResponse("Done")
 
     else:
         return HttpResponse("Request is not a POST request")
+
 
 @csrf_exempt
 def check_card(request):
@@ -158,6 +129,7 @@ def check_card(request):
     else:
         return HttpResponse("Request is not a POST request")
 
+
 @csrf_exempt
 def save_card(request):
     # Saves data to a card on the server
@@ -178,6 +150,7 @@ def save_card(request):
     else:
         return HttpResponse("Request is not a POST request")
 
+
 @csrf_exempt
 def list_cards(request):
     # Lists all of the cards that the user owns
@@ -188,39 +161,29 @@ def list_cards(request):
         cards_list = []
 
         for card in range(len(cards)):
-            card_json = {
-                "uuid": cards[card].uuid,
-                "name": cards[card].name
-            }
+            card_json = {"uuid": cards[card].uuid, "name": cards[card].name}
 
             cards_list.append(card_json)
-        
+
         return JsonResponse(cards_list, safe=False)
 
     else:
         return HttpResponse("Request is not a POST request")
 
+
 def card_view(request):
-    server_info = Server.objects.all()[0]
 
     try:
         username = request.session["username"]
 
         context = {
-            "server_ip": server_info.ip,
-            "production": server_info.production,
-            "username": username
+            "username": username,
         }
-
         return render(request, "card_view.html", context)
 
     except KeyError:
-        context = {
-            "server_ip": server_info.ip,
-            "production": server_info.production
-        }
-
         return render(request, "card_view.html", context)
+
 
 @csrf_exempt
 def get_card(request):
@@ -228,11 +191,12 @@ def get_card(request):
     if request.method == "POST":
         # TODO: What if there are multiple cards with that UUID?
         card = Card.objects.filter(uuid=request.headers["UUID"])[0]
-        
-        return JsonResponse(card.data, safe=False);
+
+        return JsonResponse(card.data, safe=False)
 
     else:
         return HttpResponse("Request is not a POST request")
+
 
 @csrf_exempt
 def log_out(request):
@@ -247,20 +211,24 @@ def log_out(request):
     else:
         return HttpResponse("Request is not a POST request")
 
+
 @csrf_exempt
 def create_temp_card(request):
     if request.method == "POST":
         if request.headers["data"]:
-            temp_card = TempCard(data=json.loads(request.headers["data"]), created=timezone.now())
+            temp_card = TempCard(
+                data=json.loads(request.headers["data"]), created=timezone.now()
+            )
             temp_card.save()
-            
+
             return HttpResponse(temp_card.uuid)
-            
+
         else:
             return HttpResponse("Missing headers")
-        
+
     else:
         return HttpResponse("Request is not a POST request")
+
 
 @csrf_exempt
 def delete_card(request):
@@ -270,19 +238,20 @@ def delete_card(request):
             me = User.objects.filter(username=request.session["username"])[0]
 
             card = Card.objects.filter(uuid=request.headers["uuid"], owner=me)[0]
-            
+
             if card:
                 card.delete()
                 return HttpResponse("Success")
 
             else:
                 return HttpResponse("Card not found")
-            
+
         else:
             return HttpResponse("Missing headers")
-        
+
     else:
         return HttpResponse("Request is not a POST request")
+
 
 @csrf_exempt
 def rename_card(request):
@@ -292,7 +261,7 @@ def rename_card(request):
             me = User.objects.filter(username=request.session["username"])[0]
 
             card = Card.objects.filter(uuid=request.headers["uuid"], owner=me)[0]
-            
+
             if card:
                 card.name = request.headers["name"]
                 card.data["name"] = request.headers["name"]
@@ -301,12 +270,13 @@ def rename_card(request):
 
             else:
                 return HttpResponse("Card not found")
-            
+
         else:
             return HttpResponse("Missing headers")
-        
+
     else:
         return HttpResponse("Request is not a POST request")
+
 
 @csrf_exempt
 def save_to_wallet(request):
@@ -316,7 +286,7 @@ def save_to_wallet(request):
                 me = User.objects.filter(username=request.session["username"])[0]
 
                 card = Card.objects.filter(uuid=request.headers["uuid"])[0]
-                
+
                 if card:
                     me.wallet.add(card)
                     me.save()
@@ -324,15 +294,16 @@ def save_to_wallet(request):
 
                 else:
                     return HttpResponse("Card not found")
-                    
+
             except KeyError:
                 return HttpResponse("Not signed in")
-            
+
         else:
             return HttpResponse("Missing headers")
-        
+
     else:
         return HttpResponse("Request is not a POST request")
+
 
 @csrf_exempt
 def get_wallet(request):
@@ -344,18 +315,19 @@ def get_wallet(request):
             for card in range(len(me.wallet.all())):
                 wallet_item = {
                     "name": me.wallet.all()[card].name,
-                    "uuid": me.wallet.all()[card].uuid
+                    "uuid": me.wallet.all()[card].uuid,
                 }
 
                 wallet.append(wallet_item)
 
             return JsonResponse(wallet, safe=False)
-                
+
         except KeyError:
             return HttpResponse("Not signed in")
-        
+
     else:
         return HttpResponse("Request is not a POST request")
+
 
 @csrf_exempt
 def remove_from_wallet(request):
@@ -368,9 +340,13 @@ def remove_from_wallet(request):
             me.wallet.remove(card_to_remove[0])
 
             return HttpResponse("Success")
-            
+
         except KeyError:
             return HttpResponse("Not signed in")
-        
+
     else:
         return HttpResponse("Request is not a POST request")
+
+
+def config_js(request):
+    return render(request, "config.js", {}, content_type="text/javascript")

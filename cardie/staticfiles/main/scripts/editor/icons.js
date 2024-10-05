@@ -1,6 +1,7 @@
 // TODO: Support {{ server_url }}
 let icons_url = "http://127.0.0.1:8000/iconlist";
 const itemsData = []; // Array to store item data
+var icon_selected_item;
 
 function create_icon(icon) {
     let div_element = document.createElement("div");
@@ -66,7 +67,8 @@ document.querySelector("#editor-iconselector-top-search").addEventListener('inpu
     renderItems(sortedItems);
 });
 
-function show_iconselector() {
+function show_iconselector(item) {
+    icon_selected_item = item;
     show_background_blur();
 
     document.querySelector("#editor-iconselector").style.display = "flex";
@@ -86,7 +88,12 @@ function hide_iconselector() {
 
 function icon_clicked(event) {
     let icon = event.target.closest(".editor-iconselector-icon").getAttribute("icon");
-    currently_editing_icon.querySelector(".text_item_icon > i, .link_item_icon > i").className = `ph-bold ph-${icon}`;
+    console.log(icon_selected_item, icon)
+
+    window.dispatchEvent(new CustomEvent('iconSelected', {
+        detail: { icon_selected_item, icon }
+    }));
+
     hide_iconselector();
 }
 

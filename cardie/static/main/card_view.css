@@ -10,6 +10,7 @@ html {
 
     width: fit-content;
     height: fit-content;
+    max-width: 100vw;
 }
 
 #cardview_text {

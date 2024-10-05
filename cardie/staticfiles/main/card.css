@@ -30,6 +30,42 @@
     background-color: white;
 }
 
+.card_card_front[card-align="left"] {
+    text-align: left;
+}
+
+.card_card_front[card-align="right"] {
+    text-align: right;
+}
+
+.card_card_front[card-align="center"] {
+    text-align: center;
+}
+
+.card_card_front[card-align="left"] .card_item_text {
+    justify-content: left;
+}
+
+.card_card_front[card-align="right"] .card_item_text {
+    justify-content: right;
+}
+
+.card_card_front[card-align="center"] .card_item_text {
+    justify-content: center;
+}
+
+.card_card_front[card-align="left"] .card_item_link {
+    justify-content: left;
+}
+
+.card_card_front[card-align="right"] .card_item_link {
+    justify-content: right;
+}
+
+.card_card_front[card-align="center"] .card_item_link {
+    justify-content: center;
+}
+
 .card_content {
     padding: clamp(3vh, 30px, 3vw);
 }
@@ -110,6 +146,50 @@
 }
 
 .card_item_link > button {
+    all: unset;
+    font-family: var(--default-font-family);
+    cursor: pointer;
+
+    margin-left: clamp(0.4vh, 4px, 0.4vw);
+    border: none;
+    background-color: none;
+    color: rgb(64, 163, 255);
+}
+
+.card_wrap {
+    max-width: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: start;
+}
+
+.card_card p {
+    transition: var(--default-transition);
+}
+
+.card_card i {
+    transition: var(--default-transition);
+}
+
+.card_top_text {
+    width: 100%;
+}
+
+#dialog_card_menu_items {
+    padding-left: clamp(1.5vh, 15px, 1.5vw);
+    padding-right: clamp(1.5vh, 15px, 1.5vw);
+}
+
+#dialog_card_menu_items > .card_item_text {
+    color: white;
+}
+
+#dialog_card_menu_items > .card_item_link {
+    color: white;
+}
+
+#dialog_card_menu_button {
     all: unset;
     font-family: var(--default-font-family);
     cursor: pointer;

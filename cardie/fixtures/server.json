@@ -1,0 +1,12 @@
+[
+  {
+    "model": "main.server",
+    "pk": 1,
+    "fields": {
+      "ip": "127.0.0.1",
+      "production": true,
+      "allow_create_accounts": true,
+      "allow_sign_in": true
+    }
+  }
+]

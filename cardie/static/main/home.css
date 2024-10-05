@@ -9,28 +9,28 @@ html {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-    
+
         margin-left: clamp(5vh, 50px, 5vw);
         margin-right: clamp(5vh, 50px, 5vw);
         margin-top: clamp(5vh, 50px, 5vw);
     }
-    
+
     #home-top-text {
         margin-left: clamp(6vh, 60px, 6vw);
     }
-    
+
     #home-navigation {
         margin-top: clamp(1vh, 10px, 1vw);
         margin-left: clamp(12vh, 120px, 12vw);
         margin-bottom: clamp(2vh, 20px, 2vw);
     }
-    
+
     #home-wallet {
         margin-left: clamp(12vh, 120px, 12vw);
         display: flex;
         flex-direction: column;
     }
-    
+
     #home-cards {
         margin-left: clamp(12vh, 120px, 12vw);
         display: flex;
@@ -52,28 +52,28 @@ html {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-    
+
         margin-left: clamp(1vh, 10px, 1vw);
         margin-right: clamp(1vh, 10px, 1vw);
         margin-top: clamp(1vh, 10px, 1vw);
     }
-    
+
     #home-top-text {
         margin-left: clamp(2vh, 20px, 2vw);
     }
-    
+
     #home-navigation {
         margin-top: clamp(1vh, 10px, 1vw);
         margin-left: clamp(2vh, 20px, 2vw);
         margin-bottom: clamp(1vh, 10px, 1vw);
     }
-    
+
     #home-wallet {
         margin-left: clamp(2vh, 20px, 2vw);
         display: flex;
         flex-direction: column;
     }
-    
+
     #home-cards {
         margin-left: clamp(2vh, 20px, 2vw);
         display: flex;
@@ -173,8 +173,7 @@ html {
     border: var(--default-glass-border);
     backdrop-filter: var(--default-glass-blur);
     border-radius: 15px;
-    transition: opacity 0.3s ease,
-        scale 0.3s ease;
+    transition: opacity 0.3s ease, scale 0.3s ease;
     z-index: 3;
 
     /* Starting properties for animation */

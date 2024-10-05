@@ -177,26 +177,26 @@ html {
         border: var(--default-glass-border);
         backdrop-filter: var(--default-glass-blur);
         border-radius: 20px;
-    
+
         aspect-ratio: 1;
         width: auto;
         height: 40%;
         max-height: 40%;
-    
+
         z-index: 3;
-    
+
         position: fixed;
         top: 50%;
         left: 50%;
         translate: -50% -50%;
-    
+
         padding: clamp(1.5vh, 15px, 1.5vw);
-    
+
         display: flex;
         flex-direction: column;
-    
+
         display: none; /* Keep hidden until needed */
-    
+
         /* Starting properties for animation */
         opacity: 0;
         scale: 0.8;
@@ -209,25 +209,25 @@ html {
     #editor-iconselector {
         background-color: var(--default-glass-background);
         backdrop-filter: var(--default-glass-blur);
-    
+
         aspect-ratio: 1;
         width: calc(100vw - 1.5vh);
         height: 100vh;
         max-height: 100vh;
-    
+
         z-index: 3;
-    
+
         position: fixed;
         top: 0px;
         left: 0px;
-    
+
         padding: clamp(1.5vh, 15px, 1.5vw);
-    
+
         display: flex;
         flex-direction: column;
-    
+
         display: none; /* Keep hidden until needed */
-    
+
         /* Starting properties for animation */
         opacity: 0;
         scale: 0.8;
@@ -270,9 +270,9 @@ html {
     justify-content: center;
     margin: clamp(0.8vh, 8px, 0.8vw);
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .editor-iconselector-icon:hover {
@@ -338,21 +338,21 @@ html {
         border: var(--default-glass-border);
         backdrop-filter: var(--default-glass-blur);
         border-radius: 20px;
-    
+
         z-index: 3;
-    
+
         position: fixed;
         top: 50%;
         left: 50%;
         translate: -50% -50%;
-    
+
         padding: clamp(2vh, 20px, 2vw);
-    
+
         display: flex;
         flex-direction: column;
-    
+
         display: none; /* Keep hidden until needed */
-    
+
         /* Starting properties for animation */
         opacity: 0;
         scale: 0.8;
@@ -371,21 +371,21 @@ html {
         border: var(--default-glass-border);
         backdrop-filter: var(--default-glass-blur);
         border-radius: 20px;
-    
+
         z-index: 3;
-    
+
         position: fixed;
         top: 50vh;
         left: 50vw;
         translate: -50% -50%;
-    
+
         padding: clamp(2vh, 20px, 2vw);
-    
+
         display: flex;
         flex-direction: column;
-    
+
         display: none; /* Keep hidden until needed */
-    
+
         /* Starting properties for animation */
         opacity: 0;
         scale: 0.8;
@@ -488,5 +488,4 @@ html {
 
     margin-left: clamp(1.5vh, 15px, 1.5vw);
     margin-right: clamp(1vh, 10px, 1vw);
-    
 }

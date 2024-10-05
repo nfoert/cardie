@@ -1,22 +1,22 @@
-let notification_box = document.createElement("div");
+const notification_box = document.createElement("div");
 notification_box.classList.add("notifications");
 document.body.appendChild(notification_box);
 
 function create_notification(header, body, icon) {
-    let notification = document.createElement("div");
+    const notification = document.createElement("div");
     notification.classList.add("notification");
-    
-    let notification_icon = document.createElement("i");
+
+    const notification_icon = document.createElement("i");
     notification_icon.className = `ph-bold ph-${icon} notification_icon`;
 
-    let notification_text = document.createElement("div");
-    notification_text.classList.add("notification_text")
+    const notification_text = document.createElement("div");
+    notification_text.classList.add("notification_text");
 
-    let notification_header = document.createElement("p");
+    const notification_header = document.createElement("p");
     notification_header.classList.add("notification_header");
     notification_header.innerText = header;
 
-    let notification_body = document.createElement("p");
+    const notification_body = document.createElement("p");
     notification_body.classList.add("notification_body");
     notification_body.innerText = body;
 
@@ -28,14 +28,14 @@ function create_notification(header, body, icon) {
 
     document.querySelector(".notifications").appendChild(notification);
 
-    setTimeout(function() {
+    setTimeout(() => {
         notification.classList.add("show");
-    }, 100)
+    }, 100);
 
-    setTimeout(function() {
+    setTimeout(() => {
         notification.classList.remove("show");
 
-        setTimeout(function() {
+        setTimeout(() => {
             notification.remove();
         }, 300);
     }, 5000);

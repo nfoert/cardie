@@ -13,12 +13,12 @@ try {
 
 async function start_editor() {
     if (demo_param == false) {
-        let uuid_param = new URL(window.location.href).searchParams.get("uuid");
+        const uuid_param = new URL(window.location.href).searchParams.get("uuid");
 
         document.querySelector("#editor_main_preview_demo").style.display = "none";
 
         if (uuid_param == null) {
-            let new_uuid = crypto.randomUUID();
+            const new_uuid = crypto.randomUUID();
 
             const response = await fetch(server_ip + "/createcard", {
                 method: "POST",
@@ -27,7 +27,7 @@ async function start_editor() {
                 }
             });
 
-            response.text().then(function (text) {
+            response.text().then((text) => {
                 if (text == "Done") {
                     var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?uuid=' + new_uuid;
                     window.history.pushState({ path: refresh }, '', refresh);
@@ -50,7 +50,7 @@ async function start_editor() {
                 }
             });
 
-            response.text().then(function (text) {
+            response.text().then((text) => {
                 if (text == "Request is not a POST request") {
                     status_error();
                     log("WARNING", "There was a problem");
@@ -82,7 +82,7 @@ async function start_editor() {
 
 async function save_card(card_json) {
     status_saving();
-    let uuid_param = new URL(window.location.href).searchParams.get("uuid");
+    const uuid_param = new URL(window.location.href).searchParams.get("uuid");
 
     const response = await fetch(server_ip + "/savecard", {
         method: "POST",
@@ -92,7 +92,7 @@ async function save_card(card_json) {
         }
     });
 
-    response.text().then(function (text) {
+    response.text().then((text) => {
         if (text == "Done") {
             log("INFO", "Data has been saved")
             status_saved();
@@ -136,7 +136,7 @@ async function editor_demo_auth(sign_in) {
         }
     });
 
-    response.text().then(function (text) {
+    response.text().then((text) => {
         if (text == "Missing headers") {
             log("WARNING", text);
             create_notification("There was an error creating the temporary card", "Missing headers in the request", "warning");
@@ -161,8 +161,8 @@ async function editor_demo_auth(sign_in) {
 }
 
 function setup_qrcode() {
-    let uuid_param = new URL(window.location.href).searchParams.get("uuid");
-    let url = `${server_ip}/card?uuid=${uuid_param}&`
+    const uuid_param = new URL(window.location.href).searchParams.get("uuid");
+    const url = `${server_ip}/card?uuid=${uuid_param}&`
 
     qrcode = new QRCode("qrcode", {
         url: url,
@@ -207,7 +207,7 @@ document.querySelector("#editor_header_title_home").addEventListener("click", (e
 });
 
 document.querySelector("#editor_share_copylink").addEventListener("click", async (event) => {
-    let uuid_param = new URL(window.location.href).searchParams.get("uuid");
+    const uuid_param = new URL(window.location.href).searchParams.get("uuid");
 
     await navigator.clipboard.writeText(`${server_ip}/card?uuid=${uuid_param}&`).then(() => {
         event.target.innerHTML = `<i class="ph-bold ph-check-circle"></i> Copied!`;
@@ -219,8 +219,8 @@ document.querySelector("#editor_share_copylink").addEventListener("click", async
 });
 
 document.querySelector("#editor_share_copyqr").addEventListener("click", async (event) => {
-    let uuid_param = new URL(window.location.href).searchParams.get("uuid");
-    let url = `${server_ip}/card?uuid=${uuid_param}&`
+    const uuid_param = new URL(window.location.href).searchParams.get("uuid");
+    const url = `${server_ip}/card?uuid=${uuid_param}&`
 
     qrcode.makeCode(url);
 
@@ -236,8 +236,8 @@ document.querySelector("#editor_share_copyqr").addEventListener("click", async (
 });
 
 document.querySelector("#editor_share_downloadqr").addEventListener("click", (event) => {
-    let uuid_param = new URL(window.location.href).searchParams.get("uuid");
-    let url = `${server_ip}/card?uuid=${uuid_param}&`
+    const uuid_param = new URL(window.location.href).searchParams.get("uuid");
+    const url = `${server_ip}/card?uuid=${uuid_param}&`
 
     qrcode.makeCode(url);
 

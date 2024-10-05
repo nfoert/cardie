@@ -2,7 +2,7 @@
 
 .card_card {
     margin: 10px;
-    
+
     width: 600px;
     aspect-ratio: 1.75;
 
@@ -11,7 +11,8 @@
     display: block;
 }
 
-.card_card_front, .card_card_back {
+.card_card_front,
+.card_card_back {
     position: absolute;
     top: 0;
     width: 100%;

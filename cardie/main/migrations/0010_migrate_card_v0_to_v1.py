@@ -7,9 +7,9 @@ def migrate_json_data(apps, schema_editor):
     for obj in Card.objects.all():
         obj_json = obj.data
         
-        obj_json['version'] = 1
-
         if obj_json:
+            obj_json['version'] = 1
+
             text_items = obj_json["information"]["items"]["text"]
             link_items = obj_json["information"]["items"]["links"]
 

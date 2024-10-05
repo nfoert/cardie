@@ -11,9 +11,9 @@ def migrate_json_data(apps, schema_editor):
     for obj in Card.objects.all():
         obj_json = obj.data
         
-        obj_json["version"] = 3
-
         if obj_json:
+            obj_json["version"] = 3
+
             color_data = {
                 "background": "#ffffff",
                 "accent": "#000000",

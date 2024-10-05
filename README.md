@@ -100,6 +100,11 @@ Set the following global environment variables:
 - `DATABASE_URL` -> `${db.DATABASE_URL}` (This works on DigitalOcean, this may not work on every hosting provider)
 
 ## Development
+### djlint
+This project uses `djlint` to lint the templates. You can run this using the following command
+```bash
+djlint cardie --reformat
+```
 ### ruff
 This project uses [`ruff`](https://docs.astral.sh/ruff/) to lint and format the code.
 You can run the following command to lint and format the code.

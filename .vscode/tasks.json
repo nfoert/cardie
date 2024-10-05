@@ -64,6 +64,16 @@
           "panel": "new"
         },
         "problemMatcher": []
+      },
+      {
+        "label": "Format Django templats with djlint",
+        "type": "shell",
+        "command": "source .venv/bin/activate && djlint cardie --reformat",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
       }
     ]
   }

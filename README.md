@@ -29,6 +29,9 @@
 
 Design a unlimited number of business or information cards about yourself, share a link or QR code to them, print it out, and save other people's cards to your virtual wallet for later. Once you've created a card you can get analytics data on how your cards are getting visited, you can edit your cards as things change, and you can keep cards private so only people with a link to your card can see it.
 
+> [!IMPORTANT]
+> Cardie is currently in an open alpha. Things will be rapidly changing and bugs are to be expected.
+
 <div align="center">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=django,python,html,css,js,github,git,alpinejs"/>
@@ -38,9 +41,6 @@ Design a unlimited number of business or information cards about yourself, share
 <div align="center">
   <img src="repo/images/screenshot1.png" style="border-radius: 10px; margin-top: 20px;">
 </div>
-
-> [!IMPORTANT]
-> Cardie is currently in an open alpha. Things will be rapidly changing and bugs are to be expected.
 
 ## Hacktoberfest
 Happy Hacktoberfest! I hope that you find this project interesting and that some issues offer a good learning experience! Help of any kind would be greatly appreciated.

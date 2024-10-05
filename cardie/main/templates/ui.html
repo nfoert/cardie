@@ -55,20 +55,19 @@
             <p class="ui_status_text">Critical status box</p>
         </div>
         <input type="text" class="ui_input_generic">
-    </input>
-    <div class="ui_spacer"></div>
-    <div class="ui_separator_vertical"></div>
-    <div class="ui_separator_horizontal"></div>
-    <div class="card_card">
-        <div class="card_card_front">
-            <p>Front of card</p>
+        <div class="ui_spacer"></div>
+        <div class="ui_separator_vertical"></div>
+        <div class="ui_separator_horizontal"></div>
+        <div class="card_card">
+            <div class="card_card_front">
+                <p>Front of card</p>
+            </div>
+            <div class="card_card_back">
+                <p>Back of card</p>
+            </div>
         </div>
-        <div class="card_card_back">
-            <p>Back of card</p>
-        </div>
-    </div>
-    {% include "footer.html" %}
-    <script src="{% static '/main/scripts/global/card.js' %}"></script>
-    <script src="{% static '/main/scripts/global/favicon.js' %}"></script>
-</body>
+        {% include "footer.html" %}
+        <script src="{% static '/main/scripts/global/card.js' %}"></script>
+        <script src="{% static '/main/scripts/global/favicon.js' %}"></script>
+    </body>
 </html>

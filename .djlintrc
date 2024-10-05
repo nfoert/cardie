@@ -1,4 +1,6 @@
 {
-  "max_line_length": "180"
+  "max_line_length": "180",
+  "max_blank_lines": 1,
+  "profile": "django"
 }
 

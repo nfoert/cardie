@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head_title %}Authentication{% endblock %}
+
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
     <link rel="stylesheet"
@@ -10,6 +11,7 @@
           type="text/css"
           href="{% static '/main/authentication.css' %}">
 {% endblock %}
+
 {% block body %}
     <div id="authentication-box" x-data="box_param_check()">
         {% csrf_token %}
@@ -31,59 +33,55 @@
                    type="text"
                    class="ui_input_generic"
                    placeholder="Username">
-        </input>
-        <input id="signin-password"
-               type="password"
-               class="ui_input_generic"
-               placeholder="Password">
-    </input>
-    <button id="signin-signin" class="ui_button_large">
-        <strong>Sign In</strong> <i class="ph-bold ph-sign-in"></i>
-    </button>
-    <button id="signin-createaccount"
-            class="ui_button_small"
-            @click="sign_in = !sign_in">
-        Create an Account <i class="ph-bold ph-arrow-right"></i>
-    </button>
-</div>
-<div id="createaccount-box"
-     x-show="!sign_in"
-     x-transition:enter.delay.200ms>
-    <p class="ui_text_header">
-        <i class="ph-bold ph-key"></i> Create Account
-    </p>
-    <div class="ui_separator_horizontal"></div>
-    <input id="createaccount-username"
-           type="text"
-           class="ui_input_generic"
-           placeholder="Username">
-</input>
-<input id="createaccount-password"
-       type="password"
-       class="ui_input_generic"
-       placeholder="Password">
-</input>
-<input id="createaccount-email"
-       type="text"
-       class="ui_input_generic"
-       placeholder="Email">
-</input>
-<button id="createaccount-createaccount" class="ui_button_large">
-    <strong>Create Account</strong> <i class="ph-bold ph-user-plus"></i>
-</button>
-<button id="createaccount-signin"
-        class="ui_button_small"
-        @click="sign_in = !sign_in">
-    Sign In <i class="ph-bold ph-arrow-right"></i>
-</button>
-</div>
-<div id="authentication_privacypolicy"
-     @click="window.location.href = server_ip + '/privacy'">
-    <i class="ph-bold ph-lock"></i> Privacy Policy
-</div>
-</div>
-<div id="blob"></div>
+            <input id="signin-password"
+                   type="password"
+                   class="ui_input_generic"
+                   placeholder="Password">
+            <button id="signin-signin" class="ui_button_large">
+                <strong>Sign In</strong> <i class="ph-bold ph-sign-in"></i>
+            </button>
+            <button id="signin-createaccount"
+                    class="ui_button_small"
+                    @click="sign_in = !sign_in">
+                Create an Account <i class="ph-bold ph-arrow-right"></i>
+            </button>
+        </div>
+        <div id="createaccount-box"
+             x-show="!sign_in"
+             x-transition:enter.delay.200ms>
+            <p class="ui_text_header">
+                <i class="ph-bold ph-key"></i> Create Account
+            </p>
+            <div class="ui_separator_horizontal"></div>
+            <input id="createaccount-username"
+                   type="text"
+                   class="ui_input_generic"
+                   placeholder="Username">
+            <input id="createaccount-password"
+                   type="password"
+                   class="ui_input_generic"
+                   placeholder="Password">
+            <input id="createaccount-email"
+                   type="text"
+                   class="ui_input_generic"
+                   placeholder="Email">
+            <button id="createaccount-createaccount" class="ui_button_large">
+                <strong>Create Account</strong> <i class="ph-bold ph-user-plus"></i>
+            </button>
+            <button id="createaccount-signin"
+                    class="ui_button_small"
+                    @click="sign_in = !sign_in">
+                Sign In <i class="ph-bold ph-arrow-right"></i>
+            </button>
+        </div>
+        <div id="authentication_privacypolicy"
+             @click="window.location.href = server_ip + '/privacy'">
+            <i class="ph-bold ph-lock"></i> Privacy Policy
+        </div>
+    </div>
+    <div id="blob"></div>
 {% endblock %}
+
 {% block scripts %}
     <script>
         function box_param_check() {

@@ -7,16 +7,17 @@ def migrate_json_data(apps, schema_editor):
     for obj in Card.objects.all():
         obj_json = obj.data
         
-        obj_json["version"] = 2
+        if obj_json:
+            obj_json["version"] = 2
 
-        items = obj_json["information"]["items"]
+            items = obj_json["information"]["items"]
 
-        if items:
-            for item in range(len(items)):
-                items[item]["position"] = item
+            if items:
+                for item in range(len(items)):
+                    items[item]["position"] = item
 
-        obj.data = obj_json
-        obj.save()
+            obj.data = obj_json
+            obj.save()
 
 class Migration(migrations.Migration):
 

@@ -11,27 +11,28 @@ def migrate_json_data(apps, schema_editor):
     for obj in Card.objects.all():
         obj_json = obj.data
         
-        obj_json["version"] = 3
+        if obj_json:
+            obj_json["version"] = 3
 
-        color_data = {
-            "background": "#ffffff",
-            "accent": "#000000",
-            "text": "#000000"
-        }
+            color_data = {
+                "background": "#ffffff",
+                "accent": "#000000",
+                "text": "#000000"
+            }
 
-        obj_json["colors"] = color_data
+            obj_json["colors"] = color_data
 
-        username = obj_json["details"]["username"]
-        pronouns = obj_json["details"]["pronouns"]
+            username = obj_json["details"]["username"]
+            pronouns = obj_json["details"]["pronouns"]
 
-        obj_json["details"]["primary"] = username
-        obj_json["details"]["secondary"] = pronouns
+            obj_json["details"]["primary"] = username
+            obj_json["details"]["secondary"] = pronouns
 
-        del obj_json["details"]["username"]
-        del obj_json["details"]["pronouns"]
+            del obj_json["details"]["username"]
+            del obj_json["details"]["pronouns"]
 
-        obj.data = obj_json
-        obj.save()
+            obj.data = obj_json
+            obj.save()
 
 class Migration(migrations.Migration):
 

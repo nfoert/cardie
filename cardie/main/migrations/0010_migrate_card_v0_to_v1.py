@@ -7,32 +7,33 @@ def migrate_json_data(apps, schema_editor):
     for obj in Card.objects.all():
         obj_json = obj.data
         
-        obj_json['version'] = 1
+        if obj_json:
+            obj_json['version'] = 1
 
-        text_items = obj_json["information"]["items"]["text"]
-        link_items = obj_json["information"]["items"]["links"]
+            text_items = obj_json["information"]["items"]["text"]
+            link_items = obj_json["information"]["items"]["links"]
 
-        del obj_json["information"]["items"]
-        obj_json["information"]["items"] = []
+            del obj_json["information"]["items"]
+            obj_json["information"]["items"] = []
 
-        if text_items:
-            for item in range(len(text_items)):
-                text_items[item]["url"] = ""
-                text_items[item]["url_enabled"] = False
+            if text_items:
+                for item in range(len(text_items)):
+                    text_items[item]["url"] = ""
+                    text_items[item]["url_enabled"] = False
 
-                obj_json["information"]["items"].append(text_items[item])
+                    obj_json["information"]["items"].append(text_items[item])
 
-        if link_items:
-            for item in range(len(link_items)):
-                link_items[item]["url_enabled"] = True
+            if link_items:
+                for item in range(len(link_items)):
+                    link_items[item]["url_enabled"] = True
 
-                obj_json["information"]["items"].append(link_items[item])
+                    obj_json["information"]["items"].append(link_items[item])
 
-        for item in range(len(obj_json["information"]["items"])):
-            obj_json["information"]["items"][item]["uuid"] = item
-        
-        obj.data = obj_json
-        obj.save()
+            for item in range(len(obj_json["information"]["items"])):
+                obj_json["information"]["items"][item]["uuid"] = item
+            
+            obj.data = obj_json
+            obj.save()
 
 class Migration(migrations.Migration):
 

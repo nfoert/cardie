@@ -15,7 +15,7 @@ from pathlib import Path
 
 import environ
 
-env = environ.Env(
+env = environ.Env(interpolate=True,
     DEBUG=(bool, False),
     SECRET_KEY=(
         str,
@@ -23,6 +23,7 @@ env = environ.Env(
     ),
     DJANGO_ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1"]),
     ADMIN_PATH=(str, "admin/"),
+    DATABASE_URL=(str, "sqlite:///db.sqlite3")
 )
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

@@ -1,4 +1,3 @@
-// It starts at one... this feels wrong...
 var text_items = new Array();
 var link_items = new Array();
 var currently_editing_icon;

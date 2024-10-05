@@ -9,10 +9,11 @@ def migrate_json_data(apps, schema_editor):
         
         obj_json["version"] = 4
 
-        obj_json["font_style"] = "Simple"
+        if obj_json:
+            obj_json["font_style"] = "Simple"
 
-        obj.data = obj_json
-        obj.save()
+            obj.data = obj_json
+            obj.save()
 
 class Migration(migrations.Migration):
 

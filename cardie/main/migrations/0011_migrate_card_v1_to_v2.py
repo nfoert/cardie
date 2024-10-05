@@ -9,14 +9,15 @@ def migrate_json_data(apps, schema_editor):
         
         obj_json["version"] = 2
 
-        items = obj_json["information"]["items"]
+        if obj_json:
+            items = obj_json["information"]["items"]
 
-        if items:
-            for item in range(len(items)):
-                items[item]["position"] = item
+            if items:
+                for item in range(len(items)):
+                    items[item]["position"] = item
 
-        obj.data = obj_json
-        obj.save()
+            obj.data = obj_json
+            obj.save()
 
 class Migration(migrations.Migration):
 

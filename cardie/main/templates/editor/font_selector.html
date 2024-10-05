@@ -1,40 +1,48 @@
-<div class="editor_main_setting" id="editor_main_settings_font" x-data="fontSelectorComponent()" x-init="init()">
-    <p class="ui_text_subheader_left"><i class="ph-bold ph-text-a-underline"></i> Font Style</p>
+<div class="editor_main_setting"
+     id="editor_main_settings_font"
+     x-data="fontSelectorComponent()"
+     x-init="init()">
+    <p class="ui_text_subheader_left">
+        <i class="ph-bold ph-text-a-underline"></i> Font Style
+    </p>
     <div class="ui_separator_horizontal"></div>
-
     <div id="editor_main_setting_font_selector">
         <div id="editor_main_setting_font_selector_top">
             <p class="ui_text_body" x-text="selected_font"></p>
-            <button class="ui_button_small" @click="selector_open = !selector_open" x-html="selector_open === false ? 'Edit' : 'Close'"></button>
+            <button class="ui_button_small"
+                    @click="selector_open = !selector_open"
+                    x-html="selector_open === false ? 'Edit' : 'Close'"></button>
         </div>
-        
-
-        <div id="editor_main_setting_font_selector_items" x-show="selector_open" x-collapse>
+        <div id="editor_main_setting_font_selector_items"
+             x-show="selector_open"
+             x-collapse>
             <template x-for="(font, index) in fonts" :key="index">
                 <div class="editor_font_item">
-                    <button class="ui_button_small" @click="set_font_on_card(font.header.name, font.text.name, font.name); selector_open = false;">
+                    <button class="ui_button_small"
+                            @click="set_font_on_card(font.header.name, font.text.name, font.name); selector_open = false;">
                         <p class="ui_text_body" x-text="font.name" style="font-weight: 600;"></p>
-
                         <div class="editor_main_setting_font_selector_items_labels">
                             <p class="ui_text_body">Header</p>
                             <p class="ui_text_description">Text</p>
                         </div>
-
                         <div>
-                            <p class="ui_text_body" x-text="font.header.name" :style='`font-family: "${font.header.name}"`'></p>
-                            <p class="ui_text_description" x-text="font.text.name" :style='`font-family: "${font.text.name}"`'></p>
+                            <p class="ui_text_body"
+                               x-text="font.header.name"
+                               :style='`font-family: "${font.header.name}"`'></p>
+                            <p class="ui_text_description"
+                               x-text="font.text.name"
+                               :style='`font-family: "${font.text.name}"`'></p>
                         </div>
-                        
                     </button>
                 </div>
             </template>
-
-            <button class="ui_button_small" @click="window.open('https://github.com/nfoert/cardie/wiki/Adding-new-font-styles')"><i class="ph-bold ph-arrow-square-out"></i> Contribute new font styles</button>
+            <button class="ui_button_small"
+                    @click="window.open('https://github.com/nfoert/cardie/wiki/Adding-new-font-styles')">
+                <i class="ph-bold ph-arrow-square-out"></i> Contribute new font styles
+            </button>
         </div>
     </div>
-    
 </div>
-
 <script>
     function fontSelectorComponent() {
         return {

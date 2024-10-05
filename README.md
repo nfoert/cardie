@@ -65,6 +65,7 @@ Activate the virtual environment using the command for your system (Linux is use
 ```bash
 source ./.venv/bin/activate
 pip install -r requirements.txt
+pip install -r requirements-dev.txt
 ```
 
 Copy the `.env.example` file to a new file called `.env`.
@@ -98,6 +99,19 @@ Set the following global environment variables:
 - `DEBUG` -> `False`
 - `DATABASE_URL` -> `${db.DATABASE_URL}` (This works on DigitalOcean, this may not work on every hosting provider)
 
+## Development
+### djlint
+This project uses `djlint` to lint the templates. You can run this using the following command
+```bash
+djlint cardie --reformat
+```
+### ruff
+This project uses [`ruff`](https://docs.astral.sh/ruff/) to lint and format the code.
+You can run the following command to lint and format the code.
+```bash
+ruff check cardie --fix
+```
+For VS Code users, you can install the `ruff` extension to get linting and formatting on save.
 
 ## Contributing
 Please see [CONTRIBUTING.md](CONTRIBUTING.md) for instructions on how you can contribute to Cardie

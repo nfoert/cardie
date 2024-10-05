@@ -1,16 +1,15 @@
 {% extends "base.html" %}
-
 {% load static %}
-
 {% block head_title %}Card{% endblock %}
-
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{% static '/main/card.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/main/notifications.css' %}">
-
-    <link rel="stylesheet" type="text/css" href="{% static '/main/card_view.css' %}">
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static '/main/notifications.css' %}">
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static '/main/card_view.css' %}">
 {% endblock %}
-
 {% block body %}
     <div id="cardview">
         <div id="cardview_top">
@@ -20,28 +19,29 @@
                 <p class="ui_text_body" id="cardview_text_username">Created by username</p>
             </div>
         </div>
-
-
-        <div id="cardview_card">
-            {% include "card.html" %}
-        </div>
-
+        <div id="cardview_card">{% include "card.html" %}</div>
         <div id="cardview_bottom">
             <div id="cardview_bottom_createaccount">
-                <p class="ui_text_body">Created with Cardie. You can <button id="cardview_signin" class="ui_button_small">Sign in</button> to save this card for later and to make your own.</p>
+                <p class="ui_text_body">
+                    Created with Cardie. You can
+                    <button id="cardview_signin" class="ui_button_small">Sign in</button>
+                    to save this card for later and to make your own.
+                </p>
             </div>
-
             <div id="cardview_bottom_save">
-                <p class="ui_text_body"><strong>Hello {{ username }}</strong> <button id="cardview_save" class="ui_button_small">Save this card to your Wallet</button></p>
+                <p class="ui_text_body">
+                    <strong>Hello {{ username }}</strong>
+                    <button id="cardview_save" class="ui_button_small">Save this card to your Wallet</button>
+                </p>
             </div>
-
             <div id="cardview_bottom_owned">
-                <p class="ui_text_body"><i>This card is owned by you</i></p>
+                <p class="ui_text_body">
+                    <i>This card is owned by you</i>
+                </p>
             </div>
         </div>
     </div>
 {% endblock %}
-
 {% block scripts %}
     <script src="{% static '/main/scripts/card_view/card_view.js' %}"></script>
     <script src="{% static '/main/scripts/global/card.js' %}"></script>

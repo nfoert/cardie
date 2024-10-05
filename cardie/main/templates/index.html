@@ -1,78 +1,81 @@
 {% extends "base.html" %}
-
 {% load static %}
-
 {% block head_title %}Index{% endblock %}
-
 {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="{% static '/main/index.css' %}">
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static '/main/index.css' %}">
 {% endblock %}
-
 {% block body %}
     <div id="index_top" x-data="screen_size_check()">
-
         <div id="index_top_links" x-show="open" x-transition>
             <img id="index_top_image" src="{% static '/main/images/icon_light.png' %}">
             <a class="ui_link_generic" href="https://github.com/nfoert/cardie"><i class="ph-bold ph-github-logo"></i> Source</a>
-            <a class="ui_link_generic" href="https://github.com/nfoert/cardie/issues"><i class="ph-bold ph-bug-beetle"></i> Report Bugs</a>
-            <a class="ui_link_generic" href="https://github.com/nfoert/cardie/releases"><i class="ph-bold ph-app-window"></i> Releases</a>
+            <a class="ui_link_generic"
+               href="https://github.com/nfoert/cardie/issues"><i class="ph-bold ph-bug-beetle"></i> Report Bugs</a>
+            <a class="ui_link_generic"
+               href="https://github.com/nfoert/cardie/releases"><i class="ph-bold ph-app-window"></i> Releases</a>
             <a class="ui_link_generic" href="https://github.com/nfoert/cardie/wiki"><i class="ph-bold ph-book"></i> Wiki</a>
             <a class="ui_link_generic" href="https://discord.gg/G24Ag9FqB8"><i class="ph-bold ph-discord-logo"></i> Discord</a>
         </div>
-
         <div id="index_top_account" x-show="open" x-transition>
-            <button id="index_top_account_signin" class="ui_button_small"><i class="ph-bold ph-lock-simple"></i> Sign In</button>
-            <button id="index_top_account_home" class="ui_button_small"><i class="ph-bold ph-user-check"></i> username</button>
+            <button id="index_top_account_signin" class="ui_button_small">
+                <i class="ph-bold ph-lock-simple"></i> Sign In
+            </button>
+            <button id="index_top_account_home" class="ui_button_small">
+                <i class="ph-bold ph-user-check"></i> username
+            </button>
         </div>
-
-        <button id="index_top_toggle" class="ui_button_icon" @click="open = !open"><i class="ph ph-list"></i></button>
+        <button id="index_top_toggle" class="ui_button_icon" @click="open = !open">
+            <i class="ph ph-list"></i>
+        </button>
     </div>
-
-
     <div id="welcome_box">
         <p class="ui_text_header">Welcome to</p>
-        <img id="welcome_box_image" src="{% static '/main/images/logo_light.png' %}">
+        <img id="welcome_box_image"
+             src="{% static '/main/images/logo_light.png' %}">
         <p class="ui_text_subheader">An open source business card designer and sharing platform</p>
-
         <div id="welcome_box_buttons">
-            <button id="welcome_box_buttons_demo" class="ui_button_large"><strong>Try Cardie <i class="ph-bold ph-arrow-circle-right"></i></strong></button>
-            <button id="welcome_box_buttons_sourcecode" class="ui_button_large">Source Code <i class="ph-bold ph-github-logo"></i></button>
-            <button id="welcome_box_buttons_signin" class="ui_button_small">Sign In <i class="ph-bold ph-lock"></i></button>
+            <button id="welcome_box_buttons_demo" class="ui_button_large">
+                <strong>Try Cardie <i class="ph-bold ph-arrow-circle-right"></i></strong>
+            </button>
+            <button id="welcome_box_buttons_sourcecode" class="ui_button_large">
+                Source Code <i class="ph-bold ph-github-logo"></i>
+            </button>
+            <button id="welcome_box_buttons_signin" class="ui_button_small">
+                Sign In <i class="ph-bold ph-lock"></i>
+            </button>
         </div>
-
         <div id="blob"></div>
     </div>
-
     <div id="home_card">
-        <img id="home_card_image" src="{% static '/main/images/home_cards.png' %}"></img>
-
-        <div id="home_card_text">
-            <p class="ui_text_header_left"><i class="ph-bold ph-cards"></i> Create a Card</p>
-            <ul>
-                <li class="ui_text_body">Add your name, title or pronouns to the top section</li>
-                <li class="ui_text_body">Add text information like your phone number, email, and more</li>
-                <li class="ui_text_body">You can also add links to any of your other online presences, like social accounts or links to your other work.</li>
-            </ul>
-        </div>
+        <img id="home_card_image" src="{% static '/main/images/home_cards.png' %}">
+    </img>
+    <div id="home_card_text">
+        <p class="ui_text_header_left"><i class="ph-bold ph-cards"></i> Create a Card</p>
+        <ul>
+            <li class="ui_text_body">Add your name, title or pronouns to the top section</li>
+            <li class="ui_text_body">Add text information like your phone number, email, and more</li>
+            <li class="ui_text_body">You can also add links to any of your other online presences, like social accounts or links to your other work.</li>
+        </ul>
     </div>
-
-    <div id="home_editor">
-        <img id="home_editor_image" src="{% static '/main/images/home_editor.png' %}"></img>
-
-        <div id="home_editor_text">
-            <p class="ui_text_header_left"><i class="ph-bold ph-pencil-simple"></i> Editor</p>
-            <ul>
-                <li class="ui_text_body">Add information and link items to your card</li>
-                <li class="ui_text_body">You can customize those items with a icon selector</li>
+</div>
+<div id="home_editor">
+    <img id="home_editor_image"
+         src="{% static '/main/images/home_editor.png' %}">
+</img>
+<div id="home_editor_text">
+    <p class="ui_text_header_left"><i class="ph-bold ph-pencil-simple"></i> Editor</p>
+    <ul>
+        <li class="ui_text_body">Add information and link items to your card</li>
+        <li class="ui_text_body">You can customize those items with a icon selector</li>
                 <li class="ui_text_body">Then, you can change the colors on your card and choose a font style</li>
-                <li class="ui_text_body">Once you're finished, copy a link to your card so you can share it with anyone</li>
-            </ul>
-        </div>
-    </div>
-
-    {% endblock %}
-
-    {% block scripts %}
+        <li class="ui_text_body">Once you're finished, copy a link to your card so you can share it with anyone</li>
+    </ul>
+</div>
+</div>
+{% endblock %}
+{% block scripts %}
     <script src="{% static '/main/scripts/index/index.js' %}"></script>
     <script>
         function screen_size_check() {

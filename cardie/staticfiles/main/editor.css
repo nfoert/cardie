@@ -113,6 +113,7 @@ html {
 #editor_main_settings {
     margin-left: clamp(2vh, 20px, 2vw);
     margin-right: clamp(2vh, 20px, 2vw);
+    padding-top: clamp(2vh, 20px, 2vw);
 
     display: flex;
     flex-direction: column;
@@ -414,4 +415,78 @@ html {
 
 #qrcode {
     display: none;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+}
+
+.item_item {
+    display: flex;
+    flex-direction: row;
+}
+
+.item_menu {
+    display: flex;
+    flex-direction: column;
+    margin-left: clamp(5vh, 50px, 5vw);
+
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.item_menu > button {
+    text-align: left;
+}
+
+.editor_main_setting {
+    margin-bottom: clamp(2vh, 20px, 2vw);
+}
+
+#editor_main_setting_font_selector {
+    background-color: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+    margin-top: clamp(1vh, 10px, 1vw);
+}
+
+#editor_main_setting_font_selector_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: middle;
+    align-items: baseline;
+    padding-left: clamp(1.5vh, 15px, 1.5vw);
+}
+
+.editor_font_item {
+    display: flex;
+    flex-direction: row;
+}
+
+#editor_main_setting_font_selector_items {
+    display: flex;
+    flex-direction: column;
+}
+
+.editor_font_item > button {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.editor_main_setting_font_selector_items_labels {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    align-items: end;
+
+    margin-left: clamp(1.5vh, 15px, 1.5vw);
+    margin-right: clamp(1vh, 10px, 1vw);
+    
 }

@@ -2,6 +2,9 @@ var old_card_data = JSON.stringify(editor_create_json());
 var new_card_data;
 var qrcode;
 var prevent_save = false;
+var layout = "left";
+var font_style = "Simple";
+
 try {
     var demo_param = JSON.parse(
         new URL(window.location.href).searchParams.get("demo").toLowerCase()
@@ -19,6 +22,7 @@ async function start_editor() {
         if (uuid_param == null) {
             let new_uuid = crypto.randomUUID();
 
+
             const response = await fetch(server_ip + "/createcard", {
                 method: "POST",
                 headers: {
@@ -26,26 +30,15 @@ async function start_editor() {
                 }
             });
 
+
             response.text().then(function (text) {
                 if (text == "Done") {
-                    var refresh =
-                        window.location.protocol +
-                        "//" +
-                        window.location.host +
-                        window.location.pathname +
-                        "?uuid=" +
-                        new_uuid;
-                    window.history.pushState({ path: refresh }, "", refresh);
-                    log(
-                        "INFO",
-                        "A new card has been created on the server with uuid " + new_uuid
-                    );
-                    create_notification(
-                        "New card created",
-                        "A new card has been successfully created",
-                        "check-circle"
-                    );
+                    var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?uuid=' + new_uuid;
+                    window.history.pushState({ path: refresh }, '', refresh);
+                    log("INFO", "A new card has been created on the server with uuid " + new_uuid);
+                    create_notification("New card created", "A new card has been successfully created", "check-circle");
                     status_saved();
+
                 } else {
                     status_error();
                     log("WARNING", "There was a problem");
@@ -68,15 +61,13 @@ async function start_editor() {
                 if (text == "Request is not a POST request") {
                     status_error();
                     log("WARNING", "There was a problem");
-                    create_notification(
-                        "There was a problem checking the card",
-                        "There was an unknown issue",
-                        "warning"
-                    );
+                    create_notification("There was a problem checking the card", "There was an unknown issue", "warning");
+
                 } else if (text == "Card does not exist!") {
                     log("WARNING", "Card does not exist!");
                     status_error();
                     window.location.href = server_ip;
+
                 } else if (text == "No Permission") {
                     log("WARNING", "No Permission");
                     window.location.href = server_ip;
@@ -113,7 +104,6 @@ async function save_card(card_json) {
             log("INFO", "Data has been saved");
             status_saved();
             prevent_save = false;
-            console.log("[AFTER] Prevent save: " + prevent_save);
             return true;
         } else {
             log("WARNING", "There was a problem saving the card");
@@ -151,6 +141,7 @@ window.addEventListener("beforeunload", function (event) {
 
 function save_loop() {
     prevent_save = false;
+    window.dispatchEvent(new CustomEvent('getItemData'));
     new_card_data = JSON.stringify(editor_create_json());
     if (checkForUnsavedChanges(new_card_data, old_card_data)) {
         old_card_data = new_card_data;
@@ -160,6 +151,7 @@ function save_loop() {
 }
 
 function demo_loop() {
+    window.dispatchEvent(new CustomEvent('getItemData'));
     new_card_data = JSON.stringify(editor_create_json());
 
     if (new_card_data != old_card_data) {
@@ -246,11 +238,9 @@ function dataURItoBlob(dataURI) {
     return blob;
 }
 
-document
-    .querySelector("#editor_header_title_home")
-    .addEventListener("click", (event) => {
-        window.location.href = server_ip + "/home";
-    });
+document.querySelector("#editor_header_title_home").addEventListener("click", (event) => {
+    window.location.replace("/home");
+});
 
 document
     .querySelector("#editor_share_copylink")
@@ -274,15 +264,9 @@ document
         let uuid_param = new URL(window.location.href).searchParams.get("uuid");
         let url = `${server_ip}/card?uuid=${uuid_param}&`;
 
-        qrcode.makeCode(url);
+    qrcode.makeCode(url);
 
-        const data = [
-            new ClipboardItem({
-                ["image/png"]: dataURItoBlob(
-                    document.querySelector("#qrcode > img").getAttribute("src")
-                )
-            })
-        ];
+    const data = [new ClipboardItem({ ["image/png"]: dataURItoBlob(document.querySelector("#qrcode > img").getAttribute("src")) })];
 
         await navigator.clipboard.write(data).then(() => {
             event.target.innerHTML = `<i class="ph-bold ph-check-circle"></i> Copied!`;
@@ -316,11 +300,24 @@ document
         editor_demo_auth(true);
     });
 
-document
-    .querySelector("#editor_demo_createaccount")
-    .addEventListener("click", (event) => {
-        editor_demo_auth(false);
-    });
+document.querySelector("#editor_demo_createaccount").addEventListener("click", (event) => {
+    editor_demo_auth(false);
+});
+
+document.querySelector("#editor_main_settings_layout_buttons_left").addEventListener("click", (event) => {
+    card_set_layout(".card_card", "left");
+    layout = "left";
+});
+
+document.querySelector("#editor_main_settings_layout_buttons_center").addEventListener("click", (event) => {
+    card_set_layout(".card_card", "center");
+    layout = "center";
+});
+
+document.querySelector("#editor_main_settings_layout_buttons_right").addEventListener("click", (event) => {
+    card_set_layout(".card_card", "right");
+    layout = "right";
+});
 
 addEventListener("DOMContentLoaded", (event) => {
     setup_qrcode();

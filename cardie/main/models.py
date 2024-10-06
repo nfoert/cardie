@@ -1,4 +1,3 @@
-from colorfield.fields import ColorField
 from django.db import models
 from authentication.models import User
 import uuid

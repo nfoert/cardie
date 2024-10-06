@@ -4,7 +4,7 @@
       {
         "label": "Start server",
         "type": "shell",
-        "command": "source .venv/bin/activate && python ./cardie/manage.py runserver",
+        "command": "source .venv/bin/activate && cd cardie && python manage.py runserver",
         "presentation": {
           "reveal": "always",
           "panel": "new"
@@ -17,7 +17,7 @@
       {
         "label": "Start server (external)",
         "type": "shell",
-        "command": "source .venv/bin/activate && python ./cardie/manage.py runserver 192.168.1.103:1111",
+        "command": "source .venv/bin/activate && cd cardie && python manage.py runserver 192.168.1.103:1111",
         "presentation": {
           "reveal": "always",
           "panel": "new"
@@ -27,7 +27,7 @@
       {
         "label": "Migrate models",
         "type": "shell",
-        "command": "source .venv/bin/activate && python ./cardie/manage.py makemigrations && python ./cardie/manage.py migrate",
+        "command": "source .venv/bin/activate && cd cardie && python manage.py makemigrations && python manage.py migrate",
         "presentation": {
           "reveal": "always",
           "panel": "new"
@@ -37,7 +37,7 @@
       {
         "label": "Collect static files",
         "type": "shell",
-        "command": "source .venv/bin/activate && python ./cardie/manage.py collectstatic --noinput",
+        "command": "source .venv/bin/activate && cd cardie && python manage.py collectstatic --noinput",
         "presentation": {
           "reveal": "always",
           "panel": "new"
@@ -59,6 +59,16 @@
         "label": "Preview README.md with grip",
         "type": "shell",
         "command": "source .venv/bin/activate && grip",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Format Django templats with djlint",
+        "type": "shell",
+        "command": "source .venv/bin/activate && djlint cardie --reformat",
         "presentation": {
           "reveal": "always",
           "panel": "new"

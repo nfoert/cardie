@@ -9,6 +9,7 @@
     
         display: flex;
         flex-direction: column;
+        z-index: 9;
     }
 
     .footer_main_button {
@@ -126,6 +127,7 @@
     
         display: flex;
         flex-direction: column;
+        z-index: 9;
     }
 
     .footer_main_button {

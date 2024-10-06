@@ -1,6 +1,8 @@
 var old_card_data = JSON.stringify(editor_create_json());
 var new_card_data;
 var qrcode;
+var layout = "left";
+var font_style = "Simple";
 
 try {
     var demo_param = JSON.parse(new URL(window.location.href).searchParams.get("demo").toLowerCase());
@@ -106,6 +108,7 @@ async function save_card(card_json) {
 }
 
 function save_loop() {
+    window.dispatchEvent(new CustomEvent('getItemData'));
     new_card_data = JSON.stringify(editor_create_json());
 
     if (new_card_data != old_card_data) {
@@ -116,6 +119,7 @@ function save_loop() {
 }
 
 function demo_loop() {
+    window.dispatchEvent(new CustomEvent('getItemData'));
     new_card_data = JSON.stringify(editor_create_json());
 
     if (new_card_data != old_card_data) {
@@ -252,6 +256,21 @@ document.querySelector("#editor_demo_signin").addEventListener("click", (event) 
 
 document.querySelector("#editor_demo_createaccount").addEventListener("click", (event) => {
     editor_demo_auth(false);
+});
+
+document.querySelector("#editor_main_settings_layout_buttons_left").addEventListener("click", (event) => {
+    card_set_layout(".card_card", "left");
+    layout = "left";
+});
+
+document.querySelector("#editor_main_settings_layout_buttons_center").addEventListener("click", (event) => {
+    card_set_layout(".card_card", "center");
+    layout = "center";
+});
+
+document.querySelector("#editor_main_settings_layout_buttons_right").addEventListener("click", (event) => {
+    card_set_layout(".card_card", "right");
+    layout = "right";
 });
 
 addEventListener("DOMContentLoaded", (event) => {

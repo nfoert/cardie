@@ -1,4 +1,4 @@
-/* 
+/*
     ui.css
     Handles styles for every common user interface element
     Quick references for every element class name is below
@@ -68,14 +68,13 @@
 
     width: fit-content;
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .ui_button_large:hover:enabled {
     scale: 1.05;
-    cursor: pointer;
 }
 
 .ui_button_large:active:enabled {
@@ -106,14 +105,13 @@
     margin-top: clamp(0.5vh, 5px, 0.5vw);
     margin-bottom: clamp(0.5vh, 5px, 0.5vw);
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .ui_button_grid:hover:enabled {
     scale: 1.05;
-    cursor: pointer;
 }
 
 .ui_button_grid:active:enabled {
@@ -145,14 +143,13 @@
 
     aspect-ratio: 1;
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .ui_button_icon:hover:enabled {
     scale: 1.1;
-    cursor: pointer;
 }
 
 .ui_button_icon:active:enabled {
@@ -186,14 +183,13 @@
     width: clamp(3.5vh, 35px, 3.5vw);
     height: clamp(3.5vh, 35px, 3.5vw);
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .ui_button_smallicon:hover:enabled {
     scale: 1.05;
-    cursor: pointer;
 }
 
 .ui_button_smallicon:active:enabled {
@@ -208,7 +204,7 @@
 .ui_button_small {
     background-color: var(--default-glass-background);
     color: var(--default-text-color);
-    border-radius: 100px;    
+    border-radius: 100px;
     border: var(--default-glass-border);
     transition: var(--default-transition);
     font-size: clamp(1.4vh, 14px, 1.4vw);
@@ -226,14 +222,13 @@
 
     white-space: nowrap;
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .ui_button_small:hover:enabled {
     scale: 1.05;
-    cursor: pointer;
 }
 
 .ui_button_small:active:enabled {
@@ -244,7 +239,6 @@
     scale: 0.9;
     opacity: 0.7;
 }
-
 
 /* Text */
 .ui_text_header {
@@ -322,7 +316,6 @@
     opacity: 0.8;
 }
 
-
 /* Image */
 .ui_image_generic {
     border-radius: 10px;
@@ -332,15 +325,14 @@
 
     opacity: 0.8;
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .ui_image_generic:hover {
     opacity: 1;
 }
-
 
 /* Status Boxes */
 .ui_status_info {
@@ -355,9 +347,9 @@
     padding: clamp(1vh, 10px, 1vw);
     margin: clamp(1vh, 10px, 1vw);
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .ui_status_warning {
@@ -372,9 +364,9 @@
     padding: clamp(1vh, 10px, 1vw);
     margin: clamp(1vh, 10px, 1vw);
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .ui_status_critical {
@@ -389,9 +381,9 @@
     padding: clamp(1vh, 10px, 1vw);
     margin: clamp(1vh, 10px, 1vw);
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .ui_status_text {
@@ -418,7 +410,6 @@
     opacity: 0.8;
 }
 
-
 /* Text Areas */
 .ui_input_generic {
     background-color: var(--default-glass-background);
@@ -442,9 +433,9 @@
 
     width: 100%;
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .ui_input_generic::placeholder {
@@ -456,12 +447,10 @@
     scale: 1.05;
 }
 
-
 /* Spacers */
 .ui_spacer {
     height: clamp(2vh, 20px, 2vw);
 }
-
 
 /* Separators */
 .ui_separator_vertical {
@@ -477,15 +466,15 @@
 
     backdrop-filter: var(--default-glass-blur);
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .ui_separator_horizontal {
     height: clamp(0.3vh, 3px, 0.3vw);
     /* TODO: Technically this works for now but it should be fixed properly later */
-    width: 85%; 
+    width: 85%;
 
     margin-left: clamp(1vh, 10px, 1vw);
     margin-right: clamp(1vh, 10px, 1vw);
@@ -496,9 +485,9 @@
 
     backdrop-filter: var(--default-glass-blur);
 
-    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 /* Background Blur */

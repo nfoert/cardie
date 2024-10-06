@@ -48,10 +48,10 @@
         min-height: 2in;
         max-width: 3.5in;
         max-height: 2in;
-
     }
 
-    .card_card_front, .card_card_back {
+    .card_card_front,
+    .card_card_back {
         position: unset;
         top: unset;
         border: 2px solid rgb(0, 0, 0);
@@ -67,7 +67,8 @@
         overflow: hidden;
     }
 
-    .card_card_back, .card_card_front {
+    .card_card_back,
+    .card_card_front {
         transform: rotateY(0);
     }
 
@@ -110,7 +111,7 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
         grid-column-gap: 0.1in;
-        grid-row-gap: 0.1in; 
+        grid-row-gap: 0.1in;
     }
 
     #print_back_div {
@@ -120,8 +121,7 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
         grid-column-gap: 0.1in;
-        grid-row-gap: 0.1in; 
-
+        grid-row-gap: 0.1in;
     }
 
     #print_front_div * {

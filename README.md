@@ -113,5 +113,21 @@ ruff check cardie --fix
 ```
 For VS Code users, you can install the `ruff` extension to get linting and formatting on save.
 
+### biome
+This project uses [`biome`](https://biomejs.dev/) to lint CSS and JS files.
+For simpler installation, it is recommended to use the VS Code add-on or to download the binary
+version (go to [docs](https://biomejs.dev/guides/manual-installation/) for more information).
+
+For check formating and linting, you can run the following command:
+```bash
+biome check
+```
+
+You can also run the following command to fix the issues:
+```bash
+biome lint --write
+biome format --write
+```
+
 ## Contributing
 Please see [CONTRIBUTING.md](CONTRIBUTING.md) for instructions on how you can contribute to Cardie

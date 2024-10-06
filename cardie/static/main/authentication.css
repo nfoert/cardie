@@ -68,8 +68,13 @@ html {
 
     z-index: 0;
 
-    background: rgb(61,132,148);
-    background: linear-gradient(120deg, rgb(61, 84, 148) 9%, rgb(62, 34, 139) 47%, rgb(37, 210, 187) 91%); 
+    background: rgb(61, 132, 148);
+    background: linear-gradient(
+        120deg,
+        rgb(61, 84, 148) 9%,
+        rgb(62, 34, 139) 47%,
+        rgb(37, 210, 187) 91%
+    );
 }
 
 #authentication_privacypolicy {

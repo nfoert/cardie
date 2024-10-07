@@ -107,10 +107,16 @@ function editor_load_from_json(json) {
 
 function status_saved() {
     document.querySelector("#editor_status").innerHTML = '<i class="ph-bold ph-check-circle"></i> Saved';
+    document.querySelector("#editor_status").style.backgroundColor = 'var(--default-glass-background)';
 }
 
 function status_saving() {
     document.querySelector("#editor_status").innerHTML = '<i class="ph-bold ph-spinner-gap"></i> Saving...';
+}
+
+function status_unsaved() {
+    document.querySelector("#editor_status").innerHTML = '<i class="ph-bold ph-warning-circle"></i> Unsaved Changes';
+    document.querySelector("#editor_status").style.backgroundColor = 'rgba(255, 132, 52, 0.4)';
 }
 
 function status_error() {

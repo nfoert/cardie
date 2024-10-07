@@ -160,6 +160,14 @@ function demo_loop() {
     }
 }
 
+function unsaved_loop() {
+    new_card_data = JSON.stringify(editor_create_json());
+
+    if (checkForUnsavedChanges(new_card_data, old_card_data)) {
+        status_unsaved();
+    }
+}
+
 async function editor_demo_auth(sign_in) {
     const response = await fetch(server_ip + "/createtempcard", {
         method: "POST",
@@ -327,6 +335,7 @@ start_editor();
 
 if (demo_param == false) {
     setInterval(save_loop, 3000);
+    setInterval(unsaved_loop, 500);
 } else {
     setInterval(demo_loop, 1000);
 }

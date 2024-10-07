@@ -3,12 +3,6 @@ var link_items = new Array();
 var currently_editing_icon;
 var items_list;
 
-function open_iconselector_foritem(event) {
-    let item = event.target.closest(".link_item, .text_item");
-    currently_editing_icon = item;
-    show_iconselector();
-}
-
 function editor_create_json() {
     let card_json = {
         "uuid": "unknown",

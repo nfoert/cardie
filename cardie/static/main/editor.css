@@ -128,16 +128,6 @@ html {
     margin-right: auto;
 }
 
-.text_item {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.link_item {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
 @keyframes show-iconselector {
     from {
         opacity: 0;
@@ -490,4 +480,24 @@ html {
     margin-left: clamp(1.5vh, 15px, 1.5vw);
     margin-right: clamp(1vh, 10px, 1vw);
     
+}
+
+@keyframes show-item {
+    from {
+        opacity: 0;
+        scale: 0.8;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.item {
+    animation: show-item 0.3s ease-in-out forwards;
+
+    /* Starting properties for animation */
+    opacity: 0;
+    scale: 0.8;
 }

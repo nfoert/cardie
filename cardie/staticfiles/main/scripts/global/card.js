@@ -168,7 +168,6 @@ function card_set_layout(card_selector, layout) {
 }
 
 function card_set_font(card_selector, name) {
-    console.log(name)
     let font_style = get_font_style(name);
     load_font(font_style["header"]["name"], font_style["header"]["url"]);
     load_font(font_style["text"]["name"], font_style["text"]["url"]);

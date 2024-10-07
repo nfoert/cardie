@@ -85,3 +85,32 @@ html {
     scale: 1.1;
     opacity: 1;
 }
+
+/* Footer styles */
+#footer {
+    background-color: var(--default-glass-background);
+    border-top: var(--default-glass-border);
+    text-align: center;
+    padding: clamp(1vh, 10px, 1vw);
+    width: 100%;
+}
+
+@media (max-width: 1000px) {
+    /* Fixing footer position for mobile screens */
+    #footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--default-glass-background);
+        border-top: var(--default-glass-border);
+        text-align: center;
+        padding: clamp(1vh, 10px, 1vw);
+        z-index: 1000; /* Ensure it stays above other elements */
+    }
+
+    /* Ensure body content doesn't overlap with footer */
+    body {
+        margin-bottom: clamp(5vh, 50px, 5vw); /* Create space at the bottom for the footer */
+    }
+}

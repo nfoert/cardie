@@ -26,9 +26,9 @@ function create_icon(icon) {
 }
 
 function render_icons(icons) {
-    icons = JSON.parse(icons);
-    for (const icon in icons) {
-        create_icon(icons[icon]);
+    icons_in_list = JSON.parse(icons);
+    for (const icon in icons_in_list) {
+        create_icon(icons_in_list[icon]);
     }
 }
 

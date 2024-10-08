@@ -106,7 +106,7 @@
 @media (max-width: 1000px) {
     /* Small Screens */
     .footer {
-        position: sticky;
+        position: static;
         bottom: 10px;
         left: 10px;
         display: flex;

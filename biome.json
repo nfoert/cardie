@@ -3,6 +3,9 @@
     "include":[
       "static/main/scripts/global/**/*.js",
       "static/main/scripts/editor/**/*.js"
+    ],
+    "ignore": [
+      "static/main/scripts/**/*min.js"
     ]
   },
   "formatter": {

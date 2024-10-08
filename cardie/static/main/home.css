@@ -205,12 +205,3 @@ html {
     display: flex;
     flex-direction: column;
 }
-
-/* Footer styles */
-#footer {
-    background-color: var(--default-glass-background);
-    border-top: var(--default-glass-border);
-    text-align: center;
-    padding: clamp(1vh, 10px, 1vw);
-    width: 100%;
-}

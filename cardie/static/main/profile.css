@@ -1,23 +1,16 @@
 /* Variables */
 :root {
-    --primary-color: #4A4D66;
+    --primary-color: #7d7f90;
     --secondary-color: #2A2D3F;
     --accent-color: #6366F1;
     --accent-color-hover: #4F46E5;
     --text-color: #E2E8F0;
-    --background: rgb(37, 40, 49);
-    --card-background: rgba(180, 180, 180, 0.15);
-    --card-border: rgba(255, 255, 255, 0.1);
-    --card-blur: blur(12px);
     --border-radius: 16px;
     --transition: 0.3s ease;
 }
 
 /* Global Styles */
 body {
-    font-family: 'Inter', sans-serif;
-    background: var(--background);
-    color: var(--text-color);
     line-height: 1.5;
     margin: 0;
     padding: 0;
@@ -41,24 +34,11 @@ body {
 }
 
 .detail-card {
-    background: var(--card-background);
-    border: 1px solid var(--card-border);
-    backdrop-filter: var(--card-blur);
-    border-radius: var(--border-radius);
+    background: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
     padding: 24px;
-    transition: var(--transition);
-}
-
-.detail-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: var(--accent-color);
 }
 
 /* Info Items */
@@ -68,44 +48,33 @@ body {
     margin-bottom: 12px;
 }
 
-.info-item i {
-    margin-right: 12px;
-    color: var(--accent-color);
-    font-size: 1.25rem;
-}
-
 .info-item input {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
-    color: var(--text-color);
-    padding: 0.5rem;
+    /* TODO: This is just copying the styles from ui_input_generic for now, 
+    this should be changed to use the class name directly from ui.css */
+    background-color: var(--default-glass-background);
+    color: var(--default-text-color);
+    border-radius: 10px;
+    border: var(--default-glass-border);
+    transition: var(--default-transition);
+    font-size: clamp(1.6vh, 16px, 1.6vw);
+    font-family: var(--default-font-family);
+    box-sizing: border-box;
+
+    backdrop-filter: var(--default-glass-blur);
+
+    padding: clamp(0.5vh, 5px, 0.5vw);
+    margin: clamp(0.5vh, 5px, 0.5vw);
+
+    opacity: 0.8;
+    scale: 1;
+    outline: none;
+    flex-grow: 2;
+
     width: 100%;
-}
 
-/* Action Buttons */
-.action-buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.action-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    background: var(--accent-color);
-    border: none;
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-    transition: var(--transition);
-    text-decoration: none;
-}
-
-.action-button:hover {
-    background: var(--accent-color-hover);
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
 }
 
 /* Profile Image Section */
@@ -115,7 +84,7 @@ body {
 
 .profile-image-container {
     position: relative;
-    width: 100%;
+    width: 300px;
     aspect-ratio: 1;
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -175,9 +144,11 @@ body {
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 800px;
-    background: var(--secondary-color);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 400px;
+    background: var(--default-glass-background);
+    border-radius: var(--default-glass-rounding);
+    backdrop-filter: var(--default-glass-blur);
+    border: var(--default-glass-border);
     display: flex;
     z-index: 1001;
 }
@@ -226,7 +197,6 @@ body {
 .sidebar-item:hover,
 .sidebar-item.active {
     background: var(--primary-color);
-    color: var(--accent-color);
 }
 
 .sidebar-item i {
@@ -244,20 +214,6 @@ body {
 /* Form Styles */
 .form-group {
     margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--card-border);
-    background: var(--card-background);
-    color: var(--text-color);
-    border-radius: 6px;
 }
 
 /* Responsive Design */

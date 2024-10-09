@@ -45,63 +45,63 @@
         <div id="profile-container">
             <div id="profile-details">
                 <div class="detail-card">
-                    <h2 class="card-header">Account Detailsss</h2>
+                    <h2 class="ui_text_subheader_left">Account Details</h2>
                     {% if is_editing %}
-                        <div class="info-item">
+                        <div class="info-item ui_text_body">
                             <i class="ph-bold ph-user"></i>
                             {{ u_form.username }}
                         </div>
-                        <div class="info-item">
+                        <div class="info-item ui_text_body">
                             <i class="ph-bold ph-envelope"></i>
                             {{ u_form.email }}
                         </div>
-                        <div class="info-item">
+                        <div class="info-item ui_text_body">
                             <i class="ph-bold ph-envelope"></i>
                             {{ p_form.bio }}
                         </div>
                     {% else %}
-                        <div class="info-item">
+                        <div class="info-item ui_text_body">
                             <i class="ph-bold ph-user"></i>
                             <span>{{ profile.user.username }}</span>
                         </div>
-                        <div class="info-item">
+                        <div class="info-item ui_text_body">
                             <i class="ph-bold ph-envelope"></i>
                             <span>{{ profile.user.email }}</span>
                         </div>
                         {% if profile.bio %}
-                            <div class="info-item">
+                            <div class="info-item ui_text_body">
                                 <i class="ph-bold ph-file-text"></i>
                                 <span>{{ profile.bio }}</span>
                             </div>
                         {% else %}
-                            <p>No bio available.</p>
+                            <p class="ui_text_body">No bio available.</p>
                         {% endif %}
                     {% endif %}
-                    <div class="info-item">
+                    <div class="info-item ui_text_body">
                         <i class="ph-bold ph-calendar"></i>
                         <span>Created: {{ profile.created_at }}</span>
                     </div>
                 </div>
 
                 <div class="detail-card">
-                    <h2 class="card-header">Account Actions</h2>
+                    <h2 class="ui_text_subheader_left">Account Actions</h2>
                     <div class="action-buttons">
                         {% if is_editing %}
-                            <button type="submit" class="action-button">
+                            <button type="submit" class="ui_button_grid">
                                 <i class="ph-bold ph-check"></i>
                                 Save Changes
                             </button>
-                            <a href="{% url 'profile' %}" class="action-button">
+                            <a href="{% url 'profile' %}" class="ui_button_grid">
                                 <i class="ph-bold ph-x"></i>
                                 Cancel
                             </a>
                         {% else %}
-                            <a href="{% url 'profile' %}?edit=true" class="action-button">
+                            <a href="{% url 'profile' %}?edit=true" class="ui_button_grid">
                                 <i class="ph-bold ph-pencil"></i>
                                 Edit Profile
                             </a>
                         {% endif %}
-                        <button type="button" class="action-button" onclick="openSettingsModal()">
+                        <button type="button" class="ui_button_grid" onclick="openSettingsModal()">
                             <i class="ph-bold ph-gear"></i>
                             Settings
                         </button>
@@ -142,39 +142,39 @@
             </div>
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title">Settings</h2>
+                    <h2 class="ui_text_subheader_left">Settings</h2>
                     <button class="close-button" onclick="closeSettingsModal()">&times;</button>
                 </div>
 
                 <div class="content-section active" id="general">
-                    <h3>General Settings</h3>
+                    <h3 class="ui_text_smallersubheader">General Settings</h3>
                     <!-- Add general settings content here -->
                 </div>
 
                 <div class="content-section" id="security">
-                    <h3>Security Settings</h3>
+                    <h3 class="ui_text_smallersubheader">Security Settings</h3>
                     <div class="form-group">
-                        <button class="action-button" onclick="togglePasswordFields()">Change Password</button>
+                        <button class="ui_button_small" onclick="togglePasswordFields()">Change Password</button>
                         <div id="passwordFields" style="display: none; margin-top: 20px;">
                             <div class="form-group">
-                                <label for="currentPassword">Current Password</label>
-                                <input type="password" id="currentPassword">
+                                <label class="ui_text_body" for="currentPassword">Current Password</label>
+                                <input class="ui_input_generic" type="password" id="currentPassword">
                             </div>
                             <div class="form-group">
-                                <label for="newPassword">New Password</label>
-                                <input type="password" id="newPassword">
+                                <label class="ui_text_body" for="newPassword">New Password</label>
+                                <input class="ui_input_generic" type="password" id="newPassword">
                             </div>
                             <div class="form-group">
-                                <label for="confirmPassword">Confirm New Password</label>
-                                <input type="password" id="confirmPassword">
+                                <label class="ui_text_body" for="confirmPassword">Confirm New Password</label>
+                                <input class="ui_input_generic" type="password" id="confirmPassword">
                             </div>
-                            <button class="action-button" onclick="updatePassword()">Update Password</button>
+                            <button class="ui_button_small" onclick="updatePassword()">Update Password</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="content-section" id="notifications">
-                    <h3>Notification Settings</h3>
+                    <h3 class="ui_text_smallersubheader">Notification Settings</h3>
                     <!-- Add notification settings content here -->
                 </div>
             </div>

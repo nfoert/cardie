@@ -15,6 +15,7 @@
             ui_text_header_left
         ui_text_subheader
             ui_text_subheader_left
+        ui_text_smallersubheader
         ui_text_body
         ui_text_description
 
@@ -309,6 +310,10 @@
     padding: 0px;
     margin: 0px;
     text-align: left;
+}
+
+.ui_text_body > i {
+    margin-right: 5px;
 }
 
 .ui_text_description {

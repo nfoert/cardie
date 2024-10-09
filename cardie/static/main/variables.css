@@ -13,5 +13,6 @@
     --default-glass-background: rgba(180, 180, 180, 0.4);
     --default-glass-border: rgba(167, 167, 167, 0.5) 2px solid;
     --default-glass-blur: blur(20px);
+    --default-glass-rounding: 20px;
 
 }

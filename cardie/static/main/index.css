@@ -211,3 +211,27 @@ body, html {
     }
 
 }
+
+#fallback_box {
+    height: 100vh;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1;
+    scroll-snap-align: center;
+}
+
+#fallback_box_buttons {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: clamp(2vh, 20px, 2vw);
+
+    align-items: center;
+}

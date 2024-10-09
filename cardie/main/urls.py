@@ -1,6 +1,7 @@
 from django.urls import path
 
 from . import views
+from authentication import views as auth_views
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -24,4 +25,7 @@ urlpatterns = [
     path("getwallet", views.get_wallet, name="getwallet"),
     path("removefromwallet", views.remove_from_wallet, name="removefromwallet"),
     path("config.js", views.config_js, name="config_js"),
+    path('profile/', auth_views.profile, name='profile'),
+    path('profile_a/', auth_views.profile_alpine, name='profile'),#for checking the alpine version
+
 ]

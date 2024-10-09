@@ -1,0 +1,438 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static '/main/variables.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/notifications.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/main/home.css' %}">
+        <link rel="shortcut icon" type="image/png" href="{% static '/main/images/favicon_light.ico' %}"/>
+
+        <style>
+            :root {
+                --primary-color: #4A4D66;
+                --secondary-color: #2A2D3F;
+                --accent-color: #6366F1;
+                --text-color: #E2E8F0;
+                --background: rgb(37, 40, 49);
+                --card-background: rgba(180, 180, 180, 0.15);
+                --card-border: rgba(255, 255, 255, 0.1);
+                --card-blur: blur(12px);
+                --border-radius: 16px;
+                --transition: 0.3s ease;
+            }
+
+            body {
+                font-family: 'Inter', sans-serif;
+                background: var(--background);
+                color: var(--text-color);
+                line-height: 1.5;
+            }
+
+            #profile-container {
+                display: flex;
+                gap: 24px;
+                max-width: 1200px;
+                margin: 32px auto;
+                padding: 0 24px;
+            }
+
+            #profile-details {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .detail-card {
+                background: var(--card-background);
+                border: 1px solid var(--card-border);
+                backdrop-filter: var(--card-blur);
+                border-radius: var(--border-radius);
+                padding: 24px;
+                transition: var(--transition);
+            }
+
+            .detail-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+
+            .card-header {
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 16px;
+                color: var(--accent-color);
+            }
+
+            .info-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 12px;
+            }
+
+            .info-item i {
+                margin-right: 12px;
+                color: var(--accent-color);
+            }
+
+            .action-buttons {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .action-button {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 16px;
+                background: var(--primary-color);
+                border: none;
+                border-radius: 8px;
+                color: var(--text-color);
+                cursor: pointer;
+                transition: var(--transition);
+            }
+
+            .action-button:hover {
+                background: var(--accent-color);
+            }
+
+            #profile-image-container {
+                width: 300px;
+            }
+
+            .profile-image {
+                width: 100%;
+                aspect-ratio: 1;
+                object-fit: cover;
+                border-radius: var(--border-radius);
+                border: 1px solid var(--card-border);
+            }
+
+            @media (max-width: 768px) {
+                #profile-container {
+                    flex-direction: column-reverse;
+                }
+
+                #profile-image-container {
+                    width: 100%;
+                    max-width: 300px;
+                    margin: 0 auto;
+                }
+            }
+
+
+            .modal-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+        }
+
+        .settings-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 800px;
+            background: #2D3748;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            z-index: 1001;
+        }
+
+        .modal-sidebar {
+            width: 200px;
+            border-right: 1px solid #4A5568;
+            padding: 20px 0;
+        }
+
+        .modal-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #4A5568;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #E2E8F0;
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            color: #A0AEC0;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: #A0AEC0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .sidebar-item:hover, .sidebar-item.active {
+            background: #4A5568;
+            color: #E2E8F0;
+        }
+
+        .sidebar-item i {
+            margin-right: 12px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #E2E8F0;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #4A5568;
+            background: #2D3748;
+            color: #E2E8F0;
+            border-radius: 6px;
+        }
+
+        .action-button {
+            padding: 10px 20px;
+            background: #4299E1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .action-button:hover {
+            background: #3182CE;
+        }
+        </style>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cardie | Profile</title>
+    </head>
+
+    <body>
+        <div id="home-top">
+            <div id="home-top-logo">
+                <img id="home-top-image" src="{% static '/main/images/logo_light.png' %}">
+            </div>
+
+            <div id="home-top-profile" x-data="{ open: false }" @click="open = !open" @click.away="open = false">
+                <button id="home-top-username" class="ui_button_small">
+                    {{ profile.user.username }} <i class="ph-bold ph-caret-down"></i>
+                </button>
+
+                <div id="home-top-profile-dropdown" x-show="open" x-transition>
+                    <button class="ui_button_small" @click="log_out()">
+                        <i class="ph-bold ph-sign-out"></i> Log Out
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <form method="POST" enctype="multipart/form-data" x-ref="profileForm">
+    {% csrf_token %}
+    <div id="profile-container" x-data="{
+        editMode: false,
+        toggleEdit() {
+            this.editMode = !this.editMode;
+        },
+        triggerFileInput() {
+            this.$refs.fileInput.click();
+        },
+        handleFileChange(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.querySelector('.profile-image').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    }">
+        <div id="profile-details">
+            <div class="detail-card">
+                <h2 class="card-header">Account Details</h2>
+                <div class="info-item">
+                    <i class="ph-bold ph-user"></i>
+                    <template x-if="!editMode">
+                        <span>{{ profile.user.username }}</span>
+                    </template>
+                    <template x-if="editMode">
+                        {{ u_form.username }}
+                    </template>
+                </div>
+                <div class="info-item">
+                    <i class="ph-bold ph-envelope"></i>
+                    <template x-if="!editMode">
+                        <span>{{ profile.user.email }}</span>
+                    </template>
+                    <template x-if="editMode">
+                        {{ u_form.email }}
+                    </template>
+                </div>
+                <div class="info-item">
+                    <i class="ph-bold ph-calendar"></i>
+                    <span>Created: {{ profile.created_at }}</span>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <h2 class="card-header">Account Actions</h2>
+                <div class="action-buttons">
+                    <!-- Button to toggle edit mode  -->
+                    <button type="button" class="action-button" x-show="!editMode" @click="toggleEdit()">
+                        <i class="ph-bold ph-pencil"></i>
+                        <span>Edit Profile</span>
+                    </button>
+
+                    <!-- Button to submit the form (POST request) -->
+                    <button type="submit" class="action-button" x-show="editMode" @click="$refs.profileForm.submit()">
+                        <i class="ph-bold ph-check"></i>
+                        <span>Save Changes</span>
+                    </button>
+
+                    <button type="button" class="action-button">
+                        <i class="ph-bold ph-key"></i>
+                        Change Password
+                    </button>
+                    <button type="button" class="action-button">
+                        <i class="ph-bold ph-gear"></i>
+                        Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="profile-image-container">
+            <div class="profile-image-container" @click="editMode && triggerFileInput()">
+                <img class="profile-image" src="{{ profile.profile_image.url }}" alt="Profile Image">
+                <template x-if="editMode">
+                    <div class="profile-image-overlay">
+                        <i class="ph-bold ph-camera" style="font-size: 24px;"></i>
+                    </div>
+                </template>
+            </div>
+            <input
+                type="file"
+                name="profile_image"
+                x-ref="fileInput"
+                @change="handleFileChange"
+                accept="image/*"
+                style="display: none;">
+        </div>
+    </div>
+</form>
+
+
+
+        <script>
+            var server_ip = "{{ server_ip }}";
+            var production = "{{ production }}";
+            var username = "{{ username }}"
+
+
+
+            function openSettingsModal() {
+            document.getElementById('settingsModal').style.display = 'block';
+        }
+
+        function closeSettingsModal() {
+            document.getElementById('settingsModal').style.display = 'none';
+        }
+
+        function togglePasswordFields() {
+            const passwordFields = document.getElementById('passwordFields');
+            passwordFields.style.display = passwordFields.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function updatePassword() {
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword !== confirmPassword) {
+                alert('New passwords do not match!');
+                return;
+            }
+
+            // Here you would typically make an API call to update the password
+            // For demonstration, we'll just show an alert
+            alert('Password updated successfully!');
+            togglePasswordFields();
+        }
+
+        // Handle sidebar navigation
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items and sections
+                document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+
+                // Add active class to clicked item
+                this.classList.add('active');
+
+                // Show corresponding section
+                const sectionId = this.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('settingsModal')) {
+                closeSettingsModal();
+            }
+        }
+        </script>
+        <script src="{% static '/main/scripts/home/home.js' %}"></script>
+        <script src="{% static '/main/scripts/global/favicon.js' %}"></script>
+        <script src="{% static '/main/scripts/global/notifications.js' %}"></script>
+        <script src="{% static '/main/scripts/global/logging.js' %}"></script>
+        <script src="{% static '/main/scripts/global/background_blur.js' %}"></script>
+    </body>
+</html>
+

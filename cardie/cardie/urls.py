@@ -19,10 +19,13 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 ADMIN_PATH = settings.ADMIN_PATH
 
 urlpatterns = [
     path("", include("main.urls")),
     path("auth/", include("authentication.urls")),
     path(ADMIN_PATH, admin.site.urls),
-]
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

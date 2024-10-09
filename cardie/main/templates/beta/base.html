@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head_scripts %}
+    {% endblock head_scripts %}
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static '/main/variables.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/main/ui.css' %}">
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static '/main/footer.css' %}">
+    {% block stylesheets %}{% endblock %}
+    <link rel="shortcut icon"
+          type="image/png"
+          href="{% static '/main/images/favicon_light.ico' %}" />
+    <meta name="darkreader-lock">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% url "config_js" %}"></script>
+    <title>Cardie |
+      {% block head_title %}{% endblock %}
+    </title>
+  </head>
+  <body>
+
+    {% block body %}{% endblock %}
+    {% comment %} {% include "footer.html" %} {% endcomment %}
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

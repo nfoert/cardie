@@ -1,12 +1,19 @@
 from django.shortcuts import HttpResponse
 from django.contrib.auth.hashers import make_password, check_password
 
-from authentication.models import User
+# from authentication.models import User
 from main.models import Server, Card, TempCard
 from main import views
 
 from django.utils import timezone
 import uuid
+
+
+from .forms import UserUpdateForm, ProfileUpdateForm
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Profile
+from django.contrib import messages
+from .models import User
 
 def sign_in(request):
     server = Server.objects.all()[0] # TODO: What if there is multiple server objects?
@@ -102,6 +109,8 @@ def create_account(request):
                 user = User(username=username, password=hashed_password, email=email, date_created=timezone.now())
                 user.save()
 
+                Profile.objects.create(user=user)
+
                 request.session["username"] = username
                 request.session["password"] = password
 
@@ -111,3 +120,72 @@ def create_account(request):
             return HttpResponse("error_missing_headers")
     else:
         return HttpResponse("error_create_account_disabled")
+
+
+def profile(request):
+    username = request.session.get("username")
+    user = get_object_or_404(User, username=username)
+    profile, created = Profile.objects.get_or_create(user=user)
+
+
+    is_editing = request.GET.get('edit') == 'true'
+
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)
+
+        if u_form.is_valid() and p_form.is_valid():
+            new_username = u_form.cleaned_data.get('username')
+            user = u_form.save()
+            p_form.save()
+
+            # Update the session if username has changed
+            if new_username and new_username != username:
+                request.session['username'] = new_username
+
+            messages.success(request, 'Your profile has been updated!')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        u_form = UserUpdateForm(instance=user)
+        p_form = ProfileUpdateForm(instance=profile)
+
+    context = {
+        'profile': profile,
+        'u_form': u_form,
+        'p_form': p_form,
+        'is_editing': is_editing,
+    }
+
+    return render(request, 'profile_var.html', context)
+
+
+def profile_alpine(request):
+    username = request.session.get("username")
+    user = get_object_or_404(User, username=username)
+    profile, created = Profile.objects.get_or_create(user=user)
+
+
+    if request.method == "POST":
+        u_form = UserUpdateForm(request.POST, instance=user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)
+
+        if u_form.is_valid() and p_form.is_valid():
+            new_username = u_form.cleaned_data.get('username')
+            user = u_form.save()
+            p_form.save()
+
+            if new_username and new_username != username:
+                request.session['username'] = new_username
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance=user)
+        p_form = ProfileUpdateForm(instance=profile)
+
+    context = {
+        'profile': profile,
+        'u_form': u_form,
+        'p_form': p_form,
+    }
+    return render(request,'profile_alpine.html', context)

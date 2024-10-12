@@ -125,3 +125,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+
+async function log_out() {
+    const response = await fetch(server_ip + "/logout", {
+        method: "POST",
+    });
+
+    response.text().then(function (text) {
+        if (text == "Request is not a POST request") {
+            create_notification("There was a problem logging out", text, "warning");
+            return false;
+
+        } else {
+            window.location.href = server_ip + "/authentication";
+        }
+    });
+}

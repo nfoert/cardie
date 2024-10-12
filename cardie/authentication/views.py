@@ -127,6 +127,8 @@ def profile(request):
     user = get_object_or_404(User, username=username)
     profile, created = Profile.objects.get_or_create(user=user)
 
+    server_info = Server.objects.all()[0]
+
 
     is_editing = request.GET.get('edit') == 'true'
 
@@ -151,11 +153,15 @@ def profile(request):
         u_form = UserUpdateForm(instance=user)
         p_form = ProfileUpdateForm(instance=profile)
 
+    server_info = Server.objects.all()[0]
+
     context = {
         'profile': profile,
         'u_form': u_form,
         'p_form': p_form,
         'is_editing': is_editing,
+        "server_ip": server_info.ip,
+        "production": server_info.production,
     }
 
     return render(request, 'profile_var.html', context)

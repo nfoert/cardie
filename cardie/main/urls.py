@@ -26,6 +26,6 @@ urlpatterns = [
     path("removefromwallet", views.remove_from_wallet, name="removefromwallet"),
     path("config.js", views.config_js, name="config_js"),
     path('profile/', auth_views.profile, name='profile'),
-    path('profile_a/', auth_views.profile_alpine, name='profile'),#for checking the alpine version
+
 
 ]

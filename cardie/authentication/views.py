@@ -159,33 +159,3 @@ def profile(request):
     }
 
     return render(request, 'profile_var.html', context)
-
-
-def profile_alpine(request):
-    username = request.session.get("username")
-    user = get_object_or_404(User, username=username)
-    profile, created = Profile.objects.get_or_create(user=user)
-
-
-    if request.method == "POST":
-        u_form = UserUpdateForm(request.POST, instance=user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)
-
-        if u_form.is_valid() and p_form.is_valid():
-            new_username = u_form.cleaned_data.get('username')
-            user = u_form.save()
-            p_form.save()
-
-            if new_username and new_username != username:
-                request.session['username'] = new_username
-            return redirect('profile')
-    else:
-        u_form = UserUpdateForm(instance=user)
-        p_form = ProfileUpdateForm(instance=profile)
-
-    context = {
-        'profile': profile,
-        'u_form': u_form,
-        'p_form': p_form,
-    }
-    return render(request,'profile_alpine.html', context)

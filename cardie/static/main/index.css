@@ -211,3 +211,26 @@ body, html {
     }
 
 }
+
+/* Properties for landscape mode */
+
+@media only screen and (orientation: landscape) {
+    #welcome_box{
+        padding-top: 10em;
+    }
+    #home_card{
+        padding-top: 14em;
+    }
+    #home_editor{
+        padding-top: 40em;
+    }
+    #home_editor_image{
+        padding-top: 10em;
+    }
+
+    #index_top_account_signin {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        margin-top: 20px; 
+    }
+}

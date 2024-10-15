@@ -175,7 +175,7 @@ body, html {
 
 }
 
-@media (max-width: 1000px) {
+@media  (max-width: 1000px) {
     /* Small Screens */
 
     #home_card {
@@ -214,7 +214,7 @@ body, html {
 
 /* Properties for landscape mode */
 
-@media only screen and (orientation: landscape) {
+@media (orientation: landscape) and (max-width: 1000px) {
 
     body, html {
         scroll-snap-type: none;

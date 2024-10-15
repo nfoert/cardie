@@ -175,7 +175,7 @@ body, html {
 
 }
 
-@media (max-width: 1000px) {
+@media  (max-width: 1000px) {
     /* Small Screens */
 
     #home_card {
@@ -210,4 +210,38 @@ body, html {
         margin-left: clamp(2vh, 20px, 2vw);
     }
 
+}
+
+/* Properties for landscape mode */
+
+@media (orientation: landscape) and (max-width: 1000px) {
+
+    body, html {
+        scroll-snap-type: none;
+        scroll-snap-points-y: none;
+        overflow: auto;
+    }
+
+    #welcome_box{
+        padding-top: 10em;
+        scroll-snap-align: none;
+    }
+    #home_card{
+        padding-top: 14em;
+        scroll-snap-align: none;
+    }
+    #home_editor{
+        padding-top: 40em;
+        scroll-snap-align: none;
+    }
+    #home_editor_image{
+        padding-top: 10em;
+        scroll-snap-align: none;
+    }
+
+    #index_top_account_signin {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        margin-top: 20px; 
+    }
 }

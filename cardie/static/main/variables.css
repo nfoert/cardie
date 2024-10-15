@@ -14,4 +14,8 @@
     --default-glass-border: rgba(132, 132, 132, 0.5) 1.5px solid;
     --default-glass-blur: blur(20px);
 
+    --default-active-scale: 0.95;
+    --default-disabled-scale: 0.90;
+    --default-hover-scale: 1.05;
+
 }

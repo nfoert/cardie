@@ -37,23 +37,6 @@ html {
     margin-left: clamp(2vh, 20px, 2vw);
 }
 
-#editor_header_name_button {
-    background-color: rgba(99, 99, 99, 0.4);
-    border: 2px solid rgba(145, 145, 145, 0.6);
-    border: none;
-    color: var(--default-text-color);
-
-    aspect-ratio: 1;
-    width: clamp(3vh, 30px, 3vw);
-    height: clamp(3vh, 30px, 3vw);
-    border-radius: 100px;
-    padding: 0;
-
-    margin-top: auto;
-    margin-bottom: auto;
-    transition: var(--default-transition);
-}
-
 #editor_header_name_button:hover {
     scale: 1.1;
     background-color: rgba(99, 99, 99, 0.6);

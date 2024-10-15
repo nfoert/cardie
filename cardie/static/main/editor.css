@@ -19,7 +19,7 @@ html {
 #editor_header_title_text {
     font-family: var(--default-font-family);
     font-size: clamp(3vh, 30px, 3vw);
-    color: white;
+    color: var(--default-text-color);
     margin: 0;
     padding: 0;
 
@@ -41,7 +41,7 @@ html {
     background-color: rgba(99, 99, 99, 0.4);
     border: 2px solid rgba(145, 145, 145, 0.6);
     border: none;
-    color: white;
+    color: var(--default-text-color);
 
     aspect-ratio: 1;
     width: clamp(3vh, 30px, 3vw);
@@ -64,17 +64,17 @@ html {
 }
 
 #editor_header_name_text_cardname {
-    color: white;
+    color: var(--default-text-color);
     padding-left: clamp(1vh, 10px, 1vw);
 }
 
 #editor_header_name_text_username {
-    color: white;
+    color: var(--default-text-color);
     margin-left: clamp(0.8vh, 8px, 0.8vw);
 }
 
 #editor_status {
-    color: white;
+    color: var(--default-text-color);
     font-family: var(--default-font-family);
     font-size: clamp(1.4vh, 14px, 1.4vw);
 
@@ -275,14 +275,14 @@ html {
 }
 
 .editor-iconselector-icon-icon {
-    color: white;
+    color: var(--default-text-color);
     font-size: clamp(3vh, 30px, 3vw);
     text-align: center;
     margin-top: clamp(0.3vh, 3px, 0.3vw);
 }
 
 .editor-iconselector-icon-text {
-    color: white;
+    color: var(--default-text-color);
     font-family: "Noto Sans Mono", "Courier New", monospace;
     font-size: clamp(1vh, 10px, 1vw);
     text-align: center;

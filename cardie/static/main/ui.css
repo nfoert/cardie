@@ -413,7 +413,7 @@
 }
 
 .ui_status_icon {
-    color: white;
+    color: var(--default-text-color);
 
     opacity: 0.8;
 }

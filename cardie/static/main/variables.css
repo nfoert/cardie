@@ -1,17 +1,17 @@
 :root {
-    background: rgb(37, 40, 49);
+    background: rgb(29, 32, 39);
     --default-background-color: #35374B;
     --default-font-family: "Noto Sans", sans-serif;
     --default-transition: 0.3s ease;
-    --default-text-color: white;
+    --default-text-color: rgba(255, 255, 255, 0.9);
 
     --color-primary: #35374B;
     --color-secondary: #344955;
     --color-tertiary: #50727B;
     --color-quaternary: #78A083;
 
-    --default-glass-background: rgba(180, 180, 180, 0.4);
-    --default-glass-border: rgba(167, 167, 167, 0.5) 2px solid;
+    --default-glass-background: rgba(92, 92, 92, 0.4);
+    --default-glass-border: rgba(132, 132, 132, 0.5) 1.5px solid;
     --default-glass-blur: blur(20px);
 
 }

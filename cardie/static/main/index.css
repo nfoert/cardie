@@ -215,17 +215,28 @@ body, html {
 /* Properties for landscape mode */
 
 @media only screen and (orientation: landscape) {
+
+    body, html {
+        scroll-snap-type: none;
+        scroll-snap-points-y: none;
+        overflow: auto;
+    }
+
     #welcome_box{
         padding-top: 10em;
+        scroll-snap-align: none;
     }
     #home_card{
         padding-top: 14em;
+        scroll-snap-align: none;
     }
     #home_editor{
         padding-top: 40em;
+        scroll-snap-align: none;
     }
     #home_editor_image{
         padding-top: 10em;
+        scroll-snap-align: none;
     }
 
     #index_top_account_signin {

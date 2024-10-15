@@ -92,4 +92,22 @@
             };
         }
     </script>
+<!-- Script for disable scrollSnap on landscape mode -->
+<script>
+    function disableScrollSnapping() {
+        if (window.matchMedia("(orientation: landscape)").matches) {
+            document.documentElement.style.scrollSnapType = "none";
+            document.documentElement.style.scrollSnapPointsY = "none";
+        } else {
+            document.documentElement.style.scrollSnapType = "y mandatory";
+            document.documentElement.style.scrollSnapPointsY = "repeat(100vh)";
+        }
+    }
+    
+    // Call the function once to ensure it runs on load
+    disableScrollSnapping();
+    
+    // Re-run the function on orientation change
+    window.addEventListener("orientationchange", disableScrollSnapping);
+    </script>
 {% endblock %}

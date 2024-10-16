@@ -1,0 +1,20 @@
+import { createApp } from "vue";
+import card from "./card.js";
+import card_back from "./card_back.js";
+import card_front from "./card_front.js";
+import editor_colors from "./editor_colors.js";
+import editor_details from "./editor_details.js";
+import editor_items from "./editor_items.js";
+import editor_items_item from "./editor_items_item.js";
+import editor_layout from "./layout.js";
+
+const app = createApp();
+app.component("cardie-card", card);
+app.component("cardie-card-front", card_front);
+app.component("cardie-card-back", card_back);
+app.component("cardie-editor-details", editor_details);
+app.component("cardie-editor-layout", editor_layout);
+app.component("cardie-editor-colors", editor_colors);
+app.component("cardie-editor-items", editor_items);
+app.component("cardie-editor-items-item", editor_items_item);
+app.mount("#editor_main");

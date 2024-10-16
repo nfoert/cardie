@@ -24,4 +24,5 @@ urlpatterns = [
     path("getwallet", views.get_wallet, name="getwallet"),
     path("removefromwallet", views.remove_from_wallet, name="removefromwallet"),
     path("config.js", views.config_js, name="config_js"),
+    path("beta/editor", views.beta_editor, name="beta_editor"),
 ]

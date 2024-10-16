@@ -1,0 +1,50 @@
+{% extends "beta/base.html" %}
+
+{% load static %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{% static 'main/card.css' %}">
+  <link rel="stylesheet"
+        type="text/css"
+        href="{% static 'main/editor.css' %}">
+{% endblock %}
+
+{% block body %}
+  <div id="editor_header">
+    <div id="editor_header_title">
+      <button class="ui_button_icon"
+              id="editor_header_title_home"
+              data-tippy-content="Go back to the home page">
+        <i class="ph-bold ph-house"></i>
+      </button>
+      <img id="editor_header_title_image"
+           src="/static/main/images/logo_light.png">
+      <p id="editor_header_title_text">Editor</p>
+    </div>
+  </div>
+  <div id="editor_main">
+    <div id="editor_main_settings">
+      <cardie-editor-layout></cardie-editor-layout>
+      <cardie-editor-details></cardie-editor-details>
+      <cardie-editor-colors></cardie-editor-colors>
+      <cardie-editor-items></cardie-editor-items>
+    </div>
+    <div id="editor_main_preview">
+      <div class="card_wrap">
+        <cardie-card></cardie-card>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script type="importmap">
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    }
+  }
+  </script>
+  <script type="module" src="{% static 'beta/editor.js' %}"></script>
+{% endblock %}

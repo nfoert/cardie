@@ -128,8 +128,6 @@ def profile(request):
     profile, created = Profile.objects.get_or_create(user=user)
 
     server_info = Server.objects.all()[0]
-
-
     is_editing = request.GET.get('edit') == 'true'
 
     if request.method == 'POST':
@@ -164,4 +162,4 @@ def profile(request):
         "production": server_info.production,
     }
 
-    return render(request, 'profile_var.html', context)
+    return render(request, 'profile.html', context)

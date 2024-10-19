@@ -807,15 +807,15 @@ a.deletelink:focus, a.deletelink:hover {
 
 /* OBJECT HISTORY */
 
-#change-history table {
+#change_history table {
     width: 100%;
 }
 
-#change-history table tbody th {
+#change_history table tbody th {
     width: 16em;
 }
 
-#change-history .paginator {
+#change_history .paginator {
     color: var(--body-quiet-color);
     border-bottom: 1px solid var(--hairline-color);
     background: var(--body-bg);
@@ -866,12 +866,12 @@ a.deletelink:focus, a.deletelink:hover {
     width: 600px;
 }
 
-#content-main {
+#content_main {
     float: left;
     width: 100%;
 }
 
-#content-related {
+#content_related {
     float: right;
     width: 260px;
     position: relative;
@@ -893,13 +893,13 @@ a.deletelink:focus, a.deletelink:hover {
     margin-left: 300px;
 }
 
-.colSM #content-related {
+.colSM #content_related {
     float: left;
     margin-right: 0;
     margin-left: -300px;
 }
 
-.colSM #content-main {
+.colSM #content_main {
     float: right;
 }
 
@@ -920,7 +920,7 @@ a.deletelink:focus, a.deletelink:hover {
     color: var(--header-color);
 }
 
-#header a:link, #header a:visited, #logout-form button {
+#header a:link, #header a:visited, #logout_form button {
     color: var(--header-link-color);
 }
 
@@ -932,7 +932,7 @@ a.deletelink:focus, a.deletelink:hover {
     display: flex;
 }
 
-#site-name {
+#site_name {
     padding: 0;
     margin: 0;
     margin-inline-end: 20px;
@@ -941,7 +941,7 @@ a.deletelink:focus, a.deletelink:hover {
     color: var(--header-branding-color);
 }
 
-#site-name a:link, #site-name a:visited {
+#site_name a:link, #site_name a:visited {
     color: var(--accent);
 }
 
@@ -957,24 +957,24 @@ a.deletelink:focus, a.deletelink:hover {
     text-decoration: none;
 }
 
-#logout-form {
+#logout_form {
     display: inline;
 }
 
-#logout-form button {
+#logout_form button {
     background: none;
     border: 0;
     cursor: pointer;
     font-family: var(--font-family-primary);
 }
 
-#user-tools {
+#user_tools {
     float: right;
     margin: 0 0 0 20px;
     text-align: right;
 }
 
-#user-tools, #logout-form button{
+#user_tools, #logout_form button{
     padding: 0;
     font-weight: 300;
     font-size: 0.6875rem;
@@ -982,57 +982,57 @@ a.deletelink:focus, a.deletelink:hover {
     text-transform: uppercase;
 }
 
-#user-tools a, #logout-form button {
+#user_tools a, #logout_form button {
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-#user-tools a:focus, #user-tools a:hover,
-#logout-form button:active, #logout-form button:hover {
+#user_tools a:focus, #user_tools a:hover,
+#logout_form button:active, #logout_form button:hover {
     text-decoration: none;
     border-bottom: 0;
 }
 
-#logout-form button:active, #logout-form button:hover {
+#logout_form button:active, #logout_form button:hover {
     margin-bottom: 1px;
 }
 
 /* SIDEBAR */
 
-#content-related {
+#content_related {
     background: var(--darkened-bg);
 }
 
-#content-related .module {
+#content_related .module {
     background: none;
 }
 
-#content-related h3 {
+#content_related h3 {
     color: var(--body-quiet-color);
     padding: 0 16px;
     margin: 0 0 16px;
 }
 
-#content-related h4 {
+#content_related h4 {
     font-size: 0.8125rem;
 }
 
-#content-related p {
+#content_related p {
     padding-left: 16px;
     padding-right: 16px;
 }
 
-#content-related .actionlist {
+#content_related .actionlist {
     padding: 0;
     margin: 16px;
 }
 
-#content-related .actionlist li {
+#content_related .actionlist li {
     line-height: 1.2;
     margin-bottom: 10px;
     padding-left: 18px;
 }
 
-#content-related .module h2 {
+#content_related .module h2 {
     background: none;
     padding: 16px;
     margin-bottom: 16px;

@@ -2,7 +2,7 @@ html {
     background: rgb(37, 40, 49);
 }
 
-#authentication-box {
+#authentication_box {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -14,7 +14,7 @@ html {
     z-index: 1;
 }
 
-#authentication-box-image {
+#authentication_box_image {
     width: clamp(30vh, 300px, 30vw);
     height: auto;
 
@@ -25,31 +25,31 @@ html {
     transition: var(--default-transition);
 }
 
-#authentication-box-image:hover {
+#authentication_box_image:hover {
     scale: 1.05;
 }
 
-#signin-box {
+#signin_box {
     display: flex;
     flex-direction: column;
 
     align-items: center;
 }
 
-#createaccount-box {
+#createaccount_box {
     display: flex;
     flex-direction: column;
 
     align-items: center;
 }
 
-#authentication-error {
+#authentication_error {
     opacity: 0;
     scale: 0.8;
     transition: var(--default-transition);
 }
 
-#authentication-error.show {
+#authentication_error.show {
     opacity: 1;
     scale: 1;
 }

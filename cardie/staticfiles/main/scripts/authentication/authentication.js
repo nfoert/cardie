@@ -14,18 +14,18 @@ try {
 
 function show_warning(warning) {
     log("WARNING", warning)
-    document.querySelector("#authentication-error > p").innerText = warning;
-    document.querySelector("#authentication-error").style.display = "flex";
+    document.querySelector("#authentication_error > p").innerText = warning;
+    document.querySelector("#authentication_error").style.display = "flex";
 
     setTimeout(function() {
-        document.querySelector("#authentication-error").classList.add("show");
+        document.querySelector("#authentication_error").classList.add("show");
     }, 100);
 }
 
 async function sign_in() {
     log("INFO", "Signing the user in...");
-    var username = document.querySelector("#signin-username").value;
-    var password = document.querySelector("#signin-password").value;
+    var username = document.querySelector("#signin_username").value;
+    var password = document.querySelector("#signin_password").value;
 
     if (temp_uuid) {
         var response = await fetch(server_ip + "/auth/signin", {
@@ -90,9 +90,9 @@ async function sign_in() {
 
 async function create_account() {
     log("INFO", "Creating an account for the user...");
-    var username = document.querySelector("#createaccount-username").value;
-    var password = document.querySelector("#createaccount-password").value;
-    var email = document.querySelector("#createaccount-email").value;
+    var username = document.querySelector("#createaccount_username").value;
+    var password = document.querySelector("#createaccount_password").value;
+    var email = document.querySelector("#createaccount_email").value;
 
     if (temp_uuid) {
         var response = await fetch(server_ip + "/auth/createaccount", {
@@ -171,35 +171,35 @@ async function create_account() {
 }
 
 function check_sign_in() {
-    document.querySelector("#signin-signin").disabled = !(
-        document.querySelector("#signin-username").value != "" && 
-        document.querySelector("#signin-password").value != ""
+    document.querySelector("#signin_signin").disabled = !(
+        document.querySelector("#signin_username").value != "" && 
+        document.querySelector("#signin_password").value != ""
     );
 }
 
 function check_create_account() {
-    document.querySelector("#createaccount-createaccount").disabled = !(
-        document.querySelector("#createaccount-username").value != "" && 
-        document.querySelector("#createaccount-password").value != "" && 
-        document.querySelector("#createaccount-email").value != ""
+    document.querySelector("#createaccount_createaccount").disabled = !(
+        document.querySelector("#createaccount_username").value != "" && 
+        document.querySelector("#createaccount_password").value != "" && 
+        document.querySelector("#createaccount_email").value != ""
     );
 }
 
-document.querySelector("#signin-signin").addEventListener("click", sign_in);
-document.querySelector("#createaccount-createaccount").addEventListener("click", create_account);
+document.querySelector("#signin_signin").addEventListener("click", sign_in);
+document.querySelector("#createaccount_createaccount").addEventListener("click", create_account);
 
-document.querySelector("#signin-username").addEventListener("input", check_sign_in);
-document.querySelector("#signin-password").addEventListener("input", check_sign_in);
-document.querySelector("#createaccount-username").addEventListener("input", check_create_account);
-document.querySelector("#createaccount-password").addEventListener("input", check_create_account);
-document.querySelector("#createaccount-email").addEventListener("input", check_create_account);
+document.querySelector("#signin_username").addEventListener("input", check_sign_in);
+document.querySelector("#signin_password").addEventListener("input", check_sign_in);
+document.querySelector("#createaccount_username").addEventListener("input", check_create_account);
+document.querySelector("#createaccount_password").addEventListener("input", check_create_account);
+document.querySelector("#createaccount_email").addEventListener("input", check_create_account);
 
-document.querySelector("#signin-signin").disabled = true;
-document.querySelector("#createaccount-createaccount").disabled = true;
+document.querySelector("#signin_signin").disabled = true;
+document.querySelector("#createaccount_createaccount").disabled = true;
 
 document.addEventListener("keyup", (event) => {
     if (event.code === "Enter") {
-        if (document.querySelector("#signin-box").style.display != "none") {
+        if (document.querySelector("#signin_box").style.display != "none") {
             sign_in();
             
         } else {

@@ -173,7 +173,7 @@ html {
 @media (min-width: 1000px) {
     /* Large screens */
 
-    #editor-iconselector {
+    #editor_iconselector {
         background-color: var(--default-glass-background);
         border: var(--default-glass-border);
         backdrop-filter: var(--default-glass-blur);
@@ -207,7 +207,7 @@ html {
 @media (max-width: 1000px) {
     /* Small Screens */
 
-    #editor-iconselector {
+    #editor_iconselector {
         background-color: var(--default-glass-background);
         backdrop-filter: var(--default-glass-blur);
     
@@ -235,18 +235,18 @@ html {
     }
 }
 
-#editor-iconselector-top {
+#editor_iconselector_top {
     display: flex;
     flex-direction: row;
 }
 
-#editor-iconselector-top-search {
+#editor_iconselector_top_search {
     height: clamp(2vh, 20px, 2vw);
     max-height: clamp(2vh, 20px, 2vw);
     margin-bottom: clamp(1vh, 10px, 1vw);
 }
 
-#editor-iconselector-icons {
+#editor_iconselector_icons {
     display: flex;
     flex-wrap: wrap;
     overflow-y: auto;

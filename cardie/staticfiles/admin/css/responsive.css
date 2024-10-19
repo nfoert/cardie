@@ -43,19 +43,19 @@ input[type="submit"], button {
         justify-content: flex-start;
     }
 
-    #site-name {
+    #site_name {
         margin: 0 0 8px;
         line-height: 1.2;
     }
 
-    #user-tools {
+    #user_tools {
         margin: 0;
         font-weight: 400;
         line-height: 1.85;
         text-align: left;
     }
 
-    #user-tools a {
+    #user_tools a {
         display: inline-block;
         line-height: 1.4;
     }
@@ -66,11 +66,11 @@ input[type="submit"], button {
         width: auto;
     }
 
-    #content-related {
+    #content_related {
         margin-right: -290px;
     }
 
-    .colSM #content-related {
+    .colSM #content_related {
         margin-left: -290px;
     }
 
@@ -97,13 +97,13 @@ input[type="submit"], button {
         padding: 15px;
     }
 
-    #changelist-search > div {
+    #changelist_search > div {
         display: flex;
         flex-wrap: nowrap;
         max-width: 480px;
     }
 
-    #changelist-search label {
+    #changelist_search label {
         line-height: 1.375rem;
     }
 
@@ -118,7 +118,7 @@ input[type="submit"], button {
         flex: 0 1 auto;
     }
 
-    #changelist-search .quiet {
+    #changelist_search .quiet {
         width: 0;
         flex: 1 0 auto;
         margin: 5px 0 0 25px;
@@ -151,7 +151,7 @@ input[type="submit"], button {
         margin: 0 10px 0 0;
     }
 
-    #changelist-filter {
+    #changelist_filter {
         flex-basis: 200px;
     }
 
@@ -414,7 +414,7 @@ input[type="submit"], button {
         padding: 15px 20px;
     }
 
-    .login #site-name {
+    .login #site_name {
         margin: 0;
     }
 
@@ -464,16 +464,16 @@ input[type="submit"], button {
         margin: 0;
     }
 
-    #content-related, .colSM #content-related {
+    #content_related, .colSM #content_related {
         width: 100%;
         margin: 0;
     }
 
-    #content-related .module {
+    #content_related .module {
         margin-bottom: 0;
     }
 
-    #content-related .module h2 {
+    #content_related .module h2 {
         padding: 10px 15px;
         font-size: 1rem;
     }
@@ -489,7 +489,7 @@ input[type="submit"], button {
         padding: 10px;
     }
 
-    #changelist-filter {
+    #changelist_filter {
         margin-left: 0;
     }
 
@@ -506,7 +506,7 @@ input[type="submit"], button {
         flex: 1 0 100%;
     }
 
-    #changelist-filter {
+    #changelist_filter {
         position: static;
         width: auto;
         margin-top: 30px;
@@ -840,7 +840,7 @@ input[type="submit"], button {
         padding: 15px;
     }
 
-    .login #content-main {
+    .login #content_main {
         float: none;
     }
 
@@ -952,12 +952,12 @@ input[type="submit"], button {
 
     /* History */
 
-    table#change-history tbody th, table#change-history tbody td {
+    table#change_history tbody th, table#change_history tbody td {
         font-size: 0.8125rem;
         word-break: break-word;
     }
 
-    table#change-history tbody th {
+    table#change_history tbody th {
         width: auto;
     }
 

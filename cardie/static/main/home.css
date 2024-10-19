@@ -5,7 +5,7 @@ html {
 @media (min-width: 1000px) {
     /* Large screens */
 
-    #home-top {
+    #home_top {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -15,29 +15,29 @@ html {
         margin-top: clamp(5vh, 50px, 5vw);
     }
     
-    #home-top-text {
+    #home_top_text {
         margin-left: clamp(6vh, 60px, 6vw);
     }
     
-    #home-navigation {
+    #home_navigation {
         margin-top: clamp(1vh, 10px, 1vw);
         margin-left: clamp(12vh, 120px, 12vw);
         margin-bottom: clamp(2vh, 20px, 2vw);
     }
     
-    #home-wallet {
+    #home_wallet {
         margin-left: clamp(12vh, 120px, 12vw);
         display: flex;
         flex-direction: column;
     }
     
-    #home-cards {
+    #home_cards {
         margin-left: clamp(12vh, 120px, 12vw);
         display: flex;
         flex-direction: column;
     }
 
-    #home-top-image {
+    #home_top_image {
         width: clamp(30vh, 300px, 30vw);
         height: auto;
         transition: var(--default-transition);
@@ -48,7 +48,7 @@ html {
 @media (max-width: 1000px) {
     /* Small Screens */
 
-    #home-top {
+    #home_top {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -58,29 +58,29 @@ html {
         margin-top: clamp(1vh, 10px, 1vw);
     }
     
-    #home-top-text {
+    #home_top_text {
         margin-left: clamp(2vh, 20px, 2vw);
     }
     
-    #home-navigation {
+    #home_navigation {
         margin-top: clamp(1vh, 10px, 1vw);
         margin-left: clamp(2vh, 20px, 2vw);
         margin-bottom: clamp(1vh, 10px, 1vw);
     }
     
-    #home-wallet {
+    #home_wallet {
         margin-left: clamp(2vh, 20px, 2vw);
         display: flex;
         flex-direction: column;
     }
     
-    #home-cards {
+    #home_cards {
         margin-left: clamp(2vh, 20px, 2vw);
         display: flex;
         flex-direction: column;
     }
 
-    #home-top-image {
+    #home_top_image {
         width: clamp(20vh, 200px, 20vw);
         height: auto;
         transition: var(--default-transition);
@@ -88,7 +88,7 @@ html {
     }
 }
 
-#home-top-image:hover {
+#home_top_image:hover {
     scale: 1.05;
 }
 
@@ -137,15 +137,15 @@ html {
     width: fit-content;
 }
 
-#home-top-profile {
+#home_top_profile {
     position: relative;
 }
 
-#home-top-username {
+#home_top_username {
     height: fit-content;
 }
 
-#home-top-profile-dropdown {
+#home_top_profile_dropdown {
     position: absolute;
     top: 30%;
 
@@ -158,7 +158,7 @@ html {
     width: fit-content;
 }
 
-#home-top-profile-dropdown > button {
+#home_top_profile_dropdown > button {
     white-space: nowrap;
 }
 

@@ -36,7 +36,7 @@ tfoot td:first-child {
 
 /* LAYOUT */
 
-#user-tools {
+#user_tools {
     right: auto;
     left: 0;
     text-align: left;
@@ -46,11 +46,11 @@ div.breadcrumbs {
     text-align: right;
 }
 
-#content-main {
+#content_main {
     float: right;
 }
 
-#content-related {
+#content_related {
     float: left;
     margin-left: -300px;
     margin-right: auto;
@@ -86,14 +86,14 @@ thead th.sorted .text {
     border-right: 0px none;
 }
 
-#changelist-filter {
+#changelist_filter {
     border-left: none;
     border-right: none;
     margin-left: 0;
     margin-right: 30px;
 }
 
-#changelist-filter li.selected {
+#changelist_filter li.selected {
     border-left: none;
     padding-left: 10px;
     margin-left: 0;

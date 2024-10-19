@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block body %}
-    <div id="authentication-box" x-data="box_param_check()">
+    <div id="authentication_box" x-data="box_param_check()">
         {% csrf_token %}
         <img id="authentication-box-image"
              @click="window.location.href = server_ip"
@@ -24,7 +24,7 @@
             <i class="ph-bold ph-warning-octagon ui_status_icon"></i>
             <p class="ui_status_text">Critical status box</p>
         </div>
-        <div id="signin-box" x-show="sign_in" x-transition:enter.delay.200ms>
+        <div id="signin_box" x-show="sign_in" x-transition:enter.delay.200ms>
             <p class="ui_text_header">
                 <i class="ph-bold ph-keyhole"></i> Sign In
             </p>
@@ -37,7 +37,7 @@
                    type="password"
                    class="ui_input_generic"
                    placeholder="Password">
-            <button id="signin-signin" class="ui_button_large">
+            <button id="signin_signin" class="ui_button_large">
                 <strong>Sign In</strong> <i class="ph-bold ph-sign-in"></i>
             </button>
             <button id="signin-createaccount"
@@ -65,7 +65,7 @@
                    type="text"
                    class="ui_input_generic"
                    placeholder="Email">
-            <button id="createaccount-createaccount" class="ui_button_large">
+            <button id="createaccount_createaccount" class="ui_button_large">
                 <strong>Create Account</strong> <i class="ph-bold ph-user-plus"></i>
             </button>
             <button id="createaccount-signin"

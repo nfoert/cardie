@@ -90,7 +90,7 @@ function create_home_card(uuid, name) {
 
     div.setAttribute("open", false);
 
-    document.querySelector("#home-cards").appendChild(div);
+    document.querySelector("#home_cards").appendChild(div);
 }
 
 function create_wallet_card(uuid, name) {
@@ -137,7 +137,7 @@ function create_wallet_card(uuid, name) {
 
     div.setAttribute("open", false);
 
-    document.querySelector("#home-wallet").appendChild(div);
+    document.querySelector("#home_wallet").appendChild(div);
 }
 
 function home_wallet_view(event) {
@@ -244,7 +244,7 @@ async function get_wallet() {
     });
 }
 
-document.querySelector("#home-top-image").addEventListener("click", (event) => {
+document.querySelector("#home_top_image").addEventListener("click", (event) => {
     window.location.href = server_ip;
 });
 

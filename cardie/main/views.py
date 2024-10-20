@@ -350,3 +350,7 @@ def remove_from_wallet(request):
 
 def config_js(request):
     return render(request, "config.js", {}, content_type="text/javascript")
+
+
+def beta_editor(request):
+    return render(request, "beta/editor.html")

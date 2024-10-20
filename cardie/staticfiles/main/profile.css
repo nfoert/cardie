@@ -1,0 +1,243 @@
+/* Variables */
+:root {
+    --primary-color: #7d7f90;
+    --secondary-color: #2A2D3F;
+    --accent-color: #6366F1;
+    --accent-color-hover: #4F46E5;
+    --text-color: #E2E8F0;
+    --border-radius: 16px;
+    --transition: 0.3s ease;
+}
+
+/* Global Styles */
+body {
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Profile Container */
+#profile-container {
+    display: flex;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 24px;
+}
+
+/* Profile Details */
+#profile-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.detail-card {
+    background: var(--default-glass-background);
+    border: var(--default-glass-border);
+    backdrop-filter: var(--default-glass-blur);
+    border-radius: 20px;
+    padding: 24px;
+}
+
+/* Info Items */
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.info-item input {
+    /* TODO: This is just copying the styles from ui_input_generic for now, 
+    this should be changed to use the class name directly from ui.css */
+    background-color: var(--default-glass-background);
+    color: var(--default-text-color);
+    border-radius: 10px;
+    border: var(--default-glass-border);
+    transition: var(--default-transition);
+    font-size: clamp(1.6vh, 16px, 1.6vw);
+    font-family: var(--default-font-family);
+    box-sizing: border-box;
+
+    backdrop-filter: var(--default-glass-blur);
+
+    padding: clamp(0.5vh, 5px, 0.5vw);
+    margin: clamp(0.5vh, 5px, 0.5vw);
+
+    opacity: 0.8;
+    scale: 1;
+    outline: none;
+    flex-grow: 2;
+
+    width: 100%;
+
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+/* Profile Image Section */
+#profile-image-section {
+    width: 300px;
+}
+
+.profile-image-container {
+    position: relative;
+    width: 300px;
+    aspect-ratio: 1;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+.profile-image-container:hover .profile-image-overlay {
+    opacity: 1;
+}
+
+.profile-image-overlay i {
+    color: white;
+    font-size: 2rem;
+}
+
+#profile-image-section input[type="file"] {
+    display: none;
+}
+
+/* Modal Styles */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+}
+
+.settings-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    min-height: 400px;
+    background: var(--default-glass-background);
+    border-radius: var(--default-glass-rounding);
+    backdrop-filter: var(--default-glass-blur);
+    border: var(--default-glass-border);
+    display: flex;
+    z-index: 1001;
+}
+
+.modal-sidebar {
+    width: 200px;
+    border-right: 1px solid var(--card-border);
+    padding: 20px 0;
+}
+
+.modal-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+    background: var(--primary-color);
+}
+
+.sidebar-item i {
+    margin-right: 12px;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #profile-container {
+        flex-direction: column-reverse;
+    }
+
+    #profile-image-section {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .settings-modal {
+        flex-direction: column;
+        height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--card-border);
+        padding: 10px 0;
+    }
+}

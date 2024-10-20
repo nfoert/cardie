@@ -4,3 +4,4 @@ __pycache__
 django.log
 .env
 .ruff_cache
+cardie/media/profile_images

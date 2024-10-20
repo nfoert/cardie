@@ -13,14 +13,21 @@
             <img id="home-top-image" src="{% static '/main/images/logo_light.png' %}">
             <p id="home-top-text" class="ui_text_subheader_left">Hello, {{ username }}</p>
         </div>
-        <div id="home-top-profile" x-data="{ open: false }" @click="open = !open">
-            <button id="home-top-username" class="ui_button_small">
+        <div id="home-top-profile" x-data="{ open: false }" @click.away="open = false">
+            <button id="home-top-username" class="ui_button_small" @click="open = !open">
                 {{ username }} <i class="ph-bold ph-caret-down"></i>
             </button>
             <div id="home-top-profile-dropdown" x-show="open" x-transition>
-                <button class="ui_button_small" @click="log_out()">
-                    <i class="ph-bold ph-sign-out"></i> Log Out
-                </button>
+                <div class="dropdown-content">
+                    <a href="{% url 'profile' %}" >
+                    <button class="ui_button_small view-profile-btn">
+                        <i class="ph-bold ph-user"></i>Profile
+                    </button>
+                    </a>
+                    <button class="ui_button_small logout-btn" @click="log_out()">
+                        <i class="ph-bold ph-sign-out"></i> Log Out
+                    </button>
+                </div>
             </div>
         </div>
     </div>

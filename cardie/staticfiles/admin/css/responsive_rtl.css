@@ -5,7 +5,7 @@
         margin-right: 0;
     }
 
-    [dir="rtl"] #user_tools {
+    [dir="rtl"] #user-tools {
         text-align: right;
     }
 
@@ -24,7 +24,7 @@
     [dir="rtl"] .filtered #toolbar,
     [dir="rtl"] .filtered div.xfull,
     [dir="rtl"] .filtered .actions,
-    [dir="rtl"] #changelist_filter {
+    [dir="rtl"] #changelist-filter {
         margin-left: 0;
     }
 
@@ -74,7 +74,7 @@
         margin-right: 0;
     }
 
-    [dir="rtl"] #changelist_filter {
+    [dir="rtl"] #changelist-filter {
         margin-left: 0;
         margin-right: 0;
     }

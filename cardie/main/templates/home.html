@@ -26,13 +26,13 @@
     </div>
     <div x-data="{ cards: true, cards_disabled: true, wallet_disabled: false }">
         <div id="home_navigation">
-            <button id="home-navigation-wallet"
+            <button id="home_navigation_wallet"
                     class="ui_button_grid"
                     @click="cards = false; cards_disabled = false; wallet_disabled = true;"
                     x-bind:disabled="wallet_disabled">
                 Wallet <i class="ph-bold ph-wallet"></i>
             </button>
-            <button id="home-navigation-cards"
+            <button id="home_navigation_cards"
                     class="ui_button_grid"
                     @click="cards = true; wallet_disabled = false; cards_disabled = true;"
                     x-bind:disabled="cards_disabled">

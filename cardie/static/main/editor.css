@@ -276,22 +276,22 @@ html {
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
 }
 
-.editor-iconselector-icon:hover {
+.editor_iconselector_icon:hover {
     scale: 1.05;
 }
 
-.editor-iconselector-icon:active {
+.editor_iconselector_icon:active {
     scale: 0.95;
 }
 
-.editor-iconselector-icon-icon {
+.editor_iconselector_icon_icon {
     color: white;
     font-size: clamp(3vh, 30px, 3vw);
     text-align: center;
     margin-top: clamp(0.3vh, 3px, 0.3vw);
 }
 
-.editor-iconselector-icon-text {
+.editor_iconselector_icon_text {
     color: white;
     font-family: "Noto Sans Mono", "Courier New", monospace;
     font-size: clamp(1vh, 10px, 1vw);
@@ -299,7 +299,7 @@ html {
     user-select: none;
 }
 
-@keyframes show-rename {
+@keyframes show_rename {
     from {
         opacity: 0;
         scale: 0.8;
@@ -311,7 +311,7 @@ html {
     }
 }
 
-@keyframes hide-rename {
+@keyframes hide_rename {
     from {
         opacity: 1;
         scale: 1;
@@ -323,12 +323,12 @@ html {
     }
 }
 
-.show-rename {
-    animation: show-rename 0.2s ease-in-out forwards;
+.show_rename {
+    animation: show_rename 0.2s ease-in-out forwards;
 }
 
-.hide-rename {
-    animation: hide-rename 0.2s ease-in-out forwards;
+.hide_rename {
+    animation: hide_rename 0.2s ease-in-out forwards;
 }
 
 @media (min-width: 1000px) {

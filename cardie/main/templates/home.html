@@ -8,16 +8,16 @@
     <link rel="stylesheet" type="text/css" href="{% static '/main/home.css' %}">
 {% endblock %}
 {% block body %}
-    <div id="home-top">
-        <div id="home-top-logo">
-            <img id="home-top-image" src="{% static '/main/images/logo_light.png' %}">
-            <p id="home-top-text" class="ui_text_subheader_left">Hello, {{ username }}</p>
+    <div id="home_top">
+        <div id="home_top_logo">
+            <img id="home_top_image" src="{% static '/main/images/logo_light.png' %}">
+            <p id="home_top_text" class="ui_text_subheader_left">Hello, {{ username }}</p>
         </div>
-        <div id="home-top-profile" x-data="{ open: false }" @click="open = !open">
-            <button id="home-top-username" class="ui_button_small">
+        <div id="home_top_profile" x-data="{ open: false }" @click="open = !open">
+            <button id="home_top_username" class="ui_button_small">
                 {{ username }} <i class="ph-bold ph-caret-down"></i>
             </button>
-            <div id="home-top-profile-dropdown" x-show="open" x-transition>
+            <div id="home_top_profile_dropdown" x-show="open" x-transition>
                 <button class="ui_button_small" @click="log_out()">
                     <i class="ph-bold ph-sign-out"></i> Log Out
                 </button>
@@ -25,21 +25,21 @@
         </div>
     </div>
     <div x-data="{ cards: true, cards_disabled: true, wallet_disabled: false }">
-        <div id="home-navigation">
-            <button id="home-navigation-wallet"
+        <div id="home_navigation">
+            <button id="home_navigation_wallet"
                     class="ui_button_grid"
                     @click="cards = false; cards_disabled = false; wallet_disabled = true;"
                     x-bind:disabled="wallet_disabled">
                 Wallet <i class="ph-bold ph-wallet"></i>
             </button>
-            <button id="home-navigation-cards"
+            <button id="home_navigation_cards"
                     class="ui_button_grid"
                     @click="cards = true; wallet_disabled = false; cards_disabled = true;"
                     x-bind:disabled="cards_disabled">
                 My Cards <i class="ph-bold ph-cards"></i>
             </button>
         </div>
-        <div id="home-wallet" x-show="!cards" x-transition>
+        <div id="home_wallet" x-show="!cards" x-transition>
             <p class="ui_text_subheader_left">
                 <i class="ph-bold ph-wallet"></i> My Wallet
             </p>
@@ -49,7 +49,7 @@
                 <p class="ui_status_text">You don't have any cards saved yet! Once you do, they will appear here for you to find later.</p>
             </div>
         </div>
-        <div id="home-cards" x-show="cards" x-transition>
+        <div id="home_cards" x-show="cards" x-transition>
             <p class="ui_text_subheader_left">
                 <i class="ph-bold ph-cards"></i> My Cards
             </p>

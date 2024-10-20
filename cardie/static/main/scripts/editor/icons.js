@@ -21,7 +21,7 @@ function create_icon(icon) {
 
     itemsData.push(div_element);
 
-    document.querySelector("#editor-iconselector-icons").appendChild(div_element)
+    document.querySelector("#editor_iconselector_icons").appendChild(div_element)
 }
 
 function render_icons(icons) {
@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 // Function to render items
 const renderItems = (filteredItems) => {
-    document.querySelector("#editor-iconselector-icons").innerHTML = '';
-    filteredItems.forEach(item => document.querySelector("#editor-iconselector-icons").appendChild(item));
+    document.querySelector("#editor_iconselector_icons").innerHTML = '';
+    filteredItems.forEach(item => document.querySelector("#editor_iconselector_icons").appendChild(item));
 };
 
 // Function to sort items alphabetically by the icon attribute
@@ -59,7 +59,7 @@ const filterItems = (query) => {
 };
 
 // Event listener for the search box
-document.querySelector("#editor-iconselector-top-search").addEventListener('input', (e) => {
+document.querySelector("#editor_iconselector_top_search").addEventListener('input', (e) => {
     const query = e.target.value;
     const filteredItems = filterItems(query);
     const sortedItems = sortItems(filteredItems);
@@ -70,17 +70,17 @@ function show_iconselector(item) {
     icon_selected_item = item;
     show_background_blur();
 
-    document.querySelector("#editor-iconselector").style.display = "flex";
-    document.querySelector("#editor-iconselector").classList.remove("hide-iconselector");
-    document.querySelector("#editor-iconselector").classList.add("show-iconselector");
+    document.querySelector("#editor_iconselector").style.display = "flex";
+    document.querySelector("#editor_iconselector").classList.remove("hide-iconselector");
+    document.querySelector("#editor_iconselector").classList.add("show-iconselector");
 }
 
 function hide_iconselector() {
-    document.querySelector("#editor-iconselector").classList.add("hide-iconselector");
+    document.querySelector("#editor_iconselector").classList.add("hide-iconselector");
 
     setTimeout(function() {
-        document.querySelector("#editor-iconselector").classList.remove("show-iconselector");
-        document.querySelector("#editor-iconselector").style.display = "none";
+        document.querySelector("#editor_iconselector").classList.remove("show-iconselector");
+        document.querySelector("#editor_iconselector").style.display = "none";
         hide_background_blur();
     }, 500);
 }
@@ -96,6 +96,6 @@ function icon_clicked(event) {
     hide_iconselector();
 }
 
-document.querySelector("#editor-iconselector-top-close").addEventListener("click", (event) => {
+document.querySelector("#editor_iconselector_top_close").addEventListener("click", (event) => {
     hide_iconselector();
 });

@@ -19,7 +19,7 @@ html {
 #editor_header_title_text {
     font-family: var(--default-font-family);
     font-size: clamp(3vh, 30px, 3vw);
-    color: white;
+    color: var(--default-text-color);
     margin: 0;
     padding: 0;
 
@@ -37,23 +37,6 @@ html {
     margin-left: clamp(2vh, 20px, 2vw);
 }
 
-#editor_header_name_button {
-    background-color: rgba(99, 99, 99, 0.4);
-    border: 2px solid rgba(145, 145, 145, 0.6);
-    border: none;
-    color: white;
-
-    aspect-ratio: 1;
-    width: clamp(3vh, 30px, 3vw);
-    height: clamp(3vh, 30px, 3vw);
-    border-radius: 100px;
-    padding: 0;
-
-    margin-top: auto;
-    margin-bottom: auto;
-    transition: var(--default-transition);
-}
-
 #editor_header_name_button:hover {
     scale: 1.1;
     background-color: rgba(99, 99, 99, 0.6);
@@ -64,17 +47,17 @@ html {
 }
 
 #editor_header_name_text_cardname {
-    color: white;
+    color: var(--default-text-color);
     padding-left: clamp(1vh, 10px, 1vw);
 }
 
 #editor_header_name_text_username {
-    color: white;
+    color: var(--default-text-color);
     margin-left: clamp(0.8vh, 8px, 0.8vw);
 }
 
 #editor_status {
-    color: white;
+    color: var(--default-text-color);
     font-family: var(--default-font-family);
     font-size: clamp(1.4vh, 14px, 1.4vw);
 
@@ -126,16 +109,6 @@ html {
     margin-top: clamp(1vh, 10px, 1vw);
     margin-left: auto;
     margin-right: auto;
-}
-
-.text_item {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.link_item {
-    display: flex;
-    flex-direction: row-reverse;
 }
 
 @keyframes show-iconselector {
@@ -285,14 +258,14 @@ html {
 }
 
 .editor_iconselector_icon_icon {
-    color: white;
+    color: var(--default-text-color);
     font-size: clamp(3vh, 30px, 3vw);
     text-align: center;
     margin-top: clamp(0.3vh, 3px, 0.3vw);
 }
 
 .editor_iconselector_icon_text {
-    color: white;
+    color: var(--default-text-color);
     font-family: "Noto Sans Mono", "Courier New", monospace;
     font-size: clamp(1vh, 10px, 1vw);
     text-align: center;
@@ -490,4 +463,24 @@ html {
     margin-left: clamp(1.5vh, 15px, 1.5vw);
     margin-right: clamp(1vh, 10px, 1vw);
     
+}
+
+@keyframes show-item {
+    from {
+        opacity: 0;
+        scale: 0.8;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.item {
+    animation: show-item 0.3s ease-in-out forwards;
+
+    /* Starting properties for animation */
+    opacity: 0;
+    scale: 0.8;
 }

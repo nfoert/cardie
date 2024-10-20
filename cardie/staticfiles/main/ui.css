@@ -74,15 +74,16 @@
 }
 
 .ui_button_large:hover:enabled {
-    scale: 1.05;
+    scale: var(--default-hover-scale);
+    cursor: pointer;
 }
 
 .ui_button_large:active:enabled {
-    scale: 0.95;
+    scale: var(--default-active-scale);
 }
 
 .ui_button_large:disabled {
-    scale: 0.9;
+    scale: var(--default-disabled-scale);
     opacity: 0.7;
 }
 
@@ -111,15 +112,16 @@
 }
 
 .ui_button_grid:hover:enabled {
-    scale: 1.05;
+    scale: var(--default-hover-scale);
+    cursor: pointer;
 }
 
 .ui_button_grid:active:enabled {
-    scale: 0.95;
+    scale: var(--default-active-scale);
 }
 
 .ui_button_grid:disabled {
-    scale: 0.9;
+    scale: var(--default-disabled-scale);
     opacity: 0.7;
 }
 
@@ -149,15 +151,16 @@
 }
 
 .ui_button_icon:hover:enabled {
-    scale: 1.1;
+    scale: var(--default-hover-scale);
+    cursor: pointer;
 }
 
 .ui_button_icon:active:enabled {
-    scale: 0.9;
+    scale: var(--default-active-scale);
 }
 
 .ui_button_icon:disabled {
-    scale: 0.9;
+    scale: var(--default-disabled-scale);
     opacity: 0.7;
 }
 
@@ -189,15 +192,16 @@
 }
 
 .ui_button_smallicon:hover:enabled {
-    scale: 1.05;
+    scale: var(--default-hover-scale);
+    cursor: pointer;
 }
 
 .ui_button_smallicon:active:enabled {
-    scale: 0.95;
+    scale: var(--default-active-scale);
 }
 
 .ui_button_smallicon:disabled {
-    scale: 0.95;
+    scale: var(--default-disabled-scale);
     opacity: 0.7;
 }
 
@@ -228,15 +232,16 @@
 }
 
 .ui_button_small:hover:enabled {
-    scale: 1.05;
+    scale: var(--default-hover-scale);
+    cursor: pointer;
 }
 
 .ui_button_small:active:enabled {
-    scale: 0.95;
+    scale: var(--default-active-scale);
 }
 
 .ui_button_small:disabled {
-    scale: 0.9;
+    scale: var(--default-disabled-scale);
     opacity: 0.7;
 }
 
@@ -404,11 +409,11 @@
 
 .ui_status_text:hover {
     opacity: 1;
-    scale: 1.05;
+    scale: var(--default-hover-scale);
 }
 
 .ui_status_icon {
-    color: white;
+    color: var(--default-text-color);
 
     opacity: 0.8;
 }
@@ -448,7 +453,7 @@
 
 .ui_input_generic:hover {
     opacity: 1;
-    scale: 1.05;
+    scale: var(--default-hover-scale);
 }
 
 
@@ -619,12 +624,12 @@
 
 .ui_link_generic:hover {
     opacity: 1;
-    scale: 1.05;
+    scale: var(--default-hover-scale);
 }
 
 .ui_link_generic:active {
     opacity: 0.9;
-    scale: 0.95;
+    scale: var(--default-active-scale);
 }
 
 .ui_link_generic:visited {

@@ -1,5 +1,4 @@
-// TODO: Support {{ server_url }}
-let icons_url = "http://127.0.0.1:8000/iconlist";
+let icons_url = `${server_ip}/iconlist`;
 const itemsData = []; // Array to store item data
 var icon_selected_item;
 

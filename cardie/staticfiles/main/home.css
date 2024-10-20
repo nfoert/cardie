@@ -115,7 +115,7 @@ html {
 }
 
 .home_card_text_name {
-    color: white;
+    color: var(--default-text-color);
     font-family: var(--default-font-family);
     font-size: clamp(1.6vh, 16px, 1.6vw);
 
@@ -124,7 +124,7 @@ html {
 }
 
 .home_card_text_uuid {
-    color: white;
+    color: var(--default-text-color);
     font-family: "Noto Sans Mono", "Courier New", monospace;
     font-size: clamp(1.2vh, 12px, 1.2vw);
     opacity: 0.7;

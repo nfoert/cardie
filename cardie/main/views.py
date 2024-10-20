@@ -7,7 +7,7 @@ from django.shortcuts import HttpResponse, render
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from main.icons import icons
-from main.models import Card, Server, TempCard
+from main.models import Card, TempCard
 
 
 def index(request):

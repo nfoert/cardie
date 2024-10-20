@@ -31,7 +31,7 @@
     }
     
     .footer_main_button_icon {
-        color: white;
+        color: var(--default-text-color);
         font-size: clamp(3vh, 30px, 3vw);
     }
 
@@ -52,8 +52,8 @@
     
     .footer_main_contents_link {
         font-family: var(--default-font-family);
-        font-size: clamp(1.4vh, 14px, 1.4vwS);
-        color: white;
+        font-size: clamp(1.4vh, 14px, 1.4vw);
+        color: var(--default-text-color);
         opacity: 0.7;
         text-decoration: none;
         transition: var(--default-transition);
@@ -97,7 +97,7 @@
     }
     
     .footer_warning_contents_title {
-        color: white;
+        color: var(--default-text-color);
         font-family: var(--default-font-family);
         opacity: 0.7;
         font-weight: 600;
@@ -107,10 +107,10 @@
     }
     
     .footer_warning_contents_text {
-        color: white;
+        color: var(--default-text-color);
         font-family: var(--default-font-family);
         opacity: 0.7;
-        font-size: clamp(1.2vh, 12pv, 1.2vw);
+        font-size: clamp(1.2vh, 12px, 1.2vw);
     
         margin: 0px;
     }
@@ -149,7 +149,7 @@
     }
     
     .footer_main_button_icon {
-        color: white;
+        color: var(--default-text-color);
         font-size: clamp(3vh, 30px, 3vw);
     }
 
@@ -170,8 +170,8 @@
     
     .footer_main_contents_link {
         font-family: var(--default-font-family);
-        font-size: clamp(1.2vh, 12px, 1.2vwS);
-        color: white;
+        font-size: clamp(1.2vh, 12px, 1.2vw);
+        color: var(--default-text-color);
         opacity: 0.7;
         text-decoration: none;
         transition: var(--default-transition);
@@ -215,7 +215,7 @@
     }
     
     .footer_warning_contents_title {
-        color: white;
+        color: var(--default-text-color);
         font-family: var(--default-font-family);
         opacity: 0.7;
         font-weight: 600;
@@ -225,7 +225,7 @@
     }
     
     .footer_warning_contents_text {
-        color: white;
+        color: var(--default-text-color);
         font-family: var(--default-font-family);
         opacity: 0.7;
         font-size: 12px;
@@ -249,14 +249,14 @@
 .footer_main_contents_link:active {
     opacity: 1;
     scale: 0.95;
-    color: white;
+    color: var(--default-text-color);
 }
 
 .footer_main_contents_link:visited {
-    color: white;
+    color: var(--default-text-color);
 }
 
 .footer_warning_contents_text > a {
-    color: white;
+    color: var(--default-text-color);
     font-weight: 500;
 }

@@ -154,6 +154,36 @@
                 @change="handleFileChange"
                 accept="image/*"
                 style="display: none;">
+
+            <!-- New Error Display Section -->
+            <div class="error-container">
+                <!-- Form-wide errors -->
+                {% if p_form.non_field_errors %}
+                <div class="error-message" x-init="setTimeout(() => $el.remove(), 5000)">
+                    {% for error in p_form.non_field_errors %}
+                        <div class="error-item">
+                            <i class="ph-bold ph-x-circle"></i>
+                            <span>{{ error }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Field-specific errors -->
+                {% for field in p_form %}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                        <div class="error-message" x-init="setTimeout(() => $el.remove(), 5000)">
+                            <div class="error-item">
+                                <i class="ph-bold ph-x-circle"></i>
+                                <span>{{ error }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+
+            </div>
         </div>
     </div>
 </form>

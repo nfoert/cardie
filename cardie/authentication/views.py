@@ -1,23 +1,23 @@
+import uuid
+
+from django.contrib.auth.hashers import check_password, make_password
 from django.shortcuts import HttpResponse
-from django.contrib.auth.hashers import make_password, check_password
+from django.utils import timezone
+from main import views
+from main.models import Card, Server, TempCard
 
 from authentication.models import User
-from main.models import Server, Card, TempCard
-from main import views
 
-from django.utils import timezone
-import uuid
 
 def sign_in(request):
     server = Server.objects.all()[0] # TODO: What if there is multiple server objects?
-
+    
     if server.allow_sign_in:
         if "Username" in request.headers and "Password" in request.headers:
             username = request.headers["Username"]
             password = request.headers["Password"]
 
             signed_in = True
-
         else:
             try:
                 username = request.session["username"]
@@ -26,10 +26,8 @@ def sign_in(request):
                 signed_in = True
 
             except KeyError:
-                print("Missing headers and no session!")
-                return HttpResponse("error_missing_headers_and_session")
+                return HttpResponse("error_missing_headers_and_session",status_code=400)
             
-
         if signed_in:
             users = User.objects.filter(username=username)
 
@@ -53,7 +51,7 @@ def sign_in(request):
 
                     except KeyError:
                         pass
-
+                    
                     if request.headers["Internal"] == "true":
                         return HttpResponse("success")
 
@@ -74,27 +72,26 @@ def sign_in(request):
 
 def create_account(request):
     server = Server.objects.all()[0] # TODO: What if there is multiple server objects?
-
+    print(server.allow_create_accounts)
     if server.allow_create_accounts:
         if "Username" in request.headers and "Password" in request.headers and "Email" in request.headers:
             username = request.headers["Username"]
             password = request.headers["Password"]
             email = request.headers["Email"]
-
+            
             if username == "":
-                return HttpResponse("no_username")
+                return HttpResponse("no_username",status=400)
 
             if password == "":
-                return HttpResponse("no_password")
-
+                return HttpResponse("no_password",status=400)
+            
             if email == "":
-                return HttpResponse("no_email")
-
+                return HttpResponse("no_email",status=400)
 
             users = User.objects.filter(username=username)
-
+            
             if len(users) > 0:
-                return HttpResponse("error_account_already_exists")
+                return HttpResponse("error_account_already_exists",status=400)
             
             else:
                 hashed_password = make_password(password)
@@ -102,12 +99,14 @@ def create_account(request):
                 user = User(username=username, password=hashed_password, email=email, date_created=timezone.now())
                 user.save()
 
-                request.session["username"] = username
-                request.session["password"] = password
-
+                request.session = {
+                    "username": username,
+                    "password": password
+                    }
+                
                 return sign_in(request)
 
         else:
-            return HttpResponse("error_missing_headers")
+            return HttpResponse("error_missing_headers",status=400)
     else:
-        return HttpResponse("error_create_account_disabled")
+        return HttpResponse("error_create_account_disabled",status=400)

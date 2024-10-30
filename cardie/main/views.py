@@ -1,11 +1,12 @@
 import json
 
+import authentication.views as Auth
 from authentication.models import User
-from authentication.views import sign_in
 from django.http import JsonResponse
 from django.shortcuts import HttpResponse, render
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
+
 from main.icons import icons
 from main.models import Card, TempCard
 
@@ -28,7 +29,8 @@ def authentication(request):
         request.session["username"]
         request.session["password"]
 
-        return sign_in(request)
+        # Refactored to avoid circular import in tests
+        return Auth.sign_in(request)
 
     except KeyError:
         print("No session data on authentication page!")
@@ -99,11 +101,10 @@ def create_card(request):
             card_created_on=timezone.now(),
         )
         card.save()
-
-        return HttpResponse("Done")
+        return HttpResponse("Done",status=200)
 
     else:
-        return HttpResponse("Request is not a POST request")
+        return HttpResponse("Request is not a POST request",status=400)
 
 
 @csrf_exempt
@@ -117,7 +118,7 @@ def check_card(request):
             # Card exists on the server
             if card[0].owner == me:
                 # You own this card
-                return JsonResponse(card[0].data, safe=False)
+                return JsonResponse(card[0].data, safe=False,status=200)
 
             else:
                 # You don't have permission to access this card
@@ -233,19 +234,23 @@ def create_temp_card(request):
 @csrf_exempt
 def delete_card(request):
     if request.method == "POST":
-        if request.headers["uuid"]:
-            # TODO: What if there are two accounts with that username?
-            me = User.objects.filter(username=request.session["username"])[0]
+        if request.headers["UUID"]:
+            try:
+                # TODO: What if there are two accounts with that username?
+                me = User.objects.filter(username=request.session["username"])[0]
+                
+                #This throws IndexError if there are no cards for the current user with that UUID
+                card = Card.objects.filter(uuid=request.headers["UUID"], owner=me)[0]
+                
+                if card:
+                    card.delete()
+                    return HttpResponse("Success",status=200)
 
-            card = Card.objects.filter(uuid=request.headers["uuid"], owner=me)[0]
+                else:
+                    return HttpResponse("Card not found",status=404)
 
-            if card:
-                card.delete()
-                return HttpResponse("Success")
-
-            else:
-                return HttpResponse("Card not found")
-
+            except IndexError:
+                return HttpResponse("No Cards created for current user",status=404)
         else:
             return HttpResponse("Missing headers")
 

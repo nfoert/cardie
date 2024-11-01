@@ -1,9 +1,9 @@
 <p align="center">
 
-  <!-- ![Cardie Logo](repo/images/logo_light.png#gh-dark-mode-only)
-  ![Cardie Logo](repo/images/logo_dark.png#gh-light-mode-only) -->
+  ![Cardie Logo](repo/images/logo_light.png#gh-dark-mode-only)
+  ![Cardie Logo](repo/images/logo_dark.png#gh-light-mode-only)
 
-  ![Hacktoberfest Banner](repo/images/hacktoberfest24.png)
+  <!-- ![Hacktoberfest Banner](repo/images/hacktoberfest24.png) -->
 
 </p>
 
@@ -42,11 +42,11 @@ Design a unlimited number of business or information cards about yourself, share
   <img src="repo/images/screenshot1.png" style="border-radius: 10px; margin-top: 20px;">
 </div>
 
-## Hacktoberfest
+<!-- ## Hacktoberfest
 Happy Hacktoberfest! I hope that you find this project interesting and that some issues offer a good learning experience! Help of any kind would be greatly appreciated.
 
 - You can check out the [issues page](https://github.com/nfoert/issues) for anything that piques your interest, or you can check the [hacktoberfest tag](https://github.com/nfoert/cardie/issues?q=sort%3Aupdated-desc+is%3Aopen+label%3Ahacktoberfest) for specific issues I've selected for this Hacktoberfest.
-- Additionally, please check out [Contributing](#contributing) for some information on how you can contribute to this project.
+- Additionally, please check out [Contributing](#contributing) for some information on how you can contribute to this project. -->
 
 ## Installation
 

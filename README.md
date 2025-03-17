@@ -15,7 +15,7 @@
   [![](https://img.shields.io/github/issues/nfoert/cardie?style=for-the-badge)](https://github.com/nfoert/cardie/issues)
   [![](https://img.shields.io/github/license/nfoert/cardie?style=for-the-badge)](https://github/nfoert/cardie/blob/main/LICENSE)
 
-  **[Live Server](https://cardie-uwtwy.ondigitalocean.app/)**
+  <!-- **[Live Server](https://cardie-uwtwy.ondigitalocean.app/)** -->
 
   **[Wiki](https://github.com/nfoert/cardie/wiki)** |
   **[Releases](https://github.com/nfoert/cardie/releases)**
@@ -23,6 +23,12 @@
 
   **The latest changes are available in the [development](https://github.com/nfoert/cardie/tree/development) branch! Please check there for the most up to date changes.**
 
+</div>
+
+---
+
+<div align="center">
+    This project has now been archived. If interest returns I will consider going back to this project but for the time being my time and motivation is better spend going to other projects. Thank you for the interest and to the contributors who helped with this project!
 </div>
 
 ---
